@@ -38,7 +38,7 @@ forward(125)
 right(120)
 forward(55)
 right(45)
-forward(10)
+forward(11)
 left(135)
 forward(55)
 right(35)
@@ -77,5 +77,5 @@ forward(15)
 
 end_fill()
 
-
+done()
 
