@@ -20,15 +20,16 @@ def get_words():
       random.shuffle(nouns)
       random.shuffle(verbs)
 
-      try:
+      i = True
+      while i == True:
             story = input("\n\nWould you like to hear the story? y/n\t")
-      except ValueError:
-            print("Not a valid response. Type 'y' or 'n' ")
-      else:
+
             if story == "y":
-                get_story(adjectives, nouns, verbs, words)
+                  get_story(adjectives, nouns, verbs, words)
             elif story == "n":
-                  pass
+                  i = False
+            else:
+                  print("Not a valid response. Type 'y' or 'n' ")
 
 def get_story(adjectives, nouns, verbs, words):
       print("\nIt was a " + adjectives[0] + ", cold December day. I woke up to the " + adjectives[1].replace(" ", "") +
@@ -39,25 +40,27 @@ def get_story(adjectives, nouns, verbs, words):
             words[4].replace(" ", "") + "! \nThere were " + nouns[3].replace(" ", "") + "s " + verbs[1].replace(" ", "") +
             " on the " + nouns[4].replace(" ", "") + "!\n")
 
-      try:
+      i = True
+      while i == True:
             story = input("\n\nWould you like to hear the story again? y/n\t")
-      except ValueError:
-            print("Not a valid response. Type 'y' or 'n' ")
-      else:
-            if story == "y":
-                get_story(adjectives, nouns, verbs, words)
-            elif story == "n":
-                  pass
 
-      try:
-            story = input("\n\nWould you like to create another story? y/n\t")
-      except ValueError:
-            print("Not a valid response. Type 'y' or 'n' ")
-      else:
             if story == "y":
-                get_words()
+                  get_story(adjectives, nouns, verbs, words)
             elif story == "n":
-                 exit() 
+                  i = False
+            else:
+                  print("Not a valid response. Type 'y' or 'n' ")
+
+      j = True
+      while j == True:
+            story = input("\n\nWould you like to create another story? y/n\t")
+
+            if story == "y":
+                  get_words()
+            elif story == "n":
+                  exit()
+            else:
+                  print("Not a valid response. Type 'y' or 'n' ") 
 
 get_words()
 
