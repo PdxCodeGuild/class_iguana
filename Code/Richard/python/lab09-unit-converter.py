@@ -4,7 +4,6 @@
 lab09-unit-converter.py, converts units of distance"""
 
 #note: problems with float arithmetic. Rounding to two digits (x.xx) is a kludge
-#note: this runs in terminal and in spyder but not in PyCharm
 conv =  {
         'inch'    :   0.0254,
         'foot'    :   0.3048,
