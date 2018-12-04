@@ -5,4 +5,4 @@ start_question = input('ask me something :    )\n absolutely anything will do \n
 
 magic_answer = random.choice(magic_answers)
 print(magic_answer)
-print('\n*dont worry someone loves you my friend*')
+print('\n*dont worry, someone loves you my friend*')
