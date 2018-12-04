@@ -74,8 +74,12 @@ right(90)
 forward(28)
 right(90)
 forward(15)
+left(90)
+forward(3.5)
 
 end_fill()
 
 done()
+
+
 
