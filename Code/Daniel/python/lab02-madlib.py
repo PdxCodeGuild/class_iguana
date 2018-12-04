@@ -1,27 +1,7 @@
 import random
-# words = []
-#
-# words.append(input("Enter an adjective: "))
-# words.append(input("Enter another adjective: "))
-# words.append(input("Enter a noun: "))
-# words.append(input("Enter a room in a house: "))
-# words.append(input("Enter a verb (past tense): "))
-# words.append(input("Enter another verb (present tense): "))
-# words.append(input("Enter a relatives name: "))
-# words.append(input("Enter a noun: "))
-# words.append(input("Enter another noun: "))
-# words.append(input("Enter a verb ending in -ing: "))
-# words.append(input("Enter a body part: "))
-# words.append(input("Enter a noun (plural): "))
-# words.append(input("Enter a verb ending in -ing: "))
-# words.append(input("Enter a noun: "))
-#
-#
-# print("It was a " + words[0] + " cold December day. I woke up to the " + words[1] + " smell of " + words[2] +
-#       " roasting in the " + words[3] + " downstairs.\nI " + words[4] + " down the stairs to see if I could help " +
-#       words[5] + " the dinner. My mom said, 'See if " + words[6] + " needs a fresh " + words[7] + "'.\nSo I carried "
-#       "a tray of glasses full of " + words[8] + " into the room. When I got there, I could't believe my " + words[9] +
-#       "\nThere were " + words[10] + " " + words[11] + " on the " + words[12] + "!")
+
+# When creating multiple stories, requires multiple (equal to amount of stories created?) responses to exit program
+# Program fails if user does not input correct amount of commas during multi-responses
 
 def get_words():
       words = []
