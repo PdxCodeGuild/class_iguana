@@ -5,7 +5,10 @@ grades.py, turns numerical grades into letter grades"""
 grade = 'not recorded yet. Your numerical score has to be between 0 and 100.'
 while grade == 'not recorded yet. Your numerical score has to be between 0 and 100.':
     score = int(input('Please tell me your numerical score: '))
-    if score in range(90, 101):
+    if score == 100:
+        print('Your grade is A+')
+        exit()
+    elif score in range(90, 101):
         grade = 'A'
     elif score in range(80, 90):
         grade = 'B'
@@ -18,6 +21,11 @@ while grade == 'not recorded yet. Your numerical score has to be between 0 and 1
     else:
         grade = 'not recorded yet. Your numerical score has to be between 0 and 100.'
         print(f'Your grade is {grade}')
+
+if grade != 'F':
+    if score % 10 >= 6:
+        grade = grade + '+'
+    elif score % 10 <= 4:
+        grade = grade + '-'
 print(f'Your grade is {grade}')
 
-# for later: fix up with pluses and minuses
