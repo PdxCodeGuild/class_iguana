@@ -1,0 +1,83 @@
+import random
+# words = []
+#
+# words.append(input("Enter an adjective: "))
+# words.append(input("Enter another adjective: "))
+# words.append(input("Enter a noun: "))
+# words.append(input("Enter a room in a house: "))
+# words.append(input("Enter a verb (past tense): "))
+# words.append(input("Enter another verb (present tense): "))
+# words.append(input("Enter a relatives name: "))
+# words.append(input("Enter a noun: "))
+# words.append(input("Enter another noun: "))
+# words.append(input("Enter a verb ending in -ing: "))
+# words.append(input("Enter a body part: "))
+# words.append(input("Enter a noun (plural): "))
+# words.append(input("Enter a verb ending in -ing: "))
+# words.append(input("Enter a noun: "))
+#
+#
+# print("It was a " + words[0] + " cold December day. I woke up to the " + words[1] + " smell of " + words[2] +
+#       " roasting in the " + words[3] + " downstairs.\nI " + words[4] + " down the stairs to see if I could help " +
+#       words[5] + " the dinner. My mom said, 'See if " + words[6] + " needs a fresh " + words[7] + "'.\nSo I carried "
+#       "a tray of glasses full of " + words[8] + " into the room. When I got there, I could't believe my " + words[9] +
+#       "\nThere were " + words[10] + " " + words[11] + " on the " + words[12] + "!")
+
+def get_words():
+      words = []
+
+      print("Please separate words with commas")
+      adjectives = (str.split(input("Enter two adjectives: "), ","))
+      nouns = (str.split(input("Enter five nouns: "), ","))
+      verbs = (str.split(input("Enter two verbs ending in 'ing': "), ","))
+      words.append(input("Enter a room in a house: "))
+      words.append(input("Enter a verb (past tense): "))
+      words.append(input("Enter a verb (present tense): "))
+      words.append(input("Enter a relatives name: "))
+      words.append(input("Enter a body part (plural): "))
+
+      random.shuffle(adjectives)
+      random.shuffle(nouns)
+      random.shuffle(verbs)
+
+      try:
+            story = input("\n\nWould you like to hear the story? y/n\t")
+      except ValueError:
+            print("Not a valid response. Type 'y' or 'n' ")
+      else:
+            if story == "y":
+                get_story(adjectives, nouns, verbs, words)
+            elif story == "n":
+                  pass
+
+def get_story(adjectives, nouns, verbs, words):
+      print("\nIt was a " + adjectives[0] + ", cold December day. I woke up to the " + adjectives[1].replace(" ", "") +
+            " smell of " + nouns[0] + " roasting in the " + words[0] + " downstairs.\nI " + words[1].replace(" ", "") +
+            " down the stairs to see if I could help " + words[2].replace(" ", "") + " the dinner. My mom said, 'See if "
+            + words[3].replace(" ", "") + " needs a fresh " + nouns[1].replace(" ", "") + "'.\nSo I carried a tray of "
+            "glasses full of " + nouns[2].replace(" ", "") + " into the room. When I got there, I couldn't believe my " +
+            words[4].replace(" ", "") + "! \nThere were " + nouns[3].replace(" ", "") + "s " + verbs[1].replace(" ", "") +
+            " on the " + nouns[4].replace(" ", "") + "!\n")
+
+      try:
+            story = input("\n\nWould you like to hear the story again? y/n\t")
+      except ValueError:
+            print("Not a valid response. Type 'y' or 'n' ")
+      else:
+            if story == "y":
+                get_story(adjectives, nouns, verbs, words)
+            elif story == "n":
+                  pass
+
+      try:
+            story = input("\n\nWould you like to create another story? y/n\t")
+      except ValueError:
+            print("Not a valid response. Type 'y' or 'n' ")
+      else:
+            if story == "y":
+                get_words()
+            elif story == "n":
+                  pass
+
+get_words()
+
