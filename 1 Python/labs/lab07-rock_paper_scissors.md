@@ -11,11 +11,11 @@ Let's list all the cases:
 - rock vs paper
 - rock vs scissors
 - paper vs rock
-- paper vs paper
+- paper vs paper (tie)
 - paper vs scissors
 - scissors vs rock
 - scissors vs paper
-- scissors vs scissors
+- scissors vs scissors (tie)
 
 ## Version 2 (optional)
 
