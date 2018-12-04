@@ -1,7 +1,7 @@
 import random
 
-# When creating multiple stories, requires multiple (equal to amount of stories created?) responses to exit program
 # Program fails if user does not input correct amount of commas during multi-responses
+# Solution: Compare list length to number of expected values. Ask for additional values in the quantity of: (expected values - list length)
 
 def get_words():
       words = []
@@ -57,7 +57,7 @@ def get_story(adjectives, nouns, verbs, words):
             if story == "y":
                 get_words()
             elif story == "n":
-                  pass
+                 exit() 
 
 get_words()
 
