@@ -71,7 +71,23 @@ while True:
             guess = int(input('You\'re getting farther. Try again.  '))
         elif dist_list[i] <= dist_list[i-1]:
             guess = int(input('You\'re getting closer. Try again.  '))
-        i +=1
+        i += 1
+
+#version 5, computer does the guessing
+print('\nLet\'s play a game. Choose a number between 1 and 10 (inclusive), I\'ll try to guess what it is.')
+guess_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+random.shuffle(guess_list)
+number = int(input('Please choose a number between 1 and 10, inclusive.  '))
+i = 0
+while i < 10:
+    guess = guess_list[i]
+    confirm = input(f'Is {guess} the right number? Please answer y or n:  ')
+    if confirm == 'y':
+        print('Wow, I got it right!')
+        exit()
+    elif confirm == 'n':
+        i += 1
+
 
 
 #version 5, person chooses, computer guesses
