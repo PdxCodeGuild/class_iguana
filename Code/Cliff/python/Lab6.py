@@ -1,8 +1,11 @@
-n= input ( ' How many characters do you want in your password?')
-n= int(n)
 import random
 import string
-import string.digits
+ group = string.digits
+choice (string.digits)
+n= input ( ' How many characters do you want in your password?')
+n= int(n)
+print(string.digits)
+random.choice(string.digits)
 count = 0
 while count < n:
      print(), count
