@@ -5,7 +5,7 @@ input_distance = float(input('What is the distance?:\n'))
 input_unit = input('Measured in what?:\n')
 
 #create associations for measurement types.
-#round(length_in_meters, 4)
+#round(length_in_meters, 4). Note: i can keep the same variable name after using round() to update the value. for some reason I thought I had to make a new one.
 if input_unit == 'mi':
     miles = input_distance * 1609.34
     miles = round(miles, 4)
