@@ -52,23 +52,57 @@ while True:
 #version 4, getting closer/getting farther
 print('\nLet\'s play a game. I\'ll choose a number between 1 and 10 (inclusive), and you try to guess what it is.\nI\'ll tell you if you\'re too high or too low.')
 number = random.randint(1, 10)
+print(number)
 i = 1
 guess = int(input('Try to guess the number I chose.  '))
-guess_list = [guess]
+dist = abs(guess - number)
+dist_list = [dist]
 while True:
-    dist = abs(guess_list[i] - number)
-    if guess_1 == number:
+    dist = abs(guess - number)
+    dist_list.append(dist)
+    if guess == number:
         print(f'Right! you got it in {i} try(ies)!')
         break
     elif i == 1:
         guess = int(input('That\'s not it. Try again.  '))
-        guess_list.append(guess)
         i = i + 1
     else:
-        if abs(guess_list[i] - number) > abs(guess_list[i - 1] - number):
-            guess = int(input('You\'re getting farther away. Try again.  '))
-            guess_list.append(guess)
-        elif abs(guess_list[i] - number) < abs(guess_list[i - 1] - number):
+        if dist_list[i] > dist_list[i-1]:
+            guess = int(input('You\'re getting farther. Try again.  '))
+        elif dist_list[i] <= dist_list[i-1]:
             guess = int(input('You\'re getting closer. Try again.  '))
-            guess_list.append(guess)
+        i += 1
+
+#version 5, computer does the guessing
+print('\nLet\'s play a game. Choose a number between 1 and 10 (inclusive), I\'ll try to guess what it is.')
+guess_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+random.shuffle(guess_list)
+number = int(input('Please choose a number between 1 and 10, inclusive.  '))
+i = 0
+while i < 10:
+    guess = guess_list[i]
+    confirm = input(f'Is {guess} the right number? Please answer y or n:  ')
+    if confirm == 'y':
+        print('Wow, I got it right!')
+        exit()
+    elif confirm == 'n':
+        i += 1
+
+
+
+#version 5, person chooses, computer guesses
+print('\nLet\'s play a game. You choose a number between 1 and 10 (inclusive), and I\'ll try to guess what it is.')
+number = int(input('Think of a number between one and ten. You can type it in here; I won\'t see it.  '))
+print('I think I can get it in fewer than ten tries.')
+guess_list = list(range(1, 11))
+random.shuffle(guess_list)
+i = 0
+while i <= 10:
+    guess = guess_list[i]
+    confirm = input(f'Is {guess} the number? Please type y or n:  ')
+    if confirm == 'y':
+        print('Great! I got it right!')
+        break
+    else:
+        print('Let me try again.')
         i += 1
