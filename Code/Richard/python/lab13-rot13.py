@@ -30,6 +30,8 @@ in_table = low_1 + up_1
 out_table = low_2 + up_2
 tab = str.maketrans(in_table, out_table)
 
+
+
 print('I\'ve learned a new trick. I can translate a message into a code so secret that only Caesar will be able to crack it. Are you ready to try it out?')
 s = input('Type something in, and I\'ll show you the secret code:  ')
 
@@ -38,6 +40,14 @@ rot13(s, tab)
 print('=\nNow, perhaps you want a code so secret that not even Caesar can crack it.')
 print('For that, you\'ll have to enter a number: that\'s the key to the secret code.')
 key = input('Please enter your key:  ')
+s = input('Okay, now type in the message you want encoded:  ')
+
+encode(s, e_tab)
+
+input('\nIf you type "decode" and then the encoded message, you\'ll get the original message back:  ')
+print('\nBut I\'ll save you the trouble. Let me decode the message for you.')
+
+decode(x, d_tab)
 
 e_low_1 = string.ascii_lowercase[:key]
 e_low_2 = string.ascii_lowercase[key:]
