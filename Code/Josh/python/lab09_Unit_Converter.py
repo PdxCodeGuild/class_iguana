@@ -1,0 +1,1 @@
+ft = int(input('What is the distance in ft?'))
