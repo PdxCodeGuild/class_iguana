@@ -11,7 +11,7 @@ payoff = {
             2   :   7,
             3   :   100,
             4   :   50000,
-            5   :   1000000
+            5   :   1000000,
             6   :   25000000
             }
 
@@ -21,7 +21,8 @@ for i in range(1, 100001):
     n_match = 0
     balance = balance - 2
     ticket = random.sample(list(range(0, 100)), 6)
-    for i in len(ticket):
+    for i in ticket:
         if ticket[i] == winning[i]:
             n_match += 1
     balance = payoff[n_match] + balance
+print(f'\nYour final balance is {balance}')
