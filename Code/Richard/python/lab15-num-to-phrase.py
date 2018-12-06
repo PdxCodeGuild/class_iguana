@@ -88,9 +88,29 @@ elif number > 19 and number < 100:
 print(word)
 
 #version 3, time in xx:xx to words
+
+minutes =   {
+            '00'    :   'o\'clock',
+            '01'    :   'o-one',
+            '02'    :   'o-two',
+            '03'    :   'o-three',
+            '04'    :   'o-four',
+            '05'    :   'o-five',
+            '06'    :   'o-six',
+            '07'    :   'o-seven',
+            '08'    :   'o-eight',
+            '09'    :   '0-nine',
+            '10'    :   'ten',
+            '11'    :   'eleven',
+            '12'    :   'twelve',
+            '13'    "   'thirten",
+            '14'`
+
+}
+
 time = input('Please enter a time in the form xx:xx, for example 3:15 ')
 time_split = time.split(':')
+print(time_split)
 if time_split[1] < '20':
     word = numerals[time_split[0] + numerals[time_split[1]]]
-
 print(word)
