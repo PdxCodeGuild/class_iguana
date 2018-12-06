@@ -21,8 +21,10 @@ for i in range(1, 100001):
     n_match = 0
     balance = balance - 2
     ticket = random.sample(list(range(0, 100)), 6)
-    for i in ticket:
-        if ticket[i] == winning[i]:
-            n_match += 1
-    balance = payoff[n_match] + balance
-print(f'\nYour final balance is {balance}')
+    print(ticket)
+    print(winning)
+#     for j in ticket:
+#         if ticket[j] == winning[j]:
+#             n_match += 1
+#     balance = payoff[n_match] + balance
+# print(f'\nYour final balance is {balance}')
