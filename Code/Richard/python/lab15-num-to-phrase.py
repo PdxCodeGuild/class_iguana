@@ -39,7 +39,7 @@ tens =      {
             8  :   'eighty',
             9  :   'ninety'
             }
-
+print('This program turns numbers into numerals (words). You enter a number, and I\'ll give it to you in words.')
 number = int(input('Please enter an integer between 0 and 999 (inclusive): '))
 if number < 20:
     word = numerals[number]
@@ -71,18 +71,18 @@ romans_tens =  {
                 1   :   'X',
                 2   :   'XX',
                 3   :   'XXX',
-                4   :   'XIV',
+                4   :   'XL',
                 5   :   'L',
                 6   :   'LX',
                 7   :   'LXX',
                 8   :   'LXXX',
                 9   :   'XC'
                 }
-
+print('\nThis program turns numbers into Roman numerals.')
 number = int(input('Please enter an integer between 0 and 99 (inclusive): '))
 if number < 10:
     word = romans_1_9[number]
-elif number > 19 and number < 100:
+elif number > 9 and number < 100:
     word = romans_tens[number // 10] +  romans_1_9[number % 10]
 # print(f'\n{number}\t:\t{word}')
 print(word)
@@ -103,14 +103,20 @@ minutes =   {
             '10'    :   'ten',
             '11'    :   'eleven',
             '12'    :   'twelve',
-            '13'    "   'thirten",
-            '14'`
-
-}
-
+            '13'    :   'thirteen',
+            '14'    :   'fourteen',
+            '15'    :   'fifteen',
+            '16'    :   'sixteen',
+            '17'    :   'seventeen',
+            '18'    :   'eighteen',
+            '19'    :   'nineteen',
+            '20'    :   'twenty'
+            }
+print('This program takes the time of day in numbers and returns it in words.')
 time = input('Please enter a time in the form xx:xx, for example 3:15 ')
 time_split = time.split(':')
-print(time_split)
 if time_split[1] < '20':
-    word = numerals[time_split[0] + numerals[time_split[1]]]
+        word = numerals[int(time_split[0])] +' ' + minutes[time_split[1]]
+elif time_split[1] > '19':
+        word = numerals[int(time_split[0])] + ' ' + tens[int(time_split[1]) // 10] + '-' + numerals[int(time_split[1]) % 10]
 print(word)
