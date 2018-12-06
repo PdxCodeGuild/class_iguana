@@ -25,6 +25,25 @@ if 'A' in hand and hand_sum > 16:
 print(f'\nYour hand is a {hand[0]} and a {hand[1]}. That makes {hand_sum}.')
 player_decision = input('What do you want to do? Hit h for hit or s for stay:  ')
 # advice = advice_dict[hand_sum]
-print(advice)
 
+while True:
+    if hand_sum < 17:
+        advice = 'Hit.'
+        advice_code = 'h'
+    elif hand_sum > 16 and hand_sum < 21:
+        advice = 'Stay.'
+        advice_code = 's'
+    elif hand_sum == 21:
+        print('You\'ve got blackjack!')
+        break
+    else:
+        print('Sorry, you\'re busted.')
+        break
+    if player_decision == advice_code:
+        print(\,That\'s my advice, too.')
+    else:
+        player_decision = input(f'\nWhat I would say is {advice} Would you like to hit (h) or stay (s)?  ')
+    if player_decision == 's':
+        break
+    elif player decision == 'h':
 
