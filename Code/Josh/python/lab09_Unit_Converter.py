@@ -19,15 +19,14 @@ def converted_distance(distance_in, units_out):
     elif units_out =='km':
         distance_in / 1000
     return new_d
-
+from_units = (input('What are the input units? type \'ft\' for feet \'mi\' for miles \'m\' for meters or \'km\' for kilometers.'))
 distance = int(input('What is the distance?'))
-from_units = (input('What are the input units?'))
 to_units = (input('what do you want to convert to?'))
 
 meters = distance_m(from_units, distance)
 new_distance = converted_distance(meters, to_units)
-print(meters)
-print(f'{new_distance} {to_units}')
+
+print(f'{distance} {from_units} is equal to {new_distance} {to_units}')
 
 
 
