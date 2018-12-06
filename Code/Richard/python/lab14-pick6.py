@@ -3,7 +3,7 @@ author: Richard Sherman
 2018-12-05
 lab14-pick6.py, a lottery-style game
 repeats a two-dollar lottery with payoffs based on number of matched numbers between ticket and winning number
-version 1 calculates ending payoff - ticket costs, and ROI =  (payoff - ticket costs) / ticket costs
+version 1 calculates ending payoff - ticket costs, and ROI =  (payoff - ticket costs) / (ticket costs)
 """
 
 import random
