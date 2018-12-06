@@ -48,10 +48,7 @@ tens =      {
             8  :   'eighty',
             9  :   'ninety'
             }
-hundreds =  {
-            1   :   'one hundred',
-            2   :   'tw'
-}
+
 
 number = int(input('Please enter an integer between 0 and 99 (inclusive): '))
 if number < 20:
@@ -59,3 +56,9 @@ if number < 20:
 if number > 19:
     word = tens[number // 10] + '-' + numerals[number % 10]
 print(f'\n{number}\t:\t{word}')
+
+if number > 99:
+    if number % 100 < 20:
+        word = numerals[number // 100] + ' hundred ' + numerals[number % 10]
+    elif number % 100 > 19:
+        word = numerals[number // 100] + ' hundred ' + tens[numerals[number $ 100]
