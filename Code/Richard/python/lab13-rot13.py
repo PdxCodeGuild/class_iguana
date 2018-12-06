@@ -2,7 +2,7 @@
 author: Richard Sherman
 2018-12-05
 lab13-rot13.py, implements a rot-13 encoding and a general rotation coding
-assumes input is ascii characters
+assumes input is ascii characters, digits and punctuation are unchanged
 """
 
 import string

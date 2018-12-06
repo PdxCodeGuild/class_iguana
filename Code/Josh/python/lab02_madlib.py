@@ -1,4 +1,4 @@
-animal = input('What\'s your favorite animal? \n>')
+animal = input('What\'s your favorite animal in plural form? \n>')
 location = input('Where is your favorite place to visit? \n>')
 activity = input('What is your favorite activity? \n>')
 x = input(f'If I could bring you to {location} where you could enjoy {activity} all day and let you have a entourage of {animal} would that make you happy? \n yes or no ?\n>')
