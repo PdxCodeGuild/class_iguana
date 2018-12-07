@@ -50,7 +50,7 @@ while True:
         i += 1
 
 #version 4, getting closer/getting farther
-print('\nLet\'s play a game. I\'ll choose a number between 1 and 10 (inclusive), and you try to guess what it is.\nI\'ll tell you if you\'re too high or too low.')
+print('\nLet\'s play a game. I\'ll choose a number between 1 and 10 (inclusive), and you try to guess what it is.\nI\'ll tell you if you\'re getting closer or getting farther.')
 number = random.randint(1, 10)
 print(number)
 i = 1
