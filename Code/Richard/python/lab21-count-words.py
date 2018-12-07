@@ -8,11 +8,13 @@ import re
 
 ulysses_txt = open("ulysses.txt").read().lower()
 words = re.findall(r"\b[\w-]+\b", ulysses_txt)
-num_dict = {}
+word_dict = {}
 for i in words:
-    num_dict[i] = num_dict.get(i, 0) + 1
-# print(num_dict)
-# list_from_num_dict = list(num_dict.keys())
-items = list(num_dict.items())
+    word_dict[i] = word_dict.get(i, 0) + 1
+# print(word_dict)
+# list_from_word_dict = list(word_dict.keys())
+items = list(word_dict.items())
 items.sort(key = lambda tup: tup[1], reverse = True)
 print(items[0:10])
+
+# version 2: no idea how to collect word-pairs
