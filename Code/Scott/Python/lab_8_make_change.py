@@ -11,4 +11,4 @@ unconverted_pennies = unconverted_pennies - dimes_removed
 nickels = unconverted_pennies // 5
 nickels_removed = nickels * 5
 unconverted_pennies = unconverted_pennies - nickels_removed
-print(f"Here you go, \n{quarters} quarters, and \n{dimes} dimes and \n{nickels} nickels and \n{unconverted_pennies} pennies")
+print(f"Here you go, {quarters} quarters, and {dimes} dimes and {nickels} nickels and {unconverted_pennies} pennies")
