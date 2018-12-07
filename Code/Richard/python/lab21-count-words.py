@@ -16,7 +16,7 @@ words = re.findall(r"\b[\w-]+\b", ulysses_txt)
 word_dict = {}
 for i in words:
     word_dict[i] = word_dict.get(i, 0) + 1
-print(word_dict)
+# print(word_dict)
 # list_from_word_dict = list(word_dict.keys())
 items = list(word_dict.items())
 #print(items)
@@ -55,3 +55,17 @@ items = list(word_dict.items())
 #print(items)
 items.sort(key = lambda tup: tup[1], reverse = True)
 print(f'\n\nThe most frequent words, with their frequencies, are:\n{items[0:10]}')
+
+# version 3, find the most frequent "followers" of a word entered by the user
+
+user_chosen_word = input('\n\nPlease type a word, and I\'ll tell you which words most frequently follow it in the text:  ').lower()
+word_followers = []
+word_followers_dict = {}
+for i in range(len(words)):
+    if words[i] == user_chosen_word:
+        word_followers.append(words[i + 1])
+for i in word_followers:
+    word_followers_dict[i] = word_followers_dict.get(i, 0) + 1
+items = list(word_followers_dict.items())
+items.sort(key = lambda tup: tup[1], reverse = True)
+print(f'\n\nThe most frequent words that immediately follow {user_chosen_word}, with their frequencies, are:\n{items[0:10]}')
