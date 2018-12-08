@@ -7,7 +7,7 @@ def get_words():
       words = []
 
       print("Please separate words with commas")
-      adjectives = (str.split(input("Enter two adjectives: "), ","))
+      adjectives = str.split(input("Enter two adjectives: "), ",")
       nouns = (str.split(input("Enter five nouns: "), ","))
       verbs = (str.split(input("Enter two verbs ending in 'ing': "), ","))
       words.append(input("Enter a room in a house: "))
@@ -21,7 +21,7 @@ def get_words():
       random.shuffle(verbs)
 
       i = True
-      while i == True:
+      while i:
             story = input("\n\nWould you like to hear the story? y/n\t")
 
             if story == "y":

@@ -22,6 +22,8 @@ for i in range(num_tickets):
 
     num_matches += len([i for i, j in zip(golden_ticket, ticket) if i == j])
 
+    # payout = [0, 4, 7]
+
     if num_matches == 6:
         earnings += 25000000
     elif num_matches == 5:
