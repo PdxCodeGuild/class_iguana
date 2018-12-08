@@ -4,12 +4,8 @@ author: Richard Sherman
 lab-lcr-simulator.py, simulates lcr game of dice
 """
 
-# This is slightly different than the game described in the lab (it is simpler).
-# For example: when any L is rolled, the player hands one chip to the player on the left (likewise right).
-# Of two or three L's are rolled, the player still hands only one chip to the left (likewise right).
-# This should be fixed in a revision.
 # The player with the dice and the outcome of the roll are shown in each iteration to check
-# that the game is programmed correctly.
+# that the game is programmed correctly. It isn't (yet).
 
 import random
 
@@ -30,7 +26,7 @@ def chips_zero(chips):
 
 chips = [10, 10, 10]
 
-while chips_zero != 1:
+while chips_zero(chips) != True:
     player = 0
     while player < 3:
         roll = [random.choice('LRC...'), random.choice('LRC...'), random.choice('LRC...')]
@@ -51,8 +47,8 @@ while chips_zero != 1:
         print(chips)
         player += 1
 
-    if chips_zero(chips):
-        break
+    # if chips_zero(chips):
+    #     break
 maximum = max(chips)
 print(f'Player {chips.index(maximum)} won!')
 
