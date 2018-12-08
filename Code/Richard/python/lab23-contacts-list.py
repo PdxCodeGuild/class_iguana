@@ -60,4 +60,21 @@ print(dict_list)
 # alternative method using pandas
 world_data = pd.read_csv('world_data.csv')
 
-# implement a CRUD
+# implement a CRUD (note: all this is wrong)
+# I will ask for a region, so as not to over-write a country
+
+region = input('Please enter the region:  ')
+region_code = input('Please enter the region code:  ')
+mmr = int(input('Please enter the maternal mortality rate:  ')
+urbpop = float(input('Please enter the % urban population:  '))
+gdp = float(input('Please enter the GDP per capita:  '))
+
+world_data.append({'Country' : region, 'Country Code' : region_code, 'Maternal Mortality Rate' : mmr, 'Urban Population' : urbpop, 'GDP Per Capita' : gdp})
+
+country_query = input('Please enter the name of the country you would like information on:  ')
+print(world_data[country_query])
+
+country_to_update = input('Please enter the name of country for which you would like to update information:  ')
+update_field = input('Please tell me which variable you would like to update (Maternal Mortality Rate, Urban Population, GDP Per Capita:  ')
+update_value = int(input('Please tell me the new value:  '))
+
