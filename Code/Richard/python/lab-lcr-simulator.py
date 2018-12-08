@@ -19,7 +19,7 @@ def chips_zero(chips):
 
 
 chips = [10, 10, 10]
-player = 1
+player = 0
 while chips_zero != 1:
     roll = [random.choice('LRC...'), random.choice('LRC...'), random.choice('LRC...')]
     for die in roll:
@@ -34,7 +34,7 @@ while chips_zero != 1:
         if die == 'C':
             if chips[player] != 0:
                 chips[player] -= 1
-    player += 1
+    player += (1 % 3)
 
     if chips_zero(chips):
         break
