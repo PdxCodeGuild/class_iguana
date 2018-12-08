@@ -22,3 +22,15 @@ elif grade >= 60:
     print('You got a D you need to apply yourself more')
 elif grade <= 59:
     print('You failed your test study harder next time')
+
+
+
+# #                 0      1     2    3       4   5
+# grade_numbers =  [96,    95,   90,  86,    85,  80]
+# grade_messages = ['A+', 'A', 'A-', 'B+', 'B', 'B-']
+# for i in range(len(grade_numbers)):
+#     if grade >= grade_numbers[i]:
+#         print(grade_messages[i])
+#         break
+#
+# print(list(range(10))) # [0, 1, 2, 3, ..

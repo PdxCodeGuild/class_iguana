@@ -1,7 +1,7 @@
 non_converted_pennies = int(input('how many pennies do you have?\n >'))
 
 quarters = non_converted_pennies // 25
-non_converted_pennies = non_converted_pennies % 25
+non_converted_pennies %= 25
 
 dimes = non_converted_pennies // 10
 non_converted_pennies = non_converted_pennies % 10

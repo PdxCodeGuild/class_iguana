@@ -1,7 +1,7 @@
 
 
 units = ['in', 'ft', 'y', 'mi', 'm', 'km']
-
+# units = {'in': 12, 'ft': 1}
 
 def to_feet(distance, from_unit, to_unit):
     if from_unit == units[1]:

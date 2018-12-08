@@ -4,9 +4,10 @@ rot13 = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r'
 sentence = input('Enter a string: ')
 encoded = []
 
-if sentence.isalpha() == True:
+if sentence.isalpha():
     for i in sentence:
         letter_index = rot13.index(i)
+        # letter_index = (letter_index + 13)%26
         if letter_index > 12:
             encoded.append(rot13[letter_index + 13 - 26])
         else:
