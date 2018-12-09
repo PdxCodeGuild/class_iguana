@@ -2,7 +2,6 @@
 2018-12-04
 lab10-average-numbers.py, takes averages, medians, modes"""
 
-# note: version 4 (modes) is incomplete
 
 # version 1
 print("Calculating a running sum and average of a randomly generated list:\n")
