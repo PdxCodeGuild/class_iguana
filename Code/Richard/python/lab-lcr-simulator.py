@@ -5,7 +5,8 @@ lab-lcr-simulator.py, simulates lcr game of dice
 """
 
 # The player with the dice and the outcome of the roll are shown in each iteration to check
-# that the game is programmed correctly. It isn't (yet).
+# that the game is programmed correctly.
+
 
 import random
 
@@ -13,6 +14,7 @@ import random
 # dice = d1, d2, d3
 # order of players is left-to-right 1, 2, 3, 1
 
+# check to see if only one player has chips remaining
 def chips_zero(chips):
     count = 0
     i = 0
@@ -25,7 +27,9 @@ def chips_zero(chips):
 
 
 chips = [10, 10, 10]
+center = 0
 
+#the game is played here:
 while chips_zero(chips) != True:
     player = 0
     while player < 3:
@@ -44,13 +48,15 @@ while chips_zero(chips) != True:
             if die == 'C':
                 if chips[player] != 0:
                     chips[player] -= 1
+                    center += 1
         print(chips)
         player += 1
 
-    # if chips_zero(chips):
-    #     break
+        if chips_zero(chips):
+            break
 maximum = max(chips)
-print(f'Player {chips.index(maximum)} won!')
+score = maximum + center
+print(f'Player {chips.index(maximum)} won, taking {score} chips from the center.')
 
 
 
