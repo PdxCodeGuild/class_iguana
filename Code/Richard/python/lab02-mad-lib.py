@@ -18,7 +18,7 @@ buzz = input("Tell me a buzzword that you occasionally find annoying: ")
 tech = input("Name a piece of technology: ")
 comp = input("Tell me an aspect of your computer that you don't like: ")
 
-print(f'{ant} Expert Job Description:')
+print(f'\n\n{ant} Expert Job Description:')
 print(f'Seeking {(adj)} {random.choice(jobs)}, able to {random.choice(tasks)} {buzz} {random.choice(objects)} with a {random.choice(teams)} of {others}. Must be {handed}.')
 print('Key responsibilities:')
 print(f' - Engage in profound study of all things {ant}.')
