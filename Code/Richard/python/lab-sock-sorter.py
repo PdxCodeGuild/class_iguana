@@ -1,4 +1,8 @@
-
+"""
+author: Richard Sherman
+2018-12-09
+lab-sock-sorter.py, use dictionaries to inquire about sock pairing
+"""
 
 import random
 
@@ -29,7 +33,7 @@ for i in range(1000):
 sock_type_color_dict = {}
 for i in sock_list_colors:
     sock_type_color_dict[i] = sock_type_color_dict.get(i, 0) + 1
-# print(sock_type_color_dict)
+print(sock_type_color_dict)
 
 for k in sock_type_color_dict:
-    print(f'Sock type "{k}" has {sock_dict[k] // 2} pairs and {sock_dict[k] % 2} loners.')
+    print(f'Sock type "{k}" has {sock_type_color_dict[k] // 2} pairs and {sock_type_color_dict[k] % 2} loners.')
