@@ -7,7 +7,7 @@ def calculate(numbers):
 
     for i in numbers:
         sum_numbers += i
-        avg = sum_numbers / len(numbers) 
+    avg = sum_numbers / len(numbers) 
     print('\nThe average is: ' + str(avg))
 
 # median 
