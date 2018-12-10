@@ -1,8 +1,8 @@
 import random
-x = random.randint(1,100)
-print(x)
-guess = 0
-while True:
+x = random.randint(1,100) #generating the random number for the computer
+#print(x)
+guess = 0 #setting guess (the counter) to 0
+while True: #start of first user's guess while loop
     guess_left = abs(guess - 8)
     if guess == 1:
         break
