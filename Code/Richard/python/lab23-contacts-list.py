@@ -6,7 +6,7 @@ lab23-contacts-list.py, manipulates data from .csv file and implements a CRUD
 
 # the 'contacts list' here is just some data from the World Bank
 
-# import csv
+import csv
 # import pandas as pd
 
 with open('world_data.csv', 'r') as file:
@@ -76,13 +76,14 @@ mmr = int(input('Please enter the maternal mortality rate:  '))
 urbpop = float(input('Please enter the % urban population:  '))
 gdp = float(input('Please enter the GDP per capita:  '))
 
-data_list.append({'Country' : region, 'Country Code' : region_code, 'Maternal Mortality Rate' : mmr, 'Urban Population %' : urbpop, 'GDP Per Capita' : gdp})
+data_list.append({'Country Name' : region, 'Country Code' : region_code, 'Maternal Mortality Rate' : mmr, 'Urban Population %' : urbpop, 'GDP Per Capita' : gdp})
 print(data_list[-1])  #working ok
 
+print(data_list[1]['Country Name'])
 
 country_query = input('\nPlease enter the name of the country you would like information on:  ')
 for i in range(len(data_list)):
-    if country_query in data_list[i]:
+    if country_query == data_list[i]['Country Name']:
         print(data_list[i])
 
 # now update a field
@@ -90,13 +91,24 @@ country_to_update = input('\nPlease enter the name of country for which you woul
 update_field = input('Please tell me which variable you would like to update (Maternal Mortality Rate, Urban Population %, GDP Per Capita:  ')
 update_value = int(input('Please tell me the new value:  '))
 for i in range(len(data_list)):
-    if country_to_update in data_list[i]:
-        data_list[i].update(update_field = update_value)
+    if country_to_update == data_list[i]['Country Name']:
+        data_list[i].update({update_field : update_value})
         print(data_list[i])     # to check if update was made
 
 # now delete an entry
 country_to_delete = input('\nPlease enter the name of country you would like to delete from the data set:  ')
 for i in range(len(data_list)):
-    if country_to_update in data_list[i]:
+    if country_to_delete == data_list[i]['Country Name']:
         data_list.pop(i)
         print(data_list)    # to check if deletion was made
+        break
+
+# now write updated data to file
+with open('world_data_updated.csv', 'w+') as outfile:
+    fieldnames = ['Country Name', 'Country Code', 'Maternal Mortality Rate', 'GDP Per Capita', 'Urban Population %']
+    writer = csv.DictWriter(outfile, fieldnames = fieldnames)
+
+    writer.writeheader()
+    for i in range(len(data_list)):
+        writer.writerow(data_list[i])
+
