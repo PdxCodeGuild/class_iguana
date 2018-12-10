@@ -21,3 +21,4 @@ Nickels = CAD // 5
 end_pennies = CAD % 5
 
 print(f'Wow you could convert that to {Quarters} Quarters and have {Dimes} dime(s) {Nickels} nickel(s) and {end_pennies} cent(s) leftover. Let\'s hit the ARCADE!!')
+

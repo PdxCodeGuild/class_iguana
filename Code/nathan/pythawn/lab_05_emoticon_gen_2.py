@@ -1,7 +1,7 @@
 # ^_^  , ;-; , ^-^ , .-. , (>^-^)>
 import random
 
-start_text = ('PRESS ENTER TO RANDOMLY CREATE A KIRBY')
+start_text = input('PRESS ENTER TO RANDOMLY CREATE A KIRBY')
 
 side = ['(']
 hand = ['>']
