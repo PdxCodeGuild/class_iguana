@@ -2,8 +2,8 @@
 
 import random
 
-x = 11
-#x = random.randint(1, 20)
+#x = 11
+x = random.randint(1, 20)
 user_input = input("Guess a number between 1 and 20.")
 user_input = int(user_input)
 count = 0
@@ -16,7 +16,7 @@ while True:
             print('Good guess. That\'s correct.')
             break
     else:
-        print('I\'m sorry. You took too long.')
+        print(f'I\'m sorry. You took too long. It was {x}')
         break
 
 
