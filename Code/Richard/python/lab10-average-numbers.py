@@ -80,15 +80,15 @@ while i <= length:
     i += 1
 
 num_dict = {}
-for i in l:
-    num_dict[i] = num_dict.get(i, 0) + 1
+for num in l:
+    num_dict[num] = num_dict.get(num, 0) + 1
 # print(num_dict)
 # list_from_num_dict = list(num_dict.keys())
 items = list(num_dict.items())
 items.sort(key = lambda tup: tup[1], reverse = True)
 print('\nHere, frequencies are presented as the tuples (number, frequency).')
 if items[0][1] > items[1][1]:
-    print(f'We can see that {items[0][0]} is the most frequent.')
+    print(f'We can see that {items[0][0]} is the most frequent number.')
 else:
     print('The mode of the distribution has more than one value.')
 print(items)
