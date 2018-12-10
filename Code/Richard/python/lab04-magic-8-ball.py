@@ -17,4 +17,4 @@ print('Welcome to the Magic 8-ball, where your questions are answered.\nYou can 
 print('If you want to stop, just type "done" without quotation marks')
 
 question = input('Please ask me a question: ')
-print(f"{random.choice(predictions)}")
+print(f"\n{random.choice(predictions)}")
