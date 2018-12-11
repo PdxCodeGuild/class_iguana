@@ -54,6 +54,14 @@ user_choice = rps.index(user_choice)
 comp_choice = rps.index(comp_choice)
 
 
+#  0       1       2
+# rock, paper, scissors
+
+
+
+
+
+
 
 if user_choice == comp_choice:
     print('tie')
@@ -61,3 +69,26 @@ elif (user_choice + 1)%3 == comp_choice:
     print('computer won')
 else:
     print('user won')
+
+
+
+
+
+# first one is the user choice
+# second is the computer choice
+# rps = {
+#     'rock': {
+#         'rock': 'tie',
+#         'paper': 'computer wins',
+#         'scissors': 'user wins'
+#     },
+#     'paper': {
+#
+#     }
+# }
+# user_choice = 'rock'
+# computer_choice = 'scissors'
+# print(rps[user_choice][computer_choice])
+# print(rps['rock']['scissors'])
+
+

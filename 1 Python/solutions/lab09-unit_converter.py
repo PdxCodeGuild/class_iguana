@@ -22,6 +22,11 @@ instead, we'll just convert to meters, then convert to the target units
 # 1 inch is 0.0254 meters
 
 
+
+
+
+
+
 # convert the given distance from the given units to meters
 def to_meters(distance, units):
     if units == 'm':  # meters
@@ -55,6 +60,7 @@ def from_meters(distance, units):
 
 
 def standardize_units(units):
+    units = units.lower().strip()
     if units in ['m', 'meter', 'meters']:
         return 'm'
     elif units in ['mi', 'mile', 'miles']:
@@ -67,19 +73,31 @@ def standardize_units(units):
         return 'yd'
     elif units in ['in', 'inch', 'inches']:
         return 'in'
+    else:
+        return None
+
 
 def main():
     print('Welcome to the Distance Converter 5001™')
     distance_in = float(input('what is the distance? '))
-    units_in = input('what are the units you\'re converting from? ')
-    units_out = input('what are the units you\'re converting to? ')
 
-    units_in = standardize_units(units_in)
-    units_out = standardize_units(units_out)
+    while True:
+        units_in = input('what are the units you\'re converting from? ')
+        units_out = input('what are the units you\'re converting to? ')
+
+        units_in = standardize_units(units_in)
+        units_out = standardize_units(units_out)
+
+        if units_in is not None or units_out is not None:
+            break
+        else:
+            print('invalid units')
 
 
     distance_in_m = to_meters(distance_in, units_in)
     distance_out = from_meters(distance_in_m, units_out)
+
+    distance_out = round(distance_out, 4)  # round to 4 decimal places
 
     output = f'{distance_in} {units_in} is {distance_out} {units_out}'
 
