@@ -86,3 +86,5 @@ print(f'The top ten crime months are {count_freq(get_count("Occur Month"))[0:9]}
 # print(f'The top ten crime years are: {crime_year[0:9]}')
 # print(f'The top ten crime neighborhoods are: {crime_hood[0:9]}')
 # print(f'The top ten crime months are: {crime_month[0:9]}')
+
+# todo: get frequencies of e.g. Offence Type by Occur Year, etc.
