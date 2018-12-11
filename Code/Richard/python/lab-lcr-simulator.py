@@ -56,7 +56,7 @@ while chips_zero(chips) != True:
             break
 maximum = max(chips)
 score = maximum + center
-print(f'Player {chips.index(maximum)} won, taking {score} chips from the center.')
+print(f'Player {chips.index(maximum)} won, taking {center} chips from the center.')
 
 
 
