@@ -13,7 +13,7 @@
 #     if operation == '/':
 #         print(f'{first_num} / {second_num} =', int(first_num) / int(second_num))
 while True:
-    problem = input('What\'s your math problem?\n if finished type \'done\'\n>')
+    problem = input('What\'s your math problem?\n if finished type \'done\'>')
     if problem == 'done':
         break
     print(eval(problem))

@@ -8,15 +8,15 @@ while grade == 'not recorded yet. Your numerical score has to be between 0 and 1
     if score == 100:
         print('Your grade is A+')
         exit()
-    elif score in range(90, 101):
+    elif score > 89 and score < 100:
         grade = 'A'
-    elif score in range(80, 90):
+    elif score > 79 and score < 90:
         grade = 'B'
-    elif score in range(70, 80):
+    elif score > 69 and score < 80:
         grade = 'C'
-    elif score in range(60, 70):
+    elif score > 59 and score < 70:
         grade = 'D'
-    elif score in range(0, 60):
+    elif score < 60:
         grade = 'F'
     else:
         grade = 'not recorded yet. Your numerical score has to be between 0 and 100.'
@@ -29,3 +29,5 @@ if grade != 'F':
         grade = grade + '-'
 print(f'Your grade is {grade}')
 
+# todo: fix with Matthew's suggestions
+# done
