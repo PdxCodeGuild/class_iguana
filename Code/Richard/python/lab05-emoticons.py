@@ -8,7 +8,7 @@ eyes = [':', ';', '!', '*']
 noses = ['v', '^', '>', '-']
 mouths = [')', '(', '|', '\\']
 
-i = 1
-while i < 11:
-    print(f'face {i}:  {random.choice(eyes)} + {random.choice(noses)} + {random.choice(mouths)}')
-    i += 1
+for i in range(0, 11):
+    face = random.choice(eyes) + random.choice(noses) + random.choice(mouths)
+    print(face)
+    
