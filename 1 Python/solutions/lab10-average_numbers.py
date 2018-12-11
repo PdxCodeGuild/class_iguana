@@ -4,9 +4,15 @@ Lab 10: calculate the average of a list of numbers
 import random
 
 # nums = [5, 0, 8, 3, 4, 1, 6]
-nums = []
-for i in range(20):
-    nums.append(random.randint(1,10))
+
+nums = [1, 1, 2, 2, 2, 3]
+
+# nums = []
+# for i in range(20):
+#     nums.append(random.randint(1,10))
+
+
+
 # nums = []
 # while True:
 #     num_str = input('enter a number (or \'done\' if done): ')
@@ -38,6 +44,16 @@ def median(nums):
         return [nums[len(nums)//2]]
 
 
+# r = median([1,2,3])
+# if type(r) is float:
+#
+# r = median([1,2,3])
+# if len(r) == 1:
+
+
+
+
+
 def mode_al(num_list):
     for i in num_list:
         try:
@@ -54,10 +70,23 @@ def mode_al(num_list):
             exec(f"mode_list.append(i)")
     return mode_list
 
+# counts = {}
+# nums = [1, 1, 2, 2, 2, 3]
+# loop
+# counts = {1: 1}
+# counts = {1: 2}
+# counts = {1: 2, 2:1}
+# counts = {1: 2, 2:2}
+# counts = {1: 2, 2:3}
+# counts = {1: 2, 2:3, 3:1}
+
+
+# counts = {1: 2, 2: 3, 3: 1}
 
 def mode(nums):
     counts = {}
     for num in nums:
+        # counts[num] = counts.get(num, 0) + 1
         if num in counts:
             counts[num] += 1
         else:
@@ -65,15 +94,15 @@ def mode(nums):
         # print(f'{num} {counts}')
     print(counts)
     counts = list(counts.items())  # .items() returns a list of tuples
+    print(counts)
     counts.sort(key=lambda tup: tup[1], reverse=True)  # sort largest to smallest, based on count
+    print(counts)
     return counts[0][0]
+
 
 
 nums.sort()
 print(f'mean: {mean(nums)}')
 print(f'median: {median(nums)}')
 print(f'mode: {mode(nums)}')
-
-
-
 

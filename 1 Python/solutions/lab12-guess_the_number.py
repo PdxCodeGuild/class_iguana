@@ -28,8 +28,8 @@ while True:
     if guess == target:
         print('that\'s correct!')
         break
-    else:
-        print('that\'s incorrect!')
+
+    print('that\'s incorrect!')
 
     #if target > guess:
     #    print('guess higher!')

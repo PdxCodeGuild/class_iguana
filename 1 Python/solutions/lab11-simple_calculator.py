@@ -2,7 +2,7 @@
 Lab 11: a simple REPL calculator
 """
 
-while True:
+while False:
     op = input('enter the operator (or \'done\') if done: ')
     if op == 'done':
         break
@@ -17,3 +17,27 @@ while True:
             print(num1*num2)
         elif op == '/':
             print(num1/num2)
+
+
+
+# operations = {
+#     '+': lambda a, b: a + b,
+#     '-': lambda a, b: a - b,
+#     '*': lambda a, b: a * b,
+#     '/': lambda a, b: a / b,
+#     '**': lambda a, b: a ** b
+# }
+#
+# operator = input('operator: ')
+# operand1 = float(input('operand 1: '))
+# operand2 = float(input('operand 2: '))
+# # operator = operations[operator]
+# # print(operator(operand1, operand2))
+# print(operations[operator](operand1, operand2))
+
+
+
+
+
+
+
