@@ -18,9 +18,9 @@ ones_dict = {0: 'zero', 1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five', 6:
 tens_dict = {2: 'twenty', 3: 'thirty', 4: 'forty', 5: 'fifty', 6: 'sixty', 7: 'seventy', 8: 'eighty',
              9: 'ninety'}
 
-hundreds_dict = {1: 'one hundred & ', 2: 'two hundred & ', 3: 'three hundred & ', 4: 'four hundred & ',
-                 5: 'five hundred & ', 6: 'six hundred & ', 7: 'seven hundred & ', 8: 'eight hundred & ',
-                 9: 'nine hundred & '}
+hundreds_dict = {1: 'one hundred', 2: 'two hundred', 3: 'three hundred', 4: 'four hundred',
+                 5: 'five hundred', 6: 'six hundred', 7: 'seven hundred', 8: 'eight hundred',
+                 9: 'nine hundred'}
 
 number = int(input('give me a number\n'))
 
@@ -36,24 +36,15 @@ elif number < 100:
         tens_num = (tens_dict[obtain10_digit(number)]) + '-' + (ones_dict[obtain1_digit(number)])
         print(tens_num)
 elif number < 1000:
-    hundreds_num = (hundreds_dict[obtain100_digit(number)]) + (tens_dict[obtain10_digit(number)]) + (ones_dict[obtain1_digit(number)])
-    print(hundreds_num)
+    hundreds_num = obtain1_digit(number)
+    if hundreds_num == 0:
+        print(hundreds_dict[obtain100_digit(number)])
+    else:
+        hundreds_num = (hundreds_dict[obtain100_digit(number)]) + '-' + (tens_dict[obtain10_digit(number)]) + '-' + (ones_dict[obtain1_digit(number)])
+        print(hundreds_num)
 else:
-    print('that\'s too high')
+    print('that\'s too high, sorry .-. im still learning how to read')
 
-
-
-
-
-#x = 123
-
-#print(x % 10)  # ones digit
-#print((x // 10) % 10)  # tens digit
-#print(x // 100)  # hundreds digit
-
-
-
-#(hundreds_dict[(int(number) // 100)] + (word_to_phrase_dict[obtain_digits(number)]))
 
 
 
