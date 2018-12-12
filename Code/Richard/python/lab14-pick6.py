@@ -7,6 +7,7 @@ lab14-pick6.py, a lottery-style game
 import random
 
 payoff = {
+            0   :   0,
             1   :   4,
             2   :   7,
             3   :   100,
@@ -23,8 +24,11 @@ for i in range(1, 100001):
     ticket = random.sample(list(range(0, 100)), 6)
     print(ticket)
     print(winning)
-#     for j in ticket:
-#         if ticket[j] == winning[j]:
-#             n_match += 1
-#     balance = payoff[n_match] + balance
-# print(f'\nYour final balance is {balance}')
+    for j in range(len(ticket)):
+        if winning[j] == ticket[j]:
+            n_match += 1
+            balance += payoff[n_match]
+    balance = payoff[n_match] + balance
+print(f'\nYour final balance is {balance}')
+
+
