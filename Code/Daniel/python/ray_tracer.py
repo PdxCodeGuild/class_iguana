@@ -1,5 +1,5 @@
 # Basic functionality of ray tracing is complete. Shading is using the facing ratio method.
-# Fixes needed: Perspective distortion when sphere or camera is moved off the center line
+# Fixes needed: Perspective distortion when sphere or camera is moved off the center line, clean up comments and unnecessary code
 # Features to add next: Shadows and plane object for ground, walls
 
 
