@@ -1,6 +1,6 @@
 """
 author: Richard Sherman
-2018-12-07
+2018-12-12
 lab23-contacts-list.py, manipulates data from .csv file and implements a CRUD
 """
 

@@ -21,5 +21,11 @@ word_to_phrase_dict = {1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five', 6: 
                        90: 'ninety', 91: 'ninety-one', 92: 'ninety-two', 93: 'ninety-three',
                        94: 'ninety-four', 95: 'ninety-five', 96: 'ninety-six', 97: 'ninety-seven',
                        98: 'ninety-eight', 99: 'ninety-nine', 100: 'one hundred'}
+#i made the dictionary with copy and paste from a website that teaches children to read
 number = int(input('give me a number\n'))
 print(word_to_phrase_dict[number])
+
+
+
+
+
