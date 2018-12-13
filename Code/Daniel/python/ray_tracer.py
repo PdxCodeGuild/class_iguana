@@ -1,3 +1,8 @@
+# Basic functionality of ray tracing is complete. Shading is using the facing ratio method.
+# Fixes needed: Perspective distortion when sphere or camera is moved off the center line, clean up comments and unnecessary code
+# Features to add next: Shadows and plane object for ground, walls
+
+
 from PIL import Image, ImageDraw
 import math
 import numpy as np
@@ -99,7 +104,7 @@ def get_color(hit_normal, hit_point, color, origin):
 
     return tuple(pixel_color)
 
-
+# Ref: http://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-generating-camera-rays/generating-camera-rays
 def camera_stuff(pix_x, pix_y, width, height):
     pixel_ndc_x = (pix_x + 0.5) / width
     pixel_ndc_y = (pix_y + 0.5) / height 
@@ -120,16 +125,16 @@ def camera_stuff(pix_x, pix_y, width, height):
 #         Requires position, radius, and color to create
 #       - Create plane. Use point-normal form? (Ref: https://en.wikipedia.org/wiki/Plane_(geometry)#Point-normal_form_and_general_form_of_the_equation_of_a_plane)
 
-light = Sphere([400,230,11], 10, [255,255,0])     # Light (Yellow)
-sphere = Sphere([0,0,10], 8, [0,0,255])       # Sphere (Blue). Note that radius 0.0 - 0.99 difference varies the render size significantly
+light = Sphere([0,0,11], 10, [255,255,0])     # Light (Yellow)
+sphere = Sphere([0,0,3], 2, [0,0,255])       # Sphere (Blue)
 # Plane([0,0,0,],[0,0,0], [0,255,9]),  # Ground (Green)
 
 
 
 
 #   Render the image 
-width = 400 
-height = 300
+width = 800 
+height = 600
 render = Image.new('RGB', (width, height), color = 0)
 pixels = render.load()
 camera_coord = [0,0,0] # [width/2, height/2, 0]
