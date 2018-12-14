@@ -1,53 +1,66 @@
 
-"""
-Hangman game
-"""
-
 import random
+import string
+
+def get_words():
+    with open('../data/english.txt') as f:
+        text = f.read()
+
+    words = text.split('\n')
+
+    # new_list = []
+    # for word in words:
+    #     if len(word) > 5:
+    #         new_list.append(word)
+    #
+    # words = new_list
+
+    words = [word for word in words if len(word) > 5]
+    return words
 
 
-def load():
-    with open('english.txt', 'r') as f:
-        contents = f.read().lower()
-    words = contents.split('\n')
-    list_words = []
-    for word in words:
-        if len(word) > 4 and len(word) < 12:
-            list_words.append(word)
-    return list_words
+words = get_words()
 
-list_words = load()
+word = random.choice(words)
+print(word)
+blank_word = list('_' * len(word))
 
-# pick a word
-chosen_word = random.choice(list_words)
+guesses = 10
+guessed = []
+while '_' in blank_word and guesses > 0:
+    print(f'You have {guesses} guess(es) left')
+    print('Already guessed ' + ', '.join(guessed))
+    print(' '.join(blank_word))
+    letter = input('Guess a letter: ').lower()
 
-unknown_word = []
-guesses_remaining = 10
-for letter in chosen_word:
-    unknown_word.append('_')
-
-already_guessed = []
-while guesses_remaining > 0:
-    print(' '.join(unknown_word))
-    print('# of guesses remaining:', guesses_remaining)
-    print('already guessed: '+', '.join(already_guessed))
-    guess = input('Guess a letter: ')
-    if guess in already_guessed:
-        print('You\'ve already guessed that')
+    if len(letter) != 1 or letter not in string.ascii_lowercase:
+        print('Not a letter')
         continue
-    already_guessed.append(guess)
-    # if guess not in chosen_word:
-    #    guesses_remaining -= 1
-    found_letter = False
-    for i in range(len(chosen_word)):
-        if chosen_word[i] == guess:
-            unknown_word[i] = chosen_word[i]
-            found_letter = True
-    if not found_letter:
-        guesses_remaining -= 1
-    if '_' not in unknown_word:
-        print('You\'ve won!')
-        break
 
-# and list of letters already guessed
-print(chosen_word)
+    if letter in guessed:
+        print('Already guessed!')
+        continue
+
+    guessed.append(letter)
+    for i in range(len(word)):
+        if word[i] == letter:
+            blank_word[i] = word[i]
+    guesses -= 1
+
+
+
+print(f'The word was {word}')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
