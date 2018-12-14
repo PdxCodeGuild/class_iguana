@@ -10,7 +10,9 @@ https://or.water.usgs.gov/non-usgs/bes/metro_center.rain
 # the file 'rain_data.txt' was processed outside of python
 
 import datetime
-import matplotlib as plt
+import matplotlib
+matplotlib.use('PS')
+import matplotlib.pyplot as plt
 
 # import re
 # todo: learn regular expressions
@@ -74,3 +76,8 @@ for i in range(len(data_list)):
 variance = sum(deviance_list) / len(deviance_list)
 
 print(f'mean = {round(mean_rain, 2)}, variance = {round(variance, 2)}, standard deviation = {round(variance ** (1/2), 2)}')
+
+print(max(total_rain_list))
+# now find the index / obs with this value of 'Total'
+
+# how to subset using this data structure, for making plots
