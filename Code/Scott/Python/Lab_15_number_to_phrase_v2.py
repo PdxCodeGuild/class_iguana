@@ -30,11 +30,12 @@ ones_dict = {0 : 'zero',
               16 : 'sixteen',
               17 : 'seventeen',
               18 : 'eighteen',
-              19 : 'nineteen'}
+              19 : 'nineteen',
+              20 : ''}
 
 tens_dict = {2 : 'twenty',
              3 : 'thirty',
-             4 : 'fourty',
+             4 : 'forty',
              5 : 'fifty',
              6 : 'sixty',
              7 : 'seventy',
@@ -53,18 +54,24 @@ hundreds_dict = {1 : 'one-hundred',
 
 if num <= 19:
     phrase = ones_dict[num]
-
-elif num <= 99 and num > 19:
+elif num <= 99:
     tens_digit = num // 10
     ones_digit = num % 10
-    phrase = tens_dict[tens_digit] + '-' + ones_dict[ones_digit]
-
-elif num > 99:
+    if ones_digit == 0:
+        phrase = tens_dict[tens_digit]
+    else:
+        phrase = tens_dict[tens_digit] + '-' + ones_dict[ones_digit]
+elif num <= 999:
     hundreds_digit = num // 100
-    num = num - (hundreds_digit * 100)
+    num -= hundreds_digit * 100
     tens_digit = num // 10
     ones_digit = num % 10
-    phrase = hundreds_dict[hundreds_digit] + '-' + tens_dict[tens_digit] + '-' + ones_dict[ones_digit]
+    if tens_digit == 0:
+        phrase = hundreds_dict[hundreds_digit] + '-' + ones_dict[ones_digit]
+        if ones_digit == 0:
+            phrase = hundreds_dict[hundreds_digit]
+    else:
+        phrase = hundreds_dict[hundreds_digit] + '-' + tens_dict[tens_digit] + '-' + ones_dict[ones_digit]
 
 print(phrase)
 
