@@ -1,4 +1,6 @@
+#ask user for input needing a number between 50 and 100
 grade = input('what was your grade? \n>')
+#turn user input (string) into an integer
 grade = int(grade)
 
 
@@ -11,7 +13,7 @@ grade = int(grade)
 #     print('A-')
 #
 
-
+#lots of ifs and elifs to determine what to print for given integer
 if grade >= 90 and grade <= 94:
     print('A-')
 elif grade >= 80 and grade <=84:
