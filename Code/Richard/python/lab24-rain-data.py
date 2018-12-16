@@ -118,9 +118,14 @@ min = {min_rain} \n \
 
 print(f'\nThe day with the most rain was {most_rain_date}.')
 
+# get yearly data sets
+# the following does nothing but reproduce the original data set and order it by date
+# what I'm trying to do is subset the data by year
+rain_data_by_year = []
+for year in range(2003, 2018):           # these are the years with complete data (though with some small missing-ness)
+    for row in data_list:
+        if row['Date'].year == year:
+            rain_data_by_year.append(row)
 
-# # target_year = 2002
-# # for row in total_rain_list:
-# #     if row['Date'].year == target_year:
-# #         print(row)
-
+print(rain_data_by_year[0:3])
+rain_data_by_year.sort(key = 'Date')
