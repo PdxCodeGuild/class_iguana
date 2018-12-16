@@ -128,4 +128,6 @@ for year in range(2003, 2018):           # these are the years with complete dat
             rain_data_by_year.append(row)
 
 print(rain_data_by_year[0:3])
-rain_data_by_year.sort(key = 'Date')
+# rain_data_by_year.sort(key = 'Date')          # this doesn't work
+
+# plt.plot(data_list['Date'], data_list['Total'])   # this doesn't work
