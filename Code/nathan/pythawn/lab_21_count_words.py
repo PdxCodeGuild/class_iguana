@@ -1,5 +1,10 @@
 import string
 
+
+def index(tuple_1):
+    return tuple_1[1]
+
+
 word_list = []
 word_count = {}
 
@@ -18,12 +23,5 @@ for word in word_list:
         word_count[word] = 1
 
 word_list = list(word_count.items())
-
-def index(tuple):
-    return tuple[1]
-
-word_list2 = sorted(word_list, key=index, reverse = True)
-
+word_list2 = sorted(word_list, key=index, reverse=True)
 print(word_list2[0:10])
-
-
