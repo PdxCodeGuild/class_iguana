@@ -13,10 +13,14 @@ city_to_accessible_cities = {
 }
 
 origin = 'Philadelphia'
-hop = city_to_accessible_cities[origin]
+hop = []
+hop.append(city_to_accessible_cities[origin])
 print(hop)
-for city in hop:
-    hop += city_to_accessible_cities[city]
+i = 1
+while i < 4:
+  for city in hop:
+      hop = (city_to_accessible_cities[city])
+  i += 1
 hop_set = set(hop)
 print(hop_set)
 
