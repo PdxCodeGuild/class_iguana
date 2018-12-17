@@ -3,12 +3,10 @@
 
 
 def check_palindrome(string):
-    if string == string[::-1]:
+    if string == string[::-1]: #just compare the string to the reverse of itself. Duh. I go stuck in a for loop.
         print(f'{string} is a palindrome')
     else:
         print(f'{string} is not a palindrome')
-
-
 
 string = input('Enter a word please... ')
 check_palindrome(string)
