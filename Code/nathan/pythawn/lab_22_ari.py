@@ -32,6 +32,10 @@ for characters in word_list:
 for characters in word_list:
     if '.' in characters:
         sentence_count += 1
+    if '?' in characters:
+        sentence_count += 1
+    if '!' in characters:
+        sentence_count += 1
 #ari math
 math1 = (char_count / word_count) * 4.17
 math2 = (word_count / sentence_count) * 0.5
