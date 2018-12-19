@@ -28,7 +28,7 @@ interest = 0.1
 amount = 0
 history = []
 while True:
-    transaction = input('would you like to check balance, check interest, check history, make a deposit, or make a withdrawl?\n**type finish if finished**\n')
+    transaction = input('would you like to (check balance, check interest, check history, deposit, withdrawl)\n**type finish if finished**\n')
     if transaction == 'check balance':
         print(check_balance(account))
     if transaction == 'deposit':
