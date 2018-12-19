@@ -9,5 +9,7 @@ fur = input('Provide a color:\n')
 pounds = input('Provide a weight in pounds:\n')
 fluid = input('Provide a bodily fluid:\n')
 #
-print('Last night at 9 pm a ' + animal + ' escaped from the ' + city + ' zoo. Please be on the lookout. The ' + animal + ' has ' + fur + ' fur and weighs approximately '+pounds+' pounds. Please maintain your distance as the ' + animal + ' can emit ' + fluid + ' at long distances. ')
+print('Last night at 9 pm a ' + animal + ' escaped from the ' + city + ' zoo. Please be on the lookout. The ' + animal
+      + ' has ' + fur + ' fur and weighs approximately '+pounds+' pounds. Please maintain your distance as the '
+      + animal + ' can emit ' + fluid + ' at long distances. ')
 
