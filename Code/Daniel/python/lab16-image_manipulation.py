@@ -5,8 +5,7 @@ img= Image.open('lenna.png')
 width, height = img.size
 pixels = img.load()
 
-# This way of conversion is a "true" greyscale (black/white)
-# 
+# # greyscale v1
 # grey_scale = img.convert('L')
 # grey_scale.show()
 
@@ -15,11 +14,12 @@ pixels = img.load()
 for i in range(width):
     for j in range(height):
         [r, g, b] = pixels[i, j]
-
-        # This conversion has a more "artsy" greyscale with a sort of sepia tone
-        # r = int(0.299*r + 0.587*g + 0.114*b)
-        # b = int(0.299*r + 0.587*g + 0.114*b)
-        # g = int(0.299*r + 0.587*g + 0.114*b)
+        
+        # # greyscale v2
+        # y = int(0.299*r + 0.587*g + 0.114*b)
+        # r = y
+        # g = y
+        # b = y
 
         # Modifying saturation (s) and hue (h)
         h, s, v = colorsys.rgb_to_hsv(r/255, g/255, b/255)
