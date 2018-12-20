@@ -39,6 +39,7 @@ class Shop():
                     print('We don\'t have any in stock.')
                 else:
                     print(f'We have {stock[item_to_sell]} on hand. We\'ll sell those now and then restock.')
+                    qty_to_sell = stock[item_to_sell]
             self.cash += offer * qty_to_sell
             self.stock[item_to_sell] -= qty_to_sell
             self.transactions.append(f'Sold {qty_to_sell} {item_to_sell}, {datetime.datetime.now()}, Cash on hand = {self.cash} ')
