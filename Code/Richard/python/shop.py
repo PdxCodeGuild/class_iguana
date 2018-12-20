@@ -21,7 +21,7 @@ class Shop():
         offer = price[qn] * (1 + random.uniform(0, price[qn]))
         print(f'The price they\'re offering is {offer}.')
         answer = input('How many do you want to sell? 1, 2, 3 ...?  ')
-        if y in answer:
+        if 'y' in answer:
             self.cash += offer * answer
             self.stock[qn] -= qn
 
@@ -35,5 +35,7 @@ price = {'shirts': 3,
          'pants':  5,
          'shoes':  10,
          'socks':  1}
+
 shop = Shop(stock, price, 100)
+shop.sell()
 shop.restock()
