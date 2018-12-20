@@ -1,16 +1,16 @@
 def peaks_valleys(a):
-    b = []
+    b = []   #three empty list
     peaks = []
     valleys = []
-    for i in range(1, len(a)-1):
+    for i in range(1, len(a)-1): #if value has matching int values on either side add to p and v list
         if a[i-1] == a[i+1]:
             b.append(a[i])
     for i in range(1, len(a) - 1):
-        if a[i - 1] < a[i] and a[i + 1] < a[i]:
+        if a[i - 1] < a[i] and a[i + 1] < a[i]: #if values on either side of i are less than i add to peak list
             peaks.append(a[i])
-        if a[i - 1] > a[i] and a[i + 1] > a[i]:
+        if a[i - 1] > a[i] and a[i + 1] > a[i]: #if values on either side of i are less than i add to valley list
             valleys.append(a[i])
-    return b, peaks, valleys
+    return b, peaks, valleys  #return the three list
 
 
 

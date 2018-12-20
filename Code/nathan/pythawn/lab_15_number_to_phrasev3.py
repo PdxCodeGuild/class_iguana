@@ -1,15 +1,15 @@
-def obtain1_digit(x):
+def obtain1_digit(x):   #function to get ones digit
     return x % 10
 
 
-def obtain10_digit(y):
+def obtain10_digit(y):  #fucntion to get tens digit
     return y // 10 % 10
 
 
-def obtain100_digit(z):
+def obtain100_digit(z): #function to get hundreds digit
     return z // 100
 
-
+#dictionarys
 ones_dict = {0: 'zero', 1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five', 6: 'six',
                   7: 'seven', 8: 'eight', 9: 'nine', 10: 'ten', 11: 'eleven', 12: 'twelve',
                   13: 'thirteen', 14: 'fourteen', 15: 'fifteen', 16: 'sixteen', 17: 'seventeen',
@@ -25,17 +25,17 @@ hundreds_dict = {1: 'one hundred', 2: 'two hundred', 3: 'three hundred', 4: 'fou
 number = int(input('give me a number\n'))
 
 
-
+# if number less than twenty use 0-19 dict for answer
 if number < 20:
     print(ones_dict[number])
-elif number < 100:
+elif number < 100: #if number is between 20 and 99 get ones digit and use both ones dict and tens dict
     ones_digit = obtain1_digit(number)
     if ones_digit == 0:
         print(tens_dict[obtain10_digit(number)])
     else:
         tens_num = (tens_dict[obtain10_digit(number)]) + '-' + (ones_dict[obtain1_digit(number)])
         print(tens_num)
-elif number < 1000:
+elif number < 1000: #if number is between 100 and 999 use all three dictionarys
     hundreds_num = obtain1_digit(number)
     if hundreds_num == 0:
         print(hundreds_dict[obtain100_digit(number)])
