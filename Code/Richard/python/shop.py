@@ -23,7 +23,7 @@ class Shop():
         answer = input('How many do you want to sell? 1, 2, 3 ...?  ')
         if 'y' in answer:
             self.cash += offer * answer
-            self.stock[qn] -= qn
+            self.stock[qn] -= answer
 
 
 stock = {'shirts': 10,
