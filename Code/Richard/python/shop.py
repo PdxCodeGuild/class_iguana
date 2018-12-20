@@ -5,7 +5,7 @@ class Shop():
         self.stock =  stock
         self.cash = cash
         self.price =  price
-
+        self.transactions = []
 
     def restock(self):
         print(self.stock)
@@ -17,13 +17,16 @@ class Shop():
             self.cash -= qty_to_stock * self.price[to_stock]
 
     def sell(self):
-        qn = input('There\'s a customer in the shop. What would you like to sell? shirts, pants, shoes, or socks:  ')
-        offer = price[qn] * (1 + random.uniform(0, price[qn]))
-        print(f'The price they\'re offering is {offer}.')
-        answer = input('How many do you want to sell? 1, 2, 3 ...?  ')
-        if 'y' in answer:
-            self.cash += offer * answer
-            self.stock[qn] -= answer
+        item_to_sell = input('There\'s a customer in the shop. What would you like to sell? shirts, pants, shoes, or socks:  ')
+        offer = random.uniform(0, price[item_to_sell] * 2)
+        sell_not_sell = input(f'The price they\'re offering is {offer}. Would you like to take that offer? y or n:  ')
+        qty_to_sell = input('How many do you want to sell? 1, 2, 3 ...?  ')
+        if 'y' in qty_to_sell:
+            self.cash += offer * qty_to_sell
+            self.stock[qn] -= qty_to_sell
+
+    def check_books(self):
+        print(transactions)
 
 
 stock = {'shirts': 10,
