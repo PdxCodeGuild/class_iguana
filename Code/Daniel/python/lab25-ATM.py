@@ -1,6 +1,6 @@
 
 
-class Atm():
+class Atm:
     def __init__(self):
         self.balance = 0
         self.interest_rate = .001
@@ -63,17 +63,18 @@ def convert_to_cents(amount):
     
     if amount.replace('.', '', 1).isdigit() == True:
         if '.' in amount:
-            amount = '0' + amount
-            try:
-                dollars, cents = amount.split('.')
-            except ValueError:
-                amount += '0'
-                dollars, cents = amount.split('.')
+            amount = '0' + amount + '00'
+            # try:
+            dollars, cents = amount.split('.')
+            # except ValueError:
+            #     amount += '0'
+            #     dollars, cents = amount.split('.')
         else:
             dollars = amount
             cents = 0
-        
-        cents = cents[:2]
+
+        if int(cents) > 99: 
+            cents = cents[:2]
 
         total = int(dollars) * 100 + int(cents)
         return total

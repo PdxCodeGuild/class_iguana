@@ -32,9 +32,13 @@ for characters in word_list:
 for characters in word_list:
     if '.' in characters:
         sentence_count += 1
+    if '?' in characters:
+        sentence_count += 1
+    if '!' in characters:
+        sentence_count += 1
 #ari math
-math1 = (char_count / word_count) * 4.17
-math2 = (word_count / sentence_count) * 0.5
+math1 = (char_count / word_count) * 4.17 #average word length
+math2 = (word_count / sentence_count) * 0.5 #average sentence length
 ari = math1 + math2 - 21.43
 ari = math.ceil(ari)
 #using ari math to access dictionary
