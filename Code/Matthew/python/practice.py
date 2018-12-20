@@ -53,9 +53,9 @@ def is_even(a):
 # print(nums)
 
 
-# names = ['joe', 'marcy', 'julianna', 'ted']
-# names_to_ages = {random.choice(names):random.randint(5,80) for i in range(10)}
-# print(names_to_ages)
+names = ['joe', 'marcy', 'julianna', 'ted']
+names_to_ages = {random.choice(names):random.randint(5,80) for i in range(10)}
+print(names_to_ages)
 
 # [1, 2, 4, 8, 16, 32, 64, 128, 256, 512]
 # nums = [2**i for i in range(10)]

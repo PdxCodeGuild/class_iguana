@@ -12,14 +12,13 @@ answer = random.choice(response_list)
 print(answer)
 next_question = 'done'
 next_question = input('press any key + Enter to ask another question, or if you are finished, type "done"\n')
-while next_question != 'done':
+while True:
     next_question = input('What is your next question?')
-    next_answer = random.choice(response_list)
-    print(next_answer)
     if next_question == 'done':
         print(f'Thanks for playing {user_name}. Bye')
-
-
+        break
+    next_answer = random.choice(response_list)
+    print(next_answer)
 
 # if one_more not in user_choice:
 #     one_more = input('Type "continue" to ask another question, or if you are finished, type "done"\n')

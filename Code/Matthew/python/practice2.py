@@ -32,7 +32,7 @@ def count_hi(word):
     # print(word.find('hi', 26))
 
     return counter
-
+print(count_hi('hburyhikkskhiueivnhihihihiddjcjhi'))
 
 def count_hi2(word):
     counter = 0
