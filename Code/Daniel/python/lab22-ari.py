@@ -18,26 +18,35 @@ ari_scale = {
 }
 
 file_name = 'brothers_karamazov.txt'
-f = open(file_name, encoding='utf-8')
+# f = open(file_name, encoding='utf-8')
 
 
-text = ''
-char = 0
-for word in f:                          # Replacing any new lines and creating a large string to work with
-    word = word.replace('\n', ' ')      
-    text += word
+# text = ''
+# char = 0
+# for word in f:                          # Replacing any new lines and creating a large string to work with
+#     word = word.replace('\n', ' ')      
+#     text += word
     
-while '  ' in text:                     # Replacing all repeat spaces
-    text = text.replace('  ', ' ')
+# while '  ' in text:                     # Replacing all repeat spaces
+#     text = text.replace('  ', ' ')
+
+with open(file_name, encoding='utf-8') as file:
+    text = file.read()
+
+char = len(re.findall('[a-zA-Z0-9]', text))
+num_words = len(re.findall(' ', text))
+num_sent = len(re.findall('([.!?]\s+[A-Z\"“])|([.!?](\"|”)\s+[A-Z])', text))
 
 
-num_words = len(text.split(' '))        # Getting the number of words by splitting on a space
-num_sent = 0
-for character in text:                                                  
-    if character == '.' or character == '?' or character == '!':        # Get number of sentences by spliting on '?', '!', or '.'
-        num_sent += 1
-    if character.isalpha() == True or character.isdigit() == True:      # Get number of characters 
-        char += 1
+
+
+# num_words = len(text.split(' '))        # Getting the number of words by splitting on a space
+# num_sent = 0
+# for character in text:                                                  
+#     if character == '.' or character == '?' or character == '!':        # Get number of sentences by spliting on '?', '!', or '.'
+#         num_sent += 1
+#     if character.isalpha() == True or character.isdigit() == True:      # Get number of characters 
+#         char += 1
 
 
 score = int(-(-(char / num_words * 4.17 + num_words / num_sent * 0.5 - 21.43) // 1))    # Calculate score and round up
@@ -54,7 +63,3 @@ age = score_dict.get('ages')
 print(f'\nThe ARI for {file_name} is {score}\nThis corresponds to {a} {grade} level of difficulty\n' +
       f'that is suitable for an average person {age} years old.\n')
 
-# Note: Using The Brothers Karamazov as a test case, the score calculates out to significantly less than one might expect.
-#       This seems to be due to the ARI formula itself though as the ARI scores seem to be consistently lower than other 
-#       formulas when testing different passages within the book. Or maybe Brothers Karamazov just isn't that difficult a 
-#       book. More testing needed 
