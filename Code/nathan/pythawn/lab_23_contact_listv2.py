@@ -49,19 +49,15 @@ for i in range(len(contacts)):
 print(contacts)
 
 #update a contacts info
-# update = input('who would you like to input?\n')
-# update_which_key = ''
-# for i in range(len(contacts)):
-#     for j in contacts[i]:
-#         if j == 'name' and (contacts[i]['name']) == update:
-#             update_which_key = input('would you like to change name, fav_food, fav_color, or animal?\n')
-#             if update_which_key == 'name':
-#
-#             else:
-#                 if update_which_key == 'fav_food':
-#
-#             else:
-#                 if update_which_key == 'fav_color':
-#
-#             else:
-#                 if update_which_key == 'animal':
+update = input('who would you like to edit?\n')
+for i in range(len(contacts)):
+    for j in contacts[i]:
+        if j == 'name' and (contacts[i]['name']) == update:
+            key_change = input(f' what would you like to change {key_list}')
+            changed_key = input(f'what is the new information {key_list}')
+            (contacts[i][key_change]) = changed_key
+print(contacts)
+
+
+
+
