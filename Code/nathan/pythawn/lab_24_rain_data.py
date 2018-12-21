@@ -35,7 +35,7 @@ def wettest_year(data):
             if tuple[0].year == year:
                 total += tuple[1]
         if wet_year == total:
-            return f'the year that it rained most was {year}, and the annual total was {total} inches'
+            return f'the year that it rained most was {year}, and the annual total was {round(total)} inches'
 
 
 with open('rain_data.txt') as file:
