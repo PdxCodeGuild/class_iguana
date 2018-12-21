@@ -10,7 +10,7 @@ def deposit(account, amount):
     return account + amount
 
 
-def withdrawl(account, amount):
+def withdrawal(account, amount):
     if account - amount > -1:
         x = account - amount
     else:
@@ -28,7 +28,7 @@ interest = 0.1
 amount = 0
 history = []
 while True:
-    transaction = input('would you like to (check balance, check interest, check history, deposit, withdrawl)\n**type finish if finished**\n')
+    transaction = input('would you like to (check balance, check interest, check history, deposit, withdrawal)\n**type finish if finished**\n')
     if transaction == 'check balance':
         print(check_balance(account))
     if transaction == 'deposit':
@@ -37,11 +37,11 @@ while True:
         history.append(amount)
         account = (deposit(account, amount))
         print(account)
-    if transaction == 'withdrawl':
+    if transaction == 'withdrawal':
         amount = int(input('how much money do you want to take out?\n'))
-        history.append('withdrawl')
+        history.append('withdrawal')
         history.append(amount)
-        account = (withdrawl(account, amount))
+        account = (withdrawal(account, amount))
         print(account)
     if transaction == 'check interest':
         print(check_interest(account, interest))

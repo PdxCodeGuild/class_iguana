@@ -6,12 +6,27 @@ city_to_accessible_cities = {
   'Philadelphia': {'New York'}
 }
 
+# def hop(origin):
+#     dest = city_to_accessible_cities[origin]
+#     print(dest)
+#     return(dest)
+#
+# hop('Portland')
 
-hop_dict = {}
-origin = 'Philadelphia'
-n_hops = 3
-for i in range(n_hops + 1):
-    for city in city_to_accessible_cities[origin]:
-        hop_dict[i] = (origin, city)
-        origin = city
-print(hop_dict)
+origin = 'Portland'
+dest = city_to_accessible_cities[origin]
+print(dest)
+final_dest = {}
+for city in dest:
+    final_dest[city] = city_to_accessible_cities[city]
+    dest = final_dest.values()
+print(dest)
+
+
+
+# hop = []
+# city = 'Portland'
+# for i in range(4):
+#     for city in city_to_accessible_cities[city]:
+#         hop.append(city_to_accessible_cities[city])
+# print(hop)
