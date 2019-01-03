@@ -3,8 +3,9 @@ import random
 width = 9  # the width of the board
 height = 9  # the height of the board
 kill_count = 0
-weapons_count = 1
-health = 6
+health = 3
+
+
 
 # create a board with the given width and height
 # we'll use a list of list to represent the board
@@ -22,32 +23,28 @@ player_j = 6
 for i in range(6):
     enemy_i = random.randint(0, height - 1)
     enemy_j = random.randint(0, width - 1)
-    board[enemy_i][enemy_j] = '§'
+    board[enemy_i][enemy_j] = '♿'
 
 # loop until the user says 'done' or dies
-weapons = ['1']
+weapons = [('1', '[1]six shooter')]
 enemy_weapons = ['1', '2', '3']
-weapons_display = ['[1]six shooter'] #'[2]ray gun', '[3]magnet gun'
 coin = ['h', 't']
-die = ['1', '2', '3', '4', '5', '6', '7']
+die = ['1', '2', '3', '4']
+
 while True:
-    if kill_count == 1 and weapons_count == 1:
-        weapons.append('2')
-        weapons_display.append('[2]sword')
-        weapons_count += 1
+    #check kill counter and weapons counter to decide whether to add an upgraded weapon
+    if kill_count == 1 and len(weapons) == 1:
+        weapons.append(('2', '[2]sword'))
         print('you earned a sword')
-    elif kill_count == 2 and weapons_count == 2:
-        weapons.append('3')
-        weapons_display.append('[3]ray gun')
-        weapons_count += 1
+    if kill_count == 2 and len(weapons) == 2:
+        weapons.append(('3', '[3]ray gun'))
         print('congrats, you got a ray gun')
-    elif kill_count == 3 and weapons_count == 3:
-        weapons.append('4')
+    if kill_count == 3 and len(weapons) == 3:
+        weapons.append(('4', '[4]kindness'))
         print('you have learned kindness')
         health += 1
-        weapons_display.append('[4]kindness')
-        weapons_count += 1
 
+    #print health level and kill count everytime a command is made
     print(f'health: {health}, kill count: {kill_count}')
     command = input('what is your command? ')  # get the command from the user
 
@@ -70,9 +67,9 @@ while True:
     elif command == 'js':
         player_i += 3
 
-    if board[player_i][player_j] == '§':
+    if board[player_i][player_j] == '♿':
         print('you\'ve encountered an enemy!')
-        weapon_choice = input(f'choose a weapon {weapons_display}')
+        weapon_choice = input('choose a weapon:' + '\n\t'.join([weapon[1] for weapon in weapons]))
         enemy_weapon = random.choice(enemy_weapons)
         coin_flip = random.choice(coin)
         die_roll = random.choice(die)
@@ -80,93 +77,98 @@ while True:
             if coin_flip == 't':
                 board[player_i][player_j] = ' '  # remove the enemy from the board
                 kill_count += 1
-                print('you won the quick draw')
+                print('a revolver always does the trick')
             else:
                 if coin_flip == 'h':
-                    print('you lost the quick draw')
                     health -= 1
+                    print('oh no')
         elif weapon_choice == '1' and enemy_weapon == '2':
             if coin_flip == 't':
                 board[player_i][player_j] = ' '
                 kill_count += 1
-                print('you shot the swordsman')
+                print('sweet style')
             else:
                 if coin_flip == 'h':
-                    print('you lost the quick draw')
-
-            print('you were demolished by the enemies sword')
-            health -= 1
+                    health -= 1
+                    print('oh no')
         elif weapon_choice == '1' and enemy_weapon == '3':
-            print('a six shooter is no match for a ray gun \n you were murked')
             health -= 1
+            print('oh no')
         elif weapon_choice == '2' and enemy_weapon == '1':
-            print('the enemy died from your swinging blade')
             board[player_i][player_j] = ' '  # remove the enemy from the board
             kill_count += 1
+            print('sweet style')
         elif weapon_choice == '2' and enemy_weapon == '2':
             if coin_flip == 't':
                 board[player_i][player_j] = ' '
                 kill_count += 1
-                print('you won the quick draw')
+                print('awesome swordsmanship')
             else:
                 if coin_flip == 'h':
-                    print('you lost the quick draw')
                     health -= 1
+                    print('oh no')
 
         elif weapon_choice == '2' and enemy_weapon == '3':
-            print('a sword is no match for a ray gun \n you got owned')
             health -= 1
+            print('oh no')
         elif weapon_choice == '3' and enemy_weapon == '1':
-            print('the enemy died thanks to your speedy quick lazer')
             board[player_i][player_j] = ' '  # remove the enemy from the board
             kill_count += 1
+            print('sweet style')
         elif weapon_choice == '3' and enemy_weapon == '2':
-            print('nice')
-            board[player_i][player_j] = ' '
-            kill_count += 1
+            if coin_flip == 't':
+                board[player_i][player_j] = ' '
+                kill_count += 1
+                print('sweet style, ray gun does the trick')
+            else:
+                if coin_flip == 'h':
+                    health -= 1
+                    print('oh no')
         elif weapon_choice == '3' and enemy_weapon == '3':
             if coin_flip == 't':
                 board[player_i][player_j] = ' '
                 kill_count += 1
-                print('you won the quick draw')
+                print('sweet style')
             else:
                 if coin_flip == 'h':
-                    print('you lost the quick draw')
                     health -= 1
+                    print('oh no')
         elif weapon_choice == '4' and enemy_weapon == '1':
-            if die_roll == '3' or die_roll == '4':
-                print('kindness did not win')
+            if die_roll == '4':
                 health -= 1
+                print('oh no')
             else:
-                if die_roll != '3' or '4':
-                    print('kindness killed the enemy')
+                if die_roll != '4':
                     board[player_i][player_j] = ' '
                     kill_count += 1
+                    print('sweet style')
         elif weapon_choice == '4' and enemy_weapon == '2':
-            if die_roll == '3' or die_roll == '4':
-                print('kindness did not win')
+            if die_roll == '4':
                 health -= 1
+                print('oh no')
             else:
-                if die_roll != '3' and die_roll != '4':
-                    print('kindness killed the enemy')
+                if die_roll != '4':
                     board[player_i][player_j] = ' '
                     kill_count += 1
+                    print('hell yea')
         elif weapon_choice == '4' and enemy_weapon == '3':
-            if die_roll == '3' or die_roll == '4':
-                print('kindness did not win')
+            if die_roll == '4':
                 health -= 1
+                print('oh no')
             else:
-                if die_roll != '3' and die_roll != '4':
-                    print('kindness killed the enemy')
+                if die_roll != '4':
                     board[player_i][player_j] = ' '
                     kill_count += 1
+                    print('hell yea')
+
+
 
             # print out the board
     for i in range(height):
         for j in range(width):
             # if we're at the player location, print the player icon
             if i == player_i and j == player_j:
-                print('☺', end=' ')
+                print('⛄', end=' ')
             else:
                 print(board[i][j], end=' ')  # otherwise print the board square
         print()
@@ -176,4 +178,5 @@ while True:
     if kill_count == 6:
         print('Enemies Cleared')
         break
+
 
