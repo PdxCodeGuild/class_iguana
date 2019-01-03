@@ -1,5 +1,6 @@
 import re
 import datetime
+import matplotlib.pyplot as plt
 
 def average_rainfall(data):
     total = 0
@@ -35,7 +36,7 @@ def wettest_year(data):
             if tuple[0].year == year:
                 total += tuple[1]
         if wet_year == total:
-            return f'the year that it rained most was {year}, and the annual total was {round(total)} inches'
+            return f'the year that it rained most was {year}, and the annual total was {total} inches'
 
 
 with open('rain_data.txt') as file:
@@ -60,3 +61,14 @@ most_yearly_rain = wettest_year(data)
 print(most_yearly_rain)
 
 
+x_values = []
+y_values = []
+
+for tuple in data:
+    x_values.append(tuple[0].strftime('%d-%b-%Y'))
+for tuple in data:
+    y_values.append(tuple[1])
+
+
+plt.plot(x_values, y_values)
+plt.show()

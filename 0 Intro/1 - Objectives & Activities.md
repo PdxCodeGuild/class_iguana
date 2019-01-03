@@ -63,7 +63,7 @@ These presentations help you practice communicating technical topics in English.
 
 In all three presentations, you should first explain the development process and the different parts of your code. Then run the application and show its features and interaction (entering data, seeing results, etc). Here are some questions to contemplate while planning out your presentation:
 
-- what problem your application solve? what is the core function it performs?
+- what problem does your application solve? what is the core function it performs?
 - how did you go about planning?
 - what major issues did you encounter during the course of development? how did you go about overcoming them?
 - how did your vision for the project change over time?
