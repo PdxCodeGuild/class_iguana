@@ -4,7 +4,7 @@ width = 9  # the width of the board
 height = 9  # the height of the board
 kill_count = 0
 weapons_count = 1
-health = 6
+health = 3
 
 # create a board with the given width and height
 # we'll use a list of list to represent the board
@@ -29,7 +29,7 @@ weapons = ['1']
 enemy_weapons = ['1', '2', '3']
 weapons_display = ['[1]six shooter'] #'[2]ray gun', '[3]magnet gun'
 coin = ['h', 't']
-die = ['1', '2', '3', '4', '5', '6', '7']
+die = ['1', '2', '3', '4']
 while True:
     if kill_count == 1 and weapons_count == 1:
         weapons.append('2')
@@ -121,9 +121,14 @@ while True:
             board[player_i][player_j] = ' '  # remove the enemy from the board
             kill_count += 1
         elif weapon_choice == '3' and enemy_weapon == '2':
-            print('nice')
-            board[player_i][player_j] = ' '
-            kill_count += 1
+            if coin_flip == 't':
+                board[player_i][player_j] = ' '
+                kill_count += 1
+                print('ray guns are cooler than swords')
+            else:
+                if coin_flip == 'h':
+                    print('you lost the quick draw')
+                    health -= 1
         elif weapon_choice == '3' and enemy_weapon == '3':
             if coin_flip == 't':
                 board[player_i][player_j] = ' '
@@ -134,29 +139,29 @@ while True:
                     print('you lost the quick draw')
                     health -= 1
         elif weapon_choice == '4' and enemy_weapon == '1':
-            if die_roll == '3' or die_roll == '4':
+            if die_roll == '4':
                 print('kindness did not win')
                 health -= 1
             else:
-                if die_roll != '3' or '4':
+                if die_roll != '4':
                     print('kindness killed the enemy')
                     board[player_i][player_j] = ' '
                     kill_count += 1
         elif weapon_choice == '4' and enemy_weapon == '2':
-            if die_roll == '3' or die_roll == '4':
+            if die_roll == '4':
                 print('kindness did not win')
                 health -= 1
             else:
-                if die_roll != '3' and die_roll != '4':
+                if die_roll != '4':
                     print('kindness killed the enemy')
                     board[player_i][player_j] = ' '
                     kill_count += 1
         elif weapon_choice == '4' and enemy_weapon == '3':
-            if die_roll == '3' or die_roll == '4':
+            if die_roll == '4':
                 print('kindness did not win')
                 health -= 1
             else:
-                if die_roll != '3' and die_roll != '4':
+                if die_roll != '4':
                     print('kindness killed the enemy')
                     board[player_i][player_j] = ' '
                     kill_count += 1
