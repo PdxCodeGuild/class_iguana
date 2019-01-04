@@ -13,7 +13,7 @@ class Contacter:
             new_contact.append(value)
         for i in range(len(self.key_list)):
                 new_contact_dict[key_list[i]] = new_contact[i]
-        self.contacts.append(new_contact_dict)
+        contacts.append(new_contact_dict)
         return self.contacts
 
 
@@ -21,7 +21,7 @@ class Contacter:
         name_search = input('who are you looking for?\n')
         for i in range(len(self.contacts)):
             for j in self.contacts[i]:
-                if j == 'name' and (self.contacts[i]['name']) == name_search:
+                if j == 'name' and (contacts[i]['name']) == name_search:
                     return self.contacts[i]
 
 
@@ -29,18 +29,18 @@ class Contacter:
         contact_delete = input('who are you sick of?\n')
         for i in range(len(self.contacts)):
             for j in self.contacts[i]:
-                if j == 'name' and (self.contacts[i]['name']) == contact_delete:
+                if j == 'name' and (contacts[i]['name']) == contact_delete:
                     self.contacts.pop(i)
         return self.contacts
 
 
     def update_info(self, contacts, key_list):
         update = input('who would you like to edit?\n')
-        key_select = input(f' what would you like to change {self.key_list}')
+        key_select = input(f' what would you like to change {key_list}')
         changed_key = input('what is the new information')
         for i in range(len(self.contacts)):
             for j in self.contacts[i]:
-                if j == 'name' and (self.contacts[i]['name']) == update:
+                if j == 'name' and (contacts[i]['name']) == update:
                     self.contacts[i][key_select] = changed_key
                 if key_select not in self.key_list:
                     print('not a valid key')
