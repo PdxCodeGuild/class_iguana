@@ -5,8 +5,8 @@ def contact_add(contacts, key_list):
         value = input('what is new contacts ' + key + '?')
         new_contact.append(value)
     for i in range(len(key_list)):
-        new_contact_dict[key_list[i]] = new_contact[i]
-        contacts.append(new_contact_dict)
+            new_contact_dict[key_list[i]] = new_contact[i]
+    contacts.append(new_contact_dict)
     return new_contact_dict
 
 
@@ -24,20 +24,20 @@ def contact_delete(contacts):
         for j in contacts[i]:
             if j == 'name' and (contacts[i]['name']) == contact_delete:
                 contacts.pop(i)
-        return contacts
+    return contacts
 
 
 def update_info(contacts, key_list):
     update = input('who would you like to edit?\n')
-    key_change = input(f' what would you like to change {key_list}')
+    key_select = input(f' what would you like to change {key_list}')
     changed_key = input('what is the new information')
     for i in range(len(contacts)):
         for j in contacts[i]:
             if j == 'name' and (contacts[i]['name']) == update:
-                contacts[i][key_change] = changed_key
-            if key_change not in key_list:
+                contacts[i][key_select] = changed_key
+            if key_select not in key_list:
                 print('not a valid key')
-        return contacts
+    return contacts
 
 
 data = [] #blank list
