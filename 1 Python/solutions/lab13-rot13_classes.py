@@ -7,7 +7,7 @@ import random
 def encrypt_file(input_path, output_path, encryptor):
     with open(input_path, 'r') as input_file:
         contents = input_file.read()
-    encrypted_contents = encryptor(contents)
+    encrypted_contents = encryptor.encrypt(contents)
     with open(output_path, 'w') as output_file:
         output_file.write(encrypted_contents)
 
