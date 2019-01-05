@@ -1,5 +1,3 @@
-#you are just a simple farmer and you heart is on the farm.
-# you can take a farmer from the farm but you can never take a farm from the farmer
 class Farmer:
     def __init__(self, energy, filth, day_light, milk, eggs, bacon, money):
         self.energy = energy
