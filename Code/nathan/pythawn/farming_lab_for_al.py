@@ -54,13 +54,13 @@ class Farmer:
         return f'you made {self.money} dollars'
 
     def check_wallet(self):
-        return self.money
+        return f'{self.money} dollars'
 
 print('you are just a simple farmer and you heart is on the farm')
 print('you can take a farmer from the farm but you can never take a farm from the farmer\n...')
 farmer = Farmer(5, 0, 10, 0, 0, 0, 0)
 while True:
-    task = input('\nHowdy, what would you like to do?\n(farm)\n(bathe)\n(sleep)\n(sell)\n(check wallet)\n**type \'city boy\' to leave the farm\n>')
+    task = input('\nHowdy, what would you like to do?\n(farm)\n(bathe)\n(sleep)\n(sell)\n(check wallet)\n**type \'city boy\' to leave the farm**\n>')
     if task == 'farm':
         print(farmer.farm())
         animal = input('which animal are you looking to farm?\n(cow)\n(chicken)\n(pig)\n>')
@@ -76,6 +76,8 @@ while True:
         print(farmer.sleep())
     elif task == 'sell':
         print(farmer.make_money())
+    elif task == 'check wallet':
+        print(farmer.check_wallet())
     elif task == 'city boy':
         print('Thank you, come again')
         break
