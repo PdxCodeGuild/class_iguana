@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+Spyder Editor
+
+This is a temporary script file.
+"""
+
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -27,3 +34,7 @@ plt.legend(['2000', '2001', '2002', '2003', '2004', '2005', '2006',
 
 sns.relplot('month', 'rain', kind = 'line', row = 'year', data = rain)
 plt.title('Daily rain (cm) by year')
+
+sns.relplot('month', 'rain', kind = 'line', col = 'year', col_wrap = 3, data = rain)
+plt.suptitle('Daily rain (cm) by year')
+plt.xlabel('month')
