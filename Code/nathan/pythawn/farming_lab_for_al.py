@@ -82,7 +82,11 @@ class Farmer:
             self.cow_count += 1
             self.wallet -= self.cow_price
             self.cow_price *= 2
+            if self.cow_count == 11:
+                self.wallet += 5000
+                print('Congratulations you got a $5000 bonus')
             return f' you now have {self.cow_count} cow(s), and make {self.milk_val} gallons of milk per farming. ${self.wallet} left'
+
 
     def new_pig(self):
         if self.wallet < self.pig_price:
@@ -92,6 +96,9 @@ class Farmer:
             self.pig_count += 1
             self.wallet -= self.pig_price
             self.pig_price *= 2
+            if self.pig_count == 11:
+                self.wallet += 5000
+                print('Congratulations you got a $5000 bonus')
             return f' you now have {self.pig_count} pig(s), and make {self.bacon_val} pounds of bacon per farming. ${self.wallet} left'
 
     def upgrade_chicken_coop(self):
@@ -102,12 +109,16 @@ class Farmer:
             self.coop_count += 1
             self.wallet -= self.coop_price
             self.coop_price *= 2
+            if self.coop_count == 11:
+                self.wallet += 5000
+                print('Congratulations you got a $5000 bonus')
             return f' you now gain {self.eggs_val} eggs per farming. ${self.wallet} left'
+
 
 
 print('you are just a simple farmer and you heart is on the farm')
 print('you can take a farmer from the farm but you can never take a farm from the farmer\n...')
-farmer = Farmer(5, 0, 10, 0, 5, 0, 12, 0, 24, 0, 0, 500, 1, 750, 1, 1000, 0)
+farmer = Farmer(5, 0, 10, 0, 5, 0, 12, 0, 24, 0, 0, 500, 1, 750, 1, 1000, 1)
 while True:
     task = input('\nHowdy, what would you like to do?\n(farm)\n(bathe)\n(sleep)\n(sell)\n(store)\n(check wallet)\n**type \'city boy\' to leave the farm**\n>')
     if task == 'farm':
@@ -127,7 +138,7 @@ while True:
         print(farmer.make_money())
         farmer.make_money()
     elif task == 'store':
-        purchases = input(f'What would you like to buy:\n${farmer.cow_price}(new cow)\n${farmer.pig_price}(new pig)\n${farmer.coop_price}(chicken coop upgrade)\n>')
+        purchases = input(f'You have ${farmer.wallet}\nWhat would you like to buy:\n${farmer.cow_price}(new cow)\n${farmer.pig_price}(new pig)\n${farmer.coop_price}(chicken coop upgrade)\n>')
         if purchases == 'new cow':
             print(farmer.new_cow())
         elif purchases == 'new pig':
@@ -137,7 +148,7 @@ while True:
     elif task == 'check wallet':
         print(farmer.check_wallet())
     elif task == 'city boy':
-        print('Thank you, come again')
+        print('Thank you, come back soon')
         break
 
 
