@@ -10,8 +10,8 @@ count = 0
 while True:
         if user_input != x:
             count += 1
-            if user_input > x:
-                user_input = int(input('Nope. That was too high. Try again.'))
+            if user_input > x: # just an if within the broader if statement
+                user_input = int(input('Nope. That was too high. Try again.')) #convert to int in same input
             elif user_input < x:
                 user_input = int(input('Nope. That was too low. Try again.'))
         elif user_input == x:

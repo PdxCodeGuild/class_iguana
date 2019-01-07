@@ -2,6 +2,7 @@
 #1. acquire all possible characters
 import random
 import string
+
 # n = input('How many characters would you like your password to have?:\n')
 # n = int(n)
 # character_list = list(string.ascii_lowercase) + list(string.digits) + list(string.punctuation)
