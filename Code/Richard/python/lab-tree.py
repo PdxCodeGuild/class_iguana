@@ -1,5 +1,7 @@
 import random
 
+# build a 'tree' using a recursive function
+
 names = ['virginia', 'christine', 'carl', 'lillian']
 
 
@@ -11,9 +13,10 @@ def generate_tree(depth):
     for i in range(n_children):
         child = generate_tree(depth+1)
         branch['children'].append(child)
-    print(branch)
+    # print(branch)
     return branch
 
+# print the tree. To see the tree as a collection of dicts, uncomment the 'print branch' line above.
 
 def print_node(node, indentation):
     if node['type'] == 'leaf':
@@ -33,18 +36,33 @@ def count_nodes(node):
         r += count_nodes(node['children'][i])
     return r
 
+# count the leaves. Loop through children, calling the function recursively
+
 def count_leaves(node):
-    count = 0
     if node['type'] == 'leaf':
-        count += 1
+        return 1
+    count = 0
     for i in range(len(node['children'])):
-        if node['type'] == 'branch':
-            count += count_leaves(node['children'][i])
-    print(f'The number of leaves is {count}.')
+        count += count_leaves(node['children'][i])
+    # print(f'The number of leaves is {count}.')
     return count
+
+# rename a leaf
+
+def rename_leaf(node, orig, replace):
+    if orig not in names:
+        print(f'There are no leaves named {orig}.')
+    else:
+        if node['type'] == 'leaf' and node['name'] == orig:
+            node.update(name = replace)
+            names.remove(orig)
+            names.append(replace)
 
 root = generate_tree(1)
 print_node(root, '')
 print(f'The number of nodes is {count_nodes(root)}.')
 
-count_leaves(root)
+print(f'The number of leaves is {count_leaves(root)}.')
+
+rename_leaf(root, 'carl', 'abcxyzdefghijkl')
+print_node(root, '')
