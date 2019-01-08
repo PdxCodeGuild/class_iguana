@@ -5,8 +5,10 @@ lab22-ari.py, computes the automated readability index of a text
 """
 import re
 
+# use a copy of James Joyce's Ulysses, downloaded from http://www.gutenberg.org
 ulysses_txt = open("ulysses.txt").read().lower()
 
+# count characters, words, and sentences to use in calculating ARI
 chars = re.findall(r"\w", ulysses_txt)
 words = re.findall(r"\b[\w-]+\b", ulysses_txt)
 sentences = re.findall(r"[^.]* \w+ [^.]*\.", ulysses_txt)
