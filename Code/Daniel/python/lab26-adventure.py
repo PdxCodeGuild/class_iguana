@@ -84,7 +84,7 @@ class Game_State:
             
 
 def update_position(state, player):
-    print(player.player_position, state.current_level)
+    print(player.player_position, state.current_level)      # Remove me! Troubleshooting only
     state.grid = copy.deepcopy(state.grid)  
     for i, row in enumerate(state.grid):
         if player.player_position['y'] == i: 
@@ -121,7 +121,7 @@ def on_platform(state, player):
             state.player_icon = '|O '
         elif tile[2] == '|':
             state.player_icon = ' O|'  
-        elif tile == '   ':                         # issue with buffered inputs creating long repeat fall animation
+        elif tile == '   ':                         # issue with buffered inputs creating looong repeat fall animation
             fall_anim = [' o ',' · ','   ']
 
             for anim in fall_anim:
@@ -220,6 +220,7 @@ while True:
 
     if state.current_level == 1:
         state.grid = dark_view((player.player_position['x'], player.player_position['y']), levels.level_list[state.current_level])
+        player.update_direction(player.player_direction)
     update_position(state, player)
 
 
