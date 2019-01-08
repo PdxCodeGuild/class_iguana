@@ -2,6 +2,9 @@ import msvcrt
 import copy
 import levels
 import time
+import importlib
+rps = importlib.import_module('lab07-rock_paper_scissors')
+guess = importlib.import_module('lab12-guess_the_number')
 
 
 class Player:
@@ -10,6 +13,7 @@ class Player:
         self.player_position = {'x':4, 'y':9}
         self.last_position = {'x':0, 'y':0}
         self.player_direction = 'up'
+        self.won_games = [False, False]
 
 
     def update_direction(self, player_direction):
@@ -24,6 +28,23 @@ class Player:
         self.player_direction = player_direction
 
 
+    def lvl_2_interact(self, obj):
+        if state.current_level == 2:
+            if obj.text_list == 'Hello' and self.won_games[0] == False:
+                self.won_games[0] = rps.get_winner()
+            elif obj.text_list == 'Yellow' and self.won_games[1] == False:
+                self.won_games[1] = guess.guess()
+            elif obj.text_list == 'Cello' and self.won_games[0] == False:
+                print('I can\'t beat that guy at Rock, Paper, Scissors. He\'s pretty good. I\'m pretty sure he mainly chooses rock' +
+                ' but he always knows when to switch off!')
+            elif obj.text_list == 'Cello' and self.won_games[0] == True:
+                print('You beat him! Wow. You\'re so cool.')
+            else:
+                print('Are you here to gloat? You\'ve already won. Leave me be.')
+        else:
+            print(obj.text_list)
+
+
     def interact(self, state):
         check_space = ()
 
@@ -36,10 +57,10 @@ class Player:
         elif state.grid[2][13] == '\t▷\n':
             check_space = (self.player_position['x'] + 1, self.player_position['y'])
 
-        print(check_space)
+        # print(check_space)                  # Remove me!! Troubleshooting only
         try:
             obj = [item for item in levels.level_objects[state.current_level]['special'] if item.coord == check_space][0]
-            print(obj.text_list)
+            self.lvl_2_interact(obj)
         except IndexError:
             pass
 
@@ -72,7 +93,12 @@ class Game_State:
                 return False
             elif player_pos_tup == (6,11) and player.player_direction == 'down':
                 self.previous_lvl = self.current_level
-                player.player_position = {'x':6, 'y':2}
+
+                if self.current_level == 1:
+                    player.player_position = {'x':6, 'y':6}
+                else:
+                    player.player_position = {'x':6, 'y':2}
+
                 self.current_level -= 1
                 state.grid = copy.deepcopy(levels.level_list[state.current_level])
                 return False
@@ -84,7 +110,7 @@ class Game_State:
             
 
 def update_position(state, player):
-    print(player.player_position, state.current_level)
+    # print(player.player_position, state.current_level)      # Remove me! Troubleshooting only
     state.grid = copy.deepcopy(state.grid)  
     for i, row in enumerate(state.grid):
         if player.player_position['y'] == i: 
@@ -121,7 +147,7 @@ def on_platform(state, player):
             state.player_icon = '|O '
         elif tile[2] == '|':
             state.player_icon = ' O|'  
-        elif tile == '   ':                         # issue with buffered inputs creating long repeat fall animation
+        elif tile == '   ':                         # issue with buffered inputs creating looong repeat fall animation
             fall_anim = [' o ',' · ','   ']
 
             for anim in fall_anim:
@@ -220,6 +246,7 @@ while True:
 
     if state.current_level == 1:
         state.grid = dark_view((player.player_position['x'], player.player_position['y']), levels.level_list[state.current_level])
+        player.update_direction(player.player_direction)
     update_position(state, player)
 
 
