@@ -1,5 +1,7 @@
 import random
 import ast
+import importlib
+
 
 
 class Interaction:
@@ -21,7 +23,7 @@ def random_item_gen():
         for i, line in enumerate(file):
             item_list.append(line.strip() + ' *' + str(item_tups[i]))
 
-    return item_list
+    return item_list, item_tups
 
 
 base = [['','   ','   ','   ','   ','   ','   ','   ','   ','   ','   ','   ','','\n'],
@@ -111,19 +113,20 @@ level_list = [
 ]
 
 
-lvl3_list = random_item_gen()
+lvl3_list,_ = random_item_gen()
+_, npc_pos = random_item_gen()
 lvl3_objects = []
 
 for item in lvl3_list:
     item_att = item.split('*')
     tup = ast.literal_eval(item_att[3])
+
     level_list[3][tup[1]][tup[0]] = item_att[2]
-    print(item_att[0])
     item_att[0] = Interaction(tup, item_att[1])
-    print(type(item_att[0]))
     lvl3_objects.append(item_att[0])
 
-print(lvl3_objects)
+for i in range(3):
+    level_list[2][npc_pos[i][1]][npc_pos[i][0]] = ' 0 '
 
 
 npc1 = Interaction((1,4), 'Hello, World')
@@ -131,6 +134,10 @@ trash = Interaction((11,0), 'This is a trash can. There\'s trash in here...')
 
 lvl1_obj1 = Interaction((8,2), 'obj1')
 lvl1_obj2 = Interaction((1,9), 'obj2') 
+
+npc2_1 = Interaction(npc_pos[0], 'Hello')
+npc2_2 = Interaction(npc_pos[1], 'Yellow')
+npc2_3 = Interaction(npc_pos[2], 'Cello')
 
 table1 = Interaction((2,2), 'Empty table...') 
 table2 = Interaction((4,2), 'Empty table...')
@@ -147,7 +154,7 @@ level_objects = [
     'special' : [lvl1_obj1, lvl1_obj2],
     },
     {'doors' : [(6,0)],      # level 2
-    'special' : [],
+    'special' : [npc2_1, npc2_2, npc2_3],
     },
     {'doors' : [(6,0)],      # level 3
     'special' : lvl3_objects,
