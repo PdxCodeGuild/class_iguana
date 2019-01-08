@@ -1,28 +1,10 @@
-import pandas as pd
-import numpy as np
-import matplotlib as plt
-plt.use('TkAgg')
-import seaborn as sns
+import requests
+import re
+import datetime
 
-# import the csv file as a pandas data frame
-# file requires pre-processing outside python
-rain_data = pd.DataFrame(pd.read_csv('rain_data.csv'))
+rain = requests.get('https://or.water.usgs.gov/non-usgs/bes/metro_center.rain').content
+print(rain)
+data = re.findall('(\d{2}-\w{3}-\d{4}) +(\d+)', rain)
+data = [(parse_date(data[i][0]), int(data[i][1]) * 0.01 * 2.54) for i in range(len(data))]
+print(data[0])
 
-# look at the data frame
-# print(rain_data)
-# print(rain_data.dtypes)
-# print(rain_data.columns)
-
-
-# deal with missing data
-rain_data.replace('', np.nan)
-# print(rain_data)
-# print(rain_data[rain_data.h0 == '-'])
-
-rain_data['Total'].apply(pd.to_numeric)
-rain_data['Date'] = pd.to_datetime(rain_data['Date'], format = '%m/%d/%y')
-print(rain_data.dtypes)
-print(rain_data)
-
-g = sns.relplot(x='Date', y='Total', kind='line', data=rain_data)
-g.fig.autofmt_xdate()
