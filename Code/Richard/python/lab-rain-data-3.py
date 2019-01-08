@@ -3,7 +3,11 @@
 """
 Created on Mon Jan  7 14:44:15 2019
 
-@author: rs
+@author: Richard Sherman
+
+lab-rain-data-3.py, gets daily rain totals from https://or.water.usgs.gov/non-usgs/bes/,
+calculates summary statistics, creates plots
+
 """
 
 import requests
@@ -18,12 +22,12 @@ rain = requests.get('https://or.water.usgs.gov/non-usgs/bes/metro_center.rain').
 
 # select the 'date' and 'total' columns
 data = re.findall('(\d{2}-\w{3}-\d{4}) +(\d+)', rain)
-print(data[0])
+# print(data[0])
 
 # convert the first 'column' to datetime, the second 'column' to int
 for i in range(len(data)):
     data[i] = datetime.datetime.strptime(data[i][0], '%d-%b-%Y'), int(data[i][1])
-print(data[0])
+# print(data[0])
 
 # calculate mean, variance, standard deviation
 total_rain = 0
@@ -120,7 +124,7 @@ for month in months:
     for i in range(len(data)):
         if data[i][0].month == month:
             total_monthly_rain[month] += data[i][1]
-pp.pprint(total_monthly_rain)    
+# pp.pprint(total_monthly_rain)    
 
 # get the length of each month
 days_in_month = {}
@@ -129,12 +133,13 @@ for month in months:
     for i in range(len(data)):
         if data[i][0].month == month:
             days_in_month[month] += 1
-pp.pprint(days_in_month)
+# pp.pprint(days_in_month)
 
 # calculate average rain by month
 average_rain_by_month = {}
 for month in months:
     average_rain_by_month[month] = round(total_monthly_rain[month] / days_in_month[month], 2)
+print('Average rain by month:')
 pp.pprint(average_rain_by_month)
 
 fig, ax = plt.subplots()
