@@ -13,7 +13,7 @@ def generate_tree(depth):
     for i in range(n_children):
         child = generate_tree(depth+1)
         branch['children'].append(child)
-    print(branch)
+    # print(branch)
     return branch
 
 # print the tree. To see the tree as a collection of dicts, uncomment the 'print branch' line above.
