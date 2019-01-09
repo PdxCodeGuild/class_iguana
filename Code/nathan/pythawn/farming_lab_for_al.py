@@ -119,6 +119,10 @@ class Farmer:
         self.wallet -= bet
         return self.wallet
 
+    def black_jack_win(self, bet):
+        self.wallet += bet
+        return self.wallet
+
 
 class Black_jack:
 
@@ -146,7 +150,8 @@ class Black_jack:
 
     def draw_card(self):
         self.card = random.choice(self.deck)
-        if self.card[1] == 1 and self.score <= [10]:
+        # self.deck.pop(self.card)
+        if self.card[1] == 1 and self.score < [11]:
             self.card_values.append(11)
         elif self.card[1] == 'J':
             self.card_values.append(10)
@@ -158,20 +163,27 @@ class Black_jack:
             self.card_values.append(self.card[1])
         return f'{self.card}'
 
-    def win_or_loose(self):
+    def win_or_loose(self, bet):
         if self.score == [21]:
-            return 'TwEnTy OnE!'
+            bet *= 5
+            return 'x5'
+        if self.score <= [21] and self.score >= [19]:
+            bet *= 2
+            return 'x2'
+        if self.score < [19]:
+            return 'lose'
         if self.score > [21]:
-            return 'loose'
-        elif self.score <= [21]:
-            return 'not loose'
+            return 'bust'
+
     def reset_score(self):
-        score
+        self.score = [0]
+        self.card_values = []
+        return self.score, self.card_values
 
 
 farmer = Farmer(5, 0, 10, 0, 5, 0, 12, 0, 24, 0, 0, 500, 1, 750, 10, 1000, 1)
 black_jack = Black_jack(0, 0)
-
+score = 0
 print('you are just a simple farmer and you heart is on the farm')
 print('you can take a farmer from the farm but you can never take a farm from the farmer\n...')
 
@@ -203,23 +215,41 @@ while True:
             print(farmer.upgrade_chicken_coop())
     elif task == 'check wallet':
         print(farmer.check_wallet())
+
     elif task == 'blackjack':
         print('welcome to black jack\n♤ 🂱 🂲 🂳 🂴 🂵 🂶 🂷 🂸 🂹 🂺 🂻 🂼 🂽 🂾\n♧ 🂡 🂢 🂣 🂤 🂥 🂦 🂧 🂨 🂩 🂪 🂫 🂬 🂭 🂮\n♡ 🃁 🃂 🃃 🃄 🃅 🃆 🃇 🃈 🃉 🃊 🃋 🃌 🃍 🃎\n♢ 🃑 🃒 🃓 🃔 🃕 🃖 🃗 🃘 🃙 🃚 🃛 🃜 🃝 🃞')
         bet = int(input('how much are you betting?\n>'))
+        farmer.gamble(bet)
+        black_jack.build_deck()
         while True:
-            black_jack.build_deck()
             start = input('would you like a hit?(type yes)\ntype \'stay\' if done\n>')
             if start == 'yes':
                 print(black_jack.draw_card())
                 print(black_jack.find_score())
-            if black_jack.win_or_loose() == 'TwEnTy OnE!':
-                print('TwEnTy OnE!\nCheers!')
+            if black_jack.win_or_loose(bet) == 'x5':
+                print(f'TwEnTy OnE!\nCheers!\nyou won ${bet}')
+                black_jack.reset_score()
+                farmer.black_jack_win(bet)
                 break
-            if black_jack.win_or_loose() == 'loose':
+            if black_jack.win_or_loose(bet) == 'bust':
+                print('better luck next time')
+                black_jack.reset_score()
                 break
-            elif start == 'stay':
-                print(black_jack.win_or_loose())
+            elif start == 'stay' and black_jack.win_or_loose(bet) == 'lose':
+                print('better luck next time')
+                black_jack.reset_score()
                 break
+            elif start == 'stay' and black_jack.win_or_loose(bet) == 'x2':
+                print(f'you won double: ${bet}')
+                black_jack.reset_score()
+                farmer.black_jack_win(bet)
+                break
+
+
+
+
+
+
     elif task == 'city boy':
         print('Thank you, come back soon')
         break
