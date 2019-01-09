@@ -184,7 +184,6 @@ class Blackjack:
 
 farmer = Farmer(5, 0, 10, 0, 5, 0, 12, 0, 24, 0, 0, 500, 1, 750, 1, 1000, 1)
 black_jack = Blackjack(0, 0)
-score = 0
 print('you are just a simple farmer and you heart is on the farm')
 print('you can take a farmer from the farm but you can never take a farm from the farmer\n...')
 
