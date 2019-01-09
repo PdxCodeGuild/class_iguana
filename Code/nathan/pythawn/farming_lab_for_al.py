@@ -1,4 +1,6 @@
 import random
+
+
 class Farmer:
     def __init__(self, energy, filth, day_light, milk, milk_val, eggs, eggs_val, bacon, bacon_val, money, wallet, cow_price, cow_count, pig_price, pig_count, coop_price, coop_count):
         self.energy = energy
@@ -48,15 +50,15 @@ class Farmer:
 
     def milk_cow(self):
         self.milk += self.milk_val
-        return f'You have {self.milk} gallon of milk'
+        return f'You have {self.milk} gallon of milk\n🐄'
 
     def farm_chicken(self):
         self.eggs += self.eggs_val
-        return f'You have {self.eggs} eggs'
+        return f'You have {self.eggs} eggs\n🐔'
 
     def make_bacon(self):
         self.bacon += self.bacon_val
-        return f'You have {self.bacon} pounds of bacon'
+        return f'You have {self.bacon} pounds of bacon\n🐖'
 
     def make_money(self):
         if self.money == 0:
@@ -86,8 +88,7 @@ class Farmer:
             if self.cow_count == 11:
                 self.wallet += 400000
                 print('Congratulations you got a $400,000 bonus')
-            return f' you now have {self.cow_count} cow(s), and make {self.milk_val} gallons of milk per farming. ${self.wallet} left'
-
+            return f' you now have {self.cow_count} cow(s)🐄, and make {self.milk_val} gallons of milk per farming. ${self.wallet} left'
 
     def new_pig(self):
         if self.wallet < self.pig_price:
@@ -100,7 +101,7 @@ class Farmer:
             if self.pig_count == 11:
                 self.wallet += 5000000
                 print('Congratulations you got a $500,0000 bonus')
-            return f' you now have {self.pig_count} pig(s), and make {self.bacon_val} pounds of bacon per farming. ${self.wallet} left'
+            return f' you now have {self.pig_count} pig(s)🐖, and make {self.bacon_val} pounds of bacon per farming. ${self.wallet} left'
 
     def upgrade_chicken_coop(self):
         if self.wallet < self.coop_price:
@@ -113,7 +114,7 @@ class Farmer:
             if self.coop_count == 11:
                 self.wallet += 1000000
                 print('Congratulations you got a $1,000,000 bonus')
-            return f' you now gain {self.eggs_val} eggs per farming. ${self.wallet} left'
+            return f' you now gain {self.eggs_val} eggs per farming🐔. ${self.wallet} left'
 
     def gamble(self, bet):
         self.wallet -= bet
@@ -124,7 +125,7 @@ class Farmer:
         return self.wallet
 
 
-class Black_jack:
+class Blackjack:
 
     def __init__(self, score, card):
         self.values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K']
@@ -181,8 +182,8 @@ class Black_jack:
         return self.score, self.card_values
 
 
-farmer = Farmer(5, 0, 10, 0, 5, 0, 12, 0, 24, 0, 0, 500, 1, 750, 10, 1000, 1)
-black_jack = Black_jack(0, 0)
+farmer = Farmer(5, 0, 10, 0, 5, 0, 12, 0, 24, 0, 0, 500, 1, 750, 1, 1000, 1)
+black_jack = Blackjack(0, 0)
 score = 0
 print('you are just a simple farmer and you heart is on the farm')
 print('you can take a farmer from the farm but you can never take a farm from the farmer\n...')
@@ -246,15 +247,6 @@ while True:
                 black_jack.reset_score()
                 farmer.black_jack_win(bet)
                 break
-
-
-
-
-
-
     elif task == 'city boy':
         print('Thank you, come back soon')
         break
-
-
-
