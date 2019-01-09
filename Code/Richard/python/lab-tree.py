@@ -1,5 +1,5 @@
 import random
-
+import pprint
 # build a 'tree' using a recursive function
 
 names = ['virginia', 'christine', 'carl', 'lillian']
@@ -28,6 +28,7 @@ def print_node(node, indentation):
 
 
 # count all trees and branches
+
 def count_nodes(node):
     if node['type'] == 'leaf':
         return 1
@@ -44,24 +45,22 @@ def count_leaves(node):
     count = 0
     for i in range(len(node['children'])):
         count += count_leaves(node['children'][i])
-    # print(f'The number of leaves is {count}.')
     return count
 
 # rename a leaf
 
 def rename_leaf(node, orig, replace):
-    if orig not in names:
-        print(f'There are no leaves named {orig}.')
+    if node['type'] == 'leaf':
+        if node['name'] == orig:
+            node['name'] = replace
     else:
-        if node['type'] == 'leaf' and node['name'] == orig:
-            node.update(name = replace)
-            names.remove(orig)
-            names.append(replace)
+        for i in range(len(node['children'])):
+            rename_leaf(node['children'][i], orig, replace)
+
 
 root = generate_tree(1)
 print_node(root, '')
 print(f'The number of nodes is {count_nodes(root)}.')
-
 print(f'The number of leaves is {count_leaves(root)}.')
 
 rename_leaf(root, 'carl', 'abcxyzdefghijkl')

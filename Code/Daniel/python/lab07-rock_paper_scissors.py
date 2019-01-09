@@ -20,6 +20,7 @@ def get_player_choice():
 def get_winner():
     player = get_player_choice()
     computer = get_computer_choice()
+    win = False
 
     if player == computer:
         print('We tied! Lets go again.')
@@ -29,27 +30,32 @@ def get_winner():
             print('Beat ya. Too easy')
         else:
             print('You win. Lucky guess')
+            win = True
     elif player == 'paper':
         if computer == 'scissors':
             print('Sucks to suck. Should have gone with rock.')
         else:
             print('I let you win. Try and do it twice')
+            win = True
     else:
         if computer == 'rock':
             print('Rock strong like ox. You cannot beat it')
         else:
             print('Wow. How did you win? Scissors? Nobody picks that. You\'re bad kid.')
+            win = True
 
-get_winner()
+    return win
 
-while True:
-    cont = input("\n\nAgain? y/n\t")
+# get_winner()
 
-    if cont == "y":
-        get_winner() 
-    elif cont == "n":
-        break
-    else:
-        print("Not a valid response. Type 'y' or 'n' ")
+# while True:
+#     cont = input("\n\nAgain? y/n\t")
+
+#     if cont == "y":
+#         get_winner() 
+#     elif cont == "n":
+#         break
+#     else:
+#         print("Not a valid response. Type 'y' or 'n' ")
 
 

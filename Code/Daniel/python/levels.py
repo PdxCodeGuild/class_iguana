@@ -1,8 +1,29 @@
+import random
+import ast
+import importlib
+
+
 
 class Interaction:
     def __init__(self, coordinate, text):
         self.coord = coordinate
         self.text_list = text 
+
+    
+def random_item_gen():
+    item_tups = []
+    item_list = []
+
+    while len(item_tups) < 10:
+        item_pos = (random.randint(1,11), random.randint(2,8))      # tuple with x, y coordinates of item
+        if item_pos not in item_tups and item_pos != (2,3):
+            item_tups.append(item_pos)
+    
+    with open('lab26_item_gen.txt', 'r', encoding='utf-8') as file:
+        for i, line in enumerate(file):
+            item_list.append(line.strip() + ' *' + str(item_tups[i]))
+
+    return item_list, item_tups
 
 
 base = [['','   ','   ','   ','   ','   ','   ','   ','   ','   ','   ','   ','','\n'],
@@ -39,7 +60,7 @@ level_list = [
         ['|','| |','   ','|  ','ΞΞΞ','   ','| |','   ','|Ō|','   ','   ','| |','|','\n'],
         ['|','| |','   ','| |','   ','   ','| |','   ','|__','ΞΞΞ','¯ ¯','__|','|','\n'],
         ['|','| |','   ','|__','ΞΞΞ','ΞΞΞ','__|','   ','   ','   ','| |','   ','|','\n'],
-        ['|','| |','   ','   ','   ','   ',' X ','ΞΞΞ','¯¯|','   ','|__','¯¯|','|','\n'],   # Level 1
+        ['|','| |','   ','   ','   ','   ',' X ','ΞΞΞ','¯¯|','   ','|__','¯¯|','|','\n'],   # Level 1   Remove X!, Troubleshooting only
         ['|','| |','   ','   ','|¯¯','ΞΞΞ','¯¯|','   ','| |','   ','   ','| |','|','\n'],
         ['|','|__','ΞΞΞ','ΞΞΞ','  |','   ','| |','   ','| |','   ','   ','| |','|','\n'],
         ['|','   ','   ','   ','| |','   ','|  ','ΞΞΞ','ΞΞΞ','ΞΞΞ','ΞΞΞ','  |','|','\n'],
@@ -65,7 +86,7 @@ level_list = [
         [['-','---','---','---','---','---','===','---','---','---','---','---','-','\n'],
         ['|','   ','   ','   ','   ','   ','   ','   ','   ','   ','   ','   ','|','\n'],
         ['|','   ','   ','   ','   ','   ','   ','   ','   ','   ','   ','   ','|','\n'],
-        ['|','   ','   ','   ','   ','   ','   ','   ','   ','   ','   ','   ','|','\n'],
+        ['|','   ',' ◭ ','   ','   ','   ','   ','   ','   ','   ','   ','   ','|','\n'],
         ['|','   ','   ','   ','   ','   ','   ','   ','   ','   ','   ','   ','|','\n'],
         ['|','   ','   ','   ','   ','   ','   ','   ','   ','   ','   ','   ','|','\n'],   # Level 3
         ['|','   ','   ','   ','   ','   ','   ','   ','   ','   ','   ','   ','|','\n'],
@@ -92,26 +113,54 @@ level_list = [
 ]
 
 
+lvl3_list,_ = random_item_gen()
+_, npc_pos = random_item_gen()
+lvl3_objects = []
+
+for item in lvl3_list:
+    item_att = item.split('*')
+    tup = ast.literal_eval(item_att[3])
+
+    level_list[3][tup[1]][tup[0]] = item_att[2]
+    item_att[0] = Interaction(tup, item_att[1])
+    lvl3_objects.append(item_att[0])
+
+for i in range(3):
+    level_list[2][npc_pos[i][1]][npc_pos[i][0]] = ' 0 '
 
 
 npc1 = Interaction((1,4), 'Hello, World')
 trash = Interaction((11,0), 'This is a trash can. There\'s trash in here...')
+
+lvl1_obj1 = Interaction((8,2), 'obj1')
+lvl1_obj2 = Interaction((1,9), 'obj2') 
+
+npc2_1 = Interaction(npc_pos[0], 'Hello')
+npc2_2 = Interaction(npc_pos[1], 'Yellow')
+npc2_3 = Interaction(npc_pos[2], 'Cello')
+
+table1 = Interaction((2,2), 'Empty table...') 
+table2 = Interaction((4,2), 'Empty table...')
+table3 = Interaction((8,2), 'Empty table...')
+table4 = Interaction((10,2), 'Empty table...')
+tablet1 = Interaction((3,8), '[Tablet1 text]')
+tablet2 = Interaction((9,8), '[Tablet2 text]')
 
 level_objects = [
     {'doors' : [(6,5),(6,4)],       # level 0
     'special' : [npc1, trash],
     },
     {'doors' : [(6,0)],      # level 1
-    'special' : [(8,2),(1,9)],
+    'special' : [lvl1_obj1, lvl1_obj2],
     },
     {'doors' : [(6,0)],      # level 2
-    'special' : [],
+    'special' : [npc2_1, npc2_2, npc2_3],
     },
     {'doors' : [(6,0)],      # level 3
-    'special' : [],
+    'special' : lvl3_objects,
     },
-    {'doors' : [(6,0)],      # level 4
-    'special' : [(2,2),(4,2),(8,2),(10,2),(3,8),(3,9)],
+    {'doors' : [],      # level 4
+    'special' : [table1,table2,table3,table4,tablet1,tablet2],
     }
 ]
 
