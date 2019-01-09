@@ -150,7 +150,9 @@ class Black_jack:
 
     def draw_card(self):
         self.card = random.choice(self.deck)
-        # self.deck.pop(self.card)
+        for i in range(len(self.deck)):
+            if i == self.card:
+                self.deck.pop(self.card)
         if self.card[1] == 1 and self.score < [11]:
             self.card_values.append(11)
         elif self.card[1] == 'J':
@@ -163,12 +165,10 @@ class Black_jack:
             self.card_values.append(self.card[1])
         return f'{self.card}'
 
-    def win_or_loose(self, bet):
+    def win_or_loose(self):
         if self.score == [21]:
-            bet *= 5
             return 'x5'
         if self.score <= [21] and self.score >= [19]:
-            bet *= 2
             return 'x2'
         if self.score < [19]:
             return 'lose'
@@ -226,20 +226,22 @@ while True:
             if start == 'yes':
                 print(black_jack.draw_card())
                 print(black_jack.find_score())
-            if black_jack.win_or_loose(bet) == 'x5':
+            if black_jack.win_or_loose() == 'x5':
+                bet *= 5
                 print(f'TwEnTy OnE!\nCheers!\nyou won ${bet}')
                 black_jack.reset_score()
                 farmer.black_jack_win(bet)
                 break
-            if black_jack.win_or_loose(bet) == 'bust':
+            if black_jack.win_or_loose() == 'bust':
                 print('better luck next time')
                 black_jack.reset_score()
                 break
-            elif start == 'stay' and black_jack.win_or_loose(bet) == 'lose':
+            elif start == 'stay' and black_jack.win_or_loose() == 'lose':
                 print('better luck next time')
                 black_jack.reset_score()
                 break
-            elif start == 'stay' and black_jack.win_or_loose(bet) == 'x2':
+            elif start == 'stay' and black_jack.win_or_loose() == 'x2':
+                bet *= 2
                 print(f'you won double: ${bet}')
                 black_jack.reset_score()
                 farmer.black_jack_win(bet)
