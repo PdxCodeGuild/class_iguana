@@ -291,3 +291,24 @@ while True:
         
         if (player.location_i, player.location_j) in cat_dict.keys():
             print('You have encountered a cat. The cat is not very loyal, but it is smart and cute.')
+            print('You can:')
+            print('\t Try to steal the cat\'s food (s)')
+            print('\t Bring the cat along with you and share its other qualities (b)')
+            print('\t Or continue on (l, r, u, d).')
+            choice = input('What would you like to do?  ')
+            if choice == 's':
+            	if cat_dict[player.location_i, player.location_j].qualities['strength'] + cat_dict[player.location_i, player.location_j].qualities['smarts'] > player.qualities['strength'] + player.qualities['smarts']:
+            		print('The cat\'s combination of strength and smarts has defeated you. Now, you are cat-scratched, and the cat stole your food.')
+            		print(f'Your hunger level is {player.qualities['hunger']}. You should go find more food.')
+            		player.qualities['food'] = 0
+            		redraw_board()
+            		move()
+            	else:
+            
+            
+            
+            
+            
+            
+            
+            
