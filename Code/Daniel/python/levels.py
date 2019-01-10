@@ -5,9 +5,11 @@ import importlib
 
 
 class Interaction:
-    def __init__(self, coordinate, text):
+    def __init__(self, coordinate, text, item, sym):
         self.coord = coordinate
         self.text_list = text 
+        self.is_item = item
+        self.symbol = sym
 
     
 def random_item_gen():
@@ -122,29 +124,29 @@ for item in lvl3_list:
     tup = ast.literal_eval(item_att[3])
 
     level_list[3][tup[1]][tup[0]] = item_att[2]
-    item_att[0] = Interaction(tup, item_att[1])
+    item_att[0] = Interaction(tup, item_att[1], True, item_att[2])
     lvl3_objects.append(item_att[0])
 
-for i in range(3):
+for i in range(3):                                              # Make this change per entry into room
     level_list[2][npc_pos[i][1]][npc_pos[i][0]] = ' 0 '
 
 
-npc1 = Interaction((1,4), 'Hello, World')
-trash = Interaction((11,0), 'This is a trash can. There\'s trash in here...')
+npc1 = Interaction((1,4), 'Hello, World', False, ' 0 ')
+trash = Interaction((11,0), 'This is a trash can. There\'s trash in here...', False, ' U ')
 
-lvl1_obj1 = Interaction((8,2), 'obj1')
-lvl1_obj2 = Interaction((1,9), 'obj2') 
+lvl1_obj1 = Interaction((8,2), 'obj1', True, ' o ')
+lvl1_obj2 = Interaction((1,9), 'obj2', True, ' o ') 
 
-npc2_1 = Interaction(npc_pos[0], 'Hello')
-npc2_2 = Interaction(npc_pos[1], 'Yellow')
-npc2_3 = Interaction(npc_pos[2], 'Cello')
+npc2_1 = Interaction(npc_pos[0], 'Hello', False, ' 0 ')
+npc2_2 = Interaction(npc_pos[1], 'Yellow', False, ' 0 ')
+npc2_3 = Interaction(npc_pos[2], 'Cello', False, ' 0 ')
 
-table1 = Interaction((2,2), 'Empty table...') 
-table2 = Interaction((4,2), 'Empty table...')
-table3 = Interaction((8,2), 'Empty table...')
-table4 = Interaction((10,2), 'Empty table...')
-tablet1 = Interaction((3,8), '[Tablet1 text]')
-tablet2 = Interaction((9,8), '[Tablet2 text]')
+table1 = Interaction((2,2), 'Empty table...', False, ' T ') 
+table2 = Interaction((4,2), 'Empty table...', False, ' T ')
+table3 = Interaction((8,2), 'Empty table...', False, ' T ')
+table4 = Interaction((10,2), 'Empty table...', False, ' T ')
+tablet1 = Interaction((3,8), '[Tablet1 text]', False, ' X ')
+tablet2 = Interaction((9,8), '[Tablet2 text]', False, ' X ')
 
 level_objects = [
     {'doors' : [(6,5),(6,4)],       # level 0
