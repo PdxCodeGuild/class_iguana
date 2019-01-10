@@ -105,7 +105,7 @@ player = Player(pi, pj, qualities = {'hunger' : random.randint(0, 10),
                                        'smarts' : 10,
                                        'strength' : random.randint(0, 10),
                                        'food' : random.randint(0, 10),
-                                       'companion' : _
+                                       'companion' : ''
                                        })
 
 things = [player]
@@ -226,14 +226,29 @@ def redraw_board():
 while True:
 
     board.print(things)
-    
+    print('In this game, you will travel through a landscape dotted by towns and forests.')
+    print('Along the way you will look for food to sustain your strength. You will encounter others:')
+    print('dogs, cats, crocodiles, scholars, and thieves. Each of them can help you if you choose them as companions.')
+    print('All have special skills that might help add to your own. For example, crocodiles are strong and fearless,')
+    print('while scholars are smart and dogs loyal. A smart, cute cat might help you find food in a town,')
+    print('and even a thief or a crocodile might help you find food in a dangerous forest. But crocs and thieves')
+    print('can be risky companions; you never know when they might turn on you. If you\'re not feeling cooperative,')
+    print('you can try to steal food from a would-be companion--but if they\'re stronger, they\'ll steal food from you out of spite.')
+    print()
+    print('Take a moment to find yourself in the landscape. You\'re a blue head-and-shoulders figure .')
+    print('A scholar is represented by a scroll, and a thief is a scary-looking figure.')
+    print('Dogs, cats and crocs look like dogs, cats and crocs. And everyone knows what a town and a forest look like.')
+    print('You start out with the following qualities:')
+    print(f'{player.qualities.items()}.')
+    print('Let\'s play. Here\'s the playing board again:')
+    board.print(things)
     move()
 
 # set up what happens when a player encounters a dog
         
     if (player.location_i, player.location_j) in dog_dict.keys():
         
-        print('You have encountered a dog. The dog is loyal, so it will share food with you generously.')
+        print('You have encountered a dog. The dog is loyal, so it will share food with you generously if you choose it as a companion.')
         print('But the dog is not very smart. You can:')
         print('\t Try to steal the dog\'s food (s)')
         print('\t Bring the dog with you and share its other qualities (b)') 
@@ -271,4 +286,8 @@ while True:
         things.remove(dog_dict[player.location_i, player.location_j])
         redraw_board()
         move()        
-                
+
+# set up what happens when the player encouters a cat:
+        
+        if (player.location_i, player.location_j) in cat_dict.keys():
+            print('You have encountered a cat. The cat is not very loyal, but it is smart and cute.')
