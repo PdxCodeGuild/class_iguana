@@ -15,6 +15,7 @@ class Player:
         self.last_position = {'x':0, 'y':0}
         self.player_direction = 'up'
         self.won_games = [False, False]
+        self.fall_position = {'x':0, 'y':0} 
 
 
     def update_direction(self, player_direction):
@@ -68,6 +69,8 @@ class Player:
             if obj.is_item == True:
                 inv.item_grabber([obj.text_list, obj.symbol], check_space, state.current_level)
                 state.grid = copy.deepcopy(levels.level_list[state.current_level])
+                if state.current_level == 1:
+                    state.grid = dark_view((player.player_position['x'], player.player_position['y']), levels.level_list[state.current_level])
                 update_position(state, player)
         except IndexError:
             pass
@@ -82,7 +85,7 @@ class Game_State:
         self.previous_lvl = 0
         self.grid = levels.level_list[self.current_level]
         self.player_icon = ' O '
-        self.obstructions = ['   ','_|_','| |','ΞΞΞ','__|','|__','|  ','  |','¯¯|','|¯¯','¯ ¯',' X ']         # misnomer: change, 'X' for testing only
+        self.obstructions = ['   ','_|_','| |','ΞΞΞ','__|','|__','|  ','  |','¯¯|','|¯¯','¯ ¯','|¯|',' X ']         # misnomer: change, 'X' for testing only
 
     def check_intersection(self):
         player_pos_tup = (player.player_position['x'],player.player_position['y'])
@@ -118,7 +121,7 @@ class Game_State:
             
 
 def update_position(state, player):
-    # print(player.player_position, state.current_level)      # Remove me! Troubleshooting only
+    print(player.player_position, player.last_position, player.fall_position, state.current_level, state.previous_lvl)      # Remove me! Troubleshooting only
     state.grid = copy.deepcopy(state.grid)  
     for i, row in enumerate(state.grid):
         if player.player_position['y'] == i: 
@@ -126,9 +129,13 @@ def update_position(state, player):
                 if player.player_position['x'] == j:
                     row[j] = state.player_icon 
     if player.last_position != player.player_position:
-        if state.previous_lvl != state.current_level and state.current_level == 1 and player.player_position['y'] > 9:
+        if state.previous_lvl != state.current_level and state.current_level == 1 and player.player_position['y'] > 9:  # player enters room from bottom 
             state.grid[player.last_position['y']][player.last_position['x']] = '   '
-        elif state.previous_lvl != state.current_level and state.current_level == 1 and 5 > player.player_position['x']:
+        elif state.previous_lvl != state.current_level and state.current_level == 1 and 3 > player.player_position['y']: # player enters room from top
+            state.grid[player.last_position['y']][player.last_position['x']] = '   '
+        elif (player.last_position['x'] < 5 or player.last_position['x'] > 7):
+            state.grid[player.last_position['y']][player.last_position['x']] = '   '
+        elif (player.last_position['y'] < 9 or player.last_position['y'] > 2):
             state.grid[player.last_position['y']][player.last_position['x']] = '   '
         else:
             state.grid[player.last_position['y']][player.last_position['x']] = levels.level_list[state.current_level][player.last_position['y']][player.last_position['x']]
@@ -147,7 +154,7 @@ def on_platform(state, player):
         state.previous_lvl = 0
 
     if state.current_level == 1:
-        if tile == '| |' or tile == '|_|':
+        if tile == '| |' or tile == '|_|' or tile == '|¯|':
             state.player_icon = '|O|' 
         elif tile == 'ΞΞΞ':
             state.player_icon = 'Ξ፬Ξ'
@@ -156,6 +163,7 @@ def on_platform(state, player):
         elif tile[2] == '|':
             state.player_icon = ' O|'  
         elif tile == '   ':                         # issue with buffered inputs creating looong repeat fall animation
+            player.fall_position = player.last_position
             fall_anim = [' o ',' · ','   ']
 
             for anim in fall_anim:
@@ -166,15 +174,14 @@ def on_platform(state, player):
            
             player.player_position = {'x':6, 'y':10}
             on_platform(state, player)
-            
             update_position(state, player)
-            # print('You fell off the walkway!')
+            
 
         else:
             state.player_icon = ' O '
-        
     else:
         state.player_icon = ' O '
+    
 
 def dark_view(player_pos, lvl1):
     x, y = player_pos 
