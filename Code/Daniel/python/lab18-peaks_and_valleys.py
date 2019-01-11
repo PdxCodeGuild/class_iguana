@@ -1,7 +1,7 @@
 # Ignores first and last cases of data based on definitions of peaks and valleys.
 
 data = [1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 5, 6, 7, 8, 9, 8, 7, 6, 7, 8, 9]
-# data = list(reversed(data))
+data = list(reversed(data))
 
 
 # Checks if the current index value is higher than the previous and next values.
@@ -65,7 +65,6 @@ def get_visual(data):
                     for k in range(j+1, len(data)):
                         if data[k] == highest:
                             is_point = True 
-                    var = data[j+1]
                     if flag == True and data[j+1] >= highest:
                         flag = False
                     elif flag == True and is_point == False:

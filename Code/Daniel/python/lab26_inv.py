@@ -18,5 +18,8 @@ class Inventory:
         answer = input('Add to inventory? y/n ')
         if answer == 'y':
             self.inventory.append(obj)
-            levels.level_list[lvl][item_pos[1]][item_pos[0]] = '   '
-            # print('\n'*25)
+            if lvl == 1:
+                levels.level_list[lvl][item_pos[1]][item_pos[0]] = '|¯|'
+            else:
+                levels.level_list[lvl][item_pos[1]][item_pos[0]] = '   '
+            print('\n'*25)
