@@ -4,15 +4,7 @@ with open('tale_of_two_cities.txt', 'r', encoding='utf-8') as f:
     for i in range(len(lines)):
         for char in string.punctuation:
             lines[i] = lines[i].replace(char, '')
-        # for i in range(len(lines)):
-        # lines[i] = lines[i].replace(',','')
-        # lines[i] = lines[i].replace('.', '')
-        # lines[i] = lines[i].replace('(', '')
-        # lines[i] = lines[i].replace(')', '')
-        # lines[i] = lines[i].replace('-', '')
-        #     lines[i] = lines[i].replace('"', '')
-        # lines[i] = lines[i].replace('*', '')
-        # lines[i] = lines[i].replace('\'', '')
+
     for i in range(len(lines)):
         for char in string.digits:
             lines[i] = lines[i].replace(char, '')
