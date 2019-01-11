@@ -1,3 +1,6 @@
+import random
+
+
 class Farmer:
     def __init__(self, energy, filth, day_light, milk, milk_val, eggs, eggs_val, bacon, bacon_val, money, wallet, cow_price, cow_count, pig_price, pig_count, coop_price, coop_count):
         self.energy = energy
@@ -47,15 +50,15 @@ class Farmer:
 
     def milk_cow(self):
         self.milk += self.milk_val
-        return f'You have {self.milk} gallon of milk'
+        return f'You have {self.milk} gallon of milk\n🐄'
 
     def farm_chicken(self):
         self.eggs += self.eggs_val
-        return f'You have {self.eggs} eggs'
+        return f'You have {self.eggs} eggs\n🐔'
 
     def make_bacon(self):
         self.bacon += self.bacon_val
-        return f'You have {self.bacon} pounds of bacon'
+        return f'You have {self.bacon} pounds of bacon\n🐖'
 
     def make_money(self):
         if self.money == 0:
@@ -83,10 +86,9 @@ class Farmer:
             self.wallet -= self.cow_price
             self.cow_price *= 2
             if self.cow_count == 11:
-                self.wallet += 5000
-                print('Congratulations you got a $5000 bonus')
-            return f' you now have {self.cow_count} cow(s), and make {self.milk_val} gallons of milk per farming. ${self.wallet} left'
-
+                self.wallet += 400000
+                print('Congratulations you got a $400,000 bonus')
+            return f' you now have {self.cow_count} cow(s)🐄, and make {self.milk_val} gallons of milk per farming. ${self.wallet} left'
 
     def new_pig(self):
         if self.wallet < self.pig_price:
@@ -97,9 +99,9 @@ class Farmer:
             self.wallet -= self.pig_price
             self.pig_price *= 2
             if self.pig_count == 11:
-                self.wallet += 5000
-                print('Congratulations you got a $5000 bonus')
-            return f' you now have {self.pig_count} pig(s), and make {self.bacon_val} pounds of bacon per farming. ${self.wallet} left'
+                self.wallet += 5000000
+                print('Congratulations you got a $500,0000 bonus')
+            return f' you now have {self.pig_count} pig(s)🐖, and make {self.bacon_val} pounds of bacon per farming. ${self.wallet} left'
 
     def upgrade_chicken_coop(self):
         if self.wallet < self.coop_price:
@@ -110,17 +112,83 @@ class Farmer:
             self.wallet -= self.coop_price
             self.coop_price *= 2
             if self.coop_count == 11:
-                self.wallet += 5000
-                print('Congratulations you got a $5000 bonus')
-            return f' you now gain {self.eggs_val} eggs per farming. ${self.wallet} left'
+                self.wallet += 1000000
+                print('Congratulations you got a $1,000,000 bonus')
+            return f' you now gain {self.eggs_val} eggs per farming🐔. ${self.wallet} left'
+
+    def gamble(self, bet):
+        self.wallet -= bet
+        return self.wallet
+
+    def black_jack_win(self, bet):
+        self.wallet += bet
+        return self.wallet
 
 
+class Blackjack:
 
+    def __init__(self, score, card):
+        self.values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K']
+        self.suits = ['♤', '♧', '♡', '♢']
+        self.deck = []
+        self.card_values = []
+        self.score = score
+        self.card = card
+
+    def build_deck(self):
+        for i in self.suits:
+            for j in self.values:
+                self.deck.append((i, j))
+        return self.deck
+
+    def find_score(self):
+        self.card_values = [sum(self.card_values)]
+        self.score = self.card_values
+        if self.score > [21]:
+            return f' Bust!, Your score is at {self.score}'
+        else:
+            return f'Your score is at {self.score}'
+
+    def draw_card(self):
+        self.card = random.choice(self.deck)
+        for i in range(len(self.deck)):
+            if i == self.card:
+                self.deck.pop(self.card)
+        if self.card[1] == 1 and self.score < [11]:
+            self.card_values.append(11)
+        elif self.card[1] == 'J':
+            self.card_values.append(10)
+        elif self.card[1] == 'Q':
+            self.card_values.append(10)
+        elif self.card[1] == 'K':
+            self.card_values.append(10)
+        else:
+            self.card_values.append(self.card[1])
+        return f'{self.card}'
+
+    def win_or_loose(self):
+        if self.score == [21]:
+            return 'x5'
+        if self.score <= [21] and self.score >= [19]:
+            return 'x2'
+        if self.score < [19]:
+            return 'lose'
+        if self.score > [21]:
+            return 'bust'
+
+    def reset_score(self):
+        self.score = [0]
+        self.card_values = []
+        return self.score, self.card_values
+
+
+farmer = Farmer(5, 0, 10, 0, 5, 0, 12, 0, 24, 0, 0, 500, 1, 750, 1, 1000, 1)
+black_jack = Blackjack(0, 0)
 print('you are just a simple farmer and you heart is on the farm')
 print('you can take a farmer from the farm but you can never take a farm from the farmer\n...')
-farmer = Farmer(5, 0, 10, 0, 5, 0, 12, 0, 24, 0, 0, 500, 1, 750, 1, 1000, 1)
+
 while True:
-    task = input('\nHowdy, what would you like to do?\n(farm)\n(bathe)\n(sleep)\n(sell)\n(store)\n(check wallet)\n**type \'city boy\' to leave the farm**\n>')
+    task = input('\nHowdy, what would you like to do?\n(farm)\n(bathe)\n(sleep)\n(sell)\n(store)\n(check wallet)\n(blackjack)\n**type \'city boy\' to leave the farm**\n>')
     if task == 'farm':
         print(farmer.farm())
         animal = input('which animal are you looking to farm?\n(cow)\n(chicken)\n(pig)\n>')
@@ -147,9 +215,37 @@ while True:
             print(farmer.upgrade_chicken_coop())
     elif task == 'check wallet':
         print(farmer.check_wallet())
+
+    elif task == 'blackjack':
+        print('welcome to black jack\n♤ 🂱 🂲 🂳 🂴 🂵 🂶 🂷 🂸 🂹 🂺 🂻 🂼 🂽 🂾\n♧ 🂡 🂢 🂣 🂤 🂥 🂦 🂧 🂨 🂩 🂪 🂫 🂬 🂭 🂮\n♡ 🃁 🃂 🃃 🃄 🃅 🃆 🃇 🃈 🃉 🃊 🃋 🃌 🃍 🃎\n♢ 🃑 🃒 🃓 🃔 🃕 🃖 🃗 🃘 🃙 🃚 🃛 🃜 🃝 🃞')
+        bet = int(input('how much are you betting?\n>'))
+        farmer.gamble(bet)
+        black_jack.build_deck()
+        while True:
+            start = input('would you like a hit?(type yes)\ntype \'stay\' if done\n>')
+            if start == 'yes':
+                print(black_jack.draw_card())
+                print(black_jack.find_score())
+            if black_jack.win_or_loose() == 'x5':
+                bet *= 5
+                print(f'TwEnTy OnE!\nCheers!\nyou won ${bet}')
+                black_jack.reset_score()
+                farmer.black_jack_win(bet)
+                break
+            if black_jack.win_or_loose() == 'bust':
+                print('better luck next time')
+                black_jack.reset_score()
+                break
+            elif start == 'stay' and black_jack.win_or_loose() == 'lose':
+                print('better luck next time')
+                black_jack.reset_score()
+                break
+            elif start == 'stay' and black_jack.win_or_loose() == 'x2':
+                bet *= 2
+                print(f'you won double: ${bet}')
+                black_jack.reset_score()
+                farmer.black_jack_win(bet)
+                break
     elif task == 'city boy':
         print('Thank you, come back soon')
         break
-
-
-

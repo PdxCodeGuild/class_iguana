@@ -37,9 +37,7 @@ for crime in data:
 sorted_crimes = sorted(crime_dict, key=crime_dict.__getitem__)
 sorted_years = sorted(crime_year, key=crime_year.__getitem__, reverse = True)
 
-# rare_crime = [off.strip('"')for off in sorted_crimes]
 num_off = [f'{off} with {crime_dict[off]} reports' for off in sorted_crimes]
-
 
 print(f'\nThe most common crime is {sorted_crimes[-1]} with {crime_dict[sorted_crimes[-1]]} reports')
 print('\nThe rarest crimes are:')
