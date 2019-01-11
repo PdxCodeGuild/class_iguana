@@ -1,0 +1,64 @@
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+
+body {
+	color:white;
+	background-image:url("https://upload.wikimedia.org/wikipedia/commons/9/9a/The_Crossing_fo_The_Red_Sea.jpg");
+	background-size:cover;
+    font-family: 'Roboto', sans-serif;
+    font-size:18px;
+}
+
+#maindiv {
+	background-color:rgba(0,0,0,0.8);
+	margin: 0 200px;
+	padding:0 20px;
+/* 	height:100%; */
+}
+
+#inset {
+	font-size: 12px
+	float: left;
+	width: 20%;
+}
+
+#quote {
+	font-style: italic;
+	text-align: center;
+}
+	
+img {
+	display: block;
+	float:right;
+	margin:8px;
+}
+
+h1 {
+	font-weight:normal;
+	text-align:center;
+	font-size:40px;
+	padding:10px;
+	margin:0px;
+}
+
+a {
+	text-decoration:none;
+	color:white;
+}
+
+a:visited {
+	color:goldenrod;
+}
+
+footer {
+	text-align:center;
+}
+
+
+html, body {
+	margin: 0;
+	padding: 0;
+	width:100%;
+	height:100%;
+}
