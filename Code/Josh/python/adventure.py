@@ -40,6 +40,43 @@ class Board:
                     print(' ', end='')
             print()
 
+def battle():
+    player_weapon = input('choose a weapon\ntype k for katana\ntype s for sais\ntype b for bo staff\n>>')
+    weapon = ['a katana', 'sais', 'nunchucks', 'no weapon']
+    enemy_weapon = random.choice(weapon)
+
+    if player_weapon in ['k', 'K', 'katana'] and enemy_weapon in ['a katana', 'no weapon', 'nunchucks']:
+        print(f'Your enemy has {enemy_weapon}')
+        print('Your katana skills out matched your enemy, nice job Leonardo')
+        entities.remove(enemy)
+        enemies.remove(enemy)
+    elif player_weapon in ['s', 'S', 'sais'] and enemy_weapon in ['sais', 'no weapon', 'a katana']:
+        print(f'Your enemy has {enemy_weapon}')
+        print('Your sai skills out matched your enemy, nice job Raphael')
+        entities.remove(enemy)
+        enemies.remove(enemy)
+    elif player_weapon in ['b', 'B', 'bo staff'] and enemy_weapon in ['nunchucks', 'no weapon', 'sais']:
+        print(f'Your enemy has {enemy_weapon}')
+        print('Your bo staff skills out matched your enemy, nice job Donatello')
+        entities.remove(enemy)
+        enemies.remove(enemy)
+    elif player_weapon in ['b', 'B', 'bo staff'] and enemy_weapon == 'a katana':
+        print(f'Your enemy has {enemy_weapon}')
+        print('Your enemies katana skills decapitated you\nGAME_OVER')
+        exit()
+    elif player_weapon in ['s', 'S', 'sais'] and enemy_weapon == 'nunchucks':
+        print(f'Your enemy has {enemy_weapon}')
+        print('Your enemies nunchuck skills bashed your skull in\nGAME_OVER')
+        exit()
+    elif player_weapon in ['k', 'K', 'katana'] and enemy_weapon == 'sais':
+        print(f'Your enemy has {enemy_weapon}')
+        print('Your enemies sai skills have pierced you in the heart\nGAME_OVER')
+        exit()
+    else:
+        print(f'{player_weapon} is not a valid choice')
+        battle()
+
+
 
 
 board = Board(10, 10)
@@ -50,18 +87,31 @@ player = Player(pi, pj)
 entities = [player]
 enemies = []
 
-for i in range(10):
+for i in range(5):
     ei, ej = board.random_location()
     enemy = Enemy(ei, ej)
     entities.append(enemy)
     enemies.append(enemy)
 
-
+def run(game_counter):
+    print(game_counter)
+    game_counter += random.randint(0,5)
+    if game_counter <= 10:
+        print('you narrowly escaped the enemy')
+        player.location_i -= 1
+        return game_counter
+    else:
+        game_counter > 10
+        print('The enemy shot you in the heart with an arrow\nGAME_OVER')
+game_counter = 0
+enemy_counter = 0
 while True:
-
+    if enemy_counter == 5:
+        print('Congratulations you have slain all enemies!! you are a true hero')
+        quit()
     board.print(entities)
 
-    command = input('what is your command? ')  # get the command from the user
+    command = input('what is your command?')  # get the command from the user
 
     if command == 'done':
         break  # exit the game
@@ -77,20 +127,17 @@ while True:
     for enemy in enemies:
         if enemy.location_i == player.location_i and enemy.location_j == player.location_j:
             print('you\'ve encountered an enemy!')
-            action = input('what will you do? ')
+            action = input('what will you do?\nattack or run?\n>>')
+            # print(action)
             if action == 'attack':
-                print('you\'ve slain the enemy')
-                entities.remove(enemy)
-                enemies.remove(enemy)
+                battle()
+                enemy_counter += 1
+                break
+            if action == 'run':
+                game_counter += 1
+                game_counter = (run(game_counter))
                 break
             else:
-                print('you hestitated and were slain')
+                print('you hesitated and were slain\nGAME_OVER')
                 exit()
-
-
-    # for enemy in enemies:
-    #     if random.randint(0, 1) == 0:
-    #         enemy.location_i += random.randint(-1, 1)
-    #     else:
-    #         enemy.location_j += random.randint(-1, 1)
 
