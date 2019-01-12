@@ -267,23 +267,22 @@ while True:
         print('\t Or continue on (l, r, u, d).')
         choice = input('What would you like to do?  ')
         if choice == 's':
-            if dog_dict[player.location_i, player.location_j].qualities['strength'] > max(player.qualities['strength'], player.qualities['companion'].qualities['strength']):
+            if dog_dict[player.location_i, player.location_j].qualities['food'] == 0:
+                print('The dog has no food! You need to look elsewhere.')
+                # redraw_board()
+                move()
+            elif dog_dict[player.location_i, player.location_j].qualities['strength'] > max(player.qualities['strength'], player.qualities['companion'].qualities['strength']):
                 print('The dog is stronger than you. Now you have a dog bite, and the dog stole your food.')
                 print(f'Your hunger level is {player.qualities["hunger"]}. You should go find more food.')
                 player.qualities['food'] = 0
                 redraw_board()
                 move()
             else:
-                if dog_dict[player.location_i, player.location_j].qualities['food'] == 0:
-                    print('The dog has no food! You need to look elsewhere.')
-                    # redraw_board()
-                    move()
-                else:
-                    player.qualities['food'] += dog_dict[player.location_i, player.location_j].qualities['food']
-                    dog_dict[player.location_i, player.location_j].qualities['food'] = 0
-                    print(f'You stole {dog_dict[player.location_i, player.location_j].qualities["food"]} units of food from the dog. You should probably move on.')
-                    redraw_board()
-                    move()
+                player.qualities['food'] += dog_dict[player.location_i, player.location_j].qualities['food']
+                dog_dict[player.location_i, player.location_j].qualities['food'] = 0
+                print(f'You stole {dog_dict[player.location_i, player.location_j].qualities["food"]} units of food from the dog. You should probably move on.')
+                redraw_board()
+                move()
         elif choice == 'b':
             player.qualities['companion'] = dog_dict[player.location_i, player.location_j]
             print('THe dog is now your companion on your journey. The dog has the following qualities:')
@@ -307,23 +306,22 @@ while True:
         print('\t Or continue on (l, r, u, d).')
         choice = input('What would you like to do?  ')
         if choice == 's':
-            if cat_dict[player.location_i, player.location_j].qualities['strength'] + cat_dict[player.location_i, player.location_j].qualities['smarts'] > max((player.qualities['strength'] + player.qualities['smarts']), (player.qualities['companion'].qualities['strength'] + player.qualities['companion'].qualities['smarts'])):
+            if cat_dict[player.location_i, player.location_j].qualities['food'] == 0:
+                print('The cat has no food! You need to look elsewhere.')
+                # redraw_board()
+                move()
+            elif cat_dict[player.location_i, player.location_j].qualities['strength'] + cat_dict[player.location_i, player.location_j].qualities['smarts'] > max((player.qualities['strength'] + player.qualities['smarts']), (player.qualities['companion'].qualities['strength'] + player.qualities['companion'].qualities['smarts'])):
                 print('The cat\'s combination of strength and smarts has defeated you. Now, you are cat-scratched, and the cat stole your food.')
                 print(f'Your hunger level is {player.qualities["hunger"]}. You should go find more food.')
                 player.qualities['food'] = 0
                 redraw_board()
                 move()
             else:
-                if cat_dict[player.location_i, player.location_j].qualities['food'] == 0:
-                    print('The cat has no food! You need to look elsewhere.')
-                    # redraw_board()
-                    move()
-                else:
-                    player.qualities['food'] += cat_dict[player.location_i, player.location_j].qualities['food']
-                    cat_dict[player.location_i, player.location_j].qualities['food'] = 0
-                    print(f'You stole {cat_dict[player.location_i, player.location_j].qualities["food"]} units of food from the cat. You should probably move on.')
-                    redraw_board()
-                    move()
+                player.qualities['food'] += cat_dict[player.location_i, player.location_j].qualities['food']
+                cat_dict[player.location_i, player.location_j].qualities['food'] = 0
+                print(f'You stole {cat_dict[player.location_i, player.location_j].qualities["food"]} units of food from the cat. You should probably move on.')
+                redraw_board()
+                move()
         elif choice == 'b':
             player.qualities['companion'] = cat_dict[player.location_i, player.location_j]
             print('The cat is now your companion on your journey. The cat has the following qualities:')
@@ -333,6 +331,8 @@ while True:
             print('While you travel with the cat, you can draw on whichever qualities are better, yours or the cat\'s.')
             things.remove(cat_dict[player.location_i, player.location_j])
             redraw_board()
+            move()
+        else:
             move()
 
 # set up what happens when the player encounters a scholar
@@ -345,23 +345,22 @@ while True:
         print('\t Or continue on (l, r, u, d).')
         choice = input('What would you like to do?  ')
         if choice == 's':
-            if scholar_dict[player.location_i, player.location_j].qualities['strength'] + scholar_dict[player.location_i, player.location_j].qualities['smarts'] > max((player.qualities['strength'] + player.qualities['smarts']), (player.qualities['companion'].qualities['strength'] + player.qualities['companion'].qualities['smarts'])):
+            if scholar_dict[player.location_i, player.location_j].qualities['food'] == 0:
+                print('The scholar has no food! You need to look elsewhere.')
+                redraw_board()
+                move()
+            elif scholar_dict[player.location_i, player.location_j].qualities['strength'] + scholar_dict[player.location_i, player.location_j].qualities['smarts'] > max((player.qualities['strength'] + player.qualities['smarts']), (player.qualities['companion'].qualities['strength'] + player.qualities['companion'].qualities['smarts'])):
                 print('The scholar\'s combination of strength and smarts has defeated you. Now, you are dumbstruck, and the scholar stole your food.')
                 print(f'Your hunger level is {player.qualities["hunger"]}. You should go find more food.')
                 player.qualities['food'] = 0
                 redraw_board()
                 move()
             else:
-                if scholar_dict[player.location_i, player.location_j].qualities['food'] == 0:
-                    print('The scholar has no food! You need to look elsewhere.')
-                    redraw_board()
-                    move()
-                else:
-                    player.qualities['food'] += scholar_dict[player.location_i, player.location_j].qualities['food']
-                    scholar_dict[player.location_i, player.location_j].qualities['food'] = 0
-                    print(f'You stole {scholar_dict[player.location_i, player.location_j].qualities["food"]} units of food from the scholar. You should probably move on.')
-                    redraw_board()
-                    move()
+                player.qualities['food'] += scholar_dict[player.location_i, player.location_j].qualities['food']
+                scholar_dict[player.location_i, player.location_j].qualities['food'] = 0
+                print(f'You stole {scholar_dict[player.location_i, player.location_j].qualities["food"]} units of food from the scholar. You should probably move on.')
+                redraw_board()
+                move()
         elif choice == 'b':
             player.qualities['companion'] = scholar_dict[player.location_i, player.location_j]
             print('The scholar is now your companion on your journey. The scholar has the following qualities:')
@@ -372,34 +371,35 @@ while True:
             things.remove(scholar_dict[player.location_i, player.location_j])
             redraw_board()
             move()
+        else:
+            move()
 
 # set up what happens when a player encounters a crocodile
 
     if (player.location_i, player.location_j) in croc_dict.keys():
-        print('You have encountered a crocodile. The crocodile is fearless and strong, but it can be dangerous.')
+        print('You have encountered a crocodile. The crocodile is very strong, but it can be dangerous.')
         print('You can:')
         print('\t Try to steal the crocodile\'s food (s)')
         print('\t Bring the crocodile along with you and share its other qualities (b)')
         print('\t Or continue on (l, r, u, d).')
         choice = input('What would you like to do?  ')
         if choice == 's':
-            if croc_dict[player.location_i, player.location_j].qualities['strength'] > max((player.qualities['strength']), (player.qualities['companion'].qualities['strength'])):
-                print('The crocodile\'s strength has defeated you. Now, you have a crocodile scar, and the crocodile stole your food.')
+            if croc_dict[player.location_i, player.location_j].qualities['food'] == 0:
+                print('The crocodile has no food! You need to look elsewhere.')
+                # redraw_board()
+                move()
+            elif croc_dict[player.location_i, player.location_j].qualities['strength'] > max(player.qualities['strength'], player.qualities['companion'].qualities['strength']):
+                print('The crocidile\'s strength has defeated you. Now, you have crocodile scars, and the crocodile stole your food.')
                 print(f'Your hunger level is {player.qualities["hunger"]}. You should go find more food.')
                 player.qualities['food'] = 0
                 redraw_board()
                 move()
             else:
-                if croc_dict[player.location_i, player.location_j].qualities['food'] == 0:
-                    print('The crocodile has no food! You need to look elsewhere.')
-                    # redraw_board()
-                    move()
-                else:
-                    player.qualities['food'] += croc_dict[player.location_i, player.location_j].qualities['food']
-                    croc_dict[player.location_i, player.location_j].qualities['food'] = 0
-                    print(f'You stole {croc_dict[player.location_i, player.location_j].qualities["food"]} units of food from the crocodile. You should probably move on.')
-                    redraw_board()
-                    move()
+                player.qualities['food'] += croc_dict[player.location_i, player.location_j].qualities['food']
+                croc_dict[player.location_i, player.location_j].qualities['food'] = 0
+                print(f'You stole {croc_dict[player.location_i, player.location_j].qualities["food"]} units of food from the crocodile. You should probably move on.')
+                redraw_board()
+                move()
         elif choice == 'b':
             player.qualities['companion'] = croc_dict[player.location_i, player.location_j]
             print('The crocodile is now your companion on your journey. The crocodile has the following qualities:')
@@ -410,10 +410,58 @@ while True:
             things.remove(croc_dict[player.location_i, player.location_j])
             redraw_board()
             move()
+        else:
+            move()
 
-            
-            
+# set up what happens when the player encounters a thief
 
-            
-            
+    if (player.location_i, player.location_j) in thief_dict.keys():
+        print('You have encountered a thief. The thief is fearless and strong, but he can be dangerous.')
+        print('You can:')
+        print('\t Try to steal the thief\'s food (s)')
+        print('\t Bring the thief along with you and share its other qualities (b)')
+        print('\t Or continue on (l, r, u, d).')
+        choice = input('What would you like to do?  ')
+        if choice == 's':
+            if thief_dict[player.location_i, player.location_j].qualities['food'] == 0:
+                print('The thief has no food! You need to look elsewhere.')
+                # redraw_board()
+                move()
+            elif thief_dict[player.location_i, player.location_j].qualities['strength'] > max(player.qualities['strength'], player.qualities['companion'].qualities['strength']):
+                print(
+                    'The thief\'s strength has defeated you. Now, you are known as an easy mark, and the thief stole your food.')
+                print(f'Your hunger level is {player.qualities["hunger"]}. You should go find more food.')
+                player.qualities['food'] = 0
+                redraw_board()
+                move()
+            else:
+                player.qualities['food'] += thief_dict[player.location_i, player.location_j].qualities['food']
+                thief_dict[player.location_i, player.location_j].qualities['food'] = 0
+                print(f'You stole {thief_dict[player.location_i, player.location_j].qualities["food"]} units of food from the thief. You should probably move on.')
+                redraw_board()
+                move()
+        elif choice == 'b':
+            player.qualities['companion'] = thief_dict[player.location_i, player.location_j]
+            print('The thief is now your companion on your journey. The thief has the following qualities:')
+            print(f'{thief_dict[player.location_i, player.location_j].qualities.items()}')
+            print('Your own qualities are:')
+            print(f'{player.qualities.items()}.')
+            print(
+                'While you travel with the thief, you can draw on whichever qualities are better, yours or the thief\'s.')
+            things.remove(thief_dict[player.location_i, player.location_j])
+            redraw_board()
+            move()
+        else:
+            move()
+
+# set up what happens when the player enters a town
+
+    if (player.location_i, player.location_j) in town_dict.keys():
+        print('You have entered a town. You might find some food here, and your companion (if you have one) will help you. But towns can be complex to navigate; you\'ll need to use your smarts. And searching is hard, so it will cost you or your compainion some of your strength.')
+        print('You can:')
+        print('\t Search around town for food (s)')
+        print('\t Stop and eat, sharing in some of your companion\'s food (depending on their loyalty). Eating will help add to your strength. (e)')
+        print('\t Or continue on (l, r, u, d).')
+        choice = input('What would you like to do?  ')
+
             
