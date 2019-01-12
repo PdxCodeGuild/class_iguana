@@ -22,9 +22,9 @@ class Farmer:
         self.coop_count = coop_count
 
     def farm(self):
-        self.day_light = self.day_light - 2
-        self.filth = self.filth + 1
-        self.energy = self.energy - 1
+        self.day_light -= 2
+        self.filth += 1
+        self.energy -= 1
         if self.energy <= 0 or self.day_light <= 0:
             print('You ran out of energy and died')
             exit()
@@ -35,7 +35,7 @@ class Farmer:
             return f'energy: {self.energy}, filth: {self.filth}, day light: {self.day_light}'
 
     def bathe(self):
-        self.day_light = self.day_light - 1
+        self.day_light -= 1
         self.filth = 0
         if self.energy <= 0 or self.day_light <= 0:
             print('You ran out of energy and died')
@@ -127,12 +127,11 @@ class Farmer:
 
 class Blackjack:
 
-    def __init__(self, score, card):
+    def __init__(self, card):
         self.values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K']
         self.suits = ['♤', '♧', '♡', '♢']
         self.deck = []
-        self.card_values = []
-        self.score = score
+        self.score = []
         self.card = card
 
     def build_deck(self):
@@ -142,8 +141,8 @@ class Blackjack:
         return self.deck
 
     def find_score(self):
-        self.card_values = [sum(self.card_values)]
-        self.score = self.card_values
+        self.score = [sum(self.score)]
+        print(self.score)
         if self.score > [21]:
             return f' Bust!, Your score is at {self.score}'
         else:
@@ -155,15 +154,15 @@ class Blackjack:
             if i == self.card:
                 self.deck.pop(self.card)
         if self.card[1] == 1 and self.score < [11]:
-            self.card_values.append(11)
+            self.score.append(11)
         elif self.card[1] == 'J':
-            self.card_values.append(10)
+            self.score.append(10)
         elif self.card[1] == 'Q':
-            self.card_values.append(10)
+            self.score.append(10)
         elif self.card[1] == 'K':
-            self.card_values.append(10)
+            self.score.append(10)
         else:
-            self.card_values.append(self.card[1])
+            self.score.append(self.card[1])
         return f'{self.card}'
 
     def win_or_loose(self):
@@ -177,13 +176,12 @@ class Blackjack:
             return 'bust'
 
     def reset_score(self):
-        self.score = [0]
-        self.card_values = []
-        return self.score, self.card_values
+        self.score = []
+        return self.score
 
 
 farmer = Farmer(5, 0, 10, 0, 5, 0, 12, 0, 24, 0, 0, 500, 1, 750, 1, 1000, 1)
-black_jack = Blackjack(0, 0)
+black_jack = Blackjack(0)
 print('you are just a simple farmer and you heart is on the farm')
 print('you can take a farmer from the farm but you can never take a farm from the farmer\n...')
 
@@ -218,7 +216,13 @@ while True:
 
     elif task == 'blackjack':
         print('welcome to black jack\n♤ 🂱 🂲 🂳 🂴 🂵 🂶 🂷 🂸 🂹 🂺 🂻 🂼 🂽 🂾\n♧ 🂡 🂢 🂣 🂤 🂥 🂦 🂧 🂨 🂩 🂪 🂫 🂬 🂭 🂮\n♡ 🃁 🃂 🃃 🃄 🃅 🃆 🃇 🃈 🃉 🃊 🃋 🃌 🃍 🃎\n♢ 🃑 🃒 🃓 🃔 🃕 🃖 🃗 🃘 🃙 🃚 🃛 🃜 🃝 🃞')
-        bet = int(input('how much are you betting?\n>'))
+        while True:
+            try:
+                bet = int(input('how much are you betting?\n>'))
+                break
+            except ValueError:
+                print('Value must be integer.')
+                continue
         farmer.gamble(bet)
         black_jack.build_deck()
         while True:
