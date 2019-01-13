@@ -110,20 +110,22 @@ pi, pj = board.random_location()
 companion = Companion(pi, pj, qualities = {'hunger' : 0,
                                        'loyalty' : 0,
                                        'cuteness' : 0,
-                                       'fear' :  0,
+                                       'courage' :  0,
                                        'smarts' : 0,
                                        'strength' : 0,
-                                       'food' : 0
+                                       'food' : 0,
+                                        'viciousness' : 0
                                        })
 
 player = Player(pi, pj, qualities = {'hunger' : random.randint(0, 10),
-                                       'loyalty' : random.randint(0, 10) / 10,
+                                       'loyalty' : random.randint(0, 5) / 10,
                                        'cuteness' : 0,
-                                       'fear' :  random.randint(0, 10),
+                                       'courage' :  random.randint(0, 10),
                                        'smarts' : 10,
                                        'strength' : random.randint(0, 10),
                                        'food' : random.randint(0, 10),
-                                       'companion' : companion
+                                       'companion' : companion,
+                                        'viciousness' : 0
                                        })
 
 
@@ -140,10 +142,11 @@ for i in range(num):
     dog = Dog(dogi, dogj, qualities = {'hunger': random.randint(0, 10),
                                'loyalty': 0.7,
                                'cuteness': random.randint(0,10),
-                               'fear' : 0,
+                               'courage' : 10,
                                'smarts' : random.randint(0,10),
                                'strength' : random.randint(0,10),
-                               'food' : random.randint(0, 10)
+                               'food' : random.randint(0, 10),
+                                'viciousness': 0
                                })
     dog_dict[(dogi, dogj)] = dog
     things.append(dog)
@@ -154,10 +157,11 @@ for i in range(num):
     cat = Cat(cati, catj, qualities = {'hunger' : random.randint(0, 10),
                                    'loyalty' : 0.3,
                                    'cuteness' :  random.randint(5, 10),
-                                   'fear' : random.randint(0, 10),
+                                   'courage' : random.randint(0, 10),
                                    'smarts' : random.randint(0, 10),
                                    'strength' : random.randint(0, 10),
-                                   'food' : random.randint(0, 10)
+                                   'food' : random.randint(0, 10),
+                                    'viciousness' : 0
                                    })
     cat_dict[(cati, catj)] = cat
     things.append(cat)
@@ -168,10 +172,11 @@ for i in range(num):
     scholar = Scholar(scholari, scholarj, qualities = {'hunger' : random.randint(0, 10),
                                        'loyalty' : random.randint(0, 10) / 10,
                                        'cuteness' : 0,
-                                       'fear' :  random.randint(0, 10),
+                                       'courage' :  random.randint(0, 10),
                                        'smarts' : 10,
                                        'strength' : random.randint(0, 10),
-                                       'food' : random.randint(0, 10)
+                                       'food' : random.randint(0, 10),
+                                        'viciousness' : 0
                                        })
     scholar_dict[(scholari, scholarj)] = scholar
     things.append(scholar)
@@ -182,10 +187,11 @@ for i in range(num):
     crocodile = Crocodile(croci, crocj, qualities = {'hunger' : random.randint(0, 10),
                                                  'loyalty' : 0.3,
                                                  'cuteness' : 0,
-                                                 'fear' : 0,
+                                                 'courage' : 10,
                                                  'smarts' : random.randint(0, 10),
                                                  'strength' : random.randint(5, 10),
-                                                 'food' : random.randint(0, 10)
+                                                 'food' : random.randint(0, 10),
+                                                 'viciousness' : random.randint(0, 10)
                                                  })
     croc_dict[(croci, crocj)] = crocodile
     things.append(crocodile)
@@ -196,10 +202,11 @@ for i in range(num):
     thief = Thief(thiefi, thiefj, qualities = {'hunger' : random.randint(0, 10),
                                    'loyalty' : 0.3,
                                     'cuteness' : 0,
-                                    'fear' : 0,
+                                    'courage' : 10,
                                     'smarts' : random.randint(0, 10),
                                     'strength' : random.randint(0, 10),
-                                    'food' : random.randint(0, 10)
+                                    'food' : random.randint(0, 10),
+                                    'viciousness' : random.randint(0, 10)
                                     })
     thief_dict[(thiefi, thiefj)] = thief
     things.append(thief)
@@ -279,8 +286,8 @@ while True:
                 move()
             else:
                 player.qualities['food'] += dog_dict[player.location_i, player.location_j].qualities['food']
-                dog_dict[player.location_i, player.location_j].qualities['food'] = 0
                 print(f'You stole {dog_dict[player.location_i, player.location_j].qualities["food"]} units of food from the dog. You should probably move on.')
+                dog_dict[player.location_i, player.location_j].qualities['food'] = 0
                 redraw_board()
                 move()
         elif choice == 'b':
@@ -318,8 +325,8 @@ while True:
                 move()
             else:
                 player.qualities['food'] += cat_dict[player.location_i, player.location_j].qualities['food']
-                cat_dict[player.location_i, player.location_j].qualities['food'] = 0
                 print(f'You stole {cat_dict[player.location_i, player.location_j].qualities["food"]} units of food from the cat. You should probably move on.')
+                cat_dict[player.location_i, player.location_j].qualities['food'] = 0
                 redraw_board()
                 move()
         elif choice == 'b':
@@ -357,8 +364,8 @@ while True:
                 move()
             else:
                 player.qualities['food'] += scholar_dict[player.location_i, player.location_j].qualities['food']
-                scholar_dict[player.location_i, player.location_j].qualities['food'] = 0
                 print(f'You stole {scholar_dict[player.location_i, player.location_j].qualities["food"]} units of food from the scholar. You should probably move on.')
+                scholar_dict[player.location_i, player.location_j].qualities['food'] = 0
                 redraw_board()
                 move()
         elif choice == 'b':
@@ -446,8 +453,7 @@ while True:
             print(f'{thief_dict[player.location_i, player.location_j].qualities.items()}')
             print('Your own qualities are:')
             print(f'{player.qualities.items()}.')
-            print(
-                'While you travel with the thief, you can draw on whichever qualities are better, yours or the thief\'s.')
+            print('While you travel with the thief, you can draw on whichever qualities are better, yours or the thief\'s.')
             things.remove(thief_dict[player.location_i, player.location_j])
             redraw_board()
             move()
@@ -457,11 +463,86 @@ while True:
 # set up what happens when the player enters a town
 
     if (player.location_i, player.location_j) in town_dict.keys():
-        print('You have entered a town. You might find some food here, and your companion (if you have one) will help you. But towns can be complex to navigate; you\'ll need to use your smarts. And searching is hard, so it will cost you or your compainion some of your strength.')
+        print('You have entered a town. You might find some food here, and your companion (if you have one) will help you. But towns can be complex to navigate; you\'ll need to use your smarts. And searching is hard, so it will cost you and your companion some of your strength.')
         print('You can:')
-        print('\t Search around town for food (s)')
-        print('\t Stop and eat, sharing in some of your companion\'s food (depending on their loyalty). Eating will help add to your strength. (e)')
+        print('\t Search around town for food, then eat (h)')
         print('\t Or continue on (l, r, u, d).')
         choice = input('What would you like to do?  ')
+        if choice == 'h':
+            if town_dict[player.location_i, player.location_j].qualities['food'] == 0:
+                print("There\'s no food in this town! You should move on.")
+                move()
+            elif town_dict[player.location_i, player.location_j].qualities['complexity'] > max(player.qualities['smarts'], player.qualities['companion'].qualities['smarts']) + player.qualities['companion'].qualities['cuteness']:
+                print('Sorry, the town is too complex for you. You didn\'t find any food. You should probably move on.')
+                move()
+            else:
+                if player.qualities['companion'].qualities['viciousness'] > 5:
+                    print('Your companion ran off with all your food! I told you they might be dangerous! You\'d better move on.')
+                    player.qualities['food'] = 0
+                    move()
+                else:
+                    food = town_dict[player.location_i, player.location_j].qualities['food']
+                    # player gets a share of food, after sharing with companion
+                    player.qualities['food'] += food * (1 - player.qualities['loyalty'])
+                    player.qualities['companion'].qualities['food'] += food * (player.qualities['loyalty'])
+                    # player gets a share of food from companion
+                    to_share = player.qualities['companion'].qualities['food'] * player.qualities['companion'].qualities['loyalty']
+                    player.qualities['companion'].qualities['food'] -= to_share
+                    # player and companion eat
+                    player_to_eat = min(player.qualities['food'] * (1 / player.qualities['hunger'], player.qualities['food']))
+                    player.qualities['hunger'] -= player_to_eat
+                    player.qualities['strength'] += player_to_eat - 1
+                    companion_to_eat = min(player.qualities['companion'].qualities['food'] * (1 / player.qualities['companion'].qualities['hunger']), player.qualities['companion'].qualities['food'])
+                    player.qualities['companion'].qualities['food'] -= companion_to_eat
+                    player.qualities['companion'].qualities['strength'] += companion_to_eat - 1
+                    print(f'You found {food} units of food in the town. After you and your companion shared it, you ate {player_to_eat} units of food.')
+                    print('You now have the following qualities:')
+                    print(f'{player.qualities.items()}')
+                    print('Your companion has the following qualities:')
+                    print(f'{thief_dict[player.location_i, player.location_j].qualities.items()}')
+                    print('It\'s time to move on.')
+                    move()
 
-            
+
+# set up what happens when the player enters a forest
+
+    if (player.location_i, player.location_j) in forest_dict.keys():
+        print('You have entered a forest. You might find some food here, and your companion (if you have one) will help you. But forests can be dnagerous; you\'ll need to use your courage. And searching is hard, so it will cost you and your companion some of your strength.')
+        print('You can:')
+        print('\t Search around the forest for food, then eat (h)')
+        print('\t Or continue on (l, r, u, d).')
+        choice = input('What would you like to do?  ')
+        if choice == 'h':
+            if forest_dict[player.location_i, player.location_j].qualities['food'] == 0:
+                print("There\'s no food in this forest! You should move on.")
+                move()
+            elif forest_dict[player.location_i, player.location_j].qualities['danger'] > max(player.qualities['courage'], player.qualities['companion'].qualities['courage']):
+                print('Sorry, the forest is too dangerous for you. You didn\'t find any food. You should probably move on.')
+                move()
+            else:
+                if player.qualities['companion'].qualities['viciousness'] > 5:
+                    print('Your companion ran off with all your food! I told you they might be dangerous! You\'d better move on.')
+                    player.qualities['food'] = 0
+                    move()
+                else:
+                    food = forest_dict[player.location_i, player.location_j].qualities['food']
+                    # player gets a share of food, after sharing with companion
+                    player.qualities['food'] += food * (1 - player.qualities['loyalty'])
+                    player.qualities['companion'].qualities['food'] += food * (player.qualities['loyalty'])
+                    # player gets a share of food from companion
+                    to_share = player.qualities['companion'].qualities['food'] * player.qualities['companion'].qualities['loyalty']
+                    player.qualities['companion'].qualities['food'] -= to_share
+                    # player and companion eat
+                    player_to_eat = min(player.qualities['food'] * (1 / player.qualities['hunger'], player.qualities['food']))
+                    player.qualities['hunger'] -= player_to_eat
+                    player.qualities['strength'] += player_to_eat - 1
+                    companion_to_eat = min(player.qualities['companion'].qualities['food'] * (1 / player.qualities['companion'].qualities['hunger']), player.qualities['companion'].qualities['food'])
+                    player.qualities['companion'].qualities['food'] -= companion_to_eat
+                    player.qualities['companion'].qualities['strength'] += companion_to_eat - 1
+                    print(f'You found {food} units of food in the forest. After you and your companion shared it, you ate {player_to_eat} units of food.')
+                    print('You now have the following qualities:')
+                    print(f'{player.qualities.items()}')
+                    print('Your companion has the following qualities:')
+                    print(f'{thief_dict[player.location_i, player.location_j].qualities.items()}')
+                    print('It\'s time to move on.')
+                    move()
