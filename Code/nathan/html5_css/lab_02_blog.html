@@ -23,77 +23,93 @@
             header > span {
                 font-size:80px;
             }
-            .nav {
-                background-color:rgba(180,180,180,0.6);
+            nav {
+                position: -webkit-sticky;
+                position: sticky;
+                top: 20;
+                background-color:rgba(180,180,180,0.5);
+                padding: 15px;
                 text-color:black;
-                padding:25px;
-                margin: 0px 200px 5px 200px
-                margin-bottom: 10px;
-                margin-left: 200px;
-                margin-right: 200px;
-                text-align:center
+                margin: 0px 200px 0px 200px;
+                text-align:center;
             }
-            a {
+            nav a {
+                color: black;
                 background-color:Ivory;
-                padding: 10px
+                padding: 10px;
+            }
+            article {
+                background-color: rgba(180,180,180,0.5);
+                margin: 0px 200px 0px 200px;
+            }
+            .button {
+                text-align: center;
+                padding: 8px;
             }
             h1 {
                 font-size:27px;
                 color:black;
-                background-color:rgba(255, 255, 240, 0.7);
-                margin: 0px 300px 0px 300px;
-                padding: 15px;
+                background-color:rgba(255, 255, 240, 0.6);
+                margin: 0px 125px 0px 125px;
+                text-align: center;
 
             }
             h2 {
                 color:black;
-                background-color:rgba(255, 255, 240, 0.7);
-                margin: 0px 300px 0px 300px;
+                background-color:rgba(255, 255, 240, 0.6);
+                margin: 0px 125px 0px 125px;
                 padding: 15px;
                 font-size:15;
+                text-align: center;
             }
             pre {
                 color:black;
-                background-color:rgba(255, 255, 240, 0.7);
-                margin: 0px 300px 0px 300px;
+                background-color:rgba(255, 255, 240, 0.6);
+                margin: 0px 125px 0px 125px;
                 padding: 15px;
-                text-align:left
+                text-align:left;
             }
-            ul {
-                 color:black;
-                background-color:rgba(255, 255, 240, 0.7);
-                margin: 0px 300px 0px 300px;
-                padding: 15px;
-                text-align:right
-                border: 2px black;
-            }
-
-            h3 {
+            h5 {
                 color:black;
-                background-color:rgba(255, 255, 240, 0.7);
-                margin: 0px 300px 0px 300px;
+                background-color:rgba(255, 255, 240, 0.6);
+                margin: 0px 125px 0px 125px;
                 padding: 15px;
                 font-size:27;
+                text-align: center;
+            }
+            h6 {
+                color:black;
+                background-color:rgba(255, 255, 240, 0.6);
+                margin: 0px 125px 0px 125px;
+                padding: 15px;
+                font-size:15;
+                text-align: center;
+            }
+            h3 {
+                color:black;
+                background-color:rgba(255, 255, 240, 0.6);
+                margin: 0px 125px 0px 125px;
+                padding: 15px;
+                font-size:27;
+                text-align: center;
             }
             h4 {
                 color:black;
-                background-color:rgba(255, 255, 240, 0.7);
-                margin: 0px 300px 0px 300px;
+                background-color:rgba(255, 255, 240, 0.6);
+                margin: 0px 125px 0px 125px;
                 padding: 15px;
                 font-size:15;
+                text-align: center;
+            }
             u {
                 text-decoration: underline;
             }
+            h7 {
+                color:black;
+                padding: 15px;
+                font-size:15px;
+                text-align: center;
             }
-            article {
-
-                padding: 20px;
-                background-color: rgba(180,180,180,0.6);
-
-            }
-
-
-3
 
 
         </style>
@@ -103,7 +119,8 @@
             <span>Pizza Time</span>
             <img src="https://i.kisscc0.com/20180814/twe/kisscc0-chef-s-uniform-cooking-sushi-restaurant-chef-cooking-5b7301b8cb1956.8527003615342637368319.png" width="350px"/>
         </header>
-        <nav class="nav">
+        <nav>
+        <a href="#">Home</a>
         <a href="#">Topping Encyclopedia</a>
         <a href="#">Pro Choice Cows</a>
         <a href="#">The Parlor Vote</a>
@@ -115,7 +132,7 @@
             <h2>Published, October 28th, 2006</h2>
             <pre>
     Everyone who knows, knows that the sauce makes the pizza...
-    Unfortunately this month pizza sales have been booming and
+    Unfortunately this month, pizza sales have been booming and
     there is a PSA declaring tomatoes IN HIGH DEMAND.
     My original thought was "this can't be happening"...
     Don't get me wrong, I have no problem with truffle sauce,
@@ -124,6 +141,8 @@
     Chef's all across the city are planting their own tomatoes and
     starting to set up indoor hydroponic garden's in order to get
     back to making sauce asap.</pre>
+            <div class="button"><button>Comments(17)</button>
+                <button>Share</button></div>
         </article>
         <article>
             <h3><u>Pizza Chef Falls Into Oven</u></h3>
@@ -138,7 +157,31 @@
     further injury. Food critique 'Giovani Gustav' commented
     saying that, "This should make other chefs more aware of the
     importance to maintaining an orderly kitchen".</pre>
+             <div class="button"><button>Comments(49)</button>
+                <button>Share</button></div>
         </article>
+        <article>
+            <h5><u>Knife Throwing</u></h5>
+            <h6>Published, October 14th, 2006</h6>
+            <pre>
+    When most people think about pizza themed activities, you might
+    think about drinking beer with your friends, birthday parties, or
+    maybe sports games. Though a new and popular, yet unusual act has
+    been traveling around to the trendiest pizza parlors in the nation.
+    Walker Reynolds has created an awe inspiring and suspenseful event
+    where he spins a pizza on a vertical wheel and continues on to
+    throw knives at the pizza. Magically perfect sized slices of pie
+    fall from the spinning pizza onto a plate placed on the floor.
+    Audiences are amazed and often times will pay double to purchase
+    a slice cut by Walker's knives. He comes to town on Halloween night
+    so make sure to reserve a table at Lucky's Tavern downtown.
+    Costumes encouraged!</pre>
+             <div class="button"><button>Comments(32)</button>
+                <button>Share</button></div>
+        </article>
+        <footer>
+            <h7>Pizza Time LLC</h7>
+        </footer>
     </body>
 </html>
 
