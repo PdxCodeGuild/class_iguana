@@ -117,13 +117,13 @@ companion = Companion(pi, pj, qualities = {'hunger' : 0,
                                         'viciousness' : 0
                                        })
 
-player = Player(pi, pj, qualities = {'hunger' : random.randint(0, 10),
+player = Player(pi, pj, qualities = {'hunger' : random.randint(1, 10),
                                        'loyalty' : random.randint(0, 5) / 10,
                                        'cuteness' : 0,
                                        'courage' :  random.randint(0, 10),
                                        'smarts' : 10,
                                        'strength' : random.randint(0, 10),
-                                       'food' : random.randint(0, 10),
+                                       'food' : random.randint(1, 10),
                                        'companion' : companion,
                                         'viciousness' : 0
                                        })
@@ -139,7 +139,7 @@ num = 7
 dog_dict = {}
 for i in range(num):
     dogi, dogj = board.random_location()
-    dog = Dog(dogi, dogj, qualities = {'hunger': random.randint(0, 10),
+    dog = Dog(dogi, dogj, qualities = {'hunger': random.randint(1, 10),
                                'loyalty': 0.7,
                                'cuteness': random.randint(0,10),
                                'courage' : 10,
@@ -154,7 +154,7 @@ for i in range(num):
 cat_dict = {}
 for i in range(num):
     cati, catj = board.random_location()
-    cat = Cat(cati, catj, qualities = {'hunger' : random.randint(0, 10),
+    cat = Cat(cati, catj, qualities = {'hunger' : random.randint(1, 10),
                                    'loyalty' : 0.3,
                                    'cuteness' :  random.randint(5, 10),
                                    'courage' : random.randint(0, 10),
@@ -169,7 +169,7 @@ for i in range(num):
 scholar_dict = {}
 for i in range(num):
     scholari, scholarj = board.random_location()
-    scholar = Scholar(scholari, scholarj, qualities = {'hunger' : random.randint(0, 10),
+    scholar = Scholar(scholari, scholarj, qualities = {'hunger' : random.randint(1, 10),
                                        'loyalty' : random.randint(0, 10) / 10,
                                        'cuteness' : 0,
                                        'courage' :  random.randint(0, 10),
@@ -184,7 +184,7 @@ for i in range(num):
 croc_dict = {}
 for i in range(num):
     croci, crocj = board.random_location()
-    crocodile = Crocodile(croci, crocj, qualities = {'hunger' : random.randint(0, 10),
+    crocodile = Crocodile(croci, crocj, qualities = {'hunger' : random.randint(1, 10),
                                                  'loyalty' : 0.3,
                                                  'cuteness' : 0,
                                                  'courage' : 10,
@@ -489,7 +489,7 @@ while True:
                     to_share = player.qualities['companion'].qualities['food'] * player.qualities['companion'].qualities['loyalty']
                     player.qualities['companion'].qualities['food'] -= to_share
                     # player and companion eat
-                    player_to_eat = min(player.qualities['food'] * (1 / player.qualities['hunger'], player.qualities['food']))
+                    player_to_eat = min(player.qualities['food'] * (1 / player.qualities['hunger']) , player.qualities['food'])
                     player.qualities['hunger'] -= player_to_eat
                     player.qualities['strength'] += player_to_eat - 1
                     companion_to_eat = min(player.qualities['companion'].qualities['food'] * (1 / player.qualities['companion'].qualities['hunger']), player.qualities['companion'].qualities['food'])
@@ -533,7 +533,7 @@ while True:
                     to_share = player.qualities['companion'].qualities['food'] * player.qualities['companion'].qualities['loyalty']
                     player.qualities['companion'].qualities['food'] -= to_share
                     # player and companion eat
-                    player_to_eat = min(player.qualities['food'] * (1 / player.qualities['hunger'], player.qualities['food']))
+                    player_to_eat = min(player.qualities['food'] * (1 / player.qualities['hunger']), player.qualities['food'])
                     player.qualities['hunger'] -= player_to_eat
                     player.qualities['strength'] += player_to_eat - 1
                     companion_to_eat = min(player.qualities['companion'].qualities['food'] * (1 / player.qualities['companion'].qualities['hunger']), player.qualities['companion'].qualities['food'])
