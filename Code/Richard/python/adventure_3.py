@@ -403,8 +403,8 @@ while True:
                 move()
             else:
                 player.qualities['food'] += croc_dict[player.location_i, player.location_j].qualities['food']
-                croc_dict[player.location_i, player.location_j].qualities['food'] = 0
                 print(f'You stole {croc_dict[player.location_i, player.location_j].qualities["food"]} units of food from the crocodile. You should probably move on.')
+                croc_dict[player.location_i, player.location_j].qualities['food'] = 0
                 redraw_board()
                 move()
         elif choice == 'b':
@@ -443,8 +443,8 @@ while True:
                 move()
             else:
                 player.qualities['food'] += thief_dict[player.location_i, player.location_j].qualities['food']
-                thief_dict[player.location_i, player.location_j].qualities['food'] = 0
                 print(f'You stole {thief_dict[player.location_i, player.location_j].qualities["food"]} units of food from the thief. You should probably move on.')
+                thief_dict[player.location_i, player.location_j].qualities['food'] = 0
                 redraw_board()
                 move()
         elif choice == 'b':
