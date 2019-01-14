@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    <style>
+      body {
+        margin: 0;
+      }
+      .wrapper {
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr;
+        grid-template-rows: 100px 50px auto 20px;
+        background-image: url("https://images.designtrends.com/wp-content/uploads/2016/03/29102340/Bright-White-Background.jpg");
+        background-repeat: no-repeat;
+      }
+
+      @import url("https://fonts.googleapis.com/css?family=Raleway:300,400");
+
+      @font-face {
+        font-family: "scriptinaregular";
+        src: url("SCRIPTIN.ttf");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      #title::first-letter {
+        color: crimson;
+      }
+
+      header {
+        font-family: "scriptinaregular";
+        font-size: 75px;
+
+        display: flex;
+        grid-row: 1/2;
+        grid-column: 1/4;
+        align-items: center;
+        justify-content: left;
+        padding: 10px 0 10px 80px;
+      }
+
+      footer {
+        grid-row: 5/6;
+        grid-column: 1/4;
+        text-align: center;
+      }
+
+      footer p {
+        color: #c3c7ca;
+        margin: 0 0 -20px 0;
+      }
+      nav {
+        font-family: "Raleway", sans-serif;
+        font-weight: 100;
+        grid-column: 1/4;
+        grid-row: 2;
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        padding: 20px;
+        margin: 4px 100px;
+      }
+
+      nav a {
+        margin: 0 20px;
+        padding: 4px 30px;
+
+      }
+     nav a:link{
+       color: black;
+       text-decoration: none;
+     } 
+
+    nav a:visited{
+      color: black;
+     }
+
+    nav a:hover {
+      color: black;
+     }
+
+      #selected {
+        border: solid;
+        border-width: 0 0 2px 0;
+        border-color: crimson;
+      }
+
+          section {
+        grid-column: 2/3;
+        grid-row: 3;
+        text-align: left;
+      }
+
+      .post {
+        background-color: rgba(112, 128, 144, 0.103);
+        padding: 20px 40px;
+        margin: 20px 0;
+        -webkit-box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
+        box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
+      }
+
+      #facebook {
+        -webkit-clip-path: inset(25.6% 67.5% 23.2% 0%);
+        clip-path: inset(25.6% 67.5% 23.2% 0%);
+      }
+
+      #twitter {
+        -webkit-clip-path: inset(25.6% 35% 23.2% 34%);
+        clip-path: inset(25.6% 35% 23.2% 34%);
+      }
+      #instagram {
+        -webkit-clip-path: inset(25.6% 1% 23.2% 67%);
+        clip-path: inset(25.6% 1% 23.2% 67%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        This is the
+        <div id="title">Header</div>
+      </header>
+      <nav>
+        <a href="https://s3.envato.com/files/220195862/02_06_404_error_page.jpg" id="selected">Nav 1</a>
+        <a href="https://s3.envato.com/files/220195862/02_06_404_error_page.jpg">Nav 2</a>
+        <a href="https://s3.envato.com/files/220195862/02_06_404_error_page.jpg">Nav 3</a>
+        <a href="https://s3.envato.com/files/220195862/02_06_404_error_page.jpg">Nav 4</a>
+        <a href="https://s3.envato.com/files/220195862/02_06_404_error_page.jpg">Nav 5</a>
+      </nav>
+      <section>
+        <div class="post">
+          <h2>post0</h2>
+          <p>
+            Mollit pariatur in anim incididunt occaecat mollit reprehenderit. In
+            fugiat non sint qui id veniam sunt mollit magna do duis cupidatat
+            elit reprehenderit. Occaecat minim in mollit nisi esse quis amet
+            anim ad est fugiat nostrud excepteur. Lorem culpa qui proident ad
+            labore voluptate cillum officia velit exercitation mollit quis Lorem
+            Lorem. Minim amet eiusmod culpa pariatur non id dolore.
+          </p>
+        </div>
+        <div class="post">
+          <h2>post1</h2>
+          <p>
+            Sunt sunt duis officia est aute consectetur qui officia Lorem
+            officia anim. Lorem amet fugiat eu sit Lorem id adipisicing
+            exercitation occaecat irure nulla irure pariatur consequat. Occaecat
+            pariatur do commodo laborum pariatur voluptate. Irure mollit cillum
+            cupidatat aliqua ad consequat velit anim pariatur aliquip elit nisi
+            officia Lorem.
+          </p>
+        </div>
+        <div class="post">
+          <h2>post2</h2>
+          <p>
+            Eu magna eu enim ea minim. Lorem laborum mollit ea in eiusmod. Nulla
+            quis elit velit consequat adipisicing sit deserunt consequat
+            consequat et aute. Occaecat ipsum tempor duis amet aute. Esse
+            occaecat nulla pariatur proident.
+          </p>
+        </div>
+        <div class="post">
+          <h2>post3</h2>
+          <p>
+            In aute aliqua officia fugiat eiusmod esse non exercitation Lorem
+            proident proident velit. Ullamco ad do labore est enim magna.
+            Laboris ut mollit aliqua est excepteur.
+          </p>
+        </div>
+        <div class="post">
+          <h2>post4</h2>
+          <p>
+            Consectetur aliqua consectetur nostrud nulla consequat. Est est
+            Lorem voluptate Lorem labore enim laboris sit qui aliquip irure
+            reprehenderit ex ad. Eiusmod eiusmod incididunt velit ad occaecat
+            deserunt voluptate irure dolor. Dolor pariatur esse culpa cupidatat
+            ullamco veniam reprehenderit fugiat. Velit ex aliqua aute est esse
+            exercitation incididunt occaecat consequat dolor cupidatat
+            reprehenderit nostrud.
+          </p>
+        </div>
+      </section>
+      <footer>
+        <p>© 2019 Footer</p>
+        <a href="https://www.facebook.com/">
+          <img
+            id="facebook"
+            src="http://www.newdesignfile.com/postpic/2014/12/facebook-twitter-instagram-icons_71712.jpg"
+            width="200px"
+            alt="facebook"
+        /></a>
+        <a href="https://twitter.com/">
+          <img
+            id="twitter"
+            src="http://www.newdesignfile.com/postpic/2014/12/facebook-twitter-instagram-icons_71712.jpg"
+            width="200px"
+            alt="twitter"
+        /></a>
+        <a href="https://www.instagram.com/">
+          <img
+            id="instagram"
+            src="http://www.newdesignfile.com/postpic/2014/12/facebook-twitter-instagram-icons_71712.jpg"
+            width="200px"
+            alt="instagram"
+        /></a>
+      </footer>
+    </div>
+  </body>
+</html>
