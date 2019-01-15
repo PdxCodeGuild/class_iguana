@@ -16,6 +16,8 @@
         grid-template-rows: 100px 50px auto 20px;
         background-image: url("https://images.designtrends.com/wp-content/uploads/2016/03/29102340/Bright-White-Background.jpg");
         background-repeat: no-repeat;
+        background-size: 1500px;
+        background-attachment: fixed;
       }
 
       @import url("https://fonts.googleapis.com/css?family=Raleway:300,400");
@@ -34,7 +36,6 @@
       header {
         font-family: "scriptinaregular";
         font-size: 75px;
-
         display: flex;
         grid-row: 1/2;
         grid-column: 1/4;
@@ -50,7 +51,7 @@
       }
 
       footer p {
-        color: #c3c7ca;
+        color: #8e8e8e;
         margin: 0 0 -20px 0;
       }
       nav {
@@ -61,60 +62,112 @@
         display: flex;
         justify-content: right;
         align-items: center;
-        padding: 20px;
+        padding: 0 20px;
         margin: 4px 100px;
       }
 
       nav a {
         margin: 0 20px;
         padding: 4px 30px;
-
       }
-     nav a:link{
-       color: black;
-       text-decoration: none;
-     } 
+      nav a:link {
+        color: black;
+        text-decoration: none;
+      }
 
-    nav a:visited{
-      color: black;
-     }
+      nav a:visited {
+        color: black;
+      }
 
-    nav a:hover {
-      color: black;
-     }
-
-      #selected {
+      nav a:hover {
+        color: black;
         border: solid;
         border-width: 0 0 2px 0;
         border-color: crimson;
       }
 
-          section {
-        grid-column: 2/3;
+      section {
+        grid-column: 1/4;
         grid-row: 3;
         text-align: left;
+        padding: 0 10%;
       }
 
       .post {
         background-color: rgba(112, 128, 144, 0.103);
-        padding: 20px 40px;
+        padding: 20px;
         margin: 20px 0;
         -webkit-box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
         box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
       }
 
+      .post h2 {
+        font-family: "Raleway", sans-serif;
+      }
+
       #facebook {
-        -webkit-clip-path: inset(25.6% 67.5% 23.2% 0%);
-        clip-path: inset(25.6% 67.5% 23.2% 0%);
+        -webkit-clip-path: inset(22.66% 71.5% 7.02% 3%);
+        clip-path: inset(22.66% 71.5% 7.02% 3%);
+        margin: 20px -60px;
       }
 
       #twitter {
-        -webkit-clip-path: inset(25.6% 35% 23.2% 34%);
-        clip-path: inset(25.6% 35% 23.2% 34%);
+        -webkit-clip-path: inset(21.19% 37.5% 4.08% 37.5%);
+        clip-path: inset(21.19% 37.5% 4.08% 37.5%);
+        margin: 20px 0;
       }
       #instagram {
-        -webkit-clip-path: inset(25.6% 1% 23.2% 67%);
-        clip-path: inset(25.6% 1% 23.2% 67%);
+        -webkit-clip-path: inset(24.13% 2.5% 5.55% 73%);
+        clip-path: inset(24.13% 2.5% 5.55% 73%);
+        margin: 20px -60px;
+      }
+
+      #center_footer_imgs {
+        opacity: 0.5;
+        filter: alpha(opacity=50);
+      }
+
+      @media screen and (max-width: 1000px) {
+        header {
+          justify-content: center;
+          padding: 20px 0;
+        }
+
+        .wrapper {
+          background-size: 1200px;
+        }
+
+        nav {
+          justify-content: center;
+          padding: 0;
+          margin: 4px 0;
+        }
+
+        nav a {
+          padding: 10px;
+          margin: 4px 20px;
+        }
+
+        #instagram,
+        #twitter,
+        #facebook {
+          margin: 20px -150px;
+        }
+
+        #center_footer_imgs {
+          padding: 0 0 0 100px;
+        }
+      }
+
+      @media screen and (max-width: 530px) {
+        header {
+          font-size: 40px;
+        }
+
+        nav a {
+          padding: 0;
+          margin: 4px 10px;
+        }
       }
     </style>
   </head>
@@ -125,11 +178,21 @@
         <div id="title">Header</div>
       </header>
       <nav>
-        <a href="https://s3.envato.com/files/220195862/02_06_404_error_page.jpg" id="selected">Nav 1</a>
-        <a href="https://s3.envato.com/files/220195862/02_06_404_error_page.jpg">Nav 2</a>
-        <a href="https://s3.envato.com/files/220195862/02_06_404_error_page.jpg">Nav 3</a>
-        <a href="https://s3.envato.com/files/220195862/02_06_404_error_page.jpg">Nav 4</a>
-        <a href="https://s3.envato.com/files/220195862/02_06_404_error_page.jpg">Nav 5</a>
+        <a href="https://s3.envato.com/files/220195862/02_06_404_error_page.jpg"
+          >Nav 1</a
+        >
+        <a href="https://s3.envato.com/files/220195862/02_06_404_error_page.jpg"
+          >Nav 2</a
+        >
+        <a href="https://s3.envato.com/files/220195862/02_06_404_error_page.jpg"
+          >Nav 3</a
+        >
+        <a href="https://s3.envato.com/files/220195862/02_06_404_error_page.jpg"
+          >Nav 4</a
+        >
+        <a href="https://s3.envato.com/files/220195862/02_06_404_error_page.jpg"
+          >Nav 5</a
+        >
       </nav>
       <section>
         <div class="post">
@@ -186,27 +249,29 @@
       </section>
       <footer>
         <p>© 2019 Footer</p>
-        <a href="https://www.facebook.com/">
-          <img
-            id="facebook"
-            src="http://www.newdesignfile.com/postpic/2014/12/facebook-twitter-instagram-icons_71712.jpg"
-            width="200px"
-            alt="facebook"
-        /></a>
-        <a href="https://twitter.com/">
-          <img
-            id="twitter"
-            src="http://www.newdesignfile.com/postpic/2014/12/facebook-twitter-instagram-icons_71712.jpg"
-            width="200px"
-            alt="twitter"
-        /></a>
-        <a href="https://www.instagram.com/">
-          <img
-            id="instagram"
-            src="http://www.newdesignfile.com/postpic/2014/12/facebook-twitter-instagram-icons_71712.jpg"
-            width="200px"
-            alt="instagram"
-        /></a>
+        <div id="center_footer_imgs">
+          <a href="https://www.facebook.com/">
+            <img
+              id="facebook"
+              src="https://www.cyberacoustics.com/images/uploads/liveCanvas/Icon_facebook-twitter-pinterest-instagram-promojam-03.png"
+              width="200px"
+              alt="facebook"
+          /></a>
+          <a href="https://twitter.com/">
+            <img
+              id="twitter"
+              src="https://www.cyberacoustics.com/images/uploads/liveCanvas/Icon_facebook-twitter-pinterest-instagram-promojam-03.png"
+              width="200px"
+              alt="twitter"
+          /></a>
+          <a href="https://www.instagram.com/">
+            <img
+              id="instagram"
+              src="https://www.cyberacoustics.com/images/uploads/liveCanvas/Icon_facebook-twitter-pinterest-instagram-promojam-03.png"
+              width="200px"
+              alt="instagram"
+          /></a>
+        </div>
       </footer>
     </div>
   </body>
