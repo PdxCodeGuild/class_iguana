@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+
+    </head>
+    <body>
+        <script>
+        let eyes = [':', '=', ';']
+        let noses = ['-', '>', 'o']
+        let mouth = ['(', ')', '0']
+
+        function random_choice(array) {
+            let array_length = array.length
+            let random_int = Math.random() * array_length
+            random_int = Math.floor(random_int)
+            return random_int
+        }
+
+        let i = 0
+        while (i < 5) {
+            let face = eyes[random_choice(eyes)] + noses[random_choice(noses)] + mouth[random_choice(mouth)]
+            console.log(face)
+            i = i + 1
+        }
+        
+        
+        
+        
+        </script>
+    </body>
+</html>
