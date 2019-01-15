@@ -1,0 +1,80 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      #change {
+        margin: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    How much money do you have?<input id="change" type="text" />
+    <button id="make_change">Make Change</button>
+    <div id="conversion_select">
+      <input
+        type="radio"
+        name="conversion"
+        value="penny"
+      />Convert from penny amount<br />
+      <input
+        type="radio"
+        name="conversion"
+        value="dollar"
+      />Convert from dollar amount<br />
+    </div>
+
+    <div id="converted_amount"></div>
+
+    <script>
+      make_change.onclick = function() {
+        let amount = change.value;
+        let total = 0;
+        let fixed = 0;
+        let pennies = 0;
+
+        if (document.querySelector('input[name=conversion]:checked').value == "penny") {
+            let dollar = Math.floor(amount / 100);
+            let extra = Math.floor(amount % 100);
+            pennies = amount;
+
+            if (extra < 10) {
+                extra = "0" + extra
+            }
+            let total = "$" + dollar + "." + extra;
+            
+            if (isNaN(dollar) || isNaN(extra)) {
+                converted_amount.innerText = "Please enter a valid amount";
+            }
+            else {
+                converted_amount.innerText = "You have " + total;
+            }
+        }
+
+        else if (document.querySelector('input[name=conversion]:checked').value == "dollar") {
+
+            if (amount[0] === "$") {
+                amount = amount.split("$")[1];
+            }
+        
+            total = (amount * 100).toString().split(".")[0];
+
+            if (isNaN(total)) {
+                converted_amount.innerText = "Please enter a valid amount";
+            }
+            else {
+                let y = "ies"
+                if (total == 1){
+                    y = "y"
+                }
+                converted_amount.innerText = "You have " + total + " penn" + y;
+            }
+
+            pennies = total;
+        }
+      };
+    </script>
+  </body>
+</html>
