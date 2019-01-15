@@ -14,12 +14,18 @@ a {
 	grid-gap: 10px;
 }
 
+#uni-name {
+	font-size: 24pt;
+}
+
 .navbar {
 	background-color: blue;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
 	grid-column: 1 / -1;
+	align-items: center;
+	padding: 20px;
 
 }
 
@@ -31,7 +37,12 @@ a {
 .text {
 	grid-column: 7 / 12;
 	row: 2;
-	align-content: center;
+	align-self: center;
+	padding:10px;
+}
+#newsline {
+	grid-column: 1 / -1;
+	display: flex;
 }
 
 .column_1 {
