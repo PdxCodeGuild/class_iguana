@@ -12,7 +12,7 @@
                 color:IndianRed;
                 background-color:Ivory;
                 padding:10px;
-                margin: 50px 200px 0px 200px;
+                margin: 4% 16% 0% 16%;
                 font-family: 'condiment', cursive;
                 text-align:center;
                 display:flex;
@@ -23,51 +23,101 @@
             header > span {
                 font-size:80px;
             }
-            .nav {
-                background-color:rgba(180,180,180,0.7);
+            nav {
+                position: -webkit-sticky;
+                position: sticky;
+                top: 20;
+                background-color:rgba(180,180,180,0.5);
+                padding: 25px;
                 text-color:black;
-                padding:25px;
-                margin-bottom: 100px;
-                margin-left: 200px;
-                margin-right: 200px;
-                text-align:center
+                display: flex;
+                justify-content:space-evenly;
+                flex-wrap: wrap;
+                margin: 0% 16% 0% 16%;
+                text-align:center;
             }
-            a {
+            nav a {
+                color: black;
                 background-color:Ivory;
-                padding: 10px
+                padding: 10px;
+                text-decoration: none;
+            }
+            article {
+                background-color: rgba(180,180,180,0.5);
+                margin: 0% 16% 0% 16%;
+            }
+            .button {
+                text-align: center;
+                padding: 8px;
             }
             h1 {
-                font-size:32px;
+                font-size:27px;
                 color:black;
-                background-color:rgba(255, 255, 240, 0.75);
-                margin: 0px 200px 0px 200px;
+                background-color:rgba(255, 255, 240, 0.6);
+                margin: 0% 12% 0% 12%;
+                text-align: center;
 
             }
             h2 {
                 color:black;
-                background-color:rgba(255, 255, 240, 0.75);
-                margin: 0px 200px 0px 200px;
-                font-size:22;
+                background-color:rgba(255, 255, 240, 0.6);
+                margin: 0% 12% 0% 12%;
+                padding: 15px;
+                font-size:15;
+                text-align: center;
             }
-            pre {
+            p {
                 color:black;
-                background-color:rgba(255, 255, 240, 0.75);
-                margin: 0px 200px 0px 200px;
-                text-align:left
+                background-color:rgba(255, 255, 240, 0.6);
+                margin: 0% 12% 0% 12%;
+                padding: 15px;
+                text-align:left;
+            }
+            h5 {
+                color:black;
+                background-color:rgba(255, 255, 240, 0.6);
+                margin: 0% 12% 0% 12%;
+                padding: 15px;
+                font-size:27;
+                text-align: center;
+            }
+            h6 {
+                color:black;
+                background-color:rgba(255, 255, 240, 0.6);
+                margin: 0% 12% 0% 12%;
+                padding: 15px;
+                font-size:15;
+                text-align: center;
             }
             h3 {
                 color:black;
-                background-color:rgba(255, 255, 240, 0.75);
-                margin: 0px 200px 0px 200px;
-                font-size:22;
+                background-color:rgba(255, 255, 240, 0.6);
+                margin: 0% 12% 0% 12%;
+                padding: 15px;
+                font-size:27;
+                text-align: center;
             }
             h4 {
                 color:black;
-                background-color:rgba(255, 255, 240, 0.75);
-                margin: 0px 200px 0px 200px;
-                font-size:22;
+                background-color:rgba(255, 255, 240, 0.6);
+                margin: 0% 12% 0% 12%;
+                padding: 15px;
+                font-size:15;
+                text-align: center;
             }
-
+            u {
+                text-decoration: underline;
+            }
+            .h7 {
+                color:black;
+                margin: 2% 40% 2% 45%;
+                padding: 15px;
+                font-size:15px;
+                text-align: center;
+            }
+            select {
+                margin: 1% 12% 1% 12%;
+            }
 
 
 
@@ -75,39 +125,78 @@
     </head>
     <body>
         <header>
-            <span>Pizza Time</span>
-            <img src="https://i.kisscc0.com/20180814/twe/kisscc0-chef-s-uniform-cooking-sushi-restaurant-chef-cooking-5b7301b8cb1956.8527003615342637368319.png" width="350px"/>
+            <img src="pizza_time.png" width="81%"/>
+            <!--<span>Pizza Time</span>-->
+            <!--<img src="https://i.kisscc0.com/20180814/twe/kisscc0-chef-s-uniform-cooking-sushi-restaurant-chef-cooking-5b7301b8cb1956.8527003615342637368319.png" width="350px"/>-->
         </header>
-        <nav class="nav">
+        <nav>
+        <a href="#">Home</a>
         <a href="#">Topping Encyclopedia</a>
         <a href="#">Pro Choice Cows</a>
         <a href="#">The Parlor Vote</a>
         <a href="#">Our Partners</a>
         <a href="#">Contact Us</a>
         </nav>
-        <h1>County Tomato Shortage</h1>
-        <h2>Published, October 28th, 2006</h2>
-        <p><pre>
-Everyone who knows, knows that the sauce makes the pizza...
-Unfortunately this month pizza sales have been booming and
-there is a PSA declaring tomatoes IN HIGH DEMAND.
-My original thought was "this can't be happening"...
-Don't get me wrong, I have no problem with truffle sauce,
-white sauce, or maybe pesto alternatives; I'm just not sure
-how long the city can make it without our beloved tomatoes.
-Chef's all across the city are planting their own tomatoes and
-starting to set up indoor hydroponic garden's in order to get
-back to making sauce asap.</pre></p>
-        <h3>Pizza Chef Falls Into Oven</h3>
-        <h4>Published, October 22nd, 2006</h4>
-        <p><pre>
-Local pizza legend Alberto Russo was rushed to the hospital thursday night
-with numerous burn wounds. Apparently he was cooking one of his iconic
-calzones and slipped on an olive that was dropped at the entrance to
-the brick oven while reaching in to check on the calzone. Restaurant staff
-rushed to hoist Alberto out of the oven saving him from further injury.
-Food critique 'Giovani Gustav' commented saying that, "This should
-make other chefs more aware of the importance to maintaining an
-orderly kitchen".</pre></p>
+        <article>
+            <select>
+                <option value="October">October</option>
+                <option value="Archive">Archive</option>
+            </select>
+        </article>
+        <article>
+            <h1><u>County Tomato Shortage</u></h1>
+            <h2>Published, October 28th, 2006</h2>
+            <p>
+    Everyone who knows, knows that the sauce makes the pizza...<br>
+    Unfortunately this month, pizza sales have been booming and<br>
+    there is a PSA declaring tomatoes IN HIGH DEMAND.<br>
+    My original thought was "this can't be happening"...<br>
+    Don't get me wrong, I have no problem with truffle sauce,<br>
+    white sauce, or maybe pesto alternatives; I'm just not sure<br>
+    how long the city can make it without our beloved tomatoes.<br>
+    Chef's all across the city are planting their own tomatoes and<br>
+    starting to set up indoor hydroponic garden's in order to get<br>
+    back to making sauce asap.</p>
+            <div class="button"><button>Comments(17)</button>
+                <button>Share</button></div>
+        </article>
+        <article>
+            <h3><u>Pizza Chef Falls Into Oven</u></h3>
+            <h4>Published, October 22nd, 2006</h4>
+            <p>
+    Local pizza legend Alberto Russo was rushed to the hospital<br>
+    thursday night with numerous burn wounds. Apparently he<br>
+    was cooking one of his iconic calzones and slipped on an<br>
+    olive that was dropped at the entrance to the brick oven<br>
+    while reaching in to check on the calzone. Restaurant staff<br>
+    rushed to hoist Alberto out of the oven saving him from<br>
+    further injury. Food critique 'Giovani Gustav' commented<br>
+    saying that, "This should make other chefs more aware of the<br>
+    importance to maintaining an orderly kitchen".</p>
+             <div class="button"><button>Comments(49)</button>
+                <button>Share</button></div>
+        </article>
+        <article>
+            <h5><u>Knife Throwing</u></h5>
+            <h6>Published, October 14th, 2006</h6>
+            <p>
+    When most people think about pizza themed activities, you might<br>
+    think about drinking beer with your friends, birthday parties, or<br>
+    maybe sports games. Though a new and popular, yet unusual act has<br>
+    been traveling around to the trendiest pizza parlors in the nation.<br>
+    Walker Reynolds has created an awe inspiring and suspenseful event<br>
+    where he spins a pizza on a vertical wheel and continues on to<br>
+    throw knives at the pizza. Magically perfect sized slices of pie<br>
+    fall from the spinning pizza onto a plate placed on the floor.<br>
+    Audiences are amazed and often times will pay double to purchase<br>
+    a slice cut by Walker's knives. He comes to town on Halloween night<br>
+    so make sure to reserve a table at Lucky's Tavern downtown.<br>
+    Costumes encouraged!</p>
+             <div class="button"><button>Comments(32)</button>
+                <button>Share</button></div>
+        </article>
+        <footer>
+            <span class="h7">Pizza Time 2006</span>
+        </footer>
     </body>
 </html>

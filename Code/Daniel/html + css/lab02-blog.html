@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    <style>
+      body {
+        margin: 0;
+      }
+      .wrapper {
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr;
+        grid-template-rows: 100px 50px auto 20px;
+        background-image: url("https://images.designtrends.com/wp-content/uploads/2016/03/29102340/Bright-White-Background.jpg");
+        background-repeat: no-repeat;
+        background-size: 1500px;
+        background-attachment: fixed;
+      }
+
+      @import url("https://fonts.googleapis.com/css?family=Raleway:300,400");
+
+      @font-face {
+        font-family: "scriptinaregular";
+        src: url("SCRIPTIN.ttf");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      #title::first-letter {
+        color: crimson;
+      }
+
+      header {
+        font-family: "scriptinaregular";
+        font-size: 75px;
+        display: flex;
+        grid-row: 1/2;
+        grid-column: 1/4;
+        align-items: center;
+        justify-content: left;
+        padding: 10px 0 10px 80px;
+      }
+
+      footer {
+        grid-row: 5/6;
+        grid-column: 1/4;
+        text-align: center;
+      }
+
+      footer p {
+        color: #8e8e8e;
+        margin: 0 0 -20px 0;
+      }
+      nav {
+        font-family: "Raleway", sans-serif;
+        font-weight: 100;
+        grid-column: 1/4;
+        grid-row: 2;
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        padding: 0 20px;
+        margin: 4px 100px;
+      }
+
+      nav a {
+        margin: 0 20px;
+        padding: 4px 30px;
+      }
+      nav a:link {
+        color: black;
+        text-decoration: none;
+      }
+
+      nav a:visited {
+        color: black;
+      }
+
+      nav a:hover {
+        color: black;
+        border: solid;
+        border-width: 0 0 2px 0;
+        border-color: crimson;
+      }
+
+      section {
+        grid-column: 1/4;
+        grid-row: 3;
+        text-align: left;
+        padding: 0 10%;
+      }
+
+      .post {
+        background-color: rgba(112, 128, 144, 0.103);
+        padding: 20px;
+        margin: 20px 0;
+        -webkit-box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
+        box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
+      }
+
+      .post h2 {
+        font-family: "Raleway", sans-serif;
+      }
+
+      #facebook {
+        -webkit-clip-path: inset(22.66% 71.5% 7.02% 3%);
+        clip-path: inset(22.66% 71.5% 7.02% 3%);
+        margin: 20px -60px;
+      }
+
+      #twitter {
+        -webkit-clip-path: inset(21.19% 37.5% 4.08% 37.5%);
+        clip-path: inset(21.19% 37.5% 4.08% 37.5%);
+        margin: 20px 0;
+      }
+      #instagram {
+        -webkit-clip-path: inset(24.13% 2.5% 5.55% 73%);
+        clip-path: inset(24.13% 2.5% 5.55% 73%);
+        margin: 20px -60px;
+      }
+
+      #center_footer_imgs {
+        opacity: 0.5;
+        filter: alpha(opacity=50);
+      }
+
+      @media screen and (max-width: 1000px) {
+        header {
+          justify-content: center;
+          padding: 20px 0;
+        }
+
+        .wrapper {
+          background-size: 1200px;
+        }
+
+        nav {
+          justify-content: center;
+          padding: 0;
+          margin: 4px 0;
+        }
+
+        nav a {
+          padding: 10px;
+          margin: 4px 20px;
+        }
+
+        #instagram,
+        #twitter,
+        #facebook {
+          margin: 20px -150px;
+        }
+
+        #center_footer_imgs {
+          padding: 0 0 0 100px;
+        }
+      }
+
+      @media screen and (max-width: 530px) {
+        header {
+          font-size: 40px;
+        }
+
+        nav a {
+          padding: 0;
+          margin: 4px 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        This is the
+        <div id="title">Header</div>
+      </header>
+      <nav>
+        <a href="https://s3.envato.com/files/220195862/02_06_404_error_page.jpg"
+          >Nav 1</a
+        >
+        <a href="https://s3.envato.com/files/220195862/02_06_404_error_page.jpg"
+          >Nav 2</a
+        >
+        <a href="https://s3.envato.com/files/220195862/02_06_404_error_page.jpg"
+          >Nav 3</a
+        >
+        <a href="https://s3.envato.com/files/220195862/02_06_404_error_page.jpg"
+          >Nav 4</a
+        >
+        <a href="https://s3.envato.com/files/220195862/02_06_404_error_page.jpg"
+          >Nav 5</a
+        >
+      </nav>
+      <section>
+        <div class="post">
+          <h2>post0</h2>
+          <p>
+            Mollit pariatur in anim incididunt occaecat mollit reprehenderit. In
+            fugiat non sint qui id veniam sunt mollit magna do duis cupidatat
+            elit reprehenderit. Occaecat minim in mollit nisi esse quis amet
+            anim ad est fugiat nostrud excepteur. Lorem culpa qui proident ad
+            labore voluptate cillum officia velit exercitation mollit quis Lorem
+            Lorem. Minim amet eiusmod culpa pariatur non id dolore.
+          </p>
+        </div>
+        <div class="post">
+          <h2>post1</h2>
+          <p>
+            Sunt sunt duis officia est aute consectetur qui officia Lorem
+            officia anim. Lorem amet fugiat eu sit Lorem id adipisicing
+            exercitation occaecat irure nulla irure pariatur consequat. Occaecat
+            pariatur do commodo laborum pariatur voluptate. Irure mollit cillum
+            cupidatat aliqua ad consequat velit anim pariatur aliquip elit nisi
+            officia Lorem.
+          </p>
+        </div>
+        <div class="post">
+          <h2>post2</h2>
+          <p>
+            Eu magna eu enim ea minim. Lorem laborum mollit ea in eiusmod. Nulla
+            quis elit velit consequat adipisicing sit deserunt consequat
+            consequat et aute. Occaecat ipsum tempor duis amet aute. Esse
+            occaecat nulla pariatur proident.
+          </p>
+        </div>
+        <div class="post">
+          <h2>post3</h2>
+          <p>
+            In aute aliqua officia fugiat eiusmod esse non exercitation Lorem
+            proident proident velit. Ullamco ad do labore est enim magna.
+            Laboris ut mollit aliqua est excepteur.
+          </p>
+        </div>
+        <div class="post">
+          <h2>post4</h2>
+          <p>
+            Consectetur aliqua consectetur nostrud nulla consequat. Est est
+            Lorem voluptate Lorem labore enim laboris sit qui aliquip irure
+            reprehenderit ex ad. Eiusmod eiusmod incididunt velit ad occaecat
+            deserunt voluptate irure dolor. Dolor pariatur esse culpa cupidatat
+            ullamco veniam reprehenderit fugiat. Velit ex aliqua aute est esse
+            exercitation incididunt occaecat consequat dolor cupidatat
+            reprehenderit nostrud.
+          </p>
+        </div>
+      </section>
+      <footer>
+        <p>© 2019 Footer</p>
+        <div id="center_footer_imgs">
+          <a href="https://www.facebook.com/">
+            <img
+              id="facebook"
+              src="https://www.cyberacoustics.com/images/uploads/liveCanvas/Icon_facebook-twitter-pinterest-instagram-promojam-03.png"
+              width="200px"
+              alt="facebook"
+          /></a>
+          <a href="https://twitter.com/">
+            <img
+              id="twitter"
+              src="https://www.cyberacoustics.com/images/uploads/liveCanvas/Icon_facebook-twitter-pinterest-instagram-promojam-03.png"
+              width="200px"
+              alt="twitter"
+          /></a>
+          <a href="https://www.instagram.com/">
+            <img
+              id="instagram"
+              src="https://www.cyberacoustics.com/images/uploads/liveCanvas/Icon_facebook-twitter-pinterest-instagram-promojam-03.png"
+              width="200px"
+              alt="instagram"
+          /></a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -13,6 +13,10 @@ body {
 	font-family: 'PT Serif', serif;
 }
 
+#uni-name {
+	font-size: 24pt;
+}
+
 #navbar {
 	display: flex;
 	flex-direction: row;
@@ -20,21 +24,54 @@ body {
 	background-color: #7C14FF;
 	color: white;
 	height: 10%;
+	align-items: center;
+	padding: 20px;
 }
 
-#navbar > a:link, #navbar > a:visited {
+a {
 	color: white;
+	text-decoration: none;
 }
 
 #uni_pic {	
-	border: 1px solid black;
 	margin: 0 auto;
-	display: block;
-	width: 50%;
+/* 	display: block; */
+	width : 50%;
+	padding: 10px;
+	align-self: center;
 }
 
-#photo-text {
+#photo_text {
 	display: flex;
 	flex-direction: row;
 	margin: 0, auto;
+	padding: 10px;
+	align-items: center;
+	justify-items: space-between;
+}
+	
+#news_columns {
+	display: flex;
+	flex-direction: row;
+	padding: 10px;
+	justify-items: space-between;
+}
+
+#news {
+	margin: 10px;
+}
+
+#newsline {
+	padding: 20px;
+	font-size: 24pt:
+	font-style: bold;
+}
+
+#news_columns > div {
+	padding:10px;
+	width:33%;
+}
+
+footer {
+	text-align: center;
 }
