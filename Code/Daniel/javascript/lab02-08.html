@@ -27,6 +27,7 @@
     </div>
 
     <div id="converted_amount"></div>
+    <div id="change_amount"></div>
 
     <script>
       make_change.onclick = function() {
@@ -46,10 +47,10 @@
             let total = "$" + dollar + "." + extra;
             
             if (isNaN(dollar) || isNaN(extra)) {
-                converted_amount.innerText = "Please enter a valid amount";
+                converted_amount.innerText = "\nPlease enter a valid amount";
             }
             else {
-                converted_amount.innerText = "You have " + total;
+                converted_amount.innerText = "\nYou have " + total;
             }
         }
 
@@ -62,18 +63,30 @@
             total = (amount * 100).toString().split(".")[0];
 
             if (isNaN(total)) {
-                converted_amount.innerText = "Please enter a valid amount";
+                converted_amount.innerText = "\nPlease enter a valid amount";
             }
             else {
                 let y = "ies"
                 if (total == 1){
                     y = "y"
                 }
-                converted_amount.innerText = "You have " + total + " penn" + y;
+                converted_amount.innerText = "\nYou have " + total + " penn" + y;
             }
 
             pennies = total;
         }
+
+            let quarters = Math.floor(pennies / 25)
+            pennies -= quarters * 25
+            let dimes = Math.floor(pennies / 10)
+            pennies -= dimes * 10
+            let nickels = Math.floor(pennies / 5)
+            pennies -= nickels * 5
+
+            change_amount.innerText = "\nQuarters: " + quarters + "\nDimes: " + dimes + 
+                "\nNickels: " + nickels + "\nPennies: " + Math.floor(pennies);
+
+
       };
     </script>
   </body>
