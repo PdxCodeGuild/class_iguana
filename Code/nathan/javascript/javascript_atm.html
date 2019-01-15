@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en"/>
+<html lang="en">
     <head>
-        <meta charset"utf-8"/>
+        <meta charset"utf-8">
     </head>
     <body>
 
@@ -9,19 +9,12 @@
         function check_balance(account){
             return account
         }
-
-
-
         function check_interest(account, interest){
             return account * interest
         }
-
-
         function deposit(account, amount){
             return account + amount
         }
-
-
         function withdrawal(account, amount, history){
             if (account - amount < 0) {
                 console.log('sorry you don\'t have that much money')
@@ -32,33 +25,32 @@
                 return account - amount
             }
         }
-
-
         function transaction_history(history){
             return history
         }
 
-        account = 0
-        interest = 0.1
-        amount = 0
-        history = []
-        i = 0
-        while (i<10) {
+        let account = 0
+        let interest = 0.1
+        let amount = 0
+        let history = []
+        let i = 0
+        while (i < 10) {
             transaction = prompt('would you like to (check balance, check interest, check history, deposit, withdrawal)\n**type \'goodbye\' if finished**\n')
             if (transaction === 'check balance') {
                 console.log(check_balance(account))
             }
             if (transaction == 'deposit') {
                 amount = parseInt(prompt('how much would you like to deposit?\n'))
-                // history.push('deposit')
-                // history.push(amount)
-                account = (deposit(account, amount))
+                console.log(history)
+                console.log(typeof history)
+                history.push('deposited $' + amount)
+                account = deposit(account, amount)
                 console.log(account)
             }
             if (transaction === 'withdrawal') {
                 amount = parseInt(prompt('how much money would you like to take out?\n'))
-                // history.push('withdrawal')
-                // history.push(amount)
+                history.push('withdrawal')
+                history.push(amount)
                 account = withdrawal(account, amount, history)
                 console.log(account)
             }
@@ -69,7 +61,7 @@
                 console.log(transaction_history(history))
             }
             if (transaction === 'goodbye') {
-                exit()
+                break
             }
         }
     </script>
