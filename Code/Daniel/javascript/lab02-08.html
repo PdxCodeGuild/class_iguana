@@ -14,16 +14,8 @@
     How much money do you have?<input id="change" type="text" />
     <button id="make_change">Make Change</button>
     <div id="conversion_select">
-      <input
-        type="radio"
-        name="conversion"
-        value="penny"
-      />Convert from penny amount<br />
-      <input
-        type="radio"
-        name="conversion"
-        value="dollar"
-      />Convert from dollar amount<br />
+      <input type="radio" name="conversion" value="penny" />Convert from penny amount<br />
+      <input type="radio" name="conversion" value="dollar" />Convert from dollar amount<br />
     </div>
 
     <div id="converted_amount"></div>
@@ -36,57 +28,57 @@
         let fixed = 0;
         let pennies = 0;
 
-        if (document.querySelector('input[name=conversion]:checked').value == "penny") {
-            let dollar = Math.floor(amount / 100);
-            let extra = Math.floor(amount % 100);
-            pennies = amount;
+        if (document.querySelector("input[name=conversion]:checked").value == "penny") {
+          let dollar = Math.floor(amount / 100);
+          let extra = Math.floor(amount % 100);
+          pennies = amount;
 
-            if (extra < 10) {
-                extra = "0" + extra
+          if (extra < 10) {
+            extra = "0" + extra;
+          }
+          let total = "$" + dollar + "." + extra;
+
+          if (isNaN(dollar) || isNaN(extra)) {
+            converted_amount.innerText = "\nPlease enter a valid amount";
+          } else {
+            converted_amount.innerText = "\nYou have " + total;
+          }
+        } else if (document.querySelector("input[name=conversion]:checked").value == "dollar") {
+          if (amount[0] === "$") {
+            amount = amount.split("$")[1];
+          }
+
+          total = (amount * 100).toString().split(".")[0];
+
+          if (isNaN(total)) {
+            converted_amount.innerText = "\nPlease enter a valid amount";
+          } else {
+            let y = "ies";
+            if (total == 1) {
+              y = "y";
             }
-            let total = "$" + dollar + "." + extra;
-            
-            if (isNaN(dollar) || isNaN(extra)) {
-                converted_amount.innerText = "\nPlease enter a valid amount";
-            }
-            else {
-                converted_amount.innerText = "\nYou have " + total;
-            }
+            converted_amount.innerText = "\nYou have " + total + " penn" + y;
+          }
+
+          pennies = total;
         }
 
-        else if (document.querySelector('input[name=conversion]:checked').value == "dollar") {
+        let quarters = Math.floor(pennies / 25);
+        pennies -= quarters * 25;
+        let dimes = Math.floor(pennies / 10);
+        pennies -= dimes * 10;
+        let nickels = Math.floor(pennies / 5);
+        pennies -= nickels * 5;
 
-            if (amount[0] === "$") {
-                amount = amount.split("$")[1];
-            }
-        
-            total = (amount * 100).toString().split(".")[0];
-
-            if (isNaN(total)) {
-                converted_amount.innerText = "\nPlease enter a valid amount";
-            }
-            else {
-                let y = "ies"
-                if (total == 1){
-                    y = "y"
-                }
-                converted_amount.innerText = "\nYou have " + total + " penn" + y;
-            }
-
-            pennies = total;
-        }
-
-            let quarters = Math.floor(pennies / 25)
-            pennies -= quarters * 25
-            let dimes = Math.floor(pennies / 10)
-            pennies -= dimes * 10
-            let nickels = Math.floor(pennies / 5)
-            pennies -= nickels * 5
-
-            change_amount.innerText = "\nQuarters: " + quarters + "\nDimes: " + dimes + 
-                "\nNickels: " + nickels + "\nPennies: " + Math.floor(pennies);
-
-
+        change_amount.innerText =
+          "\nQuarters: " +
+          quarters +
+          "\nDimes: " +
+          dimes +
+          "\nNickels: " +
+          nickels +
+          "\nPennies: " +
+          Math.floor(pennies);
       };
     </script>
   </body>
