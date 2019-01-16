@@ -15,7 +15,7 @@ let arrMax = arr => Math.max(arr)
 let arrSum = arr => arr.reduce((a,b) => a + b, 0)
 let arrAvg = arr => arrSum / arr.length
 
-array_output.innerText = `numbers: ${array.value}`
+array_output.innerText = `numbers: ${arr.value}`
 arrMin_output.innerText =`minimum: ${arrMin.value}`
 arrMax_output.innerText = `maximum: ${arrMax.value}`
 arrSum_output.innerText = `sum: ${arrSum.value}`
