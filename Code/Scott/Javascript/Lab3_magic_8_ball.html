@@ -1,0 +1,43 @@
+<!DOCTYPE HTML/>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>      
+
+
+    </head>
+    <body>
+        <script>
+
+        let responses = ['It is certain', 'It is decidedly so','Without a doubt','Yes - definitely', 'As I see it, yes.','Reply hazy, try again.','Ask again later.','Better not tell you now.','Cannot predict now.','Don\'t count on it.','My reply is no','My sources say no.','Outlook not so good.','Very doubtful.']
+
+
+        function random_choice(array) {
+            let array_length = array.length 
+            let random_int = Math.random() * array_length 
+            random_int = Math.floor(random_int)
+            return random_int
+        }
+
+        while (true) {    
+        
+        let question = prompt('What yes or no question would you like to ask the 8-ball?(or type "done")')
+        let answer = responses[random_choice(responses)]
+            if (question === 'done') {
+                alert('Thanks for playing. Bye')
+                break
+                }
+        
+            alert(answer)
+
+        }
+
+
+        
+        
+        </script>
+
+
+    </body>
+
+
+</html>
