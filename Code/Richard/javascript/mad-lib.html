@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>lab-mad-lib</title>
+        <meta charset = "utf-8">
+        <style>
+            body {
+                font-family: "Helvetica", sans-serif;
+                display: flex;
+                flex-direction: column;
+            }
+            #collect_info {
+                max-width: 50%;
+                display: flex;
+                flex-direction: column;
+            }
+            button {
+                max-width: 50%;
+            }
+       
+        </style>
+    </head>
+    <body>
+        <div id="collect_info">
+            We are going to write a new job description. Fill in the fields below, then click on "Write the job description."
+            <br/><br/>
+            Give me an antonym for "functional"<input id="ant" type="text"/>
+            Are you left-handed, right-handed, or ambidextrous? Please choose one<input id = "handed" type="text"/>
+            Give me an adjective <input id="adj" type="text"/>
+            Name a job/occupation, in the plural<input id="others" type="text"/>
+            Name a part of a building <input id="bldg" type="text"/>
+            Tell me a buzzword that you occasionally find annoying<input id="buzz" type="text"/>
+            Name a piece of technology<input id="tech" type="text"/>
+            Tell me an aspect of your computer that you don't like<input id="comp" type="text"/>
+            <br/>
+        </div>
+        <button id="madlib_bt">Write the job description</button>
+        <br/><br/>
+        <div id="output_div" style="display:none">
+            <div id="job_desc"></div>
+            <div id="key_resp"></div>
+            Key Responsibilities:
+            <div id="resp_1"></div>
+            <div id="resp_2"></div>
+            <div id="resp_3"></div>
+            Application deadline: January 1, 2019.
+        </div>
+        <script src="mad-lib.js"></script>
+    </body>
+</html>
