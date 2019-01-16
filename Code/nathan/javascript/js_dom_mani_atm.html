@@ -26,13 +26,15 @@
         let history_display = document.querySelector('#history')
         let account = 0
         let amount = 0
-        current_balance.onclick = function check_balance(account){
+        let interest = 0.1
+        let history = []
+        current_balance.onclick = function check_balance(){
             output_.innterText = account
         }
         check_interest.onclick = function check_interest(){
             int_output.innerText = account * interest
         }
-        deposit_.onclick = function deposit(){
+        deposit_.onclick = function deposit(history){
             amount = parseInt(amount_.value)
             history.push('deposited $' + amount)
             account += amount
@@ -40,7 +42,7 @@
 
             console.log(account)
         }
-        withdrawal_.onclick = function withdrawal(){
+        withdrawal_.onclick = function withdrawal(history){
             if (account - amount < 0) {
                 output_.innterText = ('sorry you don\'t have that much money')
 
@@ -52,12 +54,9 @@
                 output_.innerText = account
             }
         }
-        history_.onlick = function transaction_history(){
+        history_.onlick = function transaction_history(history){
             history_display.innerText = history
         }
-        let interest = 0.1
-        let history = []
-        let i = 0
     </script>
     </body>
 </html>
