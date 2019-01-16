@@ -1,0 +1,57 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>lab03-12</title>
+    <style>
+      #guessed_nums {
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Guess a number between 1 and 10</p>
+    <input id="guess" type="text" /> <button id="guess_btn">Make Guess</button>
+    <div id="guessed_nums"></div>
+    <div id="message"></div>
+
+    <script>
+      let num = 0;
+      let guesses = [];
+      let num_guesses = 0;
+
+      function get_ran_num() {
+        num = Math.floor(Math.random() * 10 + 1);
+      }
+
+      guess_btn.onclick = function() {
+        if (num == 0) {
+          get_ran_num();
+          console.log(num);
+        }
+        console.log(guess.value);
+        if (guess.value == num) {
+          num_guesses++;
+          let es = "";
+          if (num_guesses == 1) {
+            es = "es";
+          }
+          message.innerText = "That's correct! It took you " + num_guesses + " guess" + es;
+          guesses = [];
+          num = 0;
+          num_guesses = 0;
+        } else {
+          if (guess.value < num) {
+            message.innerText = "Nope. Too low. Guess again!";
+          } else {
+            message.innerText = "Nope. Too high. Guess again!";
+          }
+          guesses.push(guess.value);
+          num_guesses++;
+          guessed_nums.innerText = guesses;
+        }
+      };
+    </script>
+  </body>
+</html>

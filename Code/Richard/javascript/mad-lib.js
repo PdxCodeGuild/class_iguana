@@ -2,7 +2,7 @@ let madlib_bt = document.querySelector('#madlib_bt')
 // create arrays for inclusion in madlib, to be chosen at random
 let jobs = ['laborer', 'physician', 'grocer', 'astronaut']
 let tasks = ['dig', 'market', 'disassemble', 'reproduce']
-let teams = ['team', 'assembly', 'mob', 'corps']
+let teams = ['team', 'collection', 'mob', 'corps']
 let objects = ['products', 'miracles', 'irrelevancies', 'constructs']
 
 // implement a random.choice style function
