@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset"utf-8">
+    </head>
+    <body>
+        <input id="amount" type="text" placeholder="amount"/>
+        <button id="deposit">Make Deposit</button>
+        <button id="withdrawal">Make Withdrawal</button>
+        <button id="current_balance">See Balance</button>
+        <button id="check_history">Transaction History</button>
+        <button id="check_interest">Interest</button>
+        <div id="output"></div>
+        <div id="interest_output"></div>
+        <div id="history"></div>
+
+    <script>
+        let deposit_ = document.querySelector('#deposit')
+        let amount_ = document.querySelector('#amount')
+        let withdrawal_ = document.querySelector('#withdrawal')
+        let output_ = document.querySelector('#output')
+        let interest_ = document.querySelector('#check_interest')
+        let balance_ = document.querySelector('#current_balance')
+        let history_ = document.querySelector('#check_history')
+        let int_output = document.querySelector('#interest_output')
+        let history_display = document.querySelector('#history')
+        let account = 0
+        let amount = 0
+        current_balance.onclick = function check_balance(account){
+            output_.innterText = account
+        }
+        check_interest.onclick = function check_interest(){
+            int_output.innerText = account * interest
+        }
+        deposit_.onclick = function deposit(){
+            amount = parseInt(amount_.value)
+            history.push('deposited $' + amount)
+            account += amount
+            output_.innerText = account
+
+            console.log(account)
+        }
+        withdrawal_.onclick = function withdrawal(){
+            if (account - amount < 0) {
+                output_.innterText = ('sorry you don\'t have that much money')
+
+            } else {
+                amount = parseInt(amount_.value)
+                history.push('withdrew $' + amount)
+                console.log(amount)
+                account -= amount
+                output_.innerText = account
+            }
+        }
+        history_.onlick = function transaction_history(){
+            history_display.innerText = history
+        }
+        let interest = 0.1
+        let history = []
+        let i = 0
+    </script>
+    </body>
+</html>
