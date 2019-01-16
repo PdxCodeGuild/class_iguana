@@ -2,8 +2,37 @@
 <html lang="en">
     <head>
         <meta charset"utf-8">
+        <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+
+    <style>
+     body {
+        color:white;
+        background-image:url("https://ak8.picdn.net/shutterstock/videos/6984508/thumb/1.jpg");
+        background-size:cover;
+     }
+     header {
+        color: black;
+        font-family: 'Righteous', cursive;
+        font-size: 34px;
+        background-color:rgba(188,188,188,.4);
+        margin: 10% 15% 5% 15%;
+        padding: 2%
+     }
+     .flex {
+        display:flex;
+        flex-direction:row;
+        align-items: center;
+        flex-wrap: wrap;
+
+
+    </style>
     </head>
     <body>
+        <header class="flex">
+            <h1>Virtual Atm</h1>
+            <img src="https://bohapus.com/image/catalog/facilities/withdrawing-money-from-atm.png" width = 25%/>
+
+        </header>
         <input id="amount" type="text" placeholder="amount"/>
         <button id="deposit">Make Deposit</button>
         <button id="withdrawal">Make Withdrawal</button>
@@ -34,7 +63,7 @@
         check_interest.onclick = function check_interest(){
             int_output.innerText = account * interest
         }
-        deposit_.onclick = function deposit(history){
+        deposit_.onclick = function deposit(){
             amount = parseInt(amount_.value)
             history.push('deposited $' + amount)
             account += amount
@@ -42,7 +71,7 @@
 
             console.log(account)
         }
-        withdrawal_.onclick = function withdrawal(history){
+        withdrawal_.onclick = function withdrawal(){
             if (account - amount < 0) {
                 output_.innterText = ('sorry you don\'t have that much money')
 
@@ -54,7 +83,7 @@
                 output_.innerText = account
             }
         }
-        history_.onlick = function transaction_history(history){
+        history_.onlick = function transaction_history(){
             history_display.innerText = history
         }
     </script>
