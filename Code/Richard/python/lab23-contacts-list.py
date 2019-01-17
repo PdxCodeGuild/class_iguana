@@ -32,7 +32,7 @@ print(f'second obs: {data_list[1]}')     # working ok
 print(f'last obs: {data_list[-1]}')    # working ok
 print(f'Maternal Mortality, first obs: {data_list[0]["Maternal Mortality Rate"]}')     # working ok
 
-# destring and round all numerical values:  # not working
+# destring and round all numerical values:
 for i in range(len(data_list)):
     data_list[i]['Maternal Mortality Rate'] = int(data_list[i]['Maternal Mortality Rate'])
     data_list[i]['Urban Population %'] = round(float(data_list[i]['Urban Population %']), 2)
