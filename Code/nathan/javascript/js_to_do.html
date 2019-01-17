@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset"utf-8">
+        <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+    <style>
+     body {
+        color:white;
+        background-image:url("http://i.imgur.com/kETTHLE.jpg");
+        background-size:cover;
+     }
+     header {
+        color: black;
+        font-family: 'Gloria Hallelujah', cursive;
+        font-size: 240%;
+        background-color:rgba(152, 255, 255, 0.4);
+        margin: 3% 30% 1% 30%;
+        padding: 0%
+     }
+     .flex {
+        display:flex;
+        flex-direction:row;
+        align-items:center;
+        flex-wrap:wrap;
+        justify-content:space-evenly;
+     }
+     #ad_to_list, #remove_item, #remove, #remove_item, #add {
+        background-color:ivory;
+        margin: 0% 30% .3% 30%;
+     }
+     #z, #list {
+        margin: 0% 30% .3% 30%;
+        text-decoration: underline
+     }
+    </style>
+    </head>
+    <body>
+        <header class="flex">
+            <h1>To Do</h1>
+            <img src="http://www.myiconfinder.com/uploads/iconsets/256-256-726fc1dd488c7a6d5f03cf4244af1e62-clipboard.png" width = 25%/>
+        </header>
+        <input id="ad_to_list" type="text" placeholder="add to list"/>
+        <button id="add">Add</button>
+        <div>
+        <input id="remove_item" type="text" placeholder="remove from list"/>
+        <button id="remove">Remove</button></div>
+        <div id="z"><span>To Do:</span></div><div id="list"></div>
+    <script>
+        let add_to = document.querySelector('#ad_to_list')
+        let remove_from = document.querySelector('#remove')
+        let add_ = document.querySelector('#add')
+        let remove = document.querySelector('#remove')
+        let display_list = document.querySelector('#list')
+        let to_do_list = []
+        add_.onclick = function build_list(){
+            to_do_list.push(add_to)
+            list.innerText = to_do_list
+        }
+        remove.onclick = function completion(){
+            to_do_list.pop(remove_from)
+            list.innerText = to_do_list
+        }
+    </script>
+    </body>
+</html>
