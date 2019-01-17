@@ -489,17 +489,17 @@ while True:
                     to_share = player.qualities['companion'].qualities['food'] * player.qualities['companion'].qualities['loyalty']
                     player.qualities['companion'].qualities['food'] -= to_share
                     # player and companion eat
-                    player_to_eat = min(player.qualities['food'] * (1 / player.qualities['hunger']) , player.qualities['food'])
+                    player_to_eat = min(player.qualities['food'] * (1 / player.qualities['hunger'] + 0.1) , player.qualities['food'])
                     player.qualities['hunger'] -= player_to_eat
                     player.qualities['strength'] += player_to_eat - 1
-                    companion_to_eat = min(player.qualities['companion'].qualities['food'] * (1 / player.qualities['companion'].qualities['hunger']), player.qualities['companion'].qualities['food'])
+                    companion_to_eat = min(player.qualities['companion'].qualities['food'] * (1 / (player.qualities['companion'].qualities['hunger'] + 0.1)), player.qualities['companion'].qualities['food'])
                     player.qualities['companion'].qualities['food'] -= companion_to_eat
                     player.qualities['companion'].qualities['strength'] += companion_to_eat - 1
                     print(f'You found {food} units of food in the town. After you and your companion shared it, you ate {player_to_eat} units of food.')
                     print('You now have the following qualities:')
                     print(f'{player.qualities.items()}')
                     print('Your companion has the following qualities:')
-                    print(f'{thief_dict[player.location_i, player.location_j].qualities.items()}')
+                    print(f'{player.qualities['companion'].qualities.items()}')
                     print('It\'s time to move on.')
                     move()
 
@@ -533,10 +533,10 @@ while True:
                     to_share = player.qualities['companion'].qualities['food'] * player.qualities['companion'].qualities['loyalty']
                     player.qualities['companion'].qualities['food'] -= to_share
                     # player and companion eat
-                    player_to_eat = min(player.qualities['food'] * (1 / player.qualities['hunger']), player.qualities['food'])
+                    player_to_eat = min(player.qualities['food'] * (1 / player.qualities['hunger'] + 0.1), player.qualities['food'])
                     player.qualities['hunger'] -= player_to_eat
                     player.qualities['strength'] += player_to_eat - 1
-                    companion_to_eat = min(player.qualities['companion'].qualities['food'] * (1 / player.qualities['companion'].qualities['hunger']), player.qualities['companion'].qualities['food'])
+                    companion_to_eat = min(player.qualities['companion'].qualities['food'] * (1 / (player.qualities['companion'].qualities['hunger'] + 0.1)), player.qualities['companion'].qualities['food'])
                     player.qualities['companion'].qualities['food'] -= companion_to_eat
                     player.qualities['companion'].qualities['strength'] += companion_to_eat - 1
                     print(f'You found {food} units of food in the forest. After you and your companion shared it, you ate {player_to_eat} units of food.')
