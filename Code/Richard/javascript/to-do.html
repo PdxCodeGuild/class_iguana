@@ -1,0 +1,157 @@
+<html>
+    <head>
+        <title>To-do list</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <meta charset="utf-8"/>
+        <style>
+        body, header {
+            margin: 10px;
+        }
+        header {
+            text-align: center;
+            font-size: 36px;
+            font-style: strong;
+        }
+        .row, header {
+            justify-content: space-between;
+            align-self: center;
+            /* max-width: 600px; */
+        }
+        .row {
+            padding: 5px;
+        }
+        #completed_list > li {
+            text-decoration: line-through;
+        }
+        #deleted_list > li {
+            text-decoration: line-through;
+            font-style: italic
+        }
+ 
+        </style>
+    </head>
+    <body>
+        <!-- set up the divs = input field, columns to-do, completed, deleted -->
+        <header>To-do list</header>
+        <div class="row"></div>
+            Add a to-do item by typing in this field
+            <input id="todo_input" type="text"/>
+            <button id="add_bt" class="btn btn-secondary">Add to-do item</button>
+        </div>
+        <div class="row">
+            <div id ="to_do" class="col-sm-4">
+                <h3>To do</h3>
+                <ul class="list-unstyled" id="to_do_list"></ul>
+            </div>
+            <div id="completed" class="col-sm-4">
+                <h3>Completed</h3>
+                <ul class="list-unstyled" id="completed_list"></ul>
+            </div>
+            <div id="deleted" class="col-sm-4">
+                    <h3>Deleted</h3>
+                    <ul class="list-unstyled" id="deleted_list"></ul>
+                </div>
+        </div>
+
+        <script>
+            let add_bt = document.querySelector('#add_bt')
+            let todo_input = document.querySelector('#todo_input')
+            let to_do_list = document.querySelector('#to_do_list')
+            let to_do = document.querySelector('#to_do')
+            let completed_list = document.querySelector('#completed_list')
+            let completed = document.querySelector('#completed')
+            let deleted_list = document.querySelector('#deleted_list')
+
+            todo_input.addEventListener('keyup', function(e) {
+                console.log(e.keyCode)
+                if (e.keyCode === 13) {list_element()}
+            })
+            add_bt.onclick = list_element
+
+                
+            function list_element() {
+                let text = " " + todo_input.value 
+                if (text == ' ') {
+                    return
+                }
+                todo_input.value = ''
+                let li = document.createElement("li")
+                let textnode = document.createElement("span")
+                textnode.innerText = text
+                let button_complete = document.createElement("button")
+                button_complete.classList.add("btn", "btn-secondary", "active", "checkbox")
+                button_complete.id = textnode.value
+                button_complete.innerHTML = "&#x2713;"
+                let button_remove = document.createElement('button')
+                button_remove.classList.add("btn", "btn-secondary", "active", "checkbox")
+                button_remove.innerHTML = "&#x2715;"
+                li.appendChild(button_complete)
+                li.appendChild(button_remove)
+                li.appendChild(textnode)
+                document.getElementById("to_do_list").appendChild(li)
+
+                button_complete.onclick = function() {
+                    let comp = this.parentElement             
+                    to_do_list.removeChild(this.parentElement)
+                    comp.removeChild(button_complete) 
+                    comp.removeChild(button_remove) 
+                    completed_list.appendChild(comp)
+                    let button_return = document.createElement("button")
+                    button_return.classList.add("btn", "btn-secondary", "active", "checkbox")
+                    button_return.innerHTML = "&#8617"
+                    // comp.appendChild(button_return)
+                    comp.insertBefore(button_return, comp.children[0])
+                    // to_return.insertBefore(button_complete, to_return.children[0])
+                
+                 button_return.onclick = function() {
+                    let to_return = this.parentElement
+                    completed_list.removeChild(this.parentElement)
+                    to_return.removeChild(button_return)
+                    // to_return.appendChild(button_complete)
+                    // // to_return.appendChild(button_remove)
+                    to_do_list.appendChild(to_return)
+                    console.log(to_return.textnode)
+                    to_return.insertBefore(button_remove, to_return.children[0])
+                    to_return.insertBefore(button_complete, to_return.children[0])
+                } 
+                }
+
+                button_remove.onclick = function() {
+                    let to_delete = this.parentElement
+                    to_do_list.removeChild(this.parentElement)
+                    to_delete.removeChild(button_complete) 
+                    to_delete.removeChild(button_remove)
+                    let button_confirm = document.createElement("button")
+                    let button_return = document.createElement("button")
+                    button_return.classList.add("btn", "btn-secondary", "active", "checkbox")
+                    button_confirm.classList.add("btn", "btn-secondary", "active", "checkbox")
+                    button_confirm.innerHTML = "&#x2715;"
+                    button_return.innerHTML = "&#8617"
+                    // to_delete.appendChild(button_confirm)
+                    // to_delete.appendChild(button_return)
+                    to_delete.insertBefore(button_remove, to_delete.children[0])
+                    to_delete.insertBefore(button_complete, to_delete.children[0])
+                    deleted_list.appendChild(to_delete)
+
+                button_confirm.onclick = function() {
+                    deleted_list.removeChild(this.parentElement)
+                }
+                button_return.onclick = function() {
+                    let to_return = this.parentElement
+                    deleted_list.removeChild(this.parentElement)
+                    to_return.removeChild(button_return)
+                    to_return.removeChild(button_confirm)
+                    // to_return.appendChild(button_complete)
+                    // to_return.appendChild(button_remove)
+                    to_return.insertBefore(button_remove, to_return.children[0])
+                    to_return.insertBefore(button_complete, to_return.children[0])
+                    to_do_list.appendChild(to_return)
+                }
+                
+                }
+            }
+            
+            
+        </script>
+    </body>
+</html>
