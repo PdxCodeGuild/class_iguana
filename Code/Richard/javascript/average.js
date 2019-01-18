@@ -31,15 +31,41 @@ let arrMax = x => Math.max(... x)
 let arrSum = x => x.reduce((a,b) => a + b, 0)
 let arrAvg = x => arrSum(x) / x.length
 let arrMed = x => x.length % 2===0? [x[x.sort((a, b) => a - b).length / 2], x[x.sort((a, b) => a - b).length / 2 - 1]]: x[Math.floor(x.sort((a, b) => a - b).length / 2)]
-let freqs = {}
 let arrFreqs = function(a) {
+    let freqs = {}
     for (i=0; i < a.length; ++i) {
-        if (a[i] in freqs) {freqs[a[i]] += 1}
-        else freqs[a[i]] == 1
+        if (a[i] in freqs) {freqs[a[i]]+= 1}
+        else {freqs[a[i]] = 1}
     }
     return freqs
 }
-let arrMode = x => arrMax(Object.keys(arrFreqs(x)))
+
+
+// function arrMode(obj) {
+//     let modes = []
+//     for (let value in obj) {
+//         modes.push([value, obj[value]])
+//     }
+//     modes.sort((a, b) => a + b)
+//     return modes
+// }
+
+function arrMode(x) {
+    let mode = {}
+    let max = 0, count = 0;
+
+    x.forEach(function(e) {
+        if (mode[e]) {mode[e]++}
+        else {mode[e] = 1} 
+
+        if (count<mode[e]) { 
+            max = e
+            count = mode[e]
+        }
+    })
+    
+    return max;
+}
 
 array_output.innerText = `numbers: ${arr}`
 arrMin_output.innerText =`minimum: ${arrMin(arr)}`
@@ -48,7 +74,7 @@ arrSum_output.innerText = `sum: ${arrSum(arr)}`
 arrAvg_output.innerText = `average: ${arrAvg(arr).toFixed(2)}`
 arrMed_output.innerText = `median: ${arrMed(arr)}`
 arrMode_output.innerText = `mode: ${arrMode(arr)}`
-arrFreq_output.innerText = `frequencies: ${arrFreqs(arr)}`
+arrFreq_output.innerText = `frequencies: ${JSON.stringify(arrFreqs(arr))}`
 
 
 let inputs = []
@@ -69,5 +95,5 @@ calc_bt.onclick = function() {
     arrAvg_output_interactive.innerText = `average: ${arrAvg(nums).toFixed(2)}`
     arrMed_output_interactive.innerText = `median: ${arrMed(nums)}`
     arrMode_output_interactive.innerText = `mode: ${arrMode(nums)}`
-    arrFreq_output_interactive.innerText = `frequencies: ${arrFreqs(nums)}`
+    arrFreq_output_interactive.innerText = `frequencies: ${JSON.stringify(arrFreqs(nums))}`
 }
