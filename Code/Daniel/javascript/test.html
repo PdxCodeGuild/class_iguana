@@ -1,0 +1,127 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    <style>
+      body {
+        background-color: #333333;
+      }
+
+      #rocket {
+        
+        
+        background-image: url("rocket.png");
+        width: 600px;
+        height: 600px;
+        animation: anim 4s steps(68) infinite;
+      }
+
+      /* #test {
+          animation: shake 0.5s;
+          animation-play-state: paused;
+          animation-iteration-count: infinite;
+      } */
+
+      @keyframes anim {
+        0% {
+          background-position-x: 0px;
+        }
+        100% {
+          background-position-x: -40800px;
+        }
+      }
+
+      @keyframes shake {
+        0% {
+          transform: translate(1px, 1px) rotate(0deg);
+        }
+        10% {
+          transform: translate(-1px, -2px) rotate(-1deg);
+        }
+        20% {
+          transform: translate(-3px, 0px) rotate(1deg);
+        }
+        30% {
+          transform: translate(3px, 2px) rotate(0deg);
+        }
+        40% {
+          transform: translate(1px, -1px) rotate(1deg);
+        }
+        50% {
+          transform: translate(-1px, 2px) rotate(-1deg);
+        }
+        60% {
+          transform: translate(-3px, 1px) rotate(0deg);
+        }
+        70% {
+          transform: translate(3px, 1px) rotate(-1deg);
+        }
+        80% {
+          transform: translate(-1px, -1px) rotate(1deg);
+        }
+        90% {
+          transform: translate(1px, 2px) rotate(0deg);
+        }
+        100% {
+          transform: translate(1px, -2px) rotate(-1deg);
+        }
+      }
+      #count {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 300px;
+        color: whitesmoke;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="count"></div>
+    <div id="test">
+        <div id="rocket"></div>
+    </div>
+
+    <script>
+      let urls = [
+        "http://stars.chromeexperiments.com/",
+        "https://codepen.io/akm2/full/rHIsa",
+        "https://www.virustotal.com/#/home/upload",
+        "https://www.madeon.fr/adventuremachine/",
+        "http://www.twofoods.com/",
+        "https://uk.flightaware.com/live/",
+        "https://10minutemail.com/10MinuteMail/index.html?dswid=1970",
+        "https://geoguessr.com/",
+        "http://www.windows93.net/",
+        "https://www.ted.com/#/"
+      ];
+      let time = 5;
+      let num = Math.floor(Math.random() * 10);
+
+      
+      setTimeout(rand_url, 8000);
+      setTimeout(startup, 4000);
+
+      function countdown() {
+        if (time < 0) {
+          time = 0;
+        } else {
+          let new_count = document.querySelector("#count");
+          new_count.innerText = time;
+          time--;
+        }
+      }
+
+      function startup() {
+        document.querySelector("#rocket").style.backgroundImage = "url(rocket2.gif)"
+        // document.querySelector("#text").style.animationPlayState = "running";
+        setInterval(countdown, 1000);
+        
+      }
+
+      function rand_url() {
+        // window.location.href = `${urls[num]}`;
+      }
+    </script>
+  </body>
+</html>
