@@ -3,7 +3,6 @@
     <head>
         <meta charset"utf-8">
         <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
-
     <style>
      body {
         color:white;
@@ -13,43 +12,110 @@
      header {
         color: black;
         font-family: 'Righteous', cursive;
-        font-size: 34px;
+        font-size: 160%;
         background-color:rgba(188,188,188,.4);
-        margin: 10% 15% 5% 15%;
-        padding: 2%
+        margin: 3% 30% 1% 30%;
+        padding: 0%
      }
      .flex {
         display:flex;
         flex-direction:row;
-        align-items: center;
-        flex-wrap: wrap;
-
-
+        align-items:center;
+        flex-wrap:wrap;
+        justify-content:space-evenly;
+     }
+     #amount {
+        display:flex;
+        align-items:center;
+        margin: 0% 30% 1% 30%;
+     }
+     #deposit {
+        display:flex;
+        align-items:center;
+        margin: 0% 30% 1% 30%;
+     }
+     #withdrawal {
+        display:flex;
+        align-items:center;
+        margin: 0% 30% 1% 30%;
+     }
+     #check_history {
+        display:flex;
+        align-items:center;
+        margin: 0% 30% 1% 30%;
+     }
+     #check_interest {
+        display:flex;
+        align-items:center;
+        margin: 0% 30% 1% 30%;
+     }
+     #history {
+        color: black;
+        display:flex;
+        align-items:center;
+        margin: 0% 30% 1% 30%;
+     }
+     #interest_output {
+        color: black;
+        display:flex;
+        align-items:center;
+        margin: 0% 30% 1% 30%;
+     }
+     #output {
+        color: black;
+        display:flex;
+        align-items:center;
+        margin: 0% 30% 1% 30%;
+     }
+     #a {
+        color: black;
+        display:flex;
+        align-items:center;
+        margin: 0% 30% .3% 30%;
+        text-decoration: underline;
+     }
+     #b {
+        color: black;
+        display:flex;
+        align-items:center;
+        margin: 0% 30% .3% 30%;
+        text-decoration: underline;
+     }
+     #c {
+        color: black;
+        display:flex;
+        align-items:center;
+        margin: 0% 30% .3% 30%;
+        text-decoration: underline;
+     }
     </style>
     </head>
     <body>
         <header class="flex">
             <h1>Virtual Atm</h1>
             <img src="https://bohapus.com/image/catalog/facilities/withdrawing-money-from-atm.png" width = 25%/>
-
         </header>
-        <input id="amount" type="text" placeholder="amount"/>
-        <button id="deposit">Make Deposit</button>
-        <button id="withdrawal">Make Withdrawal</button>
-        <button id="current_balance">See Balance</button>
-        <button id="check_history">Transaction History</button>
-        <button id="check_interest">Interest</button>
-        <div id="output"></div>
-        <div id="interest_output"></div>
-        <div id="history"></div>
 
+        <input id="amount" type="text" placeholder="amount"/>
+        <div>
+            <button id="deposit">Make Deposit</button>
+        </div>
+        <div>
+            <button id="withdrawal">Make Withdrawal</button>
+        </div>
+            <button id="check_history">Transaction History</button>
+        <div>
+            <button id="check_interest">Interest</button>
+        </div>
+        <div id="a"><span>Balance</span></div><div id="output"></div>
+        <div id="b"><span>Interest</span></div><div id="interest_output"></div>
+        <div id="c"><span>History</span></div><div id="history"></div>
     <script>
         let deposit_ = document.querySelector('#deposit')
         let amount_ = document.querySelector('#amount')
         let withdrawal_ = document.querySelector('#withdrawal')
         let output_ = document.querySelector('#output')
         let interest_ = document.querySelector('#check_interest')
-        let balance_ = document.querySelector('#current_balance')
         let history_ = document.querySelector('#check_history')
         let int_output = document.querySelector('#interest_output')
         let history_display = document.querySelector('#history')
@@ -57,14 +123,11 @@
         let amount = 0
         let interest = 0.1
         let history = []
-        current_balance.onclick = function check_balance(){
-            output_.innterText = account
-        }
         check_interest.onclick = function check_interest(){
             int_output.innerText = account * interest
         }
         deposit_.onclick = function deposit(){
-            amount = parseInt(amount_.value)
+            amount = Number(amount_.value)
             history.push('deposited $' + amount)
             account += amount
             output_.innerText = account
@@ -73,19 +136,20 @@
         }
         withdrawal_.onclick = function withdrawal(){
             if (account - amount < 0) {
-                output_.innterText = ('sorry you don\'t have that much money')
+                output_.innerText = ('sorry you don\'t have that much money')
 
             } else {
-                amount = parseInt(amount_.value)
+                amount = Number(amount_.value)
                 history.push('withdrew $' + amount)
                 console.log(amount)
                 account -= amount
                 output_.innerText = account
             }
         }
-        history_.onlick = function transaction_history(){
+        history_.onclick = function transaction_history(){
             history_display.innerText = history
         }
     </script>
     </body>
 </html>
+
