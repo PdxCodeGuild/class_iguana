@@ -24,14 +24,18 @@
         flex-wrap:wrap;
         justify-content:space-evenly;
      }
-     #ad_to_list, #remove_item, #remove, #remove_item, #add {
+     #add_item, #remove_item, #remove_button, #add_button {
         background-color:ivory;
         margin: 0% 30% .3% 30%;
      }
-     #z, #list {
+     #to_do_text {
         margin: 0% 30% .3% 30%;
         text-decoration: underline
      }
+     #display_list {
+        margin: 0% 30% .3% 30%;
+     }
+
     </style>
     </head>
     <body>
@@ -39,26 +43,31 @@
             <h1>To Do</h1>
             <img src="http://www.myiconfinder.com/uploads/iconsets/256-256-726fc1dd488c7a6d5f03cf4244af1e62-clipboard.png" width = 25%/>
         </header>
-        <input id="ad_to_list" type="text" placeholder="add to list"/>
-        <button id="add">Add</button>
+        <input id="add_item" type="text" placeholder="add to list"/>
+        <button id="add_button">Add Task</button>
         <div>
         <input id="remove_item" type="text" placeholder="remove from list"/>
-        <button id="remove">Remove</button></div>
-        <div id="z"><span>To Do:</span></div><div id="list"></div>
+        <button id="remove_button">Completed</button></div>
+        <div id="to_do_text"><span>To Do:</span></div><div id="display_list"></div>
+
     <script>
-        let add_to = document.querySelector('#ad_to_list')
-        let remove_from = document.querySelector('#remove')
-        let add_ = document.querySelector('#add')
-        let remove = document.querySelector('#remove')
-        let display_list = document.querySelector('#list')
+        let add_item = document.querySelector('#add_item')
+        let add_button = document.querySelector('#add_button')
+        let remove_item = document.querySelector('#remove_item')
+        let remove_button = document.querySelector('#remove_button')
+        let display_list = document.querySelector('#display_list')
         let to_do_list = []
-        add_.onclick = function build_list(){
-            to_do_list.push(add_to)
-            list.innerText = to_do_list
+        add_button.onclick = function build_list(){
+            to_do_list.push(add_item.value)
+            display_list.innerText = to_do_list
         }
-        remove.onclick = function completion(){
-            to_do_list.pop(remove_from)
-            list.innerText = to_do_list
+        remove_button.onclick = function task_completion(){
+            for (i=0; i<to_do_list.length; i++) {
+                if(to_do_list[i] === remove_item.value){
+                    to_do_list.pop(i)
+                }
+                display_list.innerText = to_do_list
+            }
         }
     </script>
     </body>
