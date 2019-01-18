@@ -24,18 +24,64 @@
         flex-wrap:wrap;
         justify-content:space-evenly;
      }
-     #check_history, #check_interest, #withdrawal, #deposit, #amount {
+     #amount {
         display:flex;
         align-items:center;
         margin: 0% 30% 1% 30%;
      }
-     #history, #interest_output, #output {
+     #deposit {
+        display:flex;
+        align-items:center;
+        margin: 0% 30% 1% 30%;
+     }
+     #withdrawal {
+        display:flex;
+        align-items:center;
+        margin: 0% 30% 1% 30%;
+     }
+     #check_history {
+        display:flex;
+        align-items:center;
+        margin: 0% 30% 1% 30%;
+     }
+     #check_interest {
+        display:flex;
+        align-items:center;
+        margin: 0% 30% 1% 30%;
+     }
+     #history {
         color: black;
         display:flex;
         align-items:center;
         margin: 0% 30% 1% 30%;
      }
-     #a, #b, #c {
+     #interest_output {
+        color: black;
+        display:flex;
+        align-items:center;
+        margin: 0% 30% 1% 30%;
+     }
+     #output {
+        color: black;
+        display:flex;
+        align-items:center;
+        margin: 0% 30% 1% 30%;
+     }
+     #a {
+        color: black;
+        display:flex;
+        align-items:center;
+        margin: 0% 30% .3% 30%;
+        text-decoration: underline;
+     }
+     #b {
+        color: black;
+        display:flex;
+        align-items:center;
+        margin: 0% 30% .3% 30%;
+        text-decoration: underline;
+     }
+     #c {
         color: black;
         display:flex;
         align-items:center;
@@ -81,7 +127,7 @@
             int_output.innerText = account * interest
         }
         deposit_.onclick = function deposit(){
-            amount = parseInt(amount_.value)
+            amount = Number(amount_.value)
             history.push('deposited $' + amount)
             account += amount
             output_.innerText = account
@@ -93,7 +139,7 @@
                 output_.innerText = ('sorry you don\'t have that much money')
 
             } else {
-                amount = parseInt(amount_.value)
+                amount = Number(amount_.value)
                 history.push('withdrew $' + amount)
                 console.log(amount)
                 account -= amount
