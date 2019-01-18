@@ -54,6 +54,7 @@
         </div>
 
         <script>
+            // put the doc elements in variables
             let add_bt = document.querySelector('#add_bt')
             let todo_input = document.querySelector('#todo_input')
             let to_do_list = document.querySelector('#to_do_list')
@@ -62,13 +63,14 @@
             let completed = document.querySelector('#completed')
             let deleted_list = document.querySelector('#deleted_list')
 
+            // an event listener and a button to invoke the list_element() function
             todo_input.addEventListener('keyup', function(e) {
                 console.log(e.keyCode)
                 if (e.keyCode === 13) {list_element()}
             })
             add_bt.onclick = list_element
 
-                
+            // add item, complete item, delete item, with the chance to undo 
             function list_element() {
                 let text = " " + todo_input.value 
                 if (text == ' ') {
@@ -90,6 +92,7 @@
                 li.appendChild(textnode)
                 document.getElementById("to_do_list").appendChild(li)
 
+                // complete item
                 button_complete.onclick = function() {
                     let comp = this.parentElement             
                     to_do_list.removeChild(this.parentElement)
@@ -99,16 +102,13 @@
                     let button_return = document.createElement("button")
                     button_return.classList.add("btn", "btn-secondary", "active", "checkbox")
                     button_return.innerHTML = "&#8617"
-                    // comp.appendChild(button_return)
                     comp.insertBefore(button_return, comp.children[0])
-                    // to_return.insertBefore(button_complete, to_return.children[0])
-                
+                    
+                // put completed item back in to-do list
                  button_return.onclick = function() {
                     let to_return = this.parentElement
                     completed_list.removeChild(this.parentElement)
                     to_return.removeChild(button_return)
-                    // to_return.appendChild(button_complete)
-                    // // to_return.appendChild(button_remove)
                     to_do_list.appendChild(to_return)
                     console.log(to_return.textnode)
                     to_return.insertBefore(button_remove, to_return.children[0])
@@ -116,6 +116,7 @@
                 } 
                 }
 
+                // put item in deleted list
                 button_remove.onclick = function() {
                     let to_delete = this.parentElement
                     to_do_list.removeChild(this.parentElement)
@@ -127,24 +128,23 @@
                     button_confirm.classList.add("btn", "btn-secondary", "active", "checkbox")
                     button_confirm.innerHTML = "&#x2715;"
                     button_return.innerHTML = "&#8617"
-                    // to_delete.appendChild(button_confirm)
-                    // to_delete.appendChild(button_return)
-                    to_delete.insertBefore(button_remove, to_delete.children[0])
-                    to_delete.insertBefore(button_complete, to_delete.children[0])
+                    to_delete.insertBefore(button_confirm, to_delete.children[0])
+                    to_delete.insertBefore(button_return, to_delete.children[0])
                     deleted_list.appendChild(to_delete)
 
+                // confirm deletion (really delete)
                 button_confirm.onclick = function() {
                     deleted_list.removeChild(this.parentElement)
                 }
+
+                // put deleted item back in to-do list
                 button_return.onclick = function() {
                     let to_return = this.parentElement
                     deleted_list.removeChild(this.parentElement)
                     to_return.removeChild(button_return)
                     to_return.removeChild(button_confirm)
-                    // to_return.appendChild(button_complete)
-                    // to_return.appendChild(button_remove)
-                    to_return.insertBefore(button_remove, to_return.children[0])
                     to_return.insertBefore(button_complete, to_return.children[0])
+                    to_return.insertBefore(button_remove, to_return.children[0])
                     to_do_list.appendChild(to_return)
                 }
                 
