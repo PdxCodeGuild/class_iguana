@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Make_Change</title>
+    <style>
+    body {
+    background-image: url(https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fcoins.thefuntimesguide.com%2Ffiles%2Fpocket-change-2-photo-by-Darren-Hester-on-flikr.jpg&f=1);
+    background-size: cover;
+    }
+    #money_input {
+        width: 200px;
+    }
+    #input_div {
+        text-align: center;
+        margin-top: 200px;
+    }
+    #output_change {
+    text-align: center;
+    background-color: rgba(0,0,0,.8);
+    color : white;
+    margin : 0px 430px 0px 430px;
+    }
+
+
+    </style>
+
+</head>
+<body>
+    <!--<img id="quarter_img" src= "https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fa%2Fa0%2F2006_Quarter_Proof.png&f=1">-->
+
+    <div id = "input_div">
+        <input id="money_input" type="text" placeholder="How much money do you have?">
+        <button id="make_change">Make Change</button>
+    </div>
+    <div id ="output_change"></div>
+    <script type= "text/javascript">
+                  quarters = 0
+         dimes = 0
+         nickels = 0
+         pennies = 0
+         let money_input = document.querySelector('#money_input')
+         let make_change = document.querySelector('#make_change')
+         let output_change = document.querySelector('#output_change')
+         make_change.onclick = function() {
+            quarters = (Math.floor((money_input.value * 100) / 25));
+            dimes = (Math.floor(((money_input.value * 100) % 25)/10));
+            nickels = (Math.floor((((money_input.value *100) % 25)%10)/5))
+            pennies = ((((money_input.value * 100) % 25)%10)%5)
+            output_change.innerHTML = `Your Change:</br> You Have ${quarters} quarters, ${dimes} dimes, ${nickels} nickels, ${pennies} pennies`;
+         }
+
+    </script>
+</body>
+</html>
