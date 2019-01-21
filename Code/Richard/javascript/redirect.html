@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> Random-redirect page</title>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <style>
+            #button_div {
+                text-align: center;
+            }
+            header {
+                text-align: center;
+                font-size: 36px;
+                font-style: strong;
+        }</style>
+    </head>
+</body>
+    <header>Clicking below redirects you to a random page after five seconds</header>
+    <div id="button_div">
+        <button id="redirect_button" class="btn btn-secondary">Click here to redirect</button>
+    </div>
+        <script>
+            redirect_button = document.querySelector("#redirect_button")
+            pages = ["https://www.w3schools.com", "https://developer.mozilla.org/en-US/", "https://developer.mozilla.org/zh-TW/", "https://eloquentjavascript.net", "https://www.aftenposten.no", "https://www.nrc.nl", "https://phnompenhpost.com", "https://elpais.com/elpais/portada_america.html", "https://www.haaretz.com"]
+            let randomPage = pages[Math.floor(Math.random()*pages.length)]
+            let random_redirect = function() {
+                location = randomPage
+            }
+            redirect_button.onclick = setTimeout(random_redirect, 5000)
+        </script>
+    </body>
+</html> 
