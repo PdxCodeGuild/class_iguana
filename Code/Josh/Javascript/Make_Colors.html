@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Make_Colors</title>
+
+
+</head>
+<body>
+
+     <script>
+      window.onload = function() {
+        let x_holder = document.querySelector("#x_holder")
+        for (let i=0; i < 1000; i++) {
+          x_holder.innerText += 'x'
+          if ((i+1) % 20 === 0) {
+            x_holder.appendChild(document.createElement("br"))
+          }
+        }
+        let choose_color = document.querySelector("#choose_color")
+        let change_color = document.querySelector("#change_color")
+        change_color.onclick = function() {
+          x_holder.setAttribute("style", `color: ${choose_color.value}`)
+        }
+      }
+    </script>
+    <input id="choose_color" type="text" placeholder="Choose a color"/>
+    <button id="change_color">Change color!</button>
+    <div id="x_holder" style="color: rgba(0, 0, 0, .5)"></div>
+</body>
+</html>

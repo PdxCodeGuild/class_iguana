@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To-Do_List</title>
+    <style>
+        .todo_item * {
+            display: inline;
+
+        }
+        .line_through {
+            text-decoration : line-through;
+        }
+        .noline {
+            text-decoration : none
+    </style>
+</head>
+<body>
+    <h1>Task Input</h1>
+        <div>
+            <input id="todo_input" type="text">
+            <button id="add_bt">*</button>
+        </div>
+    <div id="output_div">
+        <h2>ToDo List</h2>
+    </div>
+    <script type="text/javascript">
+        let todo_input = document.querySelector('#todo_input')
+        let add_bt = document.querySelector('#add_bt')
+        let output_div = document.querySelector('#output_div')
+
+
+        let counter = 0
+        add_bt.onclick = function() {
+            counter += 1
+            let i = counter //setting the counter to i which will be used for the id of text_div
+            let text = todo_input.value //assigning what the user put into the todo_input field to the variable text
+            todo_input.value = '' //erasing whatever the user put into the todo_input field so they can enter their next text without having to erase the previous text
+            let text_div = document.createElement('div'); //creating a div node
+            text_div.id = i //setting the text_div element to the id counter
+            text_div.className = "noline"
+            text_div.innerHTML = text //placing the text from the user in the div
+            let li = document.createElement('li'); //creating a li node
+            li.classList.add('todo_item'); //assigning a class to the li node that was just created
+            li.appendChild(text_div) //placing text_div in the li node
+            let line_btn = document.createElement('button') //creating a button
+            line_btn.innerHTML = '&#8224' //assigning the inner text of the button to a unicode symbol
+
+            line_btn.onclick = function () { //creating a function for the button created above
+                if (document.getElementById(i).className === "noline") {
+                    document.getElementById(i).className = "line_through";
+                } else {
+                    (document.getElementById(i).className) === "line_through";
+                    document.getElementById(i).className = "noline";
+                } // btn on click checks class of the text_div element to see what it is set to either "noline" or "line_through" and changes the class to the other class when pushed
+            }
+            let button_remove = document.createElement('button');
+                button_remove.innerHTML = 'X';
+                button_remove.onclick = function() {
+                    output_div.removeChild(this.parentElement);
+            } // btn on click finds the parent element that the li is in which is called output_div and it removes it deletes it and everything that's in it including both buttons that were placed in it
+
+            li.appendChild(line_btn)
+            li.appendChild(button_remove)
+            output_div.appendChild(li)
+        } // placing both buttons in the li div then placing the li div in another element div called output_div
+    </script>
+</body>
+</html>
