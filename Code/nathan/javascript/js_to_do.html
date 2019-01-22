@@ -59,7 +59,7 @@
         <div><input id="cross_out_this" placeholder="mark as completed"/>
         <button id="cross_out">Completed</button></div>
         <div id="to_do_text"><span>To Do:</span></div><div id="display_to_do_list"></div>
-        <div id="completed_text"><span>Completed:</span></div><div id="display_completed"></div>
+        <div id="completed_text"><span>Completed:a</span></div><div id="display_completed"></div>
 
     <script>
         let add_item = document.querySelector('#add_item')
@@ -79,7 +79,7 @@
         remove_button.onclick = function remove_task(){
             for (i=0; i<to_do_list.length; i++) {
                 if(to_do_list[i] === remove_item.value){
-                    to_do_list.pop(i)
+                to_do_list = [...to_do_list.slice(0, i), ...to_do_list.slice(i + 1, to_do_list.length)]
                 }
                 display_to_do_list.innerText = to_do_list
             }
@@ -87,8 +87,11 @@
         cross_out_button.onclick = function task_completion(){
             for (i=0; i<to_do_list.length; i++) {
                 if(to_do_list[i] === cross_out_this.value){
+                    console.log(to_do_list[i])
+                    console.log(cross_out_this.value)
                     completed_list.push(to_do_list[i])
-                    to_do_list.pop(i)
+                    to_do_list = [...to_do_list.slice(0, i), ...to_do_list.slice(i + 1, to_do_list.length)]
+
                 }
                 display_to_do_list.innerText = to_do_list
                 display_completed.innerText = completed_list
