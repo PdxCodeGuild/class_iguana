@@ -24,16 +24,24 @@
         flex-wrap:wrap;
         justify-content:space-evenly;
      }
-     #add_item, #remove_item, #remove_button, #add_button {
+     #add_item, #remove_item, #remove_button, #add_button, #cross_out_this, #cross_out {
         background-color:ivory;
         margin: 0% 30% .3% 30%;
+
      }
-     #to_do_text {
+     #to_do_text, #completed_text {
+        font-family: 'Gloria Hallelujah', cursive;
         margin: 0% 30% .3% 30%;
         text-decoration: underline
      }
-     #display_list {
+     #display_to_do_list {
+        font-family: 'Gloria Hallelujah', cursive;
         margin: 0% 30% .3% 30%;
+     }
+     #display_completed {
+        font-family: 'Gloria Hallelujah', cursive;
+        margin: 0% 30% .3% 30%;
+        text-decoration: line-through;
      }
 
     </style>
@@ -47,28 +55,44 @@
         <button id="add_button">Add Task</button>
         <div>
         <input id="remove_item" type="text" placeholder="remove from list"/>
-        <button id="remove_button">Completed</button></div>
-        <div id="to_do_text"><span>To Do:</span></div><div id="display_list"></div>
+        <button id="remove_button">Remove</button></div>
+        <div><input id="cross_out_this" placeholder="mark as completed"/>
+        <button id="cross_out">Completed</button></div>
+        <div id="to_do_text"><span>To Do:</span></div><div id="display_to_do_list"></div>
+        <div id="completed_text"><span>Completed:</span></div><div id="display_completed"></div>
 
     <script>
         let add_item = document.querySelector('#add_item')
         let add_button = document.querySelector('#add_button')
         let remove_item = document.querySelector('#remove_item')
         let remove_button = document.querySelector('#remove_button')
-        let display_list = document.querySelector('#display_list')
+        let cross_out_this = document.querySelector('#cross_out_this')
+        let cross_out_button = document.querySelector('#cross_out')
+        let display_to_do_list = document.querySelector('#display_to_do_list')
+        let display_completed = document.querySelector('#display_completed')
         let to_do_list = []
+        let completed_list = []
         add_button.onclick = function build_list(){
             to_do_list.push(add_item.value)
-            display_list.innerText = to_do_list
+            display_to_do_list.innerText = to_do_list
         }
-        remove_button.onclick = function task_completion(){
+        remove_button.onclick = function remove_task(){
             for (i=0; i<to_do_list.length; i++) {
                 if(to_do_list[i] === remove_item.value){
                     to_do_list.pop(i)
                 }
-                display_list.innerText = to_do_list
+                display_to_do_list.innerText = to_do_list
             }
         }
+        cross_out_button.onclick = function task_completion(){
+            for (i=0; i<to_do_list.length; i++) {
+                if(to_do_list[i] === cross_out_this.value){
+                    completed_list.push(to_do_list[i])
+                    to_do_list.pop(i)
+                }
+                display_completed.innerText = completed_list
+             }
+         }
     </script>
     </body>
 </html>
