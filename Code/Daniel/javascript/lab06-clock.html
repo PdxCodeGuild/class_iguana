@@ -73,12 +73,12 @@
         <div class="bot_right"></div>
       </div>
     </div>
-      <button id="mode">Clock</button>
-      <div id="stop_controls">
-        <button id="start">Start</button> <button id="stop">Stop</button>
-        <button id="lap">Lap</button>
-      </div>
-   
+    <button id="mode">Clock</button>
+    <div id="stop_controls">
+      <button id="start">Start</button> <button id="stop">Stop</button>
+      <button id="lap">Lap</button>
+    </div>
+
     <ol id="laps"></ol>
 
     <script>
@@ -245,7 +245,6 @@
         timer = /\d{2}:\d{2}:\d{2}/.exec(date) + "";
         timer = parse_time(timer);
         display_time(timer);
-        
 
         let laps = document.querySelector("#laps");
         while (laps.firstChild) {
@@ -256,25 +255,23 @@
       let mode = document.querySelector("#mode");
       mode.addEventListener("click", function() {
         let text = document.querySelector("#mode").innerText;
-        let lap_display = document.querySelector("#laps")
+        let lap_display = document.querySelector("#laps");
         if (text == "Stop Watch") {
-          
           document.querySelector("#stop_controls").style.display = "inline-block";
           document.querySelector("#mode").innerText = "Clock";
           clock_interval = clearInterval(clock_interval);
           display_time([0, 0, 0, 0, 0, 0]);
           document.querySelector("#start").innerText = "Start";
-          running = false
-          reset_timer()
-          lap_display.style.display = "block"
+          running = false;
+          reset_timer();
+          lap_display.style.display = "block";
         } else {
-          get_time()
+          get_time();
           document.querySelector("#stop_controls").style.display = "none";
           document.querySelector("#mode").innerText = "Stop Watch";
           lap_display.style.display = "none";
           clock_interval = setInterval(get_time, 1000);
           timer_interval = clearInterval(timer_interval);
-          
         }
       });
 

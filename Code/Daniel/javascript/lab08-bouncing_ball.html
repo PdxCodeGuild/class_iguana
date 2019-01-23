@@ -1,0 +1,81 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      canvas {
+        border-style: solid;
+        border-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <canvas width="500" height="500"></canvas> -->
+
+    <script>
+      width = 500;
+      height = 500;
+      let canvas = document.createElement("canvas");
+
+      canvas.setAttribute("width", `${width}`);
+      canvas.setAttribute("height", `${height}`);
+
+      document.querySelector("body").appendChild(canvas);
+
+      let ball = {
+        radius: 4,
+        px: Math.random() * width,
+        py: Math.random() * height,
+        vx: (2 * Math.random() - 1) * 10,
+        vy: (2 * Math.random() - 1) * 10
+      };
+
+      let ctx = document.querySelector("canvas").getContext("2d");
+
+      function draw_ball() {
+        ctx.beginPath();
+        ctx.arc(ball.px, ball.py, ball.radius, 0, 2 * Math.PI, false);
+        ctx.fillStyle = "green";
+        ctx.clearRect(0, 0, width, height);
+        ctx.fill();
+      }
+
+      function update_position() {
+        if (ball.px < 500 && ball.px > 0) {
+          ball.px += ball.vx;
+        } else if (ball.px >= 500) {
+          ball.px = 499;
+          ball.vx = -ball.vx;
+          ball.vx*=.79
+        } else {
+          ball.px = 1;
+          ball.vx *= -1;
+          ball.vx*=.79
+        }
+
+        if (ball.py < 500 && ball.py > 0) {
+          ball.py += ball.vy ;
+          help = "pos: " + ball.py + " v: " + ball.vy;
+          alert;
+        } else if (ball.py >= 500) {
+          ball.py = 499;
+          ball.vy = -ball.vy;
+          ball.vy*=.79
+        } else {
+          ball.py = 1;
+          ball.vy *= -1;
+          ball.vy*=.79
+        }
+
+        ball.vy += .5
+        
+        draw_ball();
+        window.requestAnimationFrame(update_position);
+      }
+
+      window.requestAnimationFrame(update_position);
+    </script>
+  </body>
+</html>
