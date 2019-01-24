@@ -125,6 +125,27 @@
                 entries = entries.substring(0, entries.length-1)
                 display.value = entries
             }
+
+            percent.onclick = function() {
+                x = parseFloat(entries)
+                output = x / 100
+                display.value = output
+                entries = ''
+            }
+
+            exp.onclick = function() {
+                x = parseFloat(entries)
+                output = Math.exp(x)
+                display.value = output
+                entries = ''
+            }
+
+            ln.onclick = function() {
+                x = parseFloat(entries)
+                output = Math.ln(x)
+                display.value = output
+                entries = ''
+            }
         </script>
     </body>
 </html>
