@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf_8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<title>Redirect</title>
+<style>
+
+
+</style>
+
+<body>
+    <script>
+        function random_choice(array) {
+            let array_length = array.length
+            let random_int = Math.random() * array_length
+            random_int = Math.floor(random_int)
+            return random_int
+        }
+
+            let webpages = ['https://theoatmeal.com/', 'https://www.theonion.com/', 'https://babylonbee.com/',
+                'https://learnpythonthehardway.org/', 'http://scottwstinebooks.com/', 'https://robertsrules.org/']
+            let redirect = webpages[random_choice(webpages)]   //randomly select one of the urls
+            window.location.replace(redirect)
+
+    </script>
+
+
+</body>
+
+</html>
