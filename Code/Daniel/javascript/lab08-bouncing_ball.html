@@ -12,8 +12,6 @@
     </style>
   </head>
   <body>
-    <!-- <canvas width="500" height="500"></canvas> -->
-
     <script>
       width = 500;
       height = 500;
@@ -47,30 +45,25 @@
           ball.px += ball.vx;
         } else if (ball.px >= 500) {
           ball.px = 499;
-          ball.vx = -ball.vx;
-          ball.vx*=.79
+          ball.vx *= -0.5;
         } else {
           ball.px = 1;
-          ball.vx *= -1;
-          ball.vx*=.79
+          ball.vx *= -0.5;
         }
 
         if (ball.py < 500 && ball.py > 0) {
-          ball.py += ball.vy ;
+          ball.py += ball.vy;
           help = "pos: " + ball.py + " v: " + ball.vy;
-          alert;
-        } else if (ball.py >= 500) {
-          ball.py = 499;
-          ball.vy = -ball.vy;
-          ball.vy*=.79
-        } else {
+        } else if (ball.py >= 500) {                      //Bottom of screen
+          ball.py = 500;
+          ball.vy *= -0.79;
+        } else if (ball.py <= 500) {
           ball.py = 1;
-          ball.vy *= -1;
-          ball.vy*=.79
+          ball.vy *= -0.79;
         }
 
-        ball.vy += .5
-        
+        ball.vy += 0.7;
+
         draw_ball();
         window.requestAnimationFrame(update_position);
       }
