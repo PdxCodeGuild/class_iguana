@@ -1,0 +1,267 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      #wrapper {
+        display: grid;
+        grid-template-columns: repeat(4, auto);
+        grid-template-rows: repeat(7, auto);
+        grid-gap: 10px;
+      }
+
+      .display {
+        grid-column: 1/5;
+        background-color: red;
+        grid-row: 1/2;
+      }
+
+      .back {
+        grid-column: 1;
+        background-color: red;
+        grid-row: 3;
+      }
+
+      .divide {
+        grid-column: 3;
+        background-color: red;
+        grid-row: 3;
+      }
+
+      .multiply {
+        grid-row: 3;
+        grid-column: 4;
+        background-color: rgba(255, 0, 0, 0.034);
+      }
+
+      .seven {
+        grid-column: 1;
+        background-color: red;
+        grid-row: 4;
+      }
+
+      .eight {
+        grid-column: 2;
+        background-color: red;
+        grid-row: 4;
+      }
+
+      .nine {
+        grid-column: 3;
+        background-color: red;
+        grid-row: 4;
+      }
+      .minus {
+        grid-column: 4;
+        background-color: red;
+        grid-row: 4;
+      }
+      .four {
+        grid-column: 1;
+        background-color: red;
+        grid-row: 5;
+      }
+
+      .five {
+        grid-column: 2;
+        background-color: red;
+        grid-row: 5;
+      }
+
+      .six {
+        grid-column: 3;
+        background-color: red;
+        grid-row: 5;
+      }
+      .plus {
+        grid-column: 4;
+        background-color: red;
+        grid-row: 5;
+      }
+      .one {
+        grid-column: 1;
+        background-color: red;
+        grid-row: 6;
+      }
+
+      .two {
+        grid-column: 2;
+        background-color: red;
+        grid-row: 6;
+      }
+
+      .three {
+        grid-column: 3;
+        background-color: red;
+        grid-row: 6;
+      }
+      .equals {
+        grid-column: 4;
+        background-color: red;
+        grid-row: 6/8;
+      }
+      .zero {
+        grid-column: 1/3;
+        background-color: red;
+        grid-row: 7;
+      }
+      .decimal {
+        grid-column: 3;
+        background-color: red;
+        grid-row: 7;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div class="display">&nbsp</div>
+      <div class="divide">/</div>
+      <div class="back">del</div>
+      <div class="multiply">x</div>
+
+      <div class="seven">7</div>
+      <div class="eight">8</div>
+      <div class="nine">9</div>
+      <div class="minus">-</div>
+
+      <div class="four">4</div>
+      <div class="five">5</div>
+      <div class="six">6</div>
+      <div class="plus">+</div>
+
+      <div class="one">1</div>
+      <div class="two">2</div>
+      <div class="three">3</div>
+      <div class="equals">=</div>
+
+      <div class="zero">0</div>
+      <div class="decimal">.</div>
+
+      <script>
+        let num1 = "";
+        //let num2 = ''
+
+        let back = document.querySelector(".back");
+        back.addEventListener("click", function() {
+            num1 = num1.slice(0,-1)
+            document.querySelector(".display").innerText = num1 
+        });
+
+        let divide = document.querySelector(".divide");
+        divide.addEventListener("click", function() {
+            num1 += " / ";
+          document.querySelector(".display").innerText += "/";
+        });
+
+        let multiply = document.querySelector(".multiply");
+        multiply.addEventListener("click", function() {
+            num1 += " x ";
+          document.querySelector(".display").innerText += "x";
+        });
+
+        let one = document.querySelector(".one");
+        one.addEventListener("click", function() {
+          num1 += "1";
+          document.querySelector(".display").innerText += "1";
+        });
+        let two = document.querySelector(".two");
+        two.addEventListener("click", function() {
+            num1 += "2";
+          document.querySelector(".display").innerText += "2";
+        });
+        let three = document.querySelector(".three");
+        three.addEventListener("click", function() {
+            num1 += "3";
+          document.querySelector(".display").innerText += "3";
+
+        });
+        let four= document.querySelector(".four");
+        four.addEventListener("click", function() {
+            num1 += "4";
+          document.querySelector(".display").innerText += "4";
+        });
+        let five = document.querySelector(".five");
+        five.addEventListener("click", function() {
+            num1 += "5";
+          document.querySelector(".display").innerText += "5";
+        });
+        let six= document.querySelector(".six");
+        six.addEventListener("click", function() {
+            num1 += "6";
+          document.querySelector(".display").innerText += "6";
+        });
+        let seven= document.querySelector(".seven");
+        seven.addEventListener("click", function() {
+            num1 += "7";
+          document.querySelector(".display").innerText += "7";
+        });
+        let eight= document.querySelector(".eight");
+        eight.addEventListener("click", function() {
+            num1 += "8";
+          document.querySelector(".display").innerText += "8";
+        });
+        let nine= document.querySelector(".nine");
+        nine.addEventListener("click", function() {
+            num1 += "9";
+          document.querySelector(".display").innerText += "9";
+        });
+        let zero= document.querySelector(".zero");
+        zero.addEventListener("click", function() {
+            num1 += "0";
+          document.querySelector(".display").innerText += "0";
+        });
+        let minus = document.querySelector(".minus");
+        minus.addEventListener("click", function() {
+            num1 += " - ";
+          document.querySelector(".display").innerText += "-";
+        });
+        let plus = document.querySelector(".plus");
+        plus.addEventListener("click", function() {
+            num1 += " + ";
+          document.querySelector(".display").innerText += "+";
+        });
+        let equals = document.querySelector(".equals");
+        equals.addEventListener("click", function() {
+           let total = calculate()
+           alert(total)
+           num1 = ""
+           document.querySelector(".display").innerText = "";
+        });
+        let decimal = document.querySelector(".decimal");
+        decimal.addEventListener("click", function() {
+            num1 += ".";
+          document.querySelector(".display").innerText += ".";
+        });
+
+        function calculate() {
+            arr = num1.split(" ")
+            first = parseInt(arr[0])
+            second = parseInt(arr[2])
+
+            if (arr[1] == "+") {
+                total =  first + second
+            }
+            else if (arr[1] == "-") {
+                total = first - second
+            }
+            else if (arr[1] == "x") {
+                total = first * second
+            }
+            else if (arr[1] == "/") {
+                total = first / second
+            }
+                
+
+            
+
+
+            return total
+        }
+
+
+      </script>
+    </div>
+  </body>
+</html>
