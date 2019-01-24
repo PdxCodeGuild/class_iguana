@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>random_redirect</title>
+    <style>
+
+
+    </style>
+</head>
+<body>
+    <div id="btn_holder">
+        <button id="start_btn">Push to Start</button>
+    </div>
+    <div id="count_down"></div>
+    <script type="text/javascript">
+        let count_down = document.querySelector("#count_down")
+        let start_bt = document.querySelector("#start_btn")
+        let btn_holder = document.querySelector("#btn_holder")
+        let c = 10
+
+        start_btn.onclick = function () {
+            btn_holder.removeChild(this);
+            setInterval(function() {
+                count_down.innerText = c
+                if ( c === 0) {
+                    let sites = ["https://www.google.com" ,
+                    "https://portlandcodeguild.slack.com/messages/CEKFVFGCE/?" ,
+                    "https://css-tricks.com/snippets/css/a-guide-to-flexbox/" ,
+                    "https://www.w3schools.com/cssref/pr_class_display.asp" ,
+                    "http://www.espn.com" ,
+                    "https://www.reddit.com" ,
+                    "https://www.zelda.com" ,
+                    "http://se.ufc.com" ,
+                    "https://www.nba.com/#/" ,
+                    "https://giphy.com/gifs/nfl-football-first-down-julian-edelman-43Loz00WyBEY4eyigd"]
+
+                    let i = Math.floor(Math.random()*sites.length);
+                    window.location = sites[i];
+                }
+
+                c -= 1
+
+            }, 500);
+
+        }
+
+
+
+    </script>
+</body>
