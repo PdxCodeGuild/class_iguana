@@ -1,0 +1,99 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    <style>
+      body {
+        background-color: #333333;
+      }
+
+      #wrapper {
+        display: grid;
+        justify-content: center;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      #rocket {
+        grid-row: 1;
+        grid-column: 2/3;
+        z-index: 1;
+        background-image: url("rocket2.gif");
+        width: 600px;
+        height: 600px;
+      }
+
+      #rocket2 {
+        grid-row: 1;
+        grid-column: 2/3;
+
+        background-image: url("rocket2.png");
+        width: 600px;
+        height: 600px;
+      }
+
+      #count {
+        justify-content: center;
+        align-self: center;
+        text-align: center;
+        grid-column: auto;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 300px;
+        color: whitesmoke;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="count">5</div>
+      <div id="rocket"></div>
+      <div id="rocket2"></div>
+    </div>
+
+    <script>
+      let urls = [
+        "http://stars.chromeexperiments.com/",
+        "https://codepen.io/akm2/full/rHIsa",
+        "https://www.virustotal.com/#/home/upload",
+        "https://www.madeon.fr/adventuremachine/",
+        "http://www.twofoods.com/",
+        "https://uk.flightaware.com/live/",
+        "https://10minutemail.com/10MinuteMail/index.html?dswid=1970",
+        "https://geoguessr.com/",
+        "http://www.windows93.net/",
+        "https://www.ted.com/#/"
+      ];
+      let time = 5;
+      let num = Math.floor(Math.random() * 10);
+      setTimeout(countdown, 1000);
+      setTimeout(countdown, 2000);
+      setTimeout(countdown, 3000);
+      setTimeout(countdown, 4000);
+      setTimeout(countdown, 5000);
+
+      setTimeout(rand_url, 7000);
+      setTimeout(startup, 4000);
+
+      function countdown() {
+        if (time < 1) {
+          time = 0;
+        } else {
+          time--;
+          let new_count = document.querySelector("#count");
+          new_count.innerText = time;
+        }
+        
+      }
+
+      function startup() {
+        document.querySelector("#rocket").style.backgroundImage = "url(rocket22.gif)";
+      }
+
+      function rand_url() {
+        window.location.href = `${urls[num]}`;
+      }
+    </script>
+  </body>
+</html>

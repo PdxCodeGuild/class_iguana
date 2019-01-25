@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Number_to_Phrase</title>
+    <script>
+        let ones_digit = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven',
+                      'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen',
+                      'twenty']
+        let input = parseInt(prompt('What is your number?'))
+        let tens_digit = ['','ten','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninty',]
+        let hundreds_digit = ['0','onehundred','twohundred','threehundred','fourhundred','fivehundred','sixhundred','sevenhundred','eighthundred','ninehundred']
+        let output = 'didn\'t work'
+        if (input<21) {
+            output = ones_digit[input]
+        }
+        else if (input<100) {
+            output = tens_digit[Math.floor(input/10)] + ones_digit[input%10]
+            //output += ones_digit[input%10]
+        }
+        else if ((input<1000) && ((input%10)==0)) {
+            output = hundreds_digit[Math.floor(input/100)] + " and " + tens_digit[Math.floor((input%100)/10)]
+        }
+        else if (input<1000) {
+            output = hundreds_digit[Math.floor(input/100)] + " and " + tens_digit[Math.floor((input%100)/10)] + ones_digit[(input%10)]
+        }
+        console.log(output)
+    </script>
+
+</head>
+<body>
+
+
+</body>
+</html>

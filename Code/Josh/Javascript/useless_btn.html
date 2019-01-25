@@ -1,0 +1,42 @@
+<!DOCTYPE=html>
+<html>
+  <head>
+    <style>
+      .noselect {
+        -webkit-touch-callout: none; /* iOS Safari */
+          -webkit-user-select: none; /* Safari */
+           -khtml-user-select: none; /* Konqueror HTML */
+             -moz-user-select: none; /* Firefox */
+              -ms-user-select: none; /* Internet Explorer/Edge */
+                  user-select: none; /* Non-prefixed version, currently
+                                        supported by Chrome and Opera */
+      }
+      .button_border {
+        border-style: solid;
+        width: 10%;
+        text-align: center;
+        margin: 5px 0 0 0;
+      }
+    </style>
+  </head>
+  <body>
+    <input id="button_num" type="number"/>
+    <div id="create_buttons" class="noselect button_border">click me to create buttons</div>
+    <div id="button_holder"></div>
+    <script>
+      let button_num = document.querySelector("#button_num")
+      let create_buttons = document.querySelector("#create_buttons")
+      let button_holder = document.querySelector("#button_holder")
+      create_buttons.onclick = function() {
+        for (i=0; i<button_num.value; i++) {
+          let newbt = document.createElement("button")
+          newbt.innerText = "Push to Delete"
+          newbt.onclick = function() {
+            button_holder.removeChild(this)
+          }
+          button_holder.appendChild(newbt)
+        }
+      }
+    </script>
+  </body>
+</html>

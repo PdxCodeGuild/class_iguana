@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset"utf-8">
+        <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+    <style>
+     body {
+        color:white;
+        background-image:url("https://i.ytimg.com/vi/XPZb8HoQgH8/maxresdefault.jpg");
+        background-size:cover;
+     }
+     header {
+        color: black;
+        font-family: 'Gloria Hallelujah', cursive;
+        font-size: 240%;
+        background-color:rgba(152, 255, 255, 0.6);
+        margin: 1% 30% 1% 30%;
+        padding: 0%
+     }
+     .flex {
+        display:flex;
+        align-items:center;
+        flex-wrap:wrap;
+        justify-content:space-evenly;
+     }
+      #redirect {
+        background-color:ivory;
+        width: 10%;
+        margin: 0% 30% 5% 42%;
+     }
+      #display_timer {
+        color: black;
+        background-color:ivory;
+        width: 10%;
+        margin: 0% 30% .3% 42%;
+        text-align: center;
+
+
+
+    </style>
+    </head>
+    <body>
+
+        <header class="flex">
+            <h1>R3D1R3Ct0r</h1>
+            <img src="" width = 25%/>
+        </header>
+            <button id="redirect"><3</button>
+            <div id="display_timer"></div>
+
+    <script>
+    let windows = ['https://en.wikipedia.org/wiki/Paris_Hilton', 'https://www.ask.com/', 'https://www.bing.com/?toWww=1&redig=695A26D2071345BDB80E818691D1C029', 'https://www.google.com/search?hl=en&authuser=0&biw=1195&bih=692&tbm=isch&sa=1&ei=9p1HXI_yI5y60PEPsuiXsAo&q=milky+way+time+lapse&oq=milky+way+time&gs_l=img.1.0.0l2.6160.6700..7618...0.0..0.177.367.4j1....3..1....1..gws-wiz-img.......0i67j0i8i30j0i24.zP1JieLTt0U', 'https://www.facebook.com/PDXMayorTedWheeler/', 'https://en.wikipedia.org/wiki/Georgetown,_Guyana', 'https://wiki.tfes.org/Flat_Earth_-_Frequently_Asked_Questions', 'https://www.linkedin.com/in/matthew-cooper-67275216/', 'https://www.bizjournals.com/portland/news/2018/11/13/the-cranes-of-portland-are-redefining-the-citys.html', 'https://en.wikipedia.org/wiki/Jamie_Hyneman', 'https://worldbuilding.stackexchange.com/']
+
+    let redirect = document.querySelector('#redirect')
+    let display_timer = document.querySelector('#display_timer')
+    let timer = 5
+
+    redirect.onclick = function redirector(){
+        setInterval(function(){
+        if (timer === 0){
+            let new_window = windows[Math.floor(Math.random()*windows.length)];
+            return window.location.assign(new_window)
+            }
+            display_timer.innerText = timer
+            timer -= 1;
+         }, 1000);
+    }
+    </script>
+    </body>
+</html>

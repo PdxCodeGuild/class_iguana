@@ -1,0 +1,193 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    <style>
+      body {
+        background-image: url("https://c.pxhere.com/photos/35/f5/coffee_notebook_wooden_background_orange_work_table_office-1222115.jpg!d");
+        background-size: 100%;
+        background-attachment: fixed;
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        color: seashell;
+      }
+
+      input[type="text"],
+      select {
+        width: 20%;
+        padding: 15px 12px;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
+
+      .wrapper button {
+        background-color: #00000000;
+        color: seashell;
+        border-width: 2px;
+        border-style: solid;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        transition: 0.71s;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition-property: background-color;
+        cursor: pointer;
+      }
+
+      .wrapper button:hover {
+        background-color: #00000017;
+      }
+
+      .wrapper button:active {
+        transform: translateY(1px);
+      }
+
+      .wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 50px;
+        padding: 60px;
+        text-align: center;
+      }
+
+      header {
+        grid-row: 1;
+        grid-column: 1/3;
+      }
+
+      header span {
+        font-size: 20px;
+        padding-right: 5px;
+      }
+
+      #item_list,
+      #completed_list {
+        padding-top: 15px;
+      }
+
+      .wrapper h1 {
+        border-color: seashell;
+        border-width: 2px;
+        border-style: solid;
+        padding: 10 0;
+      }
+
+      .shift_down {
+        padding-top: 40px;
+      }
+
+      .wrapper ul {
+        padding: 0;
+      }
+
+      #col1 {
+        grid-column: 1/2;
+      }
+
+      #col1 li,
+      #col2 li {
+        padding: 20px;
+        margin: 10px 0;
+        -webkit-box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
+        box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
+        list-style-type: none;
+      }
+
+      #col1 li {
+        background-color: rgba(134, 48, 48, 0.705);
+      }
+      #col2 li {
+        background-color: rgba(20, 90, 38, 0.705);
+      }
+
+      #col2 {
+        grid-column: 2/3;
+      }
+      #col2 li:hover,
+      #col1 li:hover {
+        transition: 0.01s;
+        transform: translateY(1px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <span>Add an item to your list: </span><input id="item_input" type="text" />
+
+        <button id="item_btn">Add Item</button>
+        <button id="remove_btn">Remove Items</button>
+      </header>
+      <div class="shift_down">
+        <div id="col1">
+          <h1>To Do</h1>
+          <ul id="item_list"></ul>
+        </div>
+      </div>
+      <div class="shift_down">
+        <div id="col2">
+          <h1>Completed</h1>
+          <ul id="completed_list"></ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let item_counter = 0;
+      let del_flag = false;
+
+      item_btn.onclick = function() {
+        if (item_input.value != "") {
+          let li = document.createElement("li");
+          li.innerText = item_input.value;
+          li.setAttribute("id", `item${item_counter}`);
+          li.setAttribute("onclick", `complete_item(item${item_counter})`);
+          document.querySelector("#item_list").appendChild(li);
+          document.getElementById("item_input").focus();
+          item_input.value = "";
+          item_counter++;
+        }
+      };
+
+      remove_btn.onclick = function() {
+        if (del_flag === false) {
+          del_flag = true;
+          document.querySelector("body").style.background =
+            'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://c.pxhere.com/photos/35/f5/coffee_notebook_wooden_background_orange_work_table_office-1222115.jpg!d")';
+          document.querySelector("body").style.backgroundSize = "100%";
+          document.querySelector("body").style.backgroundAttachment = "fixed";
+          remove_btn.innerText = "Done";
+        } else {
+          del_flag = false;
+          document.querySelector("body").style.background =
+            'url("https://c.pxhere.com/photos/35/f5/coffee_notebook_wooden_background_orange_work_table_office-1222115.jpg!d")';
+          document.querySelector("body").style.backgroundSize = "100%";
+          document.querySelector("body").style.backgroundAttachment = "fixed";
+          remove_btn.innerText = "Remove Items";
+        }
+      };
+
+      function complete_item(name) {
+        let parent = name.parentNode;
+        if (del_flag === false) {
+          let li = document.createElement("li");
+          li.innerText = name.innerText;
+          li.setAttribute("id", name.getAttribute("id"));
+          li.setAttribute("onclick", name.getAttribute("onclick"));
+          if (parent.getAttribute("id") == "item_list") {
+            document.querySelector("#completed_list").appendChild(li);
+          } else {
+            document.querySelector("#item_list").appendChild(li);
+          }
+        }
+        name.remove(name);
+      }
+    </script>
+  </body>
+</html>

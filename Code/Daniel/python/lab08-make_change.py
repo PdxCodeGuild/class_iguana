@@ -5,6 +5,8 @@ def convert_penny():
         pennies = int(input('How many pennies do you have? '))
         dollar = pennies // 100
         extra = pennies % 100
+        if extra < 10:
+            extra = "0" + str(extra)
         total = '$' + str(dollar) + '.' + str(extra) 
 
         print('\nYou have ' + total + '.')
