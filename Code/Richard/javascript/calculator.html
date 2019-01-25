@@ -125,6 +125,66 @@
                 entries = entries.substring(0, entries.length-1)
                 display.value = entries
             }
+
+            percent.onclick = function() {
+                x = parseFloat(entries)
+                output = x / 100
+                display.value = output
+                entries = ''
+            }
+
+            exp.onclick = function() {
+                x = parseFloat(entries)
+                output = Math.exp(x)
+                display.value = output
+                entries = ''
+            }
+
+            ln.onclick = function() {
+                x = parseFloat(entries)
+                output = Math.log(x)
+                display.value = output
+                entries = ''
+            }
+
+            squared.onclick = function() {
+                x = parseFloat(entries)
+                output = x**2
+                display.value = output
+                entries = ''
+            }
+
+            sqrt.onclick = function() {
+                x = parseFloat(entries)
+                output = Math.sqrt(x)
+                display.value = output
+                entries = ''
+            }
+
+            reciprocal.onclick = function() {
+                x = parseFloat(entries)
+                output = 1 / x
+                display.value = output
+                entries = ''
+            }
+
+            // power.onclick = function() {
+            //     x = parseFloat(entries)
+            //     enter.onclick = null
+            //     entries = ''
+            //     y = parseFloat(entries)
+            //     entries = ''
+            //     enter.onclick = function() {
+            //         output = Math.pow(x, y)
+            //         display.value = output
+            //     }
+                // enter.onclick = function() {
+                // y = parseFloat(entries)
+                // output = eval(x + operator + y)
+                // display.value = output
+                // entries = ''
+                // }
+            // }
         </script>
     </body>
 </html>
