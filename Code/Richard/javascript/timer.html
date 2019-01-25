@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> A simple timekeeper</title>
+        <meta charset="utf8"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <style>
+        .row {
+            justify-content: space-between;
+            align-self: center;
+        }
+        </style>
+    </head>
+    <body>
+        <div  class="row">
+            <div id ="clock_div" class="col-sm-4">
+                <h3>Clock</h3>
+                <div id="clock"></div>
+            </div>  
+            <div id = "stopwatch_div" class="col-sm-4">
+                <h3>Stopwatch</h3>
+                <div id="stopwatch"></div>
+                <button id="startStopwatch" class="btn btn-secondary">Start</button>
+                <button id="pauseStopwatch" class="btn btn-secondary">Pause</button>
+                <button id='resumeStopwatch' class="btn btn-secondary">Resume</button>
+            </div>  
+
+            <div id = "countdown_div" class="col-sm-4">
+                <h3>Countdown timer</h3>
+                <div id="timer"> </div>
+                <input id=inputTime placeholder="Enter a time in minutes"/>
+                <button id ="startCountdown" class="btn btn-secondary">Start</button>
+                <button id="pauseCountdown" class="btn btn-secondary">Pause</button>
+                <button id='resumeCountdown' class="btn btn-secondary">Resume</button>
+            </div>
+        </div>
+        <script>
+            let startStopwatchBtn = document.querySelector("#startStopwatch")
+            let pauseStopwatchBtn = document.querySelector("#pauseStopwatch")
+            let resumeStopwatchBtn = document.querySelector("#resumeStopwatch")
+            let startCountdownBtn = document.querySelector("#startCountdown")
+            let pauseCountdownBtn = document.querySelector("#pauseCountdown")
+            let resumeCountdownBtn = document.querySelector("#resumeCountdown")
+            
+            let stopwatch_interval = null
+            let countdown_interval = null
+
+            function clock() {
+                let d = new Date()
+                document.querySelector("#clock").innerHTML=d.toLocaleTimeString()
+            }
+            let f = setInterval(clock, 1000)
+
+            startStopwatchBtn.onclick = function () {
+                stopwatch_time = new Date()
+                stopwatch_time.setHours(0, 0, 0, 0)
+                stopwatch_interval = setInterval(update_stopwatch, 1000)
+            }
+            pauseStopwatchBtn.onclick = function() {
+                clearInterval(stopwatch_interval)
+                stopwatch_interval = null
+            }
+            resumeStopwatchBtn.onclick = function() {
+                stopwatch_interval = setInterval(update_stopwatch, 1000)
+            }
+
+            startCountdownBtn.onclick = function() {
+                inputTime = document.querySelector("#inputTime").value
+                countdown_time = new Date
+                countdown_time.setHours(0, inputTime, 0, 0)
+                countdown_interval = setInterval(update_countdown, 1000)
+            }
+
+            pauseCountdownBtn.onclick = function() {
+                clearInterval(countdown_interval)
+                countdown_interval = null
+            }
+            resumeCountdownBtn.onclick = function() {
+                countdown_interval = setInterval(update_countdown, 1000)
+            }
+
+            function add0(n) {
+                return (n < 10)? '0'+n: n;
+            }
+
+             function add00(n) {
+                return (n < 10)? '00'+n:
+                        (n < 100)? '0'+n: n;
+            }
+            function time_str(date) {
+                var hh = add0(date.getHours());
+                var mm = add0(date.getMinutes());
+                var ss = add0(date.getSeconds());
+                return hh+':'+mm+':'+ss;
+            }
+            function update_stopwatch() {
+                stopwatch_time.setSeconds(stopwatch_time.getSeconds()+1)
+                document.querySelector("#stopwatch").innerHTML = time_str(stopwatch_time)
+            }
+            function update_countdown() {
+                countdown_time.setSeconds(countdown_time.getSeconds()-1)
+                document.querySelector("#timer").innerHTML = time_str(countdown_time)
+                if (countdown_time.getMinutes() === 0 && countdown_time.getSeconds() === 0) {
+                    clearInterval(countdown_interval)
+                    countdown_interval = null
+                    alert("Time's up!")
+                }
+            }
+        </script>
+
+    </body>
+</html>
