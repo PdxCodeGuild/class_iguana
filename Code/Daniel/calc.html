@@ -5,112 +5,140 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
     <style>
+
+
       #wrapper {
         display: grid;
-        grid-template-columns: repeat(4, auto);
-        grid-template-rows: repeat(7, auto);
-        grid-gap: 10px;
+        grid-template-columns: repeat(4, 100px);
+        grid-template-rows: repeat(7, 100px);
+        grid-gap: 5px;
+        background-color: black;
+        width: 415px;
+        height: 730px;
+        padding: 10px;
+        color: whitesmoke;
+        align-items: center;
+        text-align: center;
+        font-size: 24;
+        font-family: Arial, Helvetica, sans-serif;
       }
 
       .display {
         grid-column: 1/5;
-        background-color: red;
         grid-row: 1/2;
+        padding: 20 0;
       }
 
       .back {
         grid-column: 1;
-        background-color: red;
+        background-color: rgb(58, 57, 57);
         grid-row: 3;
+        padding: 36% 0;
       }
 
       .divide {
         grid-column: 3;
-        background-color: red;
+        background-color: rgb(58, 57, 57);
         grid-row: 3;
+        padding: 36% 0;
       }
 
       .multiply {
         grid-row: 3;
+        background-color: rgb(58, 57, 57);
         grid-column: 4;
-        background-color: rgba(255, 0, 0, 0.034);
+        padding: 36% 0;
       }
 
       .seven {
         grid-column: 1;
-        background-color: red;
+        background-color: rgb(71, 70, 70);
+        padding: 36% 0;
         grid-row: 4;
       }
 
       .eight {
         grid-column: 2;
-        background-color: red;
+        background-color: rgb(71, 70, 70);
+        padding: 36% 0;
         grid-row: 4;
       }
 
       .nine {
         grid-column: 3;
-        background-color: red;
+        padding: 36% 0;
+        background-color: rgb(71, 70, 70);
         grid-row: 4;
       }
       .minus {
         grid-column: 4;
-        background-color: red;
         grid-row: 4;
+        background-color: rgb(58, 57, 57);
+        padding: 36% 0;
       }
       .four {
         grid-column: 1;
-        background-color: red;
+        background-color: rgb(71, 70, 70);
         grid-row: 5;
+        padding: 36% 0;
       }
 
       .five {
         grid-column: 2;
-        background-color: red;
+        background-color: rgb(71, 70, 70);
+        padding: 36% 0;
         grid-row: 5;
       }
 
       .six {
         grid-column: 3;
-        background-color: red;
+        padding: 36% 0;
+        background-color: rgb(71, 70, 70);
         grid-row: 5;
       }
       .plus {
         grid-column: 4;
-        background-color: red;
         grid-row: 5;
+        padding: 36% 0;
+        background-color: rgb(58, 57, 57);
       }
       .one {
         grid-column: 1;
-        background-color: red;
         grid-row: 6;
+        padding: 36% 0;
+        background-color: rgb(71, 70, 70);
       }
 
       .two {
         grid-column: 2;
-        background-color: red;
         grid-row: 6;
+        padding: 36% 0;
+        background-color: rgb(71, 70, 70);
       }
 
       .three {
         grid-column: 3;
-        background-color: red;
         grid-row: 6;
+        padding: 36% 0;
+        background-color: rgb(71, 70, 70);
       }
       .equals {
         grid-column: 4;
-        background-color: red;
         grid-row: 6/8;
+        background-color: rgb(255, 153, 0);
+        padding: 89% 0;
       }
       .zero {
         grid-column: 1/3;
-        background-color: red;
         grid-row: 7;
+        background-color: rgb(71, 70, 70);
+        padding: 17.55% 0;
       }
       .decimal {
         grid-column: 3;
-        background-color: red;
         grid-row: 7;
+        background-color: rgb(58, 57, 57);
+        padding: 36% 0;
       }
     </style>
   </head>
@@ -118,7 +146,7 @@
     <div id="wrapper">
       <div class="display">&nbsp</div>
       <div class="divide">/</div>
-      <div class="back">del</div>
+      <div class="back">«</div>
       <div class="multiply">x</div>
 
       <div class="seven">7</div>
@@ -141,25 +169,19 @@
 
       <script>
         let num1 = "";
-        //let num2 = ''
+        let total = "";
 
         let back = document.querySelector(".back");
         back.addEventListener("click", function() {
-            num1 = num1.slice(0,-1)
-            document.querySelector(".display").innerText = num1 
+          num1 = num1.slice(0, -1);
+          document.querySelector(".display").innerText = num1;
         });
 
         let divide = document.querySelector(".divide");
-        divide.addEventListener("click", function() {
-            num1 += " / ";
-          document.querySelector(".display").innerText += "/";
-        });
+        divide.addEventListener("click", stringCheck);
 
         let multiply = document.querySelector(".multiply");
-        multiply.addEventListener("click", function() {
-            num1 += " x ";
-          document.querySelector(".display").innerText += "x";
-        });
+        multiply.addEventListener("click", stringCheck);
 
         let one = document.querySelector(".one");
         one.addEventListener("click", function() {
@@ -168,99 +190,112 @@
         });
         let two = document.querySelector(".two");
         two.addEventListener("click", function() {
-            num1 += "2";
+          num1 += "2";
           document.querySelector(".display").innerText += "2";
         });
         let three = document.querySelector(".three");
         three.addEventListener("click", function() {
-            num1 += "3";
+          num1 += "3";
           document.querySelector(".display").innerText += "3";
-
         });
-        let four= document.querySelector(".four");
+        let four = document.querySelector(".four");
         four.addEventListener("click", function() {
-            num1 += "4";
+          num1 += "4";
           document.querySelector(".display").innerText += "4";
         });
         let five = document.querySelector(".five");
         five.addEventListener("click", function() {
-            num1 += "5";
+          num1 += "5";
           document.querySelector(".display").innerText += "5";
         });
-        let six= document.querySelector(".six");
+        let six = document.querySelector(".six");
         six.addEventListener("click", function() {
-            num1 += "6";
+          num1 += "6";
           document.querySelector(".display").innerText += "6";
         });
-        let seven= document.querySelector(".seven");
+        let seven = document.querySelector(".seven");
         seven.addEventListener("click", function() {
-            num1 += "7";
+          num1 += "7";
           document.querySelector(".display").innerText += "7";
         });
-        let eight= document.querySelector(".eight");
+        let eight = document.querySelector(".eight");
         eight.addEventListener("click", function() {
-            num1 += "8";
+          num1 += "8";
           document.querySelector(".display").innerText += "8";
         });
-        let nine= document.querySelector(".nine");
+        let nine = document.querySelector(".nine");
         nine.addEventListener("click", function() {
-            num1 += "9";
+          num1 += "9";
           document.querySelector(".display").innerText += "9";
         });
-        let zero= document.querySelector(".zero");
+
+        let zero = document.querySelector(".zero");
         zero.addEventListener("click", function() {
-            num1 += "0";
+          num1 += "0";
           document.querySelector(".display").innerText += "0";
         });
+
         let minus = document.querySelector(".minus");
-        minus.addEventListener("click", function() {
-            num1 += " - ";
-          document.querySelector(".display").innerText += "-";
-        });
+        minus.addEventListener("click", stringCheck);
+
         let plus = document.querySelector(".plus");
-        plus.addEventListener("click", function() {
-            num1 += " + ";
-          document.querySelector(".display").innerText += "+";
-        });
+        plus.addEventListener("click", stringCheck);
+        
         let equals = document.querySelector(".equals");
         equals.addEventListener("click", function() {
-           let total = calculate()
-           alert(total)
-           num1 = ""
-           document.querySelector(".display").innerText = "";
+          num1 = calculate();
+          document.querySelector(".display").innerText = num1;
         });
         let decimal = document.querySelector(".decimal");
         decimal.addEventListener("click", function() {
-            num1 += ".";
+          num1 += ".";
           document.querySelector(".display").innerText += ".";
         });
 
         function calculate() {
-            arr = num1.split(" ")
-            first = parseInt(arr[0])
-            second = parseInt(arr[2])
+          arr = num1.split(" ");
+          first = parseInt(arr[0]);
+          second = parseInt(arr[2]);
 
-            if (arr[1] == "+") {
-                total =  first + second
-            }
-            else if (arr[1] == "-") {
-                total = first - second
-            }
-            else if (arr[1] == "x") {
-                total = first * second
-            }
-            else if (arr[1] == "/") {
-                total = first / second
-            }
-                
+          if (arr[1] == "+") {
+            total = first + second;
+          } else if (arr[1] == "-") {
+            total = first - second;
+          } else if (arr[1] == "x") {
+            total = first * second;
+          } else if (arr[1] == "/") {
+            total = first / second;
+          }
 
-            
-
-
-            return total
+          return total;
         }
 
+        function stringCheck() {
+          let arr = ["+", "-", "x", "/"];
+          let has_op = false
 
+          if (num1 === "") {
+            num1 = "";
+          }
+
+          else {
+            for (op of arr) {
+                let test = num1.trim()
+                console.log(test)
+
+              if (test.endsWith(op)) {
+                has_op = true
+                break
+                }
+              }
+
+              if (has_op == false) {
+              num1 += " " + this.innerText + " ";
+                document.querySelector(".display").innerText += this.innerText;
+          }
+        }
+
+        }
       </script>
     </div>
   </body>
