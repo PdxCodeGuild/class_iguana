@@ -169,6 +169,7 @@
 
       <script>
         let num1 = "";
+        let total = "";
 
         let back = document.querySelector(".back");
         back.addEventListener("click", function() {
@@ -242,10 +243,8 @@
         
         let equals = document.querySelector(".equals");
         equals.addEventListener("click", function() {
-          let total = calculate();
-          alert(total);
-          num1 = "";
-          document.querySelector(".display").innerText = "";
+          num1 = calculate();
+          document.querySelector(".display").innerText = num1;
         });
         let decimal = document.querySelector(".decimal");
         decimal.addEventListener("click", function() {
@@ -282,6 +281,7 @@
           else {
             for (op of arr) {
                 let test = num1.trim()
+                console.log(test)
 
               if (test.endsWith(op)) {
                 has_op = true
