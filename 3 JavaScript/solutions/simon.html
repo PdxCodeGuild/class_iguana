@@ -16,9 +16,15 @@
                 height:500px;
                 margin: auto auto;
             }
+            #level_span {
+                text-align:center;
+                width:100px;
+                margin: 0 auto;
+            }
         </style>
     </head>
     <body>
+        <div id="level_span"></div>
         <div id="simon">
             <button id="bt_green"></button>
             <button id="bt_red"></button>
@@ -27,6 +33,8 @@
         </div>
         <script>
             var synth = new Tone.Synth().toMaster()
+
+            let level_span = document.querySelector('#level_span')
 
             let bt_green = document.querySelector('#bt_green')
             let bt_red = document.querySelector('#bt_red')
@@ -105,6 +113,7 @@
             function computer_turn() {
                 let bt_index = Math.floor(Math.random() * buttons.length)
                 sequence.push(bt_index)
+                level_span.innerText = 'Level ' + sequence.length
                 console.log(sequence)
                 sequence_index = 0
                 let interval = setInterval(function() {
