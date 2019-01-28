@@ -1,0 +1,90 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        background-color: darkcyan
+    }
+
+    .container {
+        padding-top: 150px;
+        border-color: black;
+        text-align: center;
+    }
+
+    .display {
+        border: 15px;
+
+        color: white;
+    }
+</style>
+
+<body>
+    <div id="container" class="container">
+        <div id="display" class="display">
+            <h1 id="numbers" class="numbers"></h1>
+            <button id="start">START</button>
+            <button id="stop">STOP</button>
+
+        </div>
+    </div>
+
+    <script>
+
+        function stop_clock() {
+            clearInterval(active_id)
+        }
+
+        let start = document.querySelector("#start")
+        let stop = document.querySelector("#stop")
+        let active_id = null
+        let d = new Date()
+        d.setHours(0, 0, 0, 0)
+        let seconds = 0
+        let minutes = d.getMinutes()
+        // let minutes = 59 - for testing.
+        let hours = d.getHours()
+
+        start.onclick = function ()  {
+            document.querySelector("#numbers").innerText = seconds
+            if (active_id != null) {
+                clearInterval(active_id)
+            }
+            active_id = setInterval(function () {
+                seconds += 1
+                if (seconds % 60 == 0) {
+                    minutes += 1
+                    seconds = 0
+                }
+                if (minutes != 0 && minutes % 60 == 0) {
+                    hours += 1
+                    minutes = 0
+                }
+                if (hours == 0 && minutes == 0) {
+                    document.querySelector("#numbers").innerText = seconds
+                }
+                else if (hours == 0){
+                    document.querySelector("#numbers").innerText = `${minutes} : ${seconds}`
+                }
+                else {
+                    document.querySelector("#numbers").innerText = `${hours} : ${minutes} : ${seconds}`
+                }
+
+
+            }, 1000)
+        }
+
+        stop.onclick = stop_clock
+
+
+    </script>
+
+
+</body>
+
+</html>
