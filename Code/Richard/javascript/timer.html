@@ -6,8 +6,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
         <style>
         .row {
-            align-items: center;
-            align-self: center;
+            justify-items: center;
+            justify-self: center;
         }
         </style>
     </head>
@@ -23,6 +23,8 @@
                 <button id="startStopwatch" class="btn btn-secondary">Start</button>
                 <button id="pauseStopwatch" class="btn btn-secondary">Pause</button>
                 <button id='resumeStopwatch' class="btn btn-secondary">Resume</button>
+                <button id="lap" class="btn btn-secondary">Lap</button>
+                <ol id="lapList"></ol>
             </div>  
 
             <div id = "countdown_div" class="col-sm-4">
@@ -41,9 +43,12 @@
             let startCountdownBtn = document.querySelector("#startCountdown")
             let pauseCountdownBtn = document.querySelector("#pauseCountdown")
             let resumeCountdownBtn = document.querySelector("#resumeCountdown")
+            let lapBtn = document.querySelector("#lap")
+            let lapList = document.querySelector("#lapList")
             
             let stopwatch_interval = null
             let countdown_interval = null
+            
 
             function clock() {
                 let d = new Date()
@@ -52,9 +57,21 @@
             let f = setInterval(clock, 1000)
 
             startStopwatchBtn.onclick = function () {
+                if (stopwatch_interval != null) {
+                    clearInterval(stopwatch_interval)
+                    // stopwatch_interval = null
+                }
                 stopwatch_time = new Date()
                 stopwatch_time.setHours(0, 0, 0, 0)
+                document.querySelector("#stopwatch").innerHTML = time_str(stopwatch_time)
                 stopwatch_interval = setInterval(update_stopwatch, 1000)
+            }
+            lapBtn.onclick = function() {
+                let li = document.createElement("li")
+                let textnode = document.createElement("textnode")
+                textnode.innerHTML = time_str(stopwatch_time)
+                li.appendChild(textnode)
+                lapList.appendChild(li)
             }
             pauseStopwatchBtn.onclick = function() {
                 clearInterval(stopwatch_interval)
@@ -65,11 +82,16 @@
             }
 
             startCountdownBtn.onclick = function() {
-                inputTime = document.querySelector("#inputTime").value
+                inputTime = document.querySelector("#inputTime").value              
+                if (countdown_interval != null) {
+                    clearInterval(countdown_interval)
+                }
                 countdown_time = new Date
                 countdown_time.setHours(0, inputTime, 0, 0)
+                document.querySelector("#timer").innerHTML = time_str(countdown_time)  
                 countdown_interval = setInterval(update_countdown, 1000)
             }
+
 
             pauseCountdownBtn.onclick = function() {
                 clearInterval(countdown_interval)
@@ -106,6 +128,7 @@
                     alert("Time's up!")
                 }
             }
+        
         </script>
 
     </body>
