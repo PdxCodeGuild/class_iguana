@@ -25,11 +25,11 @@
     <body>
         <div class="container">
             <input id="display"/>
-            <button id="plus">+</button>
-            <button id="minus">-</button>
-            <button id="times">*</button>
-            <button id="divided">/</button>
-            <button id = "percent">%</button>
+            <button id="plus" data-operator="+">+</button>
+            <button id="minus" data-operator="-">-</button>
+            <button id="times" data-operator="*">&times;</button>
+            <button id="divided" data-operator="/">&divide;</button>
+            <button id = "percent" data-operator="%">%</button>
 
             <button id="nine">9</button>
             <button id="eight">8</button>
@@ -42,7 +42,7 @@
             <button id="five">5</button>
             <button id="four">4</button>
             <button id="squared">x<sup>2</sup></button>
-            <button id="power">**</button>
+            <button id="power" data-operator="**">x<sup>y</sup</button>
 
             <button id="three">3</button>
             <button id="two">2</button>
@@ -83,7 +83,7 @@
                 operator_bt.onclick = function() {
                     x = parseFloat(entries)
                     entries = ''
-                    operator = operator_bt.innerText 
+                    operator = operator_bt.dataset.operator 
                 }
             }
 

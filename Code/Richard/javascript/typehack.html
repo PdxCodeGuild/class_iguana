@@ -1,0 +1,51 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>typehack</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    body {
+        background-color: black;
+        color: green;
+    }
+    </style>
+</head>
+<body>
+    <div id="output"></div>
+
+    <script>
+        
+
+        // a little helper function to do ajax (http request) in vanilla javascript
+        function http_get(url, success) {
+            let xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState === 4 && this.status === 200) {
+                    success(xhttp.responseText);
+                }
+            };
+            xhttp.open("GET", url);
+            xhttp.send();
+        }
+
+        // go get some source code
+        let url = 'https://raw.githubusercontent.com/rsspdx/scratch/master/ulysses.txt'
+        let text = ''
+        http_get(url, function(data) {
+            text = data
+        });
+
+        let output = document.querySelector("#output")
+        let addText = function() {
+            startIndex = Math.floor(Math.random() * text.length)
+            endIndex = startIndex < text.length - 10 ? startIndex + 5 + Math.floor(Math.random() * 10) : text.length-1
+            output.innerText += text.substring(startIndex, endIndex)
+            window.scrollBy(0,50)
+        }
+        document.body.onkeydown = addText
+    
+    </script>
+</body>
+</html>
