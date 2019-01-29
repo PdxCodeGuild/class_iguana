@@ -30,7 +30,20 @@ let arrMin = x => Math.min(... x)
 let arrMax = x => Math.max(... x)
 let arrSum = x => x.reduce((a,b) => a + b, 0)
 let arrAvg = x => arrSum(x) / x.length
-let arrMed = x => x.length % 2===0? [x[x.sort((a, b) => a - b).length / 2], x[x.sort((a, b) => a - b).length / 2 - 1]]: x[Math.floor(x.sort((a, b) => a - b).length / 2)]
+let arrMed = function(x) {
+    if (x.length % 2===0) {
+        if (x[x.sort((a, b) => a - b).length / 2] === x[x.sort((a, b) => a - b).length / 2 - 1]) {
+            return x[x.sort((a, b) => a - b).length / 2]
+        }
+        else {
+            return (x[x.sort((a, b) => a - b).length / 2] , x[x.sort((a, b) => a - b).length / 2 - 1])
+        }
+    }
+    else {
+        return x[Math.floor(x.sort((a, b) => a - b).length / 2)]
+    }
+}
+ 
 let arrFreqs = function(a) {
     let freqs = {}
     for (i=0; i < a.length; ++i) {
