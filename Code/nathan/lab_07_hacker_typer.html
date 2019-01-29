@@ -1,0 +1,49 @@
+<!-- hacker type -->
+<html>
+    <head>
+
+
+    </head>
+    <style>
+        body {
+            background-color:black;
+            background-size:cover;
+        }
+        pre {
+            color: Cyan;
+            margin: 5% 15% 5% 1%;
+        }
+    </style>
+    <div>
+        <pre id="hacker_display"></pre>
+    </div>
+    <body>
+
+        <script>
+            let code = `srcset="//upload.wikimedia.org/wikipedia/commons/thumb/6/67/Consommations_%C3%A9nerg%C3%A9tiques_des_trois_types_de_l%27%C3%A9chelle_de_Kardashev.svg/990px-Consommations_%C3%A9nerg%C3%A9tiques_des_trois_types_de_l%27%C3%A9chelle_de_Kardashev.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/6/67/Consommations_%C3%A9nerg%C3%A9tiques_des_trois_types_de_l%27%C3%A9chelle_de_Kardashev.svg/1320px-Consommations_%C3%A9nerg%C3%A9tiques_des_trois_types_de_l%27%C3%A9chelle_de_Kardashev.svg.png 2x" data-file-width="3571" data-file-height="1378" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/File:Consommations_%C3%A9nerg%C3%A9tiques_des_trois_types_de_l%27%C3%A9chelle_de_Kardashev.svg" class="internal" title="Enlarge"></a></div>Energy consumption estimated in three types of civilizations defined by Kardashev scale</div></div></div></div>
+<h2><span class="mw-headline" id="Current_status_of_human_civilization">Current status of human civilization</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Kardashev_scale&amp;action=edit&amp;section=2" title="Edit section: Current status of human civilization">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:252px;"><a href="/wiki/File:Annual_world_primary_energy_consumption.svg" class="image"><img alt="" src="//upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Annual_world_primary_energy_consumption.svg/250px-Annual_world_primary_energy_consumption.svg.png" decoding="async" width="250" height="181" class="thumbimage" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Annual_world_primary_energy_consumption.svg/375px-Annual_world_primary_energy_consumption.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Annual_world_primary_energy_consumption.svg/500px-Annual_world_primary_energy_consumption.svg.png 2x" data-file-width="911" data-file-height="661" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/File:Annual_world_primary_energy_consumption.svg" class="internal" title="Enlarge"></a></div>Total World, Annual Primary Energy Consumption.</div></div></div>
+<div class="thumb tright"><div class="thumbinner" style="width:172px;"><a href="/wiki/File:Carl_Sagan_Planetary_Society.JPG" class="image"><img alt="Color photo. Man sitting wearing a suit and smiling." src="//upload.wikimedia.org/wikipedia/commons/thumb/b/be/Carl_Sagan_Planetary_Society.JPG/170px-Carl_Sagan_Planetary_Society.JPG" decoding="async" width="170" height="232" class="thumbimage" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/b/be/Carl_Sagan_Planetary_Society.JPG/255px-Carl_Sagan_Planetary_Society.JPG 1.5x, //upload.wikimedia.org/wikipedia/commons/b/be/Carl_Sagan_Planetary_Society.JPG 2x" data-file-width="328" data-file-height="448" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/File:Carl_Sagan_Planetary_Society.JPG" class="internal" title="Enlarge"></a></div>According to the astronomer <a href="/wiki/Carl_Sagan" title="Carl Sagan">Carl Sagan</a>, humanity is currently going through a phase of technical adolescence, "typical of a civilization about to integrate the type I Kardashev scale."</div></div></div>
+<div role="note" class="hatnote navigation-not-searchable">Further information: <a href="/wiki/World_energy_consumption" title="World energy consumption">World energy consumption</a></div>
+<p>At the current time, Humans have not yet reached Type 1 civilization.
+Physicist and futurist <a href="/wiki/Michio_Kaku" title="Michio Kaku">Michio Kaku</a> suggested that humans may attain <a href="/wiki/Planetary_civilization" title="Planetary civilization">Type&#160;I</a> status in 100–200 years, Type&#160;II status in a few thousand years, and Type&#160;III status in 100,000 to a million years.<sup id="cite_ref-Interstellar_Travel_4-0" class="reference"><a href="#cite_note-Interstellar_Travel-4">&#91;4&#93;</a></sup>
+</p><p><a href="/wiki/Carl_Sagan" title="Carl Sagan">Carl Sagan</a> suggested defining intermediate values (not considered in Kardashev's original scale) by <a href="/wiki/Interpolation" title="Interpolation">interpolating</a> and <a href="/wiki/Extrapolation" title="Extrapolation">extrapolating</a> the values given above for types I (10<sup>16</sup> W), II (10<sup>26</sup> W) and III (10<sup>36</sup> W), which would produce the formula`
+            // declare incrementing variable, start at 0
+            // onkeypress - add to the incrementing variable
+            //     get a substring of the source code from 0 to the incrementing variable
+            //     set a dom element's inner text to that substring
+
+            let sub_code = ''
+            let hacker_display = document.querySelector('#hacker_display')
+            let x = 0
+            let y = 35
+            document.body.onkeypress = function() {
+                sub_code += code.substring(x, y);
+                sub_code += '\n'
+                hacker_display.innerText = sub_code
+                x += 35
+                y += 35
+            }
+        </script>
+    </body>
+</html>
