@@ -1,0 +1,103 @@
+<html>
+    <head>
+        <style>
+            body {
+                background-color: rgb(127,255,212);
+                background-size:cover;
+            }
+            canvas {
+                border: 2px solid papayawhip	;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="cnv" width="750" height="750"></canvas>
+        <script>
+            let width = 750
+            let height = 750
+
+            let ball = {
+                radius: 4,
+                px: Math.random()*width,
+                py: Math.random()*height,
+                vx: (2*Math.random()-1)*5,
+                vy: (2*Math.random()-1)*5
+            };
+            let ball2 = {
+                radius: 4,
+                px: Math.random()*width,
+                py: Math.random()*height,
+                vx: (2*Math.random()-1)*5,
+                vy: (2*Math.random()-1)*5
+            };
+            let ball3 = {
+                radius: 4,
+                px: Math.random()*width,
+                py: Math.random()*height,
+                vx: (2*Math.random()-1)*5,
+                vy: (2*Math.random()-1)*5
+            };
+
+            let cnv = document.querySelector('#cnv');
+            let ctx = cnv.getContext('2d');
+            let ctx2 = cnv.getContext('2d');
+            let ctx3 = cnv.getContext('2d');
+
+            function main_loop() {
+                ball.vy += .1
+                ball2.vy += .1
+                ball3.vy += .1
+                // update the ball's position
+                ball.px = ball.px + ball.vx
+                ball.py = ball.py + ball.vy
+                ball2.px = ball2.px + ball2.vx
+                ball2.py = ball2.py + ball2.vy
+                ball3.px = ball3.px + ball3.vx
+                ball3.py = ball3.py + ball3.vy
+                // check if it hit a boundary
+                if (ball.px >= 750 || ball.px <= 0){
+                        ball.vx *= 0.99
+                        ball.vx *= -1
+                    }
+                if(ball.py >= 750 || ball.py <= 0){
+                        ball.vy *= 0.99
+                        ball.vy *= -1
+                    }
+                if (ball2.px >= 750 || ball2.px <= 0){
+                        ball2.vx *= 0.99
+                        ball2.vx *= -1
+                    }
+                if(ball2.py >= 750 || ball2.py <= 0){
+                        ball2.vy *= 0.99
+                        ball2.vy *= -1
+                    }
+                if (ball3.px >= 750 || ball3.px <= 0){
+                        ball3.vx *= 0.99
+                        ball3.vx *= -1
+                    }
+                if(ball3.py >= 750 || ball3.py <= 0){
+                        ball3.vy *= 0.99
+                        ball3.vy *= -1
+                    }
+                // draw the ball
+                ctx.beginPath();
+                ctx.arc(ball.px, ball.py, 15, 0, 2 * Math.PI);
+                <!--ctx.fillStyle = 'rgba(245,255,250,0.1)';-->
+                ctx.stroke()
+
+                ctx2.beginPath();
+                ctx2.arc(ball2.px, ball2.py, 15, 0, 2 * Math.PI);
+                <!--ctx2.fillStyle = 'rgba(245,255,250,0.1)';-->
+                ctx2.stroke()
+
+                ctx3.beginPath();
+                ctx3.arc(ball3.px, ball3.py, 15, 0, 2 * Math.PI);
+                <!--ctx3.fillStyle = 'rgba(245,255,250,0.1)';-->
+                ctx3.stroke()
+
+                window.requestAnimationFrame(main_loop);
+            }
+                window.requestAnimationFrame(main_loop);
+        </script>
+    </body>
+</html>
