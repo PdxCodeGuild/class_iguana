@@ -2,9 +2,132 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+
+
+<style>
+    .table_btn {
+    border-style : solid;
+    border-width : 1px; 
+    text-align: center;
+    min-width: 25px;
+     -webkit-touch-callout: none; /* iOS Safari */
+          -webkit-user-select: none; /* Safari */
+           -khtml-user-select: none; /* Konqueror HTML */
+             -moz-user-select: none; /* Firefox */
+              -ms-user-select: none; /* Internet Explorer/Edge */
+                  user-select: none; /* Non-prefixed version, currently
+                                        supported by Chrome and Opera */
+    }
+    #output {
+    border-style : solid;
+    border-width : 1px;
+    text-align: right;
+    font-size: 25px;
+    }
+    #equation {
+    border-style : solid;
+    border-width : 1px;
+    text-align: right;
+    font-size: 20px;
+    }
+    .hidden {
+    display : none
+    }
+
+
+</style>
+
+
+
 </head>
 <body>
-$END$
+
+    <div id="calculator">
+        <table>
+            <tr>
+                <td colspan="4" id="output">0</td>
+            </tr>
+            <tr>
+                <td colspan="4" id="equation">0</td>
+            </tr>
+            <tr>
+                <td class="table_btn" id="b_7"><span class="hidden">7</span>7</td>
+                <td class="table_btn" id="b_8" ><span class="hidden">8</span>8</td>
+                <td class="table_btn" id="b_9" ><span class="hidden">9</span>9</td>
+                <td class="table_btn" id="b_x" ><span class="hidden">*</span>&times</td>
+            </tr>
+            <tr>
+                <td class="table_btn" id="b_4" ><span class="hidden">4</span>4</td>
+                <td class="table_btn" id="b_5" ><span class="hidden">5</span>5</td>
+                <td class="table_btn" id="b_6" ><span class="hidden">6</span>6</td>
+                <td class="table_btn" id="b_divide" ><span class="hidden">/</span>&#X00F7</td>
+            </tr>
+            <tr>
+                <td class="table_btn" id="b_1" ><span class="hidden">1</span>1</td>
+                <td class="table_btn" id="b_2" ><span class="hidden">2</span>2</td>
+                <td class="table_btn" id="b_3" ><span class="hidden">3</span>3</td>
+                <td class="table_btn" id="b_minus" ><span class="hidden">-</span>-</td>
+            </tr>
+            <tr>
+                <td class="table_btn" id="b_0"><span class="hidden">0</span>0</td>
+                <td class="table_btn" id="b_dot"><span class="hidden">.</span>.</td>
+                <td class="table_btn" id="b_per"><span class="hidden">*.01</span>%</td>
+                <td class="table_btn" id="b_add"><span class="hidden">+</span>+</td>
+            </tr>
+            <tr>
+                <td class="table_btn" id="b_clear">C</td>
+                <td colspan="3" id="b_eq" class="table_btn">=</td>
+            </tr>
+
+
+        </table>
+
+
+
+    </div>
+
+
+    <script>
+
+        btn_per = document.querySelector("#b_per")
+        btn_divide = document.querySelector("#b_divide")
+        output = document.querySelector("#output")
+        equation = document.querySelector("#equation")
+        btn_eq = document.querySelector("#b_eq")
+        btn_clear = document.querySelector("#b_clear")
+        let eval_string = ''
+
+        function num_btn() {
+            if (equation.innerText == 0) {
+               equation.innerText = this.innerText
+               eval_string += this.children[0].innerText
+            } else {
+                eval_string += this.children[0].innerText
+                equation.innerText += this.innerText
+            }
+        }
+
+        btns = document.querySelectorAll(".table_btn")
+        console.log(btns)
+        for (let index=0; index<btns.length; index++) {
+            btns[index].onclick = num_btn
+        }
+        btn_eq.onclick = function() {
+            console.log(eval_string)
+            output.innerText = eval(eval_string)
+            eval_string = ''
+            equation.innerText = '0'
+        }
+        btn_clear.onclick = function() {
+            // output.innerText = '0'
+            eval_string = ''
+            equation.innerText = '0'
+        }
+
+
+    </script>
+
+
 </body>
 </html>

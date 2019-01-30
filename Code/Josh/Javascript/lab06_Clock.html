@@ -1,10 +1,109 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html>
+<style>
+
+</style>
+
 <body>
+    <div id="date_div"></div>
+    <div id="clock_div"></div>
+    
+    <div id="stop_watch_div">
+        <button id="start_btn">Start</button>
+       
+    </div>
+    <button id="lap_btn">LAP</button>
+    <table id="lap_div"></table>
+    
+    <script>
+        //------------------------------------------Clock-----------------------------------------------------------
+
+        let clock_div = document.querySelector('#clock_div');
+        
+        function add0(n) {
+                return (n < 10)? '0'+n: n;
+         //if n < 10 is false(?) then 'string of 0' mushed(+) n else(:) return n   
+        } //mushes 0 to the tens digits place unless it is above 10 then it returns the number as recieved
+        function add00(n){
+            return (n < 10)? '00'+n:
+                    (n < 100)? '0'+n: n;
+                    //does same as previous function but also checks for under 100 to add 00 in front of it used for milseconds
+         //if n < 10 is false(?) then 'string of 0' mushed(+) n else(:) return n   
+        } //mushes 0 to the tens digits place unless it is above 10 then it returns the number as recieved
+        
+        function clock_str(date) {
+            var now = new Date();
+            var day = add0(now.getDate());
+            var month = add0(now.getMonth()+1);
+            var year = now.getFullYear();
+            var hh = add0(now.getHours());
+            var mm = add0(now.getMinutes());
+            var ss = add0(now.getSeconds());
+            var ms = add00(now.getMilliseconds());
+            var current_date = year+', '+month+ ', '+day
+            var current_time = hh+':'+mm+':'+ss+':'+ms;
+            clock_div.innerHTML = current_time
+            date_div.innerHTML = current_date
+        } // gets the local date and times and retuns them
+
+        var clock = setInterval(clock_str, 1)
+        
+        //----------------------------------------StopWatch----------------------------------------------------
+        let stop_watch_div = document.querySelector('#stop_watch_div');
+        let start_btn = document.querySelector('#start_btn');
+        let lap_div = document.querySelector('#lap_div')
+        var stopwatch_date = null;
+        var stopwatch_interval = null;
+        var lap_time = null;
+        var lap_count = 0;
+        let start_time = null
+
+        function time_str(date) {
+                var hh = add0(date.getHours());
+                var mm = add0(date.getMinutes());
+                var ss = add0(date.getSeconds());
+                var ms = add00(date.getMilliseconds())
+                return ' '+hh+':'+mm+':'+ss+':'+ms;
+                // getting current hour, min, sec and milsec and mushing them together and returning it out of the function
+            }
+
+        
+        start_btn.onclick = function() {
+                let now = new Date()
+                stopwatch_date = new Date(); //getting the current date and setting it to the var stopwatch_date
+                stopwatch_date.setHours(0, 0, 0, 0); //setting stopwatch_date time all to 0 
+                stopwatch_interval = setInterval(update_stopwatch, 50); 
+                //setting stopwatch_interval every 50 milsec to function update_stopwatch which adds 50 milsecs every 50 milsecs
+                date_array.push(now)
+            }
+
+        let date_array = []
+        let last_lap = null
+        lap_btn.onclick = function() {
+            lap_count += 1
+            lap_time = time_str(stopwatch_date)
+            let now = new Date()
+            table_row = document.createElement('tr')
+            table_data = document.createElement('td')
+            lap_difference = new Date(0, 0, 0, 0, 0, 0, (now - date_array[date_array.length - 1])) 
+            //takes now (which is current date when btn is pushed) subtracts it from the most recent date added to the array                
+            table_data.innerText = `LAP${lap_count}; ${add0(lap_difference.getMinutes())}:${add0(lap_difference.getSeconds())}:${add00(lap_difference.getMilliseconds())}`
+            date_array.push(now)
+            table_row.appendChild(table_data)
+            lap_div.appendChild(table_row)
+           
+            
+        }
+
+
+        function update_stopwatch() {
+            stopwatch_date.setMilliseconds(stopwatch_date.getMilliseconds()+50);
+            //takes stopwatch_date adds 50 milsecs to it and resets it to stopwatch_date
+            stop_watch_div.innerHTML = time_str(stopwatch_date);
+            //sets the stop_watch_div's inner HTML to time_str function with the stopwatch_date passed in for the date
+        }
+        
+    </script>
 
 </body>
 </html>
