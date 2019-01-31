@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <style>
+            body {
+                padding: 10px;
+            }
+            table {
+                margin: 10px;
+            }
+            .sticky {
+                position: fixed;
+                top: 0;
+                width: 100%;
+            }
+            #title {
+                background-color: lightgray;
+            }
+            #output_table {
+                min-width: 60%;
+            }
+        </style>
+    </head>
+    <body>
+        <h3 id="title">Population by country or region, 2015 (source: worldbank.org)</h3>
+        <div id="output">
+            <table id="output_table">
+                <tr id="toprow">
+                    <th>Country</th>
+                    <th>Country Code</th>
+                    <th style="text-align:right">Population</th>
+                </tr>
+            </table>
+        </div>
+        <script>
+            let toprow = document.querySelector("#toprow")
+            let title = document.querySelector("#title")
+            let output_table = document.querySelector("#output_table")
+            test_url = "http://api.worldbank.org/v2/country/all/indicator/SP.POP.TOTL?date=2015&per_page=300&format=json"
+            axios.get(test_url)
+                .then(function(response) {
+                    let data = response.data[1]
+                    console.log(data)
+                    add_data_to_output(data)
+                })
+
+                function add_data_to_output(data) {
+                    for (let i=46; i<data.length; ++i) {
+                        let row = document.createElement("tr")
+                        output_table.appendChild(row)
+                        let td_country = document.createElement("td")
+                        let td_iso3 = document.createElement("td")
+                        let td_value = document.createElement("td")
+                        td_value.style.textAlign="right"
+                        td_country.innerText = data[i].country.value
+                        td_iso3.innerText = data[i].countryiso3code
+                        td_value.innerText  = data[i].value.toLocaleString('en', {useGrouping:true})
+                        row.appendChild(td_country)
+                        row.appendChild(td_iso3)
+                        row.appendChild(td_value)
+                    }
+                }
+
+                window.onscroll = function() {myFunction()}
+                var sticky = title.offsetTop
+                var sticky2 = toprow.offsetTop
+
+                function myFunction() {
+                if (window.pageYOffset > sticky) {
+                    title.classList.add("sticky")
+                } else {
+                    title.classList.remove("sticky")
+                }
+                // if (window.pageYOffset > sticky2) {
+                //     toprow.classList.add("sticky")
+                // } else {
+                //     toprow.classList.remove("sticky")
+                // }
+
+                }
+        </script>
+    </body>
+</html>
