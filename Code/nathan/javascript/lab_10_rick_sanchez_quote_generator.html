@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <style>
+                body {
+                   color:white;
+                   background-image:url("https://cdn2.atlantamagazine.com/wp-content/uploads/sites/4/2018/08/YayoiKusamamirrorroom_courtesyHigh.jpg");
+                   background-size:cover;
+                }
+                #display_quote {
+                   font-family: 'Righteous', cursive;
+                   font-size: 180%;
+                   background-color:rgba(224,255,255,.3);
+                   display:flex;
+                   flex-direction:row;
+                   align-items:center;
+                   flex-wrap:wrap;
+                   justify-content:space-evenly;
+                }
+                #display_rm_char {
+                   font-family: 'Righteous', cursive;
+                   font-size: 150%;
+                   background-color:rgba(224,255,255,.3);
+                   display:flex;
+                   flex-direction:row;
+                   align-items:center;
+                   flex-wrap:wrap;
+                   justify-content:space-evenly;
+                }
+        </style>
+    </head>
+    <body>
+        <span id="display_quote"></span>
+        <span id="display_rm_char"></span>
+        <script>
+            let display_quote = document.querySelector('#display_quote')
+            let display_rm_char = document.querySelector('#display_rm_char')
+            // nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+            // num =  Math.floor(Math.random()*nums)
+
+            let qotd = 'https://favqs.com/api/qotd'
+            axios.get(qotd)
+                .then(function (response) {
+                    let data = response.data
+                    let body = data.quote.body
+                    display_quote.innerText = ' " ' + body + ' " '
+                })
+            let rick_morty_url = 'https://rickandmortyapi.com/api/character/1'
+
+            axios.get(rick_morty_url)
+                .then(function (response) {
+                    let data = response.data
+                    let id = data.id
+                    let name = data.name
+                    let status = data.status
+                    let species = data.species
+                    display_rm_char.innerText = ' - ' + name + ' ( ' + status + ' , ' + species + ' ) '
+                })
+        </script>
+    </body>
+</html>
