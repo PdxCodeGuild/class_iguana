@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<HTML>
+    <head>
+        <style>
+            #cnv{
+                border: 2px;
+                border-style: solid;
+                border-color: black
+            }
+        </style>
+    </head>
+    <body>
+        
+        <canvas width="500" height="500" id="cnv">
+
+        </canvas>
+        <script>
+            let ball = {
+                radius: 20,
+                px: Math.random()*500,
+                py: Math.random()*500,
+                vx: (2*Math.random()-1)*100,
+                vy: (2*Math.random()-1)*100,
+            };
+
+            let cnv = document.querySelector('#cnv');
+            let ctx = cnv.getContext('2d');
+
+
+            ctx.beginPath();
+            ctx.arc(ball.px, ball.py, ball.radius, 0, 5 * Math.PI, false);
+            ctx.fillStyle = 'green';
+            ctx.fill();
+        </script>
+    </body>
+
+</HTML>
