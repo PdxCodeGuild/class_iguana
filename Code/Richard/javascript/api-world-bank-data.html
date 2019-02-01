@@ -39,7 +39,7 @@
             let toprow = document.querySelector("#toprow")
             let title = document.querySelector("#title")
             let output_table = document.querySelector("#output_table")
-            test_url = "http://api.worldbank.org/v2/country/all/indicator/SP.POP.TOTL?date=2015&per_page=300&format=json"
+            test_url = "http://api.worldbank.org/v2/country/all/indicator/SP.POP.TOTL?date=2015&per_page=3000&format=json"
             axios.get(test_url)
                 .then(function(response) {
                     let data = response.data[1]
@@ -57,7 +57,11 @@
                         td_value.style.textAlign="right"
                         td_country.innerText = data[i].country.value
                         td_iso3.innerText = data[i].countryiso3code
-                        td_value.innerText  = data[i].value.toLocaleString('en', {useGrouping:true})
+                        if (data[i].value != null) {
+                            td_value.innerText = data[i].value.toLocaleString('en', {useGrouping:true})
+                        } else {
+                            td_value.innerText = data[i].value
+                        }
                         row.appendChild(td_country)
                         row.appendChild(td_iso3)
                         row.appendChild(td_value)
