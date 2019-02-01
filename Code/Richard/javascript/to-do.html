@@ -28,7 +28,9 @@
             text-decoration: line-through;
             font-style: italic
         }
- 
+        .textmargin {
+            margin: 5px;
+        }
         </style>
     </head>
     <body>
@@ -72,14 +74,15 @@
 
             // add item, complete item, delete item, with the chance to undo 
             function list_element() {
-                let text = " " + todo_input.value 
-                if (text == ' ') {
+                let text = todo_input.value 
+                if (text == '') {
                     return
                 }
                 todo_input.value = ''
                 let li = document.createElement("li")
                 let textnode = document.createElement("span")
                 textnode.innerText = text
+                textnode.classList.add("textmargin")
                 let button_complete = document.createElement("button")
                 button_complete.classList.add("btn", "btn-secondary", "active", "checkbox")
                 button_complete.id = textnode.value
