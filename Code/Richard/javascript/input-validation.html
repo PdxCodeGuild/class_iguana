@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <style>
+        body {
+            padding: 10px;
+        }
+        .redhint {
+            color: red;
+            font-style: italic;
+        }
+        </style>
+    </head>
+    <body>
+        <h3 id="header">Please enter your information below</h3>
+        <div id="input_form">
+            <table>
+                <div id="username_div">
+                    <tr>
+                        <td>Username:</td>
+                        <td><input type="text" id="username" placeholder="username"/></td>
+                        <td><span id="username_hint">username must be at least six characters (letters, numbers, & *)</span></td>
+                    </tr>
+                </div>
+                <div id="password_div">
+                    <tr>
+                        <td>Password:</td>
+                        <td><input type="password" id="password" placeholder="password"/></td>
+                    <td><span id="password_hint">password must be at least six characters (letters, numbers, & *)</span></td>
+                    </tr>
+                </div>
+                <div id="password_repeat_div">
+                    <tr>
+                        <td>Re-enter password:</td>
+                        <td><input type="password" id="password_repeat" placeholder="repeat password"/></td>
+                    <td><span id="password_repeat_hint">password must be at least six characters (letters, numbers, & *)</span></td>
+                    </tr>
+                </div>
+                <div id="name_div">
+                    <tr>
+                        <td>Name:</td>
+                        <td><input type="text" id="name" placeholder="Name, First and Last"/></td>
+                        <td><span id="name_hint"></span></td>
+                    </tr>
+                </div>
+                <div id="email_div">
+                    <tr>
+                        <td>Email address:</td>
+                        <td><input type="text" id="email" placeholder="you@example.com"/></td>
+                        <td><span id="email_hint"></span></td>
+                    </tr>
+                </div>
+                <div id="phone_div">
+                    <tr>
+                        <td>Phone number:</td>
+                        <td><input type="text" id="phone" placeholder="xxx-xxx-xxxx"/></td>
+                        <td><span id="phone_hint"></span></td>
+                    </tr>
+                </div>
+                <div id="birthdate_div">
+                    <tr>
+                        <td>Date of birth:</td>
+                        <td><input type="text" id="birthdate" placeholder="mm/dd/yyyy"/></td>
+                        <td><span id="birthdate_hint"></span></td>
+                    </tr>
+                </div>
+                <div id="ssn_div">
+                    <tr>
+                        <td>SSN:</td>
+                        <td><input type="text" id="ssn" placeholder="xxx-xx-xxxx"/></td>
+                        <td><span id="ssn_hint"></span></td>
+                    </tr>
+                </div>
+            </table>
+        </div>
+        <button id="submit_bt">Submit</button>
+        <div id="success_div"></div>
+
+        <script>
+let username = document.querySelector("#username")
+            let username_hint = document.querySelector("#username_hint")
+            
+            let password = document.querySelector("#password")
+            let password_hint = document.querySelector("#password_hint")
+
+            let password_repeat = document.querySelector("#password_repeat")
+            let password_repeat_hint = document.querySelector("#password_repeat_hint")
+            let name = document.querySelector("#name")
+
+            let name_hint = document.querySelector("#name_hint")
+
+            let email = document.querySelector("#email")
+            let email_hint = document.querySelector("#email_hint")
+
+            let phone = document.querySelector("#phone")
+            let phone_hint = document.querySelector("#phone_hint")
+
+            let birthdate = document.querySelector("#birthdate")
+            let birthdate_hint = document.querySelector("#birthdate_hint")
+
+            let ssn = document.querySelector("#ssn")
+            let ssn_hint = document.querySelector("#ssn_hint")
+
+            let submit = document.querySelector("#submit")
+            let success_div = document.querySelector("#success_div")
+
+        // let submit = document.querySelector("#submit")
+
+        // patterns
+        let username_pattern = /^[a-zA-Z0-9*&]{6,}$/
+        let password_pattern = /^[a-zA-Z0-9*&]{6,}$/
+        let name_pattern = /^[a-zA-Z]+(?:[\s]+[a-zA-Z]+)*?$/
+        let email_pattern = /[a-zA-Z0-9.-_]*@[a-zA-Z0-9.-_]*\.[a-zA-Z]*/
+        let phone_pattern = /\d{3}-\d{3}-\d{4}/
+        let birthdate_pattern = /[0-1][1-2]\/[0-1][0-9]\/\d{4}/
+        let ssn_pattern = /\d{3}-\d{2}-\d{4}/
+
+        // vars to confirm validation
+        let username_ok = 0
+        let password_ok = 0
+        let password_repeat_ok = 0
+        let name_ok = 0
+        let email_ok = 0
+        let phone_ok = 0
+        let birthdate_ok = 0
+        let ssn_ok = 0
+
+        // populate fields with test values
+        // username.value = "testusername"
+        // console.log(username)
+        // password.value = "password"
+        // password_repeat.value = "password"
+        // name.value = "First Last"
+        // email.value = "address@xx.yy"
+        // phone.value = "123-123-1234"
+        // birthdate.value = "12/12/1234"
+        // ssn.value = "123-12-1234"
+
+        // submit button does validation
+        submit_bt.onclick = function() {
+            
+                
+            if (!username_pattern.test(username.value)) {
+                username_hint.innerText = "invalid username: must be at least six characters (letters, numbers, &*)"
+                username_hint.classList.add("redhint") 
+                username_ok = 0
+            } else {
+                username_ok = 1
+                username_hint.innerHTML = "&#x2713;"
+                username_hint.classList.remove("redhint")
+                }
+            if (!password_pattern.test(password.value)) {
+                password_hint.innerText = "invalid password: must be at least six characters (letters, numbers, &*)"
+                password_hint.classList.add("redhint")
+                password_ok = 0
+                
+            } else {
+                password_ok = 1
+                password_hint.innerHTML = "&#x2713;"
+                password_hint.classList.remove("redhint")
+            }
+            if (password_repeat.value !== password.value) {
+                password_repeat_hint.innerText = "passwords must match"
+                password_repeat_hint.classList.add("redhint")
+                password_repeat_ok = 0
+            } else {
+                password_repeat_ok = 1
+                password_repeat_hint.innerHTML = "&#x2713;"
+                password_repeat_hint.classList.remove("redhint")
+            }
+            if (!name_pattern.test(name.value)) {
+                name_hint.innerText = "please enter first and last name separated by a space"
+                name_hint.classList.add("redhint")
+                name_ok = 0
+            } else {
+                name_ok = 1
+                name_hint.innerHTML = "&#x2713;"
+                name_hint.classList.remove("redhint")
+            }
+            if (!email_pattern.test(email.value)) {
+                email_hint.innerText = "invalid email address"
+                email_hint.classList.add("redhint")
+                email_ok = 0
+            } else {
+                email_ok = 1
+                email_hint.innerHTML = "&#x2713;"
+                email_hint.classList.remove("redhint")
+            }
+            if (!phone_pattern.test(phone.value)) {
+                phone_hint.innerText = "invalid phone number"
+                phone_hint.classList.add("redhint")
+                phone_ok = 0
+            } else {
+                phone_ok = 1
+                phone_hint.innerHTML = "&#x2713;"
+                phone_hint.classList.remove("redhint")
+            }
+            if (!birthdate_pattern.test(birthdate.value)) {
+                birthdate_hint.innerText = "invalid birthdate"
+                birthdate_hint.classList.add("redhint")
+                birthdate_ok = 0
+            } else {
+                birthdate_ok = 1
+                birthdate_hint.innerHTML = "&#x2713;"
+                birthdate_hint.classList.remove("redhint")
+            }
+            if (!ssn_pattern.test(ssn.value)) {
+                ssn_hint.innerText = "invalid Social Security Number"
+                ssn_hint.classList.add("redhint")
+                ssn_ok = 0
+            } else {
+                ssn_ok = 1
+                ssn_hint.innerHTML = "&#x2713;"
+                ssn_hint.classList.remove("redhint")
+            }
+            console.log(username_ok * password_ok * password_repeat_ok * name_ok * email_ok * phone_ok * birthdate_ok * ssn_ok)
+            if (username_ok * password_ok * password_repeat_ok * name_ok * email_ok * phone_ok * birthdate_ok * ssn_ok === 1) {
+                success_div.innerText = "Data successfully submitted"
+                success_div.classList.remove("redhint")
+            } else {
+                success_div.innerText = "Please correct the invalid entries"
+                success_div.classList.add("redhint")
+            }
+
+        }
+        
+        </script>
+    </body>
+</html>
