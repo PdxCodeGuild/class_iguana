@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <!-- <script src="zITWB6aRco7MeEHHVNmYjoHtV5oCvFLJr1q47cJQfvPwnXzdvrje5PuAEXS4l6Q9"></script> -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Poiret+One|Rock+Salt" rel="stylesheet">
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <style>
+                body {
+                   color:white;
+                   background-image:url("https://s27730.pcdn.co/wp-content/uploads/shutterstock_204688855-860x574.jpg");
+                   background-size:cover;
+                }
+                #display_brewpub {
+                   font-size: 160%;
+                   color: black;
+                   font-family: 'Poiret One', cursive;
+                   background-color:rgba(224,255,255,.3);
+                   display:flex;
+                   flex-direction:row;
+                   align-items:center;
+                   flex-wrap:wrap;
+                   justify-content:space-evenly;
+                }
+                .input_search {
+                   display:flex;
+                   flex-direction:row;
+                   align-items:center;
+                   flex-wrap:wrap;
+                   margin: 2% 8% 2% 18%;
+                }
+                h1 {
+                    color:blueviolet;
+                    text-shadow: 3px 3px rgba(222,184,135);
+                    display:flex;
+                   flex-direction:row;
+                   align-items:center;
+                   flex-wrap:wrap;
+                   justify-content:space-evenly;
+                   margin: 2% 0% 2% 0%;
+                   font-family: 'Rock Salt', cursive;
+                }
+        </style>
+    </head>
+    <body>
+        <h1 id="title">I Need An Overpriced Beer</h1>
+        <div class="input_search">
+        <input id="city"placeholder="city"/>
+        <input id="state" placeholder="state"/>
+        <input id="name" placeholder="name"/>
+        <input id="latitude_input" placeholder="current latitude"/>
+        <input id="longitude_input" placeholder="current longitude"/>
+        <button id="search">search</button>
+        </div>
+        <span id="display_brewpub"></span>
+
+        <script>
+            let state = document.querySelector('#state')
+            let city = document.querySelector('#city')
+            let name = document.querySelector('#name')
+            let latitude_input = document.querySelector('#latitude_input')
+            let longitude_input = document.querySelector('#longitude_input')
+            let search = document.querySelector('#search')
+            let display_brewpub = document.querySelector('#display_brewpub')
+            let brew_long = ''
+            let brew_lat = ''
+
+
+
+            search.onclick = function() {
+                let user_latitude = latitude_input.value
+                let user_longitude = longitude_input.value
+                let brewpub = 'https://api.openbrewerydb.org/breweries?by_city=' + city.value + '&by_state=' + state.value + '&by_name=' + name.value
+                console.log(brewpub)
+                axios.get(brewpub)
+                .then(function (response) {
+                    let all_data = response.data
+                    display_brewpub.innerText = ''
+                    for (let i = 0; i<all_data.length; i++){
+                        let data = all_data[i]
+                        let id = data.id
+                        let name = data.name
+                        let brewery_type = data.brewery_type
+                        let street = data.street
+                        let city = data.city
+                        let state = data.state
+                        let postal_code = data.postal_code
+                        let country = data.country
+                        let longitude = data.longitude
+                        let latitude = data.latitude
+                        let phone = data.phone
+                        let website_url = data.website_url
+                        display_brewpub.innerText += id + '\n' + name + '   - ' + brewery_type + '\n' + street + ' , ' + city + ' , ' + state + '\n' + postal_code + ',' + country + '\n' + longitude + ' , ' + latitude + '\n' + phone + '\n' + website_url + '\n\n'
+                    }
+                })
+            }
+        </script>
+    </body>
+</html>
