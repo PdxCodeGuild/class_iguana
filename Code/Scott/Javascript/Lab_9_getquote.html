@@ -1,0 +1,56 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Quote of the Day Lab 9</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</head>
+<style>
+    #daily_quote_div {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16;
+        margin: 50px;
+    }
+
+    #author_div {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 75px;
+    }
+
+    body {
+        background-color: #E6E6FA
+    }
+</style>
+
+<body>
+    <div id="daily_quote_div"></div>
+    <div id="author_div"></div>
+    <button id="quote_button">Get Next Quote</button>
+
+</body>
+<script>
+    let url_quote = "https://favqs.com/api/qotd"
+    let daily_quote_div = document.querySelector("#daily_quote_div")
+    let author_div = document.querySelector("#author_div")
+    let get_quote = document.querySelector("#quote_button")
+
+    
+    get_quote.onclick = function() {
+    axios.get(url_quote)
+        .then(function (response) {             //response is an object - basically everything that is returned
+            let data = response.data            //data is an object, a subset of response
+            let id = data.quote.id
+            let author = data.quote.author
+            let quote = data.quote.body
+            daily_quote_div.innerText = quote
+            author_div.innerText = author
+
+        })
+}
+
+</script>
+
+</html>

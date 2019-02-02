@@ -1,0 +1,60 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas width="500" height="500" style="border: 1px solid #191970"></canvas>
+    <script>
+        function main_loop() {
+            console.log("move!")
+            ball.px += ball.vx
+            ball.py += ball.vy
+            if (ball.px <= 0) {
+                ball.vx = ball.vx * -1
+            }   
+            if (ball.py <= 0) {
+                ball.vy = ball.vy * -1
+            }
+            if (ball.px >= 500) {
+                ball.vx = ball.vx * -1
+            }
+            
+            if (ball.py >= 500){                
+                ball.vy = ball.vy * -1
+            }
+
+            ctx.clearRect(0,0, 500, 500)
+            ctx.beginPath()
+            ctx.arc(ball.px, ball.py, ball.radius, 0, 2 * Math.PI, false)
+            ctx.fillStyle = "green"
+            ctx.fill()
+            window.requestAnimationFrame(main_loop)
+
+        }
+
+        let width = 500
+        let height = 500
+        let canvas = document.querySelector("canvas")
+        let ctx = canvas.getContext("2d")
+        let ball = {
+            radius: 4,
+            px: Math.random() * width,
+            py: Math.random() * height,
+            vx: (2 * Math.random() - 1) * 10,//velocity random -10 to 10. because its relative to coming or going
+            vy: (2 * Math.random() - 1) * 10,//this is the amount the y position will update in my main_loop function (same with x)
+        }
+
+        window.requestAnimationFrame(main_loop)
+
+
+
+    </script>
+
+</body>
+
+</html>
