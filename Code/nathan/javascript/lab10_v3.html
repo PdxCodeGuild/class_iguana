@@ -97,7 +97,8 @@
                             {latitude: user_latitude, longitude: user_longitude},
                             {latitude: latitude, longitude: longitude}
                         );
-                        display_brewpub.innerText += 'Meters Away:   ' + distance + '\n' + name + '   - ' + brewery_type + '\n' + street + ' , ' + city + ' , ' + state + '\n' + postal_code + ',' + country + '\n' + 'Phone Number:   ' + phone + '\n' + website_url + '\n\n'
+                        distance = 0.000621371 / distance
+                        display_brewpub.innerText += 'Miles Away:   ' + distance + '\n' + name + '   - ' + brewery_type + '\n' + street + ' , ' + city + ' , ' + state + '\n' + postal_code + ',' + country + '\n' + 'Phone Number:   ' + phone + '\n' + website_url + '\n\n'
 
                     }
                 }
