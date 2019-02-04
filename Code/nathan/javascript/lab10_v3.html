@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <!-- <script src="zITWB6aRco7MeEHHVNmYjoHtV5oCvFLJr1q47cJQfvPwnXzdvrje5PuAEXS4l6Q9"></script> -->
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/geolib@2.0.24/dist/geolib.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <style>
+                body {
+                   color:white;
+                   background-image:url("https://cdn2.atlantamagazine.com/wp-content/uploads/sites/4/2018/08/YayoiKusamamirrorroom_courtesyHigh.jpg");
+                   background-size:cover;
+                }
+                #display_brewpub {
+                   color:blueviolet;
+                   font-size: 120%;
+                   background-color:rgba(224,255,255,.52);
+                   display:flex;
+                   flex-direction:row;
+                   align-items:center;
+                   flex-wrap:wrap;
+                   justify-content:space-evenly;
+                   margin: 0 auto;
+                   width: 500px;
+                }
+                #city, #state, #name, #latitude_input, #longitude_input {
+                    color: ivory;
+                }
+                #container {
+                    margin: 0 auto;
+                    width:500px;
+			    }
+                h1 {
+                    color:blueviolet;
+                    text-shadow: 3px 3px rgba(222,184,135);
+                    display:flex;
+                   flex-direction:row;
+                   align-items:center;
+                   flex-wrap:wrap;
+                   justify-content:space-evenly;
+                   margin: 0 auto;
+                   width: 500px;
+                   font-family: 'Rock Salt', cursive;
+                }
+        </style>
+    </head>
+    <body>
+        <h1 id="title">I Need An Overpriced Beer</h1>
+        <div id="container">
+            <input id="city"placeholder="city"/>
+            <input id="state" placeholder="state"/>
+            <input id="name" placeholder="name"/>
+            <input id="latitude_input" placeholder="current latitude"/>
+            <input id="longitude_input" placeholder="current longitude"/>
+            <button id="search">search</button>
+        </div>
+            <span id="display_brewpub"></span>
+
+        <script>
+            let state = document.querySelector('#state')
+            let city = document.querySelector('#city')
+            let name = document.querySelector('#name')
+            let latitude_input = document.querySelector('#latitude_input')
+            let longitude_input = document.querySelector('#longitude_input')
+            let search = document.querySelector('#search')
+            let display_brewpub = document.querySelector('#display_brewpub')
+            let brew_long = ''
+            let brew_lat = ''
+
+
+
+            search.onclick = function() {
+                let user_latitude = latitude_input.value
+                let user_longitude = longitude_input.value
+                let brewpub = 'https://api.openbrewerydb.org/breweries?by_city=' + city.value + '&by_state=' + state.value + '&by_name=' + name.value
+                console.log(brewpub)
+                axios.get(brewpub)
+                .then(function (response) {
+                    let all_data = response.data
+                    display_brewpub.innerText = ''
+                    for (let i = 0; i<all_data.length; i++){
+                        let data = all_data[i]
+                        let id = data.id
+                        let name = data.name
+                        let brewery_type = data.brewery_type
+                        let street = data.street
+                        let city = data.city
+                        let state = data.state
+                        let postal_code = data.postal_code
+                        let country = data.country
+                        let longitude = data.longitude
+                        let latitude = data.latitude
+                        let phone = data.phone
+                        let website_url = data.website_url
+                        let distance = geolib.getDistance(
+                            {latitude: user_latitude, longitude: user_longitude},
+                            {latitude: latitude, longitude: longitude}
+                        );
+                        display_brewpub.innerText += 'Meters Away:   ' + distance + '\n' + name + '   - ' + brewery_type + '\n' + street + ' , ' + city + ' , ' + state + '\n' + postal_code + ',' + country + '\n' + 'Phone Number:   ' + phone + '\n' + website_url + '\n\n'
+
+                    }
+                }
+            )}
+
+
+
+
+        </script>
+    </body>
+</html>
