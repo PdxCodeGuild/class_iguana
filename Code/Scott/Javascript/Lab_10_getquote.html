@@ -1,0 +1,99 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Quote of the Day Lab 9</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="quote_api_key.js"></script>
+
+</head>
+<style>
+    #daily_quote_div {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16;
+        margin: 50px;
+    }
+
+    #author_div {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 75px;
+    }
+
+    body {
+        background-color: #E6E6FA
+    }
+</style>
+
+<body>
+    <select id="author_select"></select>
+    <div id="quote_body">Quote
+        <ul id="quotations"></ul>
+    </div>
+</body>
+<script>
+
+
+    // get a list of authors
+    let url_quote = "https://favqs.com/api/quotes/?filter=funny&type=tag"
+    let author_select = document.querySelector("#author_select")
+    let quote_body = document.querySelector("#quote_body")
+    let quotations = document.querySelector("#quotations")
+    axios.get(url_quote, {
+        headers: {
+            'Authorization': 'Token token="' + quote_key + '"'  //requires valid js syntax header('key') and value both need to be in quotes
+        }
+    }).then(function (response) {
+        let data = response.data
+        let authors = [] // a set of unique author names
+        for (let i = 0; i < data.quotes.length; ++i) {
+            let name = data.quotes[i].author
+            if (!name)   // to skip any 'undefined'. undefined is falsey. So this sais. "if name is falsey"
+                continue
+            let found = false // set a flag
+            for (let j = 0; j < authors.length; ++j) {
+                if (name == authors[j]) {  // lines 51 thru 55 are searching for repeats of names, and skipping them...                    found = true
+                    break
+                }
+            }
+            if (!found) {                //...otherwise they are added to the array
+                authors.push(name)
+            }
+        }
+        for (let i = 0; i < authors.length; ++i) {  // now that we have an array of authors, make them be the option for selection
+            let option = document.createElement('option')
+            option.setAttribute('value', authors[i])
+            option.innerText = authors[i]
+            author_select.appendChild(option)
+        }
+    })
+    author_select.onchange = function () {
+        quotations.innerHTML = ''
+        let author = author_select.options[author_select.selectedIndex].value
+        // alert(author)
+        //now call for data filtered by author name as selected
+        let url_quote_body = 'https://favqs.com/api/quotes/?filter=' + author + '&type=author'
+        axios.get(url_quote_body, {
+            headers: {
+                'Authorization': 'Token token="' + quote_key + '"'
+            }
+        }).then(function (response) {
+            let data = response.data
+            // let quotations = []
+            console.log(data)
+            
+            for (let i = 0; i < data.quotes.length; ++i) {
+                let quote = data.quotes[i].body
+                let quotation = document.createElement('li')
+                quotation.innerText = quote
+                quotations.appendChild(quotation)
+            }
+
+
+        })
+    }
+
+</script>
+
+</html>
