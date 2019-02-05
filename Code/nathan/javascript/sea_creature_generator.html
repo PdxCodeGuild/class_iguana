@@ -7,15 +7,30 @@
                 background-image:url(" http://4.bp.blogspot.com/-4C4s2wcK38U/VltWTtSSDVI/AAAAAAAApSg/cVB2-GV_dwc/s1600/most-beautiful-coral-fish-widescreen-high-definition-full-free-desktop-background-pictures.jpg");
                 background-size:cover;
             }
-            button {
+            #home {
+                width: 12%;
+                height: 5%;
+                background-color: aquamarine;
+                color:blueviolet;
+                border-radius: 12px 12px 12px 12px;
+                border: 3%;
+                font-size: 20px;
+                margin: 0 auto;
+                display:flex;
+                flex-direction:row;
+                align-items:center;
+                flex-wrap:wrap;
+                justify-content:space-evenly;
+                font-family: 'Norican', cursive;
+            }
+            #generate {
                 width: 28%;
                 height: 10%;
                 background-color: aquamarine;
                 color:blueviolet;
                 border-radius: 20px 20px 20px 20px;
                 border: 3%;
-
-                font-size: 28px;
+                font-size: 35px;
                 margin: 0 auto;
                 display:flex;
                 flex-direction:row;
@@ -42,7 +57,7 @@
         </style>
     </head>
         <body>
-
+            <button id="home">Home</button>
             <button id="generate">Generate a Sea Creature</button>
             <div>
                 <div id="display"></div>
@@ -50,6 +65,7 @@
             <script>
                 let generate = document.querySelector('#generate')
                 let display = document.querySelector('#display')
+                let home = document.querySelector('#home')
 
                 onkeypress = function (e) {
                 if (e.key == "Enter") {
@@ -60,6 +76,10 @@
                 sea_creature = chance.animal({type: 'ocean'})
                 display.innerText = sea_creature
             }
+            home.onclick = function redirector(){
+                let new_window = 'http://localhost:63342/class_iguana/Code/nathan/javascript/animal_gen_homepage.html?_ijt=psbkb40jn1ejc3el6edba4fc7j'
+                return window.location.assign(new_window)
+                }
             </script>
         </body>
 </html>
