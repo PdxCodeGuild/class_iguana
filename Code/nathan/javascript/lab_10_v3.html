@@ -75,7 +75,11 @@
             let brew_lat = ''
 
 
-
+            longitude_input.onkeypress = function (e) {
+                if (e.key == "Enter") {
+                    search.onclick()
+                }
+            }
             search.onclick = function() {
                 let user_latitude = latitude_input.value
                 let user_longitude = longitude_input.value
@@ -108,10 +112,6 @@
                     }
                 }
             )}
-
-
-
-
         </script>
     </body>
 </html>
