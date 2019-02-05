@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Norican" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chance/1.0.18/chance.min.js"></script>
+        <style>
+            body {
+                background-image:url(" http://4.bp.blogspot.com/-4C4s2wcK38U/VltWTtSSDVI/AAAAAAAApSg/cVB2-GV_dwc/s1600/most-beautiful-coral-fish-widescreen-high-definition-full-free-desktop-background-pictures.jpg");
+                background-size:cover;
+            }
+            button {
+                width: 28%;
+                height: 10%;
+                background-color: aquamarine;
+                color:blueviolet;
+                border-radius: 20px 20px 20px 20px;
+                border: 3%;
+
+                font-size: 28px;
+                margin: 0 auto;
+                display:flex;
+                flex-direction:row;
+                align-items:center;
+                flex-wrap:wrap;
+                justify-content:space-evenly;
+                font-family: 'Norican', cursive;
+            }
+            #display {
+                color: cornsilk;
+                text-shadow: 2px 2px indianred;
+                font-size: 60px;
+                padding: 3%;
+                margin: 0 auto;
+                display:flex;
+                flex-direction:row;
+                align-items:center;
+                flex-wrap:wrap;
+                justify-content:space-evenly;
+                font-family: 'Norican', cursive;
+
+            }
+
+        </style>
+    </head>
+        <body>
+
+            <button id="generate">Generate a Sea Creature</button>
+            <div>
+                <div id="display"></div>
+            </div>
+            <script>
+                let generate = document.querySelector('#generate')
+                let display = document.querySelector('#display')
+
+                onkeypress = function (e) {
+                if (e.key == "Enter") {
+                    generate.onclick()
+                }
+            }
+            generate.onclick = function() {
+                sea_creature = chance.animal({type: 'ocean'})
+                display.innerText = sea_creature
+            }
+            </script>
+        </body>
+</html>
