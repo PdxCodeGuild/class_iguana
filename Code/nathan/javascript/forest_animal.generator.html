@@ -7,6 +7,22 @@
                 background-image:url(" https://wallpapermemory.com/uploads/817/forest-background-hd-2048x1536-473852.jpg");
                 background-size:cover;
             }
+                #home {
+                width: 12%;
+                height: 5%;
+                background-color: forestgreen;
+                color:ivory;
+                border-radius: 12px 12px 12px 12px;
+                border: 3%;
+                font-size: 20px;
+                margin: 0 auto;
+                display:flex;
+                flex-direction:row;
+                align-items:center;
+                flex-wrap:wrap;
+                justify-content:space-evenly;
+                font-family: 'Norican', cursive;
+            }
             button {
                 width: 28%;
                 height: 10%;
@@ -14,8 +30,7 @@
                 color:ivory;
                 border-radius: 20px 20px 20px 20px;
                 border: 3%;
-
-                font-size: 28px;
+                font-size: 35px;
                 margin: 0 auto;
                 display:flex;
                 flex-direction:row;
@@ -42,7 +57,7 @@
         </style>
     </head>
         <body>
-
+            <button id="home">Home</button>
             <button id="generate">Generate a Forest Animal</button>
             <div>
                 <div id="display"></div>
@@ -50,7 +65,7 @@
             <script>
                 let generate = document.querySelector('#generate')
                 let display = document.querySelector('#display')
-
+                let home = document.querySelector('#home')
                 onkeypress = function (e) {
                 if (e.key == "Enter") {
                     generate.onclick()
@@ -60,6 +75,10 @@
                 forest_animal = chance.animal({type: 'forest'})
                 display.innerText = forest_animal
             }
+            home.onclick = function redirector(){
+                let new_window = 'http://localhost:63342/class_iguana/Code/nathan/javascript/animal_gen_homepage.html?_ijt=psbkb40jn1ejc3el6edba4fc7j'
+                return window.location.assign(new_window)
+                }
             </script>
         </body>
 </html>
