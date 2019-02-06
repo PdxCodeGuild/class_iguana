@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <style>
+            #completed {
+                text-decoration:line-through;
+                color:lightgrey;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>{{title}}</h1>
+        <form action="{% url 'todo_app:savetodo' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="todo_text" required pattern="\w+" title="no special characters!"/>
+            <button type="submit">add todo</button>
+        </form>
+        <ul>
+            {% for todo_item in todo_items %}
+            <li>{{todo_item.text}}
+                <form action="{% url 'todo_app:completetodo' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="todo_item_id" value="{{todo_item.id}}"/>
+                    <button type="submit">X</button>
+                </form>
+            </li>
+            {% endfor %}
+        </ul>
+        <h2>Completed</h2>
+        <ul id="completed">
+            {% for todo_item in completed_todo_items %}
+            <li>{{todo_item.text}}</li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
