@@ -18,7 +18,7 @@ The main UI elements are pages with links and drop-down menus allowing users to 
 Data processing and analysis is done using `pandas` and `statsmodels`. Maps are drawn using `plotly` and `geopandas` with `matplotlib`. `rpy2` is used to call `R` from within `python`, for some graphical features that are not available in `matplotlib` and associated libraries. I may choose to use `pweave` to render text and data analysis in HTML via `pandoc`, for re-use in `pandoc2latex`. The `bootstrap` framework is used, with modifications, for CSS formatting. 
 
 ## The user experience
-Some design elements are used to achieve something beyond the experience of a static site of ca. 1995, but it is a static site nonetheless. Users are presented with an introduction to the functionality of the site and simple methods (links and menus) to navigate the site's features. 
+Design elements are used to achieve something beyond the experience of a static site of ca. 1995, but it is a static site nonetheless. Users are presented with an introduction to the functionality of the site and simple methods (links and menus) to navigate the site's features. 
 
 The idea behind this is that there is something more interesting than an academic journal article or a set of textual lecture notes that can be achieved best in a web format. Some (but not much) inspiration is taken from Hans Rosling's [gapminder.org](https://www.gapminder.org/tools/#$chart-type=bubbles) site, which renders line graphs and scatterplots of selected data based on user input. 
 
