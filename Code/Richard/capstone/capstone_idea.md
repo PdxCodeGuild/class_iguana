@@ -8,7 +8,7 @@ date: 2019-02-05
 # Development and migration in maps and figures
 The purpose of this project is to deliver selected data related to economic/political development and human migration in cartographic and statistical form. 
 
-This is a static site. Much of the programming work takes place "before the back-end", in downloading and processing data, performing statistical analyses, and generating choropleth maps to display data. The main effort is to automate the data-acquisition and -analysis steps. 
+This is a static site. Much of the programming work takes place "before the back-end", in downloading and processing data, performing statistical analyses, and generating choropleth maps to display data. The main effort is to automate the data-acquisition, -mapping and -analysis steps. 
 
 All of this program execution could be done in response to user requests, but the time required to download, process and display data (seconds to minutes) would render the website an interesting exercise but undesirable from the user's perspective.
 
