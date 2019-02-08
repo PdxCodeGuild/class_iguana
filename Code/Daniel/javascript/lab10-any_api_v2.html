@@ -75,7 +75,7 @@
           question: "",
           answer: null,
           choice: null,
-          num_questions: 0,
+          num_questions: 1,
           score: 0,
           difficulty: "",
           streak: 0
@@ -118,6 +118,7 @@
               this.streak = 0;
               this.get_question();
             }
+            this.num_questions++;
           },
 
           convert_string: function(str) {
