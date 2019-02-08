@@ -1,0 +1,10 @@
+
+
+<h1>Guess the Number!</h1>
+{% if message %}<span style="color:red">{{message}}</span>{% endif %}
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="number" name="guess"/>
+    <button type="submit">guess</button>
+</form>
+Guesses: {% for guess in guesses %}{{guess}}{% if not forloop.last %}, {% endif %}{% endfor %}
