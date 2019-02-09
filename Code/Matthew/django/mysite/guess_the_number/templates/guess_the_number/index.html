@@ -1,10 +1,22 @@
 
-
 <h1>Guess the Number!</h1>
-{% if message %}<span style="color:red">{{message}}</span>{% endif %}
-<form action="" method="post">
+
+<form action="{% url 'guess_the_number:newgame' %}" method="post">
     {% csrf_token %}
-    <input type="number" name="guess"/>
-    <button type="submit">guess</button>
+    <input type="number" name="upper_bound" placeholder="upper bound"/>
+    <button type="submit">New Game</button>
 </form>
-Guesses: {% for guess in guesses %}{{guess}}{% if not forloop.last %}, {% endif %}{% endfor %}
+
+<h2>Pending Games</h2>
+<ul>
+    {% for game in games %}
+    <li><a href="{% url 'guess_the_number:game' game.id %}">{{game.id}}</a>
+    {% endfor %}
+</ul>
+
+<h2>Completed Games</h2>
+<ul>
+    {% for game in completed_games %}
+    <li><a href="{% url 'guess_the_number:game' game.id %}">{{game.id}} - {{game.state}}</a>
+    {% endfor %}
+</ul>
