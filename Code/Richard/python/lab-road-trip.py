@@ -9,19 +9,21 @@ city_to_accessible_cities = {
   'New York': ('Boston', 'Albany', 'Philadelphia'),
   'Albany': ('Boston', 'New York', 'Portland'),
   'Portland': ('Boston', 'Albany'),
-  'Philadelphia': ('New York')
+  'Philadelphia': ('New York', )
 }
 
 origin = 'Philadelphia'
 hop = []
-hop.append(city_to_accessible_cities[origin])
+hop.extend(city_to_accessible_cities[origin])
 print(hop)
 i = 1
-while i < 4:
+#while i < 4:
+while True:
   for city in hop:
       hop = (city_to_accessible_cities[city])
+      print(len(hop))
   i += 1
-hop_set = set(hop)
+hop_set = set([hop])
 print(hop_set)
 
 # origin = 'Portland'
