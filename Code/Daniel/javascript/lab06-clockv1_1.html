@@ -1,0 +1,325 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    <link rel="stylesheet" type="text/css" href="lab06-clock.css" />
+  </head>
+  <body>
+    <div id="clock_wrapper">
+      <div class="digit_wrapper" id="0">
+        <div class="top"></div>
+        <div class="middle"></div>
+        <div class="bottom"></div>
+        <div class="top_left"></div>
+        <div class="top_right"></div>
+        <div class="bot_left"></div>
+        <div class="bot_right"></div>
+      </div>
+      <div class="digit_wrapper" id="1">
+        <div class="top"></div>
+        <div class="middle"></div>
+        <div class="bottom"></div>
+        <div class="top_left"></div>
+        <div class="top_right"></div>
+        <div class="bot_left"></div>
+        <div class="bot_right"></div>
+      </div>
+      <div class="digit_wrapper">
+        <div class="col1"></div>
+        <div class="col2"></div>
+      </div>
+      <div class="digit_wrapper" id="2">
+        <div class="top"></div>
+        <div class="middle"></div>
+        <div class="bottom"></div>
+        <div class="top_left"></div>
+        <div class="top_right"></div>
+        <div class="bot_left"></div>
+        <div class="bot_right"></div>
+      </div>
+      <div class="digit_wrapper" id="3">
+        <div class="top"></div>
+        <div class="middle"></div>
+        <div class="bottom"></div>
+        <div class="top_left"></div>
+        <div class="top_right"></div>
+        <div class="bot_left"></div>
+        <div class="bot_right"></div>
+      </div>
+      <div class="digit_wrapper">
+        <div class="col1"></div>
+        <div class="col2"></div>
+      </div>
+
+      <div class="digit_wrapper" id="4">
+        <div class="top"></div>
+        <div class="middle"></div>
+        <div class="bottom"></div>
+        <div class="top_left"></div>
+        <div class="top_right"></div>
+        <div class="bot_left"></div>
+        <div class="bot_right"></div>
+      </div>
+      <div class="digit_wrapper" id="5">
+        <div class="top"></div>
+        <div class="middle"></div>
+        <div class="bottom"></div>
+        <div class="top_left"></div>
+        <div class="top_right"></div>
+        <div class="bot_left"></div>
+        <div class="bot_right"></div>
+      </div>
+    </div>
+      <button id="mode">Clock</button>
+      <div id="stop_controls">
+        <button id="start">Start</button> <button id="stop">Stop</button>
+        <button id="lap">Lap</button>
+      </div>
+   
+    <ol id="laps"></ol>
+
+    <script>
+      let digit_arr = [
+        function zero(clock_index) {
+          let wrapper = document.getElementById(clock_index).childNodes;
+          wrapper[1].style.backgroundColor = "red";
+          wrapper[3].style.backgroundColor = "rgba(255, 0, 0, 0.034)";
+          wrapper[5].style.backgroundColor = "red";
+          wrapper[7].style.backgroundColor = "red";
+          wrapper[9].style.backgroundColor = "red";
+          wrapper[11].style.backgroundColor = "red";
+          wrapper[13].style.backgroundColor = "red";
+        },
+        function one(clock_index) {
+          let wrapper = document.getElementById(clock_index).childNodes;
+          wrapper[1].style.backgroundColor = "rgba(255, 0, 0, 0.034)";
+          wrapper[3].style.backgroundColor = "rgba(255, 0, 0, 0.034)";
+          wrapper[5].style.backgroundColor = "rgba(255, 0, 0, 0.034)";
+          wrapper[7].style.backgroundColor = "rgba(255, 0, 0, 0.034)";
+          wrapper[9].style.backgroundColor = "red";
+          wrapper[11].style.backgroundColor = "rgba(255, 0, 0, 0.034)";
+          wrapper[13].style.backgroundColor = "red";
+        },
+        function two(clock_index) {
+          let wrapper = document.getElementById(clock_index).childNodes;
+
+          wrapper[1].style.backgroundColor = "red";
+          wrapper[3].style.backgroundColor = "red";
+          wrapper[5].style.backgroundColor = "red";
+          wrapper[9].style.backgroundColor = "red";
+          wrapper[11].style.backgroundColor = "red";
+          wrapper[7].style.backgroundColor = "rgba(255, 0, 0, 0.034)";
+          wrapper[13].style.backgroundColor = "rgba(255, 0, 0, 0.034)";
+        },
+        function three(clock_index) {
+          let wrapper = document.getElementById(clock_index).childNodes;
+          wrapper[7].style.backgroundColor = "rgba(255, 0, 0, 0.034)";
+          wrapper[11].style.backgroundColor = "rgba(255, 0, 0, 0.034)";
+          wrapper[1].style.backgroundColor = "red";
+          wrapper[3].style.backgroundColor = "red";
+          wrapper[5].style.backgroundColor = "red";
+          wrapper[9].style.backgroundColor = "red";
+          wrapper[13].style.backgroundColor = "red";
+        },
+        function four(clock_index) {
+          let wrapper = document.getElementById(clock_index).childNodes;
+          wrapper[1].style.backgroundColor = "rgba(255, 0, 0, 0.034)";
+          wrapper[3].style.backgroundColor = "red";
+          wrapper[5].style.backgroundColor = "rgba(255, 0, 0, 0.034)";
+          wrapper[7].style.backgroundColor = "red";
+          wrapper[9].style.backgroundColor = "red";
+          wrapper[11].style.backgroundColor = "rgba(255, 0, 0, 0.034)";
+          wrapper[13].style.backgroundColor = "red";
+        },
+        function five(clock_index) {
+          let wrapper = document.getElementById(clock_index).childNodes;
+          wrapper[1].style.backgroundColor = "red";
+          wrapper[3].style.backgroundColor = "red";
+          wrapper[5].style.backgroundColor = "red";
+          wrapper[7].style.backgroundColor = "red";
+          wrapper[9].style.backgroundColor = "rgba(255, 0, 0, 0.034)";
+          wrapper[11].style.backgroundColor = "rgba(255, 0, 0, 0.034)";
+          wrapper[13].style.backgroundColor = "red";
+        },
+        function six(clock_index) {
+          let wrapper = document.getElementById(clock_index).childNodes;
+          wrapper[1].style.backgroundColor = "red";
+          wrapper[3].style.backgroundColor = "red";
+          wrapper[5].style.backgroundColor = "red";
+          wrapper[7].style.backgroundColor = "red";
+          wrapper[9].style.backgroundColor = "rgba(255, 0, 0, 0.034)";
+          wrapper[11].style.backgroundColor = "red";
+          wrapper[13].style.backgroundColor = "red";
+        },
+        function seven(clock_index) {
+          let wrapper = document.getElementById(clock_index).childNodes;
+          wrapper[1].style.backgroundColor = "red";
+          wrapper[3].style.backgroundColor = "rgba(255, 0, 0, 0.034)";
+          wrapper[5].style.backgroundColor = "rgba(255, 0, 0, 0.034)";
+          wrapper[7].style.backgroundColor = "red";
+          wrapper[9].style.backgroundColor = "red";
+          wrapper[11].style.backgroundColor = "rgba(255, 0, 0, 0.034)";
+          wrapper[13].style.backgroundColor = "red";
+        },
+        function eight(clock_index) {
+          let wrapper = document.getElementById(clock_index).childNodes;
+          wrapper[1].style.backgroundColor = "red";
+          wrapper[3].style.backgroundColor = "red";
+          wrapper[5].style.backgroundColor = "red";
+          wrapper[7].style.backgroundColor = "red";
+          wrapper[9].style.backgroundColor = "red";
+          wrapper[11].style.backgroundColor = "red";
+          wrapper[13].style.backgroundColor = "red";
+        },
+        function nine(clock_index) {
+          let wrapper = document.getElementById(clock_index).childNodes;
+          wrapper[1].style.backgroundColor = "red";
+          wrapper[3].style.backgroundColor = "red";
+          wrapper[5].style.backgroundColor = "red";
+          wrapper[7].style.backgroundColor = "red";
+          wrapper[9].style.backgroundColor = "red";
+          wrapper[11].style.backgroundColor = "rgba(255, 0, 0, 0.034)";
+          wrapper[13].style.backgroundColor = "red";
+        }
+      ];
+
+      function display_time(nums) {
+        for (let i = 0; i < nums.length; i++) {
+          let digit_func = digit_arr[nums[i]];
+          digit_func(i);
+        }
+      }
+
+      function parse_time(ugly_time) {
+        let nums = ugly_time.split("");
+        rem_index = nums.indexOf(":");
+        while (rem_index > -1) {
+          nums.splice(rem_index, 1);
+          rem_index = nums.indexOf(":");
+        }
+        return nums;
+      }
+
+      function get_time() {
+        let time = /\d{2}:\d{2}:\d{2}/.exec(new Date()) + "";
+        nums = parse_time(time);
+        display_time(nums);
+      }
+
+      function get_timer() {
+        if (timer[5] < 9) {
+          timer[5]++;
+        } else {
+          timer[5] = 0;
+          timer[4]++;
+        }
+
+        if (timer[4] == 10) {
+          timer[3]++;
+          timer[4] = 0;
+        }
+
+        if (timer[3] == 10) {
+          timer[3] = 0;
+          timer[2]++;
+        }
+
+        if (timer[2] == 6) {
+          timer[1]++;
+          timer[2] = 0;
+        }
+
+        if (timer[1] == 10) {
+          timer[1] = 0;
+          timer[0]++;
+        }
+        display_time(timer);
+      }
+
+      function reset_timer() {
+        let date = new Date();
+        date.setHours(0, 0, 0, 0);
+        timer = /\d{2}:\d{2}:\d{2}/.exec(date) + "";
+        timer = parse_time(timer);
+        display_time(timer);
+        
+
+        let laps = document.querySelector("#laps");
+        while (laps.firstChild) {
+          laps.removeChild(laps.firstChild);
+        }
+      }
+
+      let mode = document.querySelector("#mode");
+      mode.addEventListener("click", function() {
+        let text = document.querySelector("#mode").innerText;
+        let lap_display = document.querySelector("#laps")
+        if (text == "Stop Watch") {
+          
+          document.querySelector("#stop_controls").style.display = "inline-block";
+          document.querySelector("#mode").innerText = "Clock";
+          clock_interval = clearInterval(clock_interval);
+          display_time([0, 0, 0, 0, 0, 0]);
+          document.querySelector("#start").innerText = "Start";
+          running = false
+          reset_timer()
+          lap_display.style.display = "block"
+        } else {
+          get_time()
+          document.querySelector("#stop_controls").style.display = "none";
+          document.querySelector("#mode").innerText = "Stop Watch";
+          lap_display.style.display = "none";
+          clock_interval = setInterval(get_time, 1000);
+          timer_interval = clearInterval(timer_interval);
+          
+        }
+      });
+
+      let start = document.querySelector("#start");
+      start.addEventListener("click", function() {
+        if (running === false && start.innerText == "Start") {
+          reset_timer();
+          timer_interval = setInterval(get_timer, 10);
+          running = true;
+          start.innerText = "Reset";
+        } else {
+          start.innerText = "Start";
+          reset_timer();
+          running = false;
+          timer_interval = clearInterval(timer_interval);
+        }
+      });
+
+      let stop = document.querySelector("#stop");
+      stop.addEventListener("click", function() {
+        timer_interval = clearInterval(timer_interval);
+        running = false;
+      });
+
+      let lap = document.querySelector("#lap");
+      lap.addEventListener("click", function() {
+        if (running == true) {
+          let li = document.createElement("li");
+
+          let fixed_timer =
+            timer.slice(0, 2).join("") +
+            ":" +
+            timer.slice(2, 4).join("") +
+            ":" +
+            timer.slice(4, 6).join("");
+
+          li.innerText = fixed_timer;
+          document.querySelector("#laps").appendChild(li);
+        }
+      });
+
+      let clock_interval = 0;
+      let timer_interval = 0;
+      let running = false;
+      display_time([0, 0, 0, 0, 0, 0]);
+    </script>
+  </body>
+</html>

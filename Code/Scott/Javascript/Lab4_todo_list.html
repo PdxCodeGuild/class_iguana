@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="utf_8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style>
+    * {
+  box-sizing: border-box;
+}
+    .container {
+        display: flex;
+        flex-direction: row;
+        width: 80%
+        
+    }
+    .btn {
+  border: none;
+  background-color: inherit;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+}
+.btn:hover {background: #eee;
+}
+.list_div {
+    width: 400px;
+}
+
+.completed_div {
+    width: 400px
+
+}
+.completed_div > div {
+text-decoration: line-through
+
+    }
+
+</style>
+
+<body>
+    <input id="task" type="text" placeholder="Enter a task" />
+    <button id="add_task">Add Task To List</button>
+    <div id="container_div" class="container">
+        <div id="list"></div>
+        <div id="completed" class="completed_div"></div>
+    </div>
+    <script>
+        let input_field = document.getElementById("task")
+        let list = document.querySelector("#list")
+        let completed = document.querySelector("#completed")
+        let add_task = document.querySelector("#add_task")
+        let timer = "disable"
+        add_task.onclick = function () {
+            let entry = document.createElement("button")
+            let brk = document.createElement("br")
+            entry.innerText = input_field.value
+            entry.classList = ["btn"]
+
+            entry.onclick = function () {
+                if (timer != "disable") {
+                    clearTimeout(timer);
+                    timer = "disable";
+                }
+                else {
+                    timer = setTimeout(function () {
+                        let completed_div = document.createElement("div")
+                        completed_div.innerText = entry.innerText
+                        completed.appendChild(completed_div)
+                        list.removeChild(this),
+                            timer = "disable";
+                    }, 250)
+                }
+            }
+            // entry.onclick = function () {
+            //     let completed_div = document.createElement("div")
+            //     completed_div.innerText = entry.innerText
+            //     completed.appendChild(completed_div)
+            //     list.removeChild(this)
+            // }
+            entry.ondblclick = function () {
+                list.removeChild(this)
+            }
+            list.appendChild(entry)
+            list.appendChild(brk)
+        }
+
+
+    </script>
+
+</body>
+
+</html>

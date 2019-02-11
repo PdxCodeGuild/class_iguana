@@ -11,7 +11,7 @@ https://or.water.usgs.gov/non-usgs/bes/metro_center.rain
 
 import datetime
 import matplotlib
-matplotlib.use('PS')
+matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 
 # import re
@@ -39,8 +39,8 @@ for i in range(1, len(lines) - 1):
     data_list.append(dict(zip(varnames, lines[i])))
 
 # look at the data
-# print(data_list)
-# print(data_list[0])
+print(data_list)
+print(data_list[0])
 # print(data_list[-1])
 # print(data_list[-1]['Date'])
 # print(len(data_list))
@@ -52,7 +52,7 @@ for i in range(len(data_list)):
     data_list[i]['Year'] = data_list[i]['Date'].year
 
 # look at the data
-#print(data_list[0])
+print(data_list[0])
 
 # print(len(data_list))
 

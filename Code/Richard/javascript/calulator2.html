@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>A calculator</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <meta charset="utf-8"/>
+        <style>
+            body {
+                margin: 10px;
+            }
+            .container {
+                display: grid;
+                max-width: 50%;
+                grid-template-columns: auto auto auto auto auto;
+                grid-template-rows: auto auto auto auto auto;
+            }
+            #enter {
+                grid-column: 4 / 6;
+            }
+            #display {
+                grid-column: 1 / -1
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <input id="display"/>
+            <button id="plus" data-operator="+">+</button>
+            <button id="minus" data-operator="-">-</button>
+            <button id="times" data-operator="*">&times;</button>
+            <button id="divided" data-operator="/">&divide;</button>
+            <button id = "percent" data-operator="%">%</button>
+
+            <button id="nine">9</button>
+            <button id="eight">8</button>
+            <button id="seven">7</button>
+            <button id="exp">e<sup>x</sup></button>
+            <button id="ln">ln(x)</button> 
+
+
+            <button id="six">6</button>
+            <button id="five">5</button>
+            <button id="four">4</button>
+            <button id="squared">x<sup>2</sup></button>
+            <button id="power" data-operator="**">x<sup>y</sup</button>
+
+            <button id="three">3</button>
+            <button id="two">2</button>
+            <button id="one">1</button>
+            <button id="sqrt">&radic;</button>
+            <button id="reciprocal">1/x</button>
+
+            <button id="point">.</button>
+            <button id="zero">0</button>
+            <button id="delete">del</button>
+            <button id="enter">=</button>
+
+        </div>
+
+        <script>
+            let x = null
+            let y = null
+            let entries = ''
+            let display = document.querySelector("#display")
+
+            let del = document.querySelector("#delete")
+            other_operators_ids = ['percent', 'exp', 'ln', 'squared', 'power', 'sqrt', 'reciprocal']
+            for (let i=0; i<other_operators_ids.length; ++i) {
+                let other_operator_bt = document.querySelector('#' + other_operators_ids[i])
+            }
+            number_ids = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'point']
+            for (let i=0; i<number_ids.length; ++i) {
+                //console.log(nums[i])
+                let number_bt = document.querySelector('#' + number_ids[i])
+                number_bt.onclick = function() {
+                    entries += number_bt.innerText
+                    display.value = entries              }
+            }
+            operator = null
+            operator_ids = ['plus', 'minus', 'times', 'divided' , 'power']
+            for (let i=0; i<operator_ids.length; ++i) {
+                let operator_bt = document.querySelector('#' + operator_ids[i])
+                operator_bt.onclick = function() {
+                    x = parseFloat(entries)
+                    entries = ''
+                    operator = operator_bt.dataset.operator 
+                }
+            }
+
+            enter.onclick = function() {
+                y = parseFloat(entries)
+                output = eval(x + operator + y)
+                display.value = output
+                entries = ''
+            }
+
+            del.onclick = function() {
+                entries = entries.substring(0, entries.length-1)
+                display.value = entries
+            }
+
+            percent.onclick = function() {
+                x = parseFloat(entries)
+                output = x / 100
+                display.value = output
+                entries = ''
+            }
+
+            exp.onclick = function() {
+                x = parseFloat(entries)
+                output = Math.exp(x)
+                display.value = output
+                entries = ''
+            }
+
+            ln.onclick = function() {
+                x = parseFloat(entries)
+                output = Math.log(x)
+                display.value = output
+                entries = ''
+            }
+
+            squared.onclick = function() {
+                x = parseFloat(entries)
+                output = x**2
+                display.value = output
+                entries = ''
+            }
+
+            sqrt.onclick = function() {
+                x = parseFloat(entries)
+                output = Math.sqrt(x)
+                display.value = output
+                entries = ''
+            }
+
+            reciprocal.onclick = function() {
+                x = parseFloat(entries)
+                output = 1 / x
+                display.value = output
+                entries = ''
+            }
+            
+        </script>
+    </body>
+</html>
+

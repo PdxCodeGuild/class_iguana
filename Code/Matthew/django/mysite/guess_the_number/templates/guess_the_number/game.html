@@ -1,0 +1,40 @@
+<h1>Game {{game.id}}</h1>
+{% if game.won is None %}
+<div>Guess a number between 1 and {{game.upper_bound}}</div>
+<form action="{% url 'guess_the_number:guess' game.id %}" method="post">
+    {% csrf_token %}
+    <input type="number" id="input_guess" name="guess" min="1" max="{{game.upper_bound}}"/>
+    <button type="submit" id="bt_guess">guess</button>
+</form>
+<script type="text/javascript">
+    let guessed = [{% for guess in game.int_guesses %}{{guess}}{% if not forloop.last %}, {% endif %}{% endfor %}]
+    let bt_guess = document.querySelector('#bt_guess')
+    let input_guess = document.querySelector('#input_guess')
+    bt_guess.onclick = function() {
+        let num = parseInt(input_guess.value)
+        if (num < 1) {
+            alert('Your guess cannot be less than 1')
+            return false
+        } else if (num > {{game.upper_bound}}) {
+            alert('Your guess cannot be greater than {{game.upper_bound}}')
+            return false
+        } else if (guessed.includes(num)) {
+            alert('You already guessed that!')
+            return false
+        }
+        return true
+    }
+
+</script>
+<div>Guesses remaining: {{game.guessed_numbers}}</div>
+{% else %}
+<div>Game {{game.id}} was {{game.state}}, the correct answer was {{game.target}}</div>
+{% endif %}
+<div>Guesses: {% for guess in game.int_guesses %}{{guess}}{% if not forloop.last %}, {% endif %}{% endfor %}</div>
+<ul>
+    {% for guess in game.int_guesses %}
+        <li>{{guess}}, {% if guess < game.target %}too low{% elif guess > game.target %}too high{% else %}just right{% endif %}</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'guess_the_number:index' %}">back</a>

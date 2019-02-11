@@ -261,6 +261,7 @@ def town_share_and_eat(food):
     player.qualities['hunger'] = max(0, player.qualities['hunger'] - player.qualities['hunger'] * player_to_eat)
     companion_to_eat = min(player.qualities['companion'].qualities['food'], player.qualities['companion'].qualities['food'] * player.qualities['companion'].qualities['hunger'])
     player.qualities['companion'].qualities['food'] -= companion_to_eat
+    player.qualities['companion'].qualities['food'] = round(player.qualities['companion'].qualities['food'], 2)
     player.qualities['companion'].qualities['hunger'] = round(min(0, player.qualities['companion'].qualities['hunger'] - player.qualities['companion'].qualities['hunger'] * player_to_eat), 2)
     # print the results
     print(f'You found {town_dict[player.location_i, player.location_j].qualities["food"]} units of food in the town.')
@@ -272,35 +273,35 @@ def town_share_and_eat(food):
     print('It\'s time to move on.')
     move()
 
-    def forest_share_and_eat(food):
-        # divide up food
-        player.qualities['food'] += food * (1 - player.qualities['loyalty'])
-        player.qualities['companion'].qualities['food'] += food * player.qualities['loyalty']
-        player.qualities['food'] += player.qualities['companion'].qualities['food'] * \
-                                    player.qualities['companion'].qualities['loyalty']
-        player.qualities['companion'].qualities['food'] -= player.qualities['companion'].qualities['food'] * \
-                                                           player.qualities['companion'].qualities['loyalty']
-        # eat the food
-        player_to_eat = min(player.qualities['food'], player.qualities['food'] * player.qualities['hunger'])
-        player.qualities['food'] -= player_to_eat
-        player.qualities['food'] = round(player.qualities['food'], 2)
-        player.qualities['hunger'] = round(max(0, player.qualities['hunger'] - player.qualities['hunger'] * player_to_eat, 2))
-        companion_to_eat = min(player.qualities['companion'].qualities['food'],
-                               player.qualities['companion'].qualities['food'] *
-                               player.qualities['companion'].qualities['hunger'])
-        player.qualities['companion'].qualities['food'] -= companion_to_eat
-        player.qualities['companion'].qualities['hunger'] = min(0, player.qualities['companion'].qualities['hunger'] -
-                                                                player.qualities['companion'].qualities[
-                                                                    'hunger'] * player_to_eat)
-        # print the results
-        print(f'You found {forest_dict[player.location_i, player.location_j].qualities["food"]} units of food in the forest.')
-        print(f'You ate {round(player_to_eat, 2)} units of food.')
-        print('Your qualities are now:')
-        print(f'{player.qualities.items()}')
-        print('Your companion\'s qualities are:')
-        print(f'{player.qualities["companion"].qualities.items()}')
-        print('It\'s time to move on.')
-        move()
+def forest_share_and_eat(food):
+    # divide up food
+    player.qualities['food'] += food * (1 - player.qualities['loyalty'])
+    player.qualities['companion'].qualities['food'] += food * player.qualities['loyalty']
+    player.qualities['food'] += player.qualities['companion'].qualities['food'] * \
+                                player.qualities['companion'].qualities['loyalty']
+    player.qualities['companion'].qualities['food'] -= player.qualities['companion'].qualities['food'] * \
+                                                       player.qualities['companion'].qualities['loyalty']
+    # eat the food
+    player_to_eat = min(player.qualities['food'], player.qualities['food'] * player.qualities['hunger'])
+    player.qualities['food'] -= player_to_eat
+    player.qualities['food'] = round(player.qualities['food'], 2)
+    player.qualities['hunger'] = round(max(0, player.qualities['hunger'] - player.qualities['hunger'] * player_to_eat, 2))
+    companion_to_eat = min(player.qualities['companion'].qualities['food'],
+                           player.qualities['companion'].qualities['food'] *
+                           player.qualities['companion'].qualities['hunger'])
+    player.qualities['companion'].qualities['food'] -= companion_to_eat
+    player.qualities['companion'].qualities['hunger'] = min(0, player.qualities['companion'].qualities['hunger'] -
+                                                            player.qualities['companion'].qualities[
+                                                                'hunger'] * player_to_eat)
+    # print the results
+    print(f'You found {forest_dict[player.location_i, player.location_j].qualities["food"]} units of food in the forest.')
+    print(f'You ate {round(player_to_eat, 2)} units of food.')
+    print('Your qualities are now:')
+    print(f'{player.qualities.items()}')
+    print('Your companion\'s qualities are:')
+    print(f'{player.qualities["companion"].qualities.items()}')
+    print('It\'s time to move on.')
+    move()
 
 intro_text = 'In this game, you will travel through a landscape dotted by towns and forests. Along the way you will look for food to sustain your strength. You will encounter others: dogs, cats, crocodiles, scholars, and thieves. Each of them can help you if you choose them as companions. All have special skills that might help add to your own. For example, crocodiles are strong and fearless, while scholars are smart and dogs loyal. A smart, cute cat might help you find food in a town, and even a thief or a crocodile might help you find food in a dangerous forest. But crocs and thieves can be risky companions; you never know when they might turn on you. If you\'re not feeling cooperative, you can try to steal food from a would-be companion--but if they\'re stronger, they\'ll steal food from you out of spite. \n\nFirst, take a moment to find yourself in the landscape. You\'re the blue head-and-shoulders figure. A scholar is represented by a scroll, and a thief is a scary-looking figure. Dogs, cats and crocs look like dogs, cats and crocs. And everyone knows what a town and a forest look like.'
 

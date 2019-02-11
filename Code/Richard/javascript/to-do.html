@@ -28,7 +28,9 @@
             text-decoration: line-through;
             font-style: italic
         }
- 
+        .textmargin {
+            margin: 5px;
+        }
         </style>
     </head>
     <body>
@@ -66,21 +68,21 @@
 
             // an event listener and a button to invoke the list_element() function
             todo_input.addEventListener('keyup', function(e) {
-                console.log(e.keyCode)
                 if (e.keyCode === 13) {list_element()}
             })
             add_bt.onclick = list_element
 
             // add item, complete item, delete item, with the chance to undo 
             function list_element() {
-                let text = " " + todo_input.value 
-                if (text == ' ') {
+                let text = todo_input.value 
+                if (text == '') {
                     return
                 }
                 todo_input.value = ''
                 let li = document.createElement("li")
                 let textnode = document.createElement("span")
                 textnode.innerText = text
+                textnode.classList.add("textmargin")
                 let button_complete = document.createElement("button")
                 button_complete.classList.add("btn", "btn-secondary", "active", "checkbox")
                 button_complete.id = textnode.value

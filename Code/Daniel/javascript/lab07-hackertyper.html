@@ -1,0 +1,129 @@
+<!--Media queries needed for different screen sizes. Only works for 1920x1080 -->
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>lab07</title>
+    <style>
+      body {
+        font-size: 14px;
+        line-height: 1.35;
+      }
+
+      @font-face {
+        font-family: "consolas";
+        src: url("Consolas.ttf");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      ::backdrop {
+        background-image: url("vscode.png");
+        background-size: 100%;
+      }
+
+      #text_start {
+        position: absolute;
+        top: 82px;
+        left: 390px;
+      }
+
+    </style>
+    <link
+    rel="stylesheet"
+    title="Vs 2015"
+    href="https://highlightjs.org/static/demo/styles/vs2015.css"
+  />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+    <script src="/path/to/highlight.pack.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  </head>
+  <body>
+    <div id="text">
+      <div class="Vs 2015">
+        <pre
+          id="text_start"
+        ><code class="javascript" id="tur" style="font-family:consolas"><code></pre>
+        <Div style="color:white"></Div>
+      </div>
+    </div>
+
+    <script>
+
+      function requestFullScreen(element) {
+        // Supports most browsers and their versions.
+        var requestMethod =
+          element.requestFullScreen ||
+          element.webkitRequestFullScreen ||
+          element.mozRequestFullScreen ||
+          element.msRequestFullScreen;
+
+        if (requestMethod) {
+          // Native full screen.
+          requestMethod.call(element);
+        } else if (typeof window.ActiveXObject !== "undefined") {
+          // Older IE.
+          var wscript = new ActiveXObject("WScript.Shell");
+          if (wscript !== null) {
+            wscript.SendKeys("{F11}");
+          }
+        }
+      }
+
+      let text = `let start = document.querySelector("#start");
+      start.addEventListener("click", function() {
+        if (running === false && start.innerText == "Start") {
+          reset_timer();
+          timer_interval = setInterval(get_timer, 10);
+          running = true;
+          start.innerText = "Reset";
+        } else {
+          start.innerText = "Start";
+          reset_timer();
+          running = false;
+          timer_interval = clearInterval(timer_interval);
+        }
+      });
+
+      let stop = document.querySelector("#stop");
+      stop.addEventListener("click", function() {
+        timer_interval = clearInterval(timer_interval);
+        running = false;
+      });
+
+      let lap = document.querySelector("#lap");
+      lap.addEventListener("click", function() {
+        if (running == true) {
+          let li = document.createElement("li");`;
+
+
+      text_start = text.split("");
+
+      function next_char() {
+        let char = text_start[i];
+
+        if (char == " ") {
+          while (char == " ") {
+            char = text_start[i];
+            document.querySelector("#tur").innerText += char;
+            i++;
+          }
+        } else if (char == null) {
+          i++;
+        } else {
+          document.querySelector("#tur").innerText += char;
+          i++;
+        }
+        var elem = document.body; // Make the body go full screen.
+        requestFullScreen(elem);
+        hljs.highlightBlock($('code').get(0));
+      }
+
+      let i = 0;
+      window.addEventListener("keydown", next_char);
+    </script>
+  </body>
+</html>

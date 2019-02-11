@@ -27,6 +27,8 @@ class Shop():
                 self.transactions.append(f'Stocked {qty_to_stock} {to_stock}, {datetime.datetime.now()}, Cash on hand = {self.cash} ')
             else:
                 print('We don\'t have enough cash on hand. We\'ll have to restock later.')
+        # else:
+        #     break
 
     def sell(self):
         item_to_sell = input('\nThere\'s a customer in the shop. What would you like to sell? shirts, pants, shoes, or socks:  ')
@@ -42,10 +44,13 @@ class Shop():
                     qty_to_sell = stock[item_to_sell]
             self.cash += offer * qty_to_sell
             self.stock[item_to_sell] -= qty_to_sell
-            self.transactions.append(f'Sold {qty_to_sell} {item_to_sell}, {datetime.datetime.now()}, Cash on hand = {self.cash} ')
+            self.transactions.append(f'Sold {qty_to_sell} {item_to_sell}, {datetime.datetime.now()}, Cash on hand = {round(self.cash, 2)} ')
+        # else:
+        #     break
 
     def check_books(self):
-        print(f'\n{self.transactions}')
+        if self.transactions != []:
+            print(f'\n{self.transactions}')
 
 
 stock = {'shirts': 10,
