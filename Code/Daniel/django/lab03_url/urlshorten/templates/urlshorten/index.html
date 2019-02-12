@@ -1,0 +1,19 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>url shortener</title>
+  </head>
+
+  <body>
+    <form action="{% url 'urlshorten:saveurl' %}" method="post">
+      {% csrf_token %}
+      <input type="text" name="long_url" />
+      <button type="submit">Shorten Url</button>
+    </form>
+    {% if short_url %}
+    localhost:8000/redirect/{{ short_url.code }}
+    {% endif %}
+  </body>
+</html>
