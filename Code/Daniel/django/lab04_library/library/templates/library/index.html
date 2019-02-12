@@ -1,0 +1,30 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="{% url 'library:signup' %}" method="POST">
+      {% csrf_token %}
+      <button type="submit">signup</button>
+    </form>
+    <form action="{% url 'library:login' %}" method="POST">
+      {% csrf_token %}
+      <button type="submit">login</button>
+    </form>
+    <ol>
+      {% for book in books %}
+      <li>{{ book.title }}</li>
+      <ul>
+        <li>
+          <!-- {% for author in book.author.all %} {% endfor %}-->
+          {{ book.display_author }}
+        </li>
+        <li>{{ book.publish_year }}</li>
+      </ul>
+      {% endfor %}
+    </ol>
+  </body>
+</html>
