@@ -1,0 +1,12 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'polls/style.css' %}" type="text/css"/>
+</head>
+<body>
+    <h1>{% block title %}{% endblock %}</h1>
+    <hr/>
+    {% block content %}
+    {% endblock %}
+    <hr/>
+    (c) myapp inc
+</body>
