@@ -3,11 +3,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Sign Up</title>
+    <title>Login</title>
   </head>
   <body>
-    <form action="{% url 'library:newuser' %}" method="POST">
-      {% csrf_token %} {% for field in form %}
+    <form action="{% url 'library:profile' %}" method="POST">
+      {% csrf_token %} 
+      {% for field in form %}
       {{ field.label }} {{ field }}<br />
       {% endfor %}
       <button type="submit">Submit</button>

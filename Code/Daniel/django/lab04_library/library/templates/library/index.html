@@ -10,16 +10,20 @@
       {% csrf_token %}
       <button type="submit">signup</button>
     </form>
+    <form action="{% url 'library:login' %}" method="POST">
+      {% csrf_token %}
+      <button type="submit">login</button>
+    </form>
     <ol>
       {% for book in books %}
-        <li>{{ book.title }}</li>
-            <ul>
-              <li>
-                <!-- {% for author in book.author.all %} {% endfor %}-->
-                {{ book.display_author }}
-                </li>
-                <li>{{ book.publish_year }}</li>
-            </ul>
+      <li>{{ book.title }}</li>
+      <ul>
+        <li>
+          <!-- {% for author in book.author.all %} {% endfor %}-->
+          {{ book.display_author }}
+        </li>
+        <li>{{ book.publish_year }}</li>
+      </ul>
       {% endfor %}
     </ol>
   </body>
