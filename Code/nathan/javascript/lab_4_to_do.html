@@ -62,6 +62,7 @@
         <div id="completed_text"><span>Completed:</span></div><div id="display_completed"></div>
 
     <script>
+        //turning html buttons in to java script functions
         let add_item = document.querySelector('#add_item')
         let add_button = document.querySelector('#add_button')
         let remove_item = document.querySelector('#remove_item')
@@ -72,10 +73,13 @@
         let display_completed = document.querySelector('#display_completed')
         let to_do_list = []
         let completed_list = []
+
+        //turn input into array then display array
         add_button.onclick = function build_list(){
             to_do_list.push(add_item.value)
             display_to_do_list.innerText = to_do_list
         }
+        //take input and remove from array
         remove_button.onclick = function remove_task(){
             for (i=0; i<to_do_list.length; i++) {
                 if(to_do_list[i] === remove_item.value){
@@ -84,6 +88,7 @@
                 display_to_do_list.innerText = to_do_list
             }
         }
+        //take input and and move item from one array to another array and have item crossed out
         cross_out_button.onclick = function task_completion(){
             for (i=0; i<to_do_list.length; i++) {
                 if(to_do_list[i] === cross_out_this.value){

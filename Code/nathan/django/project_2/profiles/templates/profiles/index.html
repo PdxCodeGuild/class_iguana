@@ -1,0 +1,17 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <h1>{{titles}}</h1>
+        <form action="{% url 'profiles:savetodo' %}" method="post">
+        <input type="text" name="todo_text" required pattern="[a-zA-Z]+" title="no special characters"/>
+        {% csrf_token %}
+        <button type="submit">add profile</button>
+        </form>
+        <ul>
+            {% for todo_item in profiles %}
+            <li>{{todo_item.text}}</li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>

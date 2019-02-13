@@ -1,0 +1,141 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Lab 10v2</title>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="lab10-any_api.css" />
+
+    <style>
+      body {
+        margin: 0px;
+        background-color: rgb(46, 46, 46);
+        color: whitesmoke;
+      }
+      #wrapper {
+        display: grid;
+        grid-template-rows: 20% auto auto;
+        width: 100%;
+        height: 100%;
+      }
+
+      header {
+        grid-row: 1/2;
+        padding-top: 1%;
+      }
+
+      section {
+        display: flex;
+        flex-direction: column;
+        grid-row: 2/3;
+        padding: 0% 4%;
+        justify-content: center;
+      }
+
+      footer {
+        display: flex;
+        column-gap: 20%;
+        grid-row: 3/4;
+        justify-content: center;
+        height: 100%;
+      }
+
+      footer button {
+        background-color: black;
+        height: 80px;
+        width: 200px;
+        color: whitesmoke;
+        font-size: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <header></header>
+      <section>
+        <div>Question: {{ num_questions }}</div>
+        <div>Score: {{ score }}</div>
+        <div>Streak: {{ streak }}</div>
+        <div>Difficulty: {{ difficulty }}</div>
+        <div id="text">{{ question }}</div>
+      </section>
+      <footer>
+        <button v-on:click="check_answer">True</button>
+        <button v-on:click="check_answer">False</button>
+      </footer>
+    </div>
+    <script>
+      var app = new Vue({
+        el: "#wrapper",
+
+        data: {
+          question: "",
+          answer: null,
+          choice: null,
+          num_questions: 1,
+          score: 0,
+          difficulty: "",
+          streak: 0
+        },
+
+        methods: {
+          get_question: function() {
+            if (this.streak > 3) {
+              this.difficulty = "medium";
+            } else if (this.streak > 7) {
+              this.difficulty = "hard";
+            } else {
+              this.difficulty = "easy";
+            }
+
+            let url = `https://opentdb.com/api.php?amount=1&difficulty=${
+              this.difficulty
+            }&type=boolean`;
+            let app = this;
+
+            axios.get(url).then(function(response) {
+              let data = response.data;
+              app.question = data.results[0].question;
+              app.answer = data.results[0].correct_answer;
+              app.question = app.convert_string(app.question);
+            });
+          },
+
+          check_answer: function(e) {
+            if (e.target.innerText == this.answer) {
+              this.score++;
+              this.streak++;
+              this.get_question();
+            } else {
+              this.score--;
+              if (this.score < 0) {
+                this.score = 0;
+              }
+
+              this.streak = 0;
+              this.get_question();
+            }
+            this.num_questions++;
+          },
+
+          convert_string: function(str) {
+            //   str = str.replace("&am;", "&");
+            str = str.replace(/&#039;/gm, "'");
+            str = str.replace(/&quot;/gm, '"');
+            str = str.replace(/&eacute;/gm, "e");
+            str = str.replace(/\?/gm, ".");
+            str = str.replace(/&rsquo;/gm, "'");
+            return str;
+          }
+        },
+
+        created: function() {
+          this.get_question();
+        }
+      });
+    </script>
+  </body>
+</html>

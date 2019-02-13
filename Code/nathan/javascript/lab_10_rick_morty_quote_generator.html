@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <style>
+                body {
+                   color:white;
+                   background-image:url("https://cdn2.atlantamagazine.com/wp-content/uploads/sites/4/2018/08/YayoiKusamamirrorroom_courtesyHigh.jpg");
+                   background-size:cover;
+                }
+                button {
+                    color: white;
+                    text-shadow: 1px 1px aquamarine;
+                   font-family: 'Righteous', cursive;
+                   font-size: 175%;
+                   background-color:rgba(224,255,255,.3);
+                   display:flex;
+                   flex-direction:row;
+                   align-items:center;
+                   flex-wrap:wrap;
+                   justify-content:space-evenly;
+                   margin: 0 auto;
+                }
+                #display_quote {
+                   font-family: 'Righteous', cursive;
+                   font-size: 180%;
+                   background-color:rgba(224,255,255,.3);
+                   display:flex;
+                   flex-direction:row;
+                   align-items:center;
+                   flex-wrap:wrap;
+                   justify-content:space-evenly;
+                }
+                #display_rm_char {
+                   font-family: 'Righteous', cursive;
+                   font-size: 150%;
+                   background-color:rgba(224,255,255,.3);
+                   display:flex;
+                   flex-direction:row;
+                   align-items:center;
+                   flex-wrap:wrap;
+                   justify-content:space-evenly;
+                }
+        </style>
+    </head>
+    <body>
+        <div>
+            <button id="generate">Gimme a Quote Please</button>
+        </div>
+        <span id="display_quote"></span>
+        <span id="display_rm_char"></span>
+        <script>
+            let generate = document.querySelector('#generate')
+            let display_quote = document.querySelector('#display_quote')
+            let display_rm_char = document.querySelector('#display_rm_char')
+
+            onkeypress = function (e) {
+                        if (e.key == "Enter") {
+                            generate.onclick()
+                        }
+                    }
+            generate.onclick = function() {
+                let qotd = 'https://favqs.com/api/qotd'
+                axios.get(qotd)
+                    .then(function (response) {
+                        let data = response.data
+                        let body = data.quote.body
+                        display_quote.innerText = ' " ' + body + ' " '
+                    })
+                nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ,15, 16, 17, 18, 19, 20, 21]
+                num =  Math.floor(Math.random()*nums.length + 1)
+                let rick_morty_url = 'https://rickandmortyapi.com/api/character/' + num
+                axios.get(rick_morty_url)
+                    .then(function (response) {
+                        let data = response.data
+                        let id = data.id
+                        let name = data.name
+                        let status = data.status
+                        let species = data.species
+                        display_rm_char.innerText = ' - ' + name + ' ( ' + status + ' , ' + species + ' ) '
+                    })
+                }
+        </script>
+    </body>
+</html>
