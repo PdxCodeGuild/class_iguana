@@ -14,11 +14,6 @@ def home_view(request):
     return render(request, "products/home.html", my_context)
 
 
-def posh_view(request):
-
-    return render(request, "products/posh.html", {})
-
-
 def contact_view(request):
 
     return render(request, "products/contact.html", {})
@@ -32,11 +27,14 @@ def about_view(request):
     }
     return render(request, "products/about.html", my_context)
 
-def product_detail_view(request):
-    obj = Product.objects.get(id=1)
-    context = {
-        'object': obj,
-        'title': obj.title,
-        'description': obj.description,
-    }
+
+
+def products_view(request):
+    products = Product.objects.all()
+    context = {'products': products}
     return render(request, "products/detail.html", context)
+
+
+def cart_view(request):
+
+    return render(request, "products/cart.html", {})
