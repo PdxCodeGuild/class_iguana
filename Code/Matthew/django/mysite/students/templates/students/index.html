@@ -1,0 +1,31 @@
+
+<table>
+    <tr>
+        <th></th>
+        <th></th>
+        {% for student in students %}
+        <th>{{student.name}}</th>
+        {% endfor %}
+    </tr>
+    {% for row in rows %}
+    <tr>
+        <td>{{row.section_name}}</td>
+        <td>{{row.lab_name}}</td>
+        {% for grade in row.lab_grades %}
+        <td>{{grade | safe}}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+
+
+
+{% for student in students %}
+<h2>{{student.name}}</h2>
+<ul>
+    {% for student_lab in student.studentlab_set.all %}
+    <li>{{student_lab.lab.section.name}} - {{student_lab.lab.name}} - <b>{{ student_lab.get_grade }}</b></li>
+    {% endfor %}
+</ul>
+
+{% endfor %}
