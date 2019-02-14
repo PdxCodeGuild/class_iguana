@@ -4,6 +4,8 @@
         <h1>home uwu</h1>
         {{ request.user }}
         <p>I am Template</p>
+        <h2>{{ title|capfirst|title }}</h2>
+        <h4>{{ my_html|safe }}</h4>
 
     <p>
         {{ my_text }}, {{ my_number }}
@@ -20,7 +22,7 @@
         <li>{{ forloop.counter }} - {{ my_item }}</li>
         {% endif %}
 
-    {% endfor % }
+    {% endfor %}
     </ul>
 
 {% endblock %}
