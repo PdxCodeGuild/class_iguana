@@ -19,13 +19,8 @@ def valleys(nums):
 
 
 def peaks_and_valleys(nums):
-    index = []
-    peaks_and_valleys = peaks(nums) + valleys(nums)
-    # print(peaks_and_valleys)
-    # print(nums[peaks_and_valleys])
-    for number in peaks_and_valleys:
-        index.append(nums[number])    #
-    return index
+    return peaks(nums) + valleys(nums)
+
 
 
 

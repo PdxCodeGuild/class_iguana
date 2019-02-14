@@ -1,27 +1,7 @@
 #lab 12 version 5
 # Swap the user with the computer: the user will pick a number, and the computer will make random guesses until they get it right.L
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import random
-
 
 x = random.randint(1, 20) #note randint in NOT exclusive, will contain upper bound
 # x = 11

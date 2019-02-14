@@ -2,7 +2,6 @@
 
 import random
 
-#x = 11
 x = random.randint(1, 20)
 user_input = input("Guess a number between 1 and 20.")
 user_input = int(user_input)

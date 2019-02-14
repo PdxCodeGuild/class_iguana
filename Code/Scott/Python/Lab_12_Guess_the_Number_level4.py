@@ -1,13 +1,10 @@
-# Lab12_Guess_the_Number level 4.py
-
+#Guess_the_Number level 4
 import random
 
-# x = 11 # used this as a test
 # This can be done by maintaining a variable containing the last guess outside the loop, then comparing
 # the last guess to the current guess, and check if it's closer. Hint: you're interested in comparing the two absolute differences:
 # abs(current_guess-target) and abs(last_guess-target).
 x = random.randint(1, 20)
-# x = 11
 
 count = 0
 last_guess = None #this could really be any irrelavent value. We just need a placeholder outside the loop. The value will be updated and become relevant at the end of the first pass of the loop
@@ -28,6 +25,8 @@ while True:
             print('You are getting warmer.')            #none of this is done the first time through the loop because last_guess still is set to None
         elif new_proximity > last_proximity:
             print('Uh oh, you are getting colder.')
+        else:
+            print('You\'re the same distance')
     last_guess = current_guess               #at the end of the first time through the loop, last_guess is changed to current_guess. And that is all that happens the first time through.
 #The fist time through, the value of last_guess is updated from None to the value of current_guess (the fist guess), and that is all that happens. Then the loop is started again, a second guess is acquired
 # and now we have two guesses to compare. And because the value of last_guess is no longer None, this section of the code is activated and the comparison is made.

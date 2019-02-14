@@ -44,6 +44,13 @@ for round in range(100000): # <---- when using 'in range' use upper bound inclus
         balance += 25000000
         winnings =+ 25000000
 
+
+    win_amounts = [0, 4, 7, 100, 50000, 1000000, 25000000]
+    balance += win_amounts[match_count]
+    winnings += win_amounts[match_count]
+
+
+
 return_on_invest = (winnings - expenses)/expenses
 
 print(f' your total winnings are ${float(winnings)} \n your total expenses are ${float(expenses)} \n your final balance is ${float(balance)} \nyour ROI comes out to {return_on_invest}')
