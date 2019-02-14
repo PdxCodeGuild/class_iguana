@@ -13,9 +13,7 @@ rot_cipher_string = alpha_string[13:] + alpha_string[:13] # acquire rot13 alphab
 rot_cipher_list = list(rot_cipher_string) # convert the rot13 string to a list
 # print(rot_cipher_list) # confirmed that the list prints correctly - and it is a list (for some reason i'm ending up with a list of single character element lists.
 
-#  0123456
-# 'abcdefg'
-# 'nopqrst'
+
 
 user_word = input('Please enter a word.')
 user_word_list = list(user_word) #I'm changing the word into a list.

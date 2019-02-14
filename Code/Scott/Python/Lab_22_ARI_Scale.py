@@ -34,16 +34,11 @@ word_count = len(words)
 characters = contents.strip()
 characters = list(characters)
 character_count = len(characters)
-# print(characters)
-# print(character_count)
 
 sentences = contents.strip().split('\n')
 sentence_count = len(sentences)
-# print(sentences)
-# print(sentence_count)
 
 ari_score = round(4.71 * (character_count/word_count) + .5 * (word_count/sentence_count) - 21.43)
-# print(ari_score)
 if ari_score > 14:
     ari_score = 14
 

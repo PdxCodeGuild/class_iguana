@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+
+</head>
+<style>
+    img {
+        width: 30px;
+    }
+</style>
+
+<body>
+    <div id="div1"></div>
+    <div id="div2"></div>
+
+    <script>
+
+        function show_coins(coin, img_file) {
+            let div2 = document.querySelector('#div2')
+            let ul = document.createElement('ul')
+            for (let i = 0; i < coin; ++i) {
+                let li = document.createElement('li')
+                li.innerHTML = img_file
+                ul.appendChild(li)
+            }
+            div2.appendChild(ul)
+        }
+
+        let unconverted_pennies = prompt("How many pennies are you bringing in?")
+        unconverted_pennies = parseFloat(unconverted_pennies)
+        let quarters = (Math.floor(unconverted_pennies / 25))
+        let quarters_removed = (quarters * 25)
+        unconverted_pennies = (unconverted_pennies - quarters_removed)
+        let dimes = (Math.floor(unconverted_pennies / 10))
+        let dimes_removed = (dimes * 10)
+        unconverted_pennies = (unconverted_pennies - dimes_removed)
+        let nickels = (Math.floor(unconverted_pennies / 5))
+        let nickels_removed = (nickels * 5)
+        unconverted_pennies = (unconverted_pennies - nickels_removed)
+        //document.write(quarters + "  quarters, and " + dimes + " dimes, and " + nickels + " nickels, and " + unconverted_pennies + " pennies")
+        let div1 = document.querySelector('#div1')
+        div1.style.fontSize = '40px'
+        div1.innerHTML = (quarters + "  quarters, and " + dimes + " dimes, and " + nickels + " nickels, and " + unconverted_pennies + " pennies")
+        show_coins(quarters, '<img src="coin_US_quarter.jpg">')
+        show_coins(dimes, '<img src="coin_US_dime.jpg">')
+        show_coins(nickels, '<img src="coin_US_nickel.jpg">')
+        show_coins(unconverted_pennies, '<img src="coin_US_penny.jpg">')
+
+    </script>
+
+</body>
+
+</html>

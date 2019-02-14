@@ -31,6 +31,7 @@ def parse_data(data):
 data = load_file('portland_fire.txt')
 data = parse_data(data)
 
+
 total_days = len(data)
 total_rain = 0 # start the collection of the sum/total of the data from the data points
 for data_dict in data:
@@ -57,7 +58,7 @@ highest_amount = daily_inches[-1]
 
 for data_dict in data:
     if data_dict['daily total'] == highest_amount:
-        print(f"The day with the highest amount of rainfall was {data_dict['date']} with {highest_amount} tips")
+        # print(f"The day with the highest amount of rainfall was {data_dict['date']} with {highest_amount} tips")
     else:
         continue
 
@@ -80,7 +81,7 @@ for data_dict in data:
     else:
         year_data_points[year] = 1
 
-print(f'year data points are {year_data_points}')
+# print(f'year data points are {year_data_points}')
 
 year_rain_totals = {}
 
@@ -91,26 +92,26 @@ for data_dict in data:
     else:
         year_rain_totals[year] = data_dict['daily total']
 
-print(f'year rain totals are {year_rain_totals}')
+# print(f'year rain totals are {year_rain_totals}')
 
 # average_rainfall = []
 year_average = []
 for year in year_rain_totals:
     average = year_rain_totals[year]/year_data_points[year]
     year_average.append(average)
-print(year_average)
+# print(year_average)
 
 averages = []
 for i in range(len(years)):
     # yearly_average = (years[i], year_average[i])
     yearly_average = (year_average[i], years[i])
     averages.append(yearly_average)
-print(averages)
+# print(averages)
 
 averages.sort()
-print(averages)
+# print(averages)
 
-print(f'The year with the highest average rainfall was {averages[-1][1]} with {averages[-1][0]} tips')
+# print(f'The year with the highest average rainfall was {averages[-1][1]} with {averages[-1][0]} tips')
 
 
 
