@@ -1,0 +1,18 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1>{{title}}</h1>
+        <form action="{% url 'todo_app:savetodo' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="todo_text"/ required>
+            <button type="submit">+</button>
+        </form>
+        <ul>
+            {% for todo_item in todo_items %}
+            <li>{{todo_item.text}}</li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
