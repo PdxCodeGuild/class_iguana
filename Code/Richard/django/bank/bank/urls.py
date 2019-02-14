@@ -19,8 +19,9 @@ from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('acme_bank/', include('acme_bank.urls')),
+    path('acme_bank', include('acme_bank.urls')),
     path('', RedirectView.as_view(url='/acme_bank/', permanent=True)),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
