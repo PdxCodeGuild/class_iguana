@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset"utf-8"/>
+    </head>
+    <body>
+      <div id="display"></div>
+      <button id="one">1</button>
+      <button id="two">2</button>
+      <button id="three">3</button>
+      <button id="four">4</button>
+      <button id="five">5</button>
+      <button id="six">6</button>
+      <button id="seven">7</button>
+      <button id="eight">8</button>
+      <button id="nine">9</button>
+      <button id="zero">0</button>
+      <button id="ti">x</button>
+      <button id="di">/</button>
+      <button id="pl">+</button>
+      <button id="mi">-</button>
+      <button id="eq">=</button>
+      <button id="sq">^</button>
+      <button id="de">.</button>
+      <button id="clr">clr</button>
+
+
+    <script>
+             let one = document.querySelector('#one')
+             let two = document.querySelector('#two')
+             let three = document.querySelector('#three')
+             let four = document.querySelector('#four')
+             let five = document.querySelector('#five')
+             let six = document.querySelector('#six')
+             let seven = document.querySelector('#seven')
+             let eight = document.querySelector('#eight')
+             let nine = document.querySelector('#nine')
+             let zero = document.querySelector('#zero')
+             let ti = document.querySelector('#x')
+             let di = document.querySelector('#/')
+             let pl = document.querySelector('#+')
+             let mi = document.querySelector('#-')
+             let eq = document.querySelector('#eq')
+             let sq = document.querySelector('#^')
+             let de = document.querySelector('#.')
+             let clr = document.querySelector('#clr')
+             let display = document.querySelector('#display')
+
+             var x = ''
+             var y = ''
+             var z = ''
+
+            eq.onclick = function(){
+                if(z === '+'){
+                display.innerText = parseInt(x) + parseInt(y)
+                  }
+                else if(z === '-'){
+                 display.innerText = parseInt(x) - parseInt(y)
+                  }
+                else if(z === '/'){
+                 display.innerText = parseInt(x) / parseInt(y)
+                   }
+                else if(z === 'x'){
+                 display.innerText = parseInt(x) * parseInt(y)
+             }
+             mi.onclick = function(){
+                 z = '-'
+             }
+             pl.onclick = function(){
+                 z = '+'
+              }
+             di.onclick = function(){
+                 z = '/'
+              }
+             ti.onclick = function(){
+                 z = 'x'
+              }
+
+
+             one.onclick = function(){
+                x += '1'
+                display.innerText = x
+                }
+             two.onclick = function(){
+                x += '2'
+                display.innerText = x
+                    }
+              three.onclick = function(){
+                x += '3'
+                display.innerText = x
+                }
+              four.onclick = function(){
+                x += '4'
+                display.innerText = x
+                }
+              five.onclick = function(){
+                x += '5'
+                display.innerText = x
+                }
+              six.onclick = function(){
+                x += '6'
+                display.innerText = x
+                }
+              seven.onclick = function(){
+                x += '7'
+                display.innerText = x
+                }
+              eight.onclick = function(){
+                x += '8'
+                display.innerText = x
+                }
+              nine.onclick = function(){
+                x += '9'
+                display.innerText = x
+                }
+              zero.onclick = function(){
+                x += '0'
+                display.innerText = x
+                }
+
+
+
+             one.onclick = function(){
+                y += '1'
+                display.innerText = x
+                }
+             two.onclick = function(){
+                y += '2'
+                display.innerText = x
+                    }
+              three.onclick = function(){
+                y += '3'
+                display.innerText = x
+                }
+              four.onclick = function(){
+                y += '4'
+                display.innerText = x
+                }
+              five.onclick = function(){
+                y += '5'
+                display.innerText = x
+                }
+              six.onclick = function(){
+                y += '6'
+                display.innerText = x
+                }
+              seven.onclick = function(){
+                y += '7'
+                display.innerText = x
+                }
+              eight.onclick = function(){
+                y += '8'
+                display.innerText = x
+                }
+              nine.onclick = function(){
+                y += '9'
+                display.innerText = x
+                }
+              zero.onclick = function(){
+                y += '0'
+                display.innerText = x
+                }
+        </script>
+    </body>
+</html>

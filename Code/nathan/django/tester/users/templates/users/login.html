@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Login</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'products/css/main.css' %}">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Welcome</h1>
+            <button class="btn btn-default" type="button" name="button">Login</button>
+        </div>
+        <h1>{{ myName }}</h1>
+        <ul>
+            {% for number in numbers %}
+            <li>{{ number }}</li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>

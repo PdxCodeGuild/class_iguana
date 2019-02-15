@@ -21,20 +21,21 @@ word_list = []
 char_count = 0
 sentence_count = 0
 word_list = open('huckleberry.txt').read().split()
+print(word_list)
 #word count
 for i in range(len(word_list)):
     word_list[i] = word_list[i].lower()
 word_count = (len(word_list))
 #character count
-for characters in word_list:
-    char_count += len(characters)
+for word in word_list:
+    char_count += len(word)
 #sentence count
-for characters in word_list:
-    if '.' in characters:
+for word in word_list:
+    if '.' in word:
         sentence_count += 1
-    if '?' in characters:
+    if '?' in word:
         sentence_count += 1
-    if '!' in characters:
+    if '!' in word:
         sentence_count += 1
 #ari math
 math1 = (char_count / word_count) * 4.17 #average word length

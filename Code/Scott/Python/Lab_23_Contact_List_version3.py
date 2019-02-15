@@ -1,4 +1,5 @@
 #Lab 23 version 3. Contact List
+#CRUD REPL
 #When REPL loop finishes, write the updated contact info to the CSV file to be saved.
 # Create a record: ask the user for each attribute, add a new contact to your contact list with the attributes that the user entered.
 
@@ -36,7 +37,7 @@ def retreive_record(data_dict_list):
     if response is None:
         print(f'Sorry, {lookup_name} is not on the list.')
     else:
-        for piece in data_dict_list[i].values():
+        for piece in response.values():
             print(piece)
         quit()   #quitting here, otherwise the fileIO piece will run without anything updated
 
@@ -59,11 +60,9 @@ def del_record(data_dict_list):
         if remove_name == data_dict_list[i]['Name']:
             del data_dict_list[i]
 
-    # print(data_dict_list)
 
 with open('contact_list.csv', 'r') as file:
     lines = file.read().split('\n')
-# print(lines)
 
 # list of dictionaries
 
@@ -74,7 +73,8 @@ for line in lines:
     line = line.split(',')
     data_list.append(line)
 
-headers = data_list.pop(0)
+headers = data_list.pop(0)  #remove and keep the first list, which are the headers; the top row.
+
 data_dict_list = []
 for row in data_list:  # iterate over the rows
     data_dict = {}
@@ -97,10 +97,6 @@ elif selection == 'd':
     del_record(data_dict_list)
 
 
-
-# output_line =''+','.join(headers)
-# output_line += '\n'
-
 lines = ','.join(headers) + '\n'
 for row in data_dict_list:
     output_line = ''
@@ -111,7 +107,6 @@ for row in data_dict_list:
         # output_strings.append(output)
 print(lines)
 
-# print(output_line)
 with open('contact_list.csv', 'w') as contacts_file:
     contacts_file.write(lines)
 

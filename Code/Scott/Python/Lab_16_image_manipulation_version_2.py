@@ -23,13 +23,14 @@ for i in range(width):
 
         h, s, v = colorsys.rgb_to_hsv(r/255, g/255, b/255)
 
-        h, s, v = h*100, s*0, v*0
+        h, s, v = 0.5, s, v
 
         r, g, b = colorsys.hsv_to_rgb(h, s, v)
 
         r = int(r*255)
         g = int(g*255)
         b = int(b*255)
+        pixels[i, j] = (r, g, b)
 
 img.show()
 

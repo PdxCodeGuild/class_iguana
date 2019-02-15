@@ -10,10 +10,10 @@
 
 import random
 
-card_dict = {'A' : 11,
-             '2' : 2,
-             '3' : 3,
-             '4' : 4,
+card_dict = {'A': 11,
+             '2': 2,
+             '3': 3,
+             '4': 4,
              '5': 5,
              '6': 6,
              '7': 7,
@@ -22,8 +22,7 @@ card_dict = {'A' : 11,
              '10': 10,
              'J': 10,
              'Q': 10,
-             'K': 10,
-             }
+             'K': 10}
 
 def get_card_deck(shuffle=False):
     cards_list = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
@@ -39,8 +38,6 @@ def get_card_deck(shuffle=False):
 
 def main():
     card_deck = get_card_deck(shuffle=True)
-    # print(card_deck)
-
 
     #what is the score of the card?
     user_start = input('Would you like to see your first two cards? (y/n) \n ')
