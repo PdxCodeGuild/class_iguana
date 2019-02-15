@@ -1,16 +1,16 @@
 {% extends 'products/base.html' %}
 
 {% block content %}
-        <h1>home uwu</h1>
+        <h1>This is a great web-store, welcome!</h1>
         {{ request.user }}
-        <p>I am Template</p>
+        <p>Hey there planet</p>
         <h2>{{ title|capfirst|title }}</h2>
         <h4>{{ my_html|safe }}</h4>
 
-    <p>
-        {{ my_text }}, {{ my_number }}
-        {{ my_list }}
-    </p>
+    <!--<p>-->
+        <!--{{ my_text }}, {{ my_number }}-->
+        <!--{{ my_list }}-->
+    <!--</p>-->
 
     <ul>
     {% for my_item in my_list %}

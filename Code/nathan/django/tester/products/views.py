@@ -6,10 +6,10 @@ from .models import Product
 def home_view(request):
 
     my_context = {
-        'title': "This is about us",
+        'title': "We have good deals",
         'my_number': 123,
-        'my_list': [5, 4, 3, 2, 1],
-        'my_html': "<h3>Hey there planet</h3>"
+        'my_list': ['Plush Toys', 'Posters', 'Clothes', 'MP3\'s', 'Foreign Candy'],
+        'my_html': "<h3>We sell lots of things</h3>"
     }
     return render(request, "products/home.html", my_context)
 
@@ -17,16 +17,6 @@ def home_view(request):
 def contact_view(request):
 
     return render(request, "products/contact.html", {})
-
-
-def about_view(request):
-    my_context = {
-        'my_text': "This is about us",
-        'my_number': 123,
-        'my_list': ['a', 'b', 'c', 'd', 'e'],
-    }
-    return render(request, "products/about.html", my_context)
-
 
 
 def products_view(request):

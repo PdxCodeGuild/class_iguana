@@ -1,19 +1,20 @@
-<html>
-    <head>
-        <title>Login</title>
-        {% load static %}
-        <link rel="stylesheet" type="text/css" href="{% static 'products/css/main.css' %}">
-    </head>
-    <body>
-        <div class="container">
-            <h1>Welcome</h1>
-            <button class="btn btn-default" type="button" name="button">Login</button>
+{% extends "products/base.html" %}
+{% block content %}
+    <div>
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset>
+                <legend>Welcome</legend>
+                {{ form.as_p }}
+            </fieldset>
+            <div>
+                <button type="submit">Login</button>
+            </div>
+        </form>
+        <div>
+            <small>
+                <p>Need an account?</p> <a href="{% url 'register' %}"><span>Sign Up Now</span></a>
+            </small>
         </div>
-        <h1>{{ myName }}</h1>
-        <ul>
-            {% for number in numbers %}
-            <li>{{ number }}</li>
-            {% endfor %}
-        </ul>
-    </body>
-</html>
+    </div>
+{% endblock %}
