@@ -34,6 +34,16 @@ class Account(models.Model):
     interest_rate = models.DecimalField(max_digits=6, decimal_places=3)
 
 
-   
     def __str__(self):
         return f'{"; ".join([str(account_holder) for account_holder in self.account_holders.all()])} - {self.account_type}'
+
+class Transactions(models.Model):
+    date = models.DateField()
+    transaction_type = models.PositiveSmallIntegerField()
+
+    """
+    note: 
+    1 : deposit
+    2 : withdrawal
+    3 : assess_interest
+    """
