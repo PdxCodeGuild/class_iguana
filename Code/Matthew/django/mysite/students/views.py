@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.contrib.auth.decorators import permission_required
 
 from .models import Student, LabSection, StudentLab
 
@@ -28,3 +29,23 @@ def index(request):
     print(rows)
 
     return render(request, 'students/index.html', {'students': students, 'rows': rows})
+
+@permission_required('students.view_student')
+def student_index(request):
+
+    student = request.user.student
+    rows = []
+    for section in LabSection.objects.order_by('index'):
+        for lab in section.lab_set.order_by('index'):
+            row = {
+                'section_name': section.name,
+                'lab_name': f'Lab {lab.index} {lab.name}',
+                'lab_grade': '<span style="color:blue">?</span>'
+            }
+            # go find a studentlab for this student and lab
+            if StudentLab.objects.filter(student=student, lab=lab).exists():
+                grade = StudentLab.objects.get(student=student, lab=lab).grade
+                grade = '<span style="color:green">✓</span>' if grade else '<span style="color:red">✗</span>'
+            row['lab_grade'] = grade
+            rows.append(row)
+    return render(request, 'students/student_index.html', {'rows': rows})

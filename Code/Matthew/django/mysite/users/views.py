@@ -30,6 +30,10 @@ def register_user(request):
 
 @login_required
 def protected(request):
+    if request.method == 'POST':
+        print(request.POST['name'])
+        # insert into database
+
     return render(request, 'users/protected.html', {})
 
 
