@@ -1,19 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+    #completed{
+        text-decoration:line-through;
+        color:lightgrey;
+    }
+    </style>
+</head>
 
 
-
-
-<h2>{{title}}</h2>
-<form action= "{% url 'todo_app:savetodo' %}"method='post'>
-        {% csrf_token %}
-    <input type="text" name="todo_text" title="input your todo">
-
-
-</form>
-
-<ol>
-    {% for todo_item in todo_items %}
-    <li>{{todo_item.text}}</li>
-    {% endfor %}
-
-</ol>
-
+<body>
+    <h2>{{title}}</h2>
+    <form action= "{% url 'todo_app:savetodo' %}" method='post'>
+        {% csrf_token %}   
+        <input type="text" name="todo_text" title="input your todo">
+        <button action="{% url 'todo_app:savetodo' %}" method='post'>SUBMIT</button>  
+    </form>
+    <ul>
+        {% for todo_item in todo_items %}
+        <form action="{% url 'todo_app:completedtodo' %}" method='post'> 
+            {% csrf_token %}          
+            <li>{{todo_item.text}}<button type=submit>Complete</button></li>
+            <input type='hidden' name='todo_item_id' value={{todo_item.id}}>
+        </form>
+        {% endfor %}
+    </ul>
+    <ul>
+        <h3>{{title2}}</h3>
+        {% for completed_item in completed_items %}
+        <form action= "{% url 'todo_app:deletetodo' %}" method='POST'>
+                {% csrf_token %}
+            <li id=completed>{{completed_item.text}}<button type=submit>Delete</button></li>
+            <input type='hidden' name='delete_item_id' value={{completed_item.id}}>
+        </form>
+        {% endfor %}
+    </ul>
+</body>
+</html>
