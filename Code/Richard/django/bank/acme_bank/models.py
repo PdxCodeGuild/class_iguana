@@ -1,4 +1,6 @@
 from django.db import models
+import uuid # Required for unique book instances
+
 
 # Create your models here.
 
@@ -28,6 +30,7 @@ class AccountHolder(models.Model):
             return f'{self.name}, {self.personal_name}'
 
 class Account(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text='Account number')
     account_type = models.ForeignKey('AccountType', on_delete=models.CASCADE)
     account_holders = models.ManyToManyField('AccountHolder')
     balance = models.DecimalField(max_digits=20, decimal_places=2)
