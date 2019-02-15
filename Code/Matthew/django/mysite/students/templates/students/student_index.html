@@ -1,0 +1,14 @@
+
+
+<h1>Labs for {{user.student.name}}</h1>
+<a href="{% url 'users:logout_user' %}">logout</a>
+
+<table>
+{% for row in rows %}
+    <tr>
+        <td>{{row.section_name}}</td>
+        <td>{{row.lab_name}}</td>
+        <td>{{row.lab_grade | safe}}</td>
+    </tr>
+{% endfor %}
+</table>
