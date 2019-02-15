@@ -23,10 +23,11 @@ def check_anagram(word1, word2):
     word1 = list(word1)
     word2 = list(word2)
     # print(word1, word2)
-    if word1!= word2:
-        return False
-    else:
-            return True
+    return word1 == word2
+    # if word1!= word2:
+    #     return False
+    # else:
+    #     return True
 
 
 user_input_1 = input('What is the first word?  ')

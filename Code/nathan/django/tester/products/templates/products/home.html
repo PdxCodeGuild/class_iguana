@@ -1,0 +1,28 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+        <h1>This is a great web-store, welcome!</h1>
+        {{ request.user }}
+        <p>Hey there planet</p>
+        <h2>{{ title|capfirst|title }}</h2>
+        <h4>{{ my_html|safe }}</h4>
+
+    <!--<p>-->
+        <!--{{ my_text }}, {{ my_number }}-->
+        <!--{{ my_list }}-->
+    <!--</p>-->
+
+    <ul>
+    {% for my_item in my_list %}
+
+        {% if my_item == 5 %}
+        <li>{{ forloop.counter }} - {{ my_item }}</li>
+
+        {% else %}
+        <li>{{ forloop.counter }} - {{ my_item }}</li>
+        {% endif %}
+
+    {% endfor %}
+    </ul>
+
+{% endblock %}

@@ -13,7 +13,7 @@ for line in lines:
 
 indexes = data_list.pop(0)
 # print(indexes)
-# print(data_list)
+print(data_list)
 data_dict = {}
 data_dict_list = []
 for i in range(len(indexes)-1):

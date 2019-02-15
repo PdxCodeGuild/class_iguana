@@ -1,4 +1,5 @@
 from django.core.management.base import BaseCommand
+from django.contrib.auth.models import User, Group
 
 from students.models import Student, StudentLab, Lab, LabSection
 import random
@@ -16,6 +17,10 @@ class Command(BaseCommand):
         Lab.objects.all().delete()
         LabSection.objects.all().delete()
 
+        for student_name in student_names:
+            if User.objects.filter(username=student_name).exists():
+                User.objects.get(username=student_name).delete()
+
         for i, section_name in enumerate(section_names):
             lab_section = LabSection(name=section_name, index=(i+1))
             lab_section.save()
@@ -25,9 +30,17 @@ class Command(BaseCommand):
                 lab = Lab(name=lab_name, section=lab_section, index=(j+1))
                 lab.save()
 
+
+
         lab_sections = LabSection.objects.all()
         for student_name in student_names:
-            student = Student(name=student_name)
+            print('creating ' + student_name)
+            user = User.objects.create_user(student_name, student_name+'@pdxcodeguild.com', 'abc123')
+            group = Group.objects.get(name='students')
+            user.groups.add(group)
+            user.save()
+
+            student = Student(name=student_name, user=user)
             student.save()
 
             for lab_section in lab_sections:

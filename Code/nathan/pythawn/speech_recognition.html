@@ -1,0 +1,22 @@
+<html>
+<header>
+
+</header>
+<style>
+
+</style>
+<script>
+    window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    const recognition = new SpeechRecognition();
+    recognition.interimResults = true;
+
+    let p = document.createElement('p');
+    const words = document.querySelector('.words');
+    words.appendchild(p);
+
+    recognition.addEventListener('results', e=>, capture?: boolean)
+
+
+</script>
+</html>

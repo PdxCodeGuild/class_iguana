@@ -2,3 +2,13 @@
 <h1>Welcome {{user.username}}!</h1>
 <h3>You're on a protected page!</h3>
 <a href="{% url 'users:logout_user' %}">logout</a>
+
+
+<a href="{% url 'students:student_index' %}">student index</a>
+
+
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="text" name="name"/>
+    <button type="submit">submit</button>
+</form>

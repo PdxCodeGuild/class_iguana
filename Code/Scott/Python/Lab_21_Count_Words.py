@@ -7,11 +7,13 @@ with open('Grimm.txt', encoding = "utf-8") as f:
     contents = f.read().lower().strip().split()
 
 
-for word in contents:
-    word = word.strip()
+# for word in contents:
+#     word = word.strip()
+
+for i in range(len(contents)):
+    contents[i] = contents[i].strip()
 # print(contents)
 print(len(contents))
-
 
 
 word_dict = {}

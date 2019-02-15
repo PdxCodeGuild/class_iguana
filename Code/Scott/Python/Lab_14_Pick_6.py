@@ -20,7 +20,7 @@ for round in range(100000): # <---- when using 'in range' use upper bound inclus
             match_count += 1
             # print(f'you had {match_count} matches!')
 
-# if 1 number matches, you win $4,# if 2 numbers match, you win $7,# if 3 numbers match, you win $100,# if 4 numbers match, you win $50,000,# if 5 numbers match, you win $1,000,000,# if 6 numbers match, you win $25,000,000
+    # if 1 number matches, you win $4,# if 2 numbers match, you win $7,# if 3 numbers match, you win $100,# if 4 numbers match, you win $50,000,# if 5 numbers match, you win $1,000,000,# if 6 numbers match, you win $25,000,000
 
     if match_count == 1:                         # Add to your balance the winnings from your matches
         balance += 4

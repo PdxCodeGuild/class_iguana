@@ -1,0 +1,19 @@
+{% load static %}
+<html>
+    <head>
+        <title>Hi</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'products/css/main.css' %}">
+    </head>
+<body>
+    {% include 'products/nav.html' %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

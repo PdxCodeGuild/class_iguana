@@ -30,14 +30,14 @@ for i in range(0, len(credit_card_number), 2):
 for i in range(0, len(credit_card_number) - 1):
     if credit_card_number[i] > 9:
         credit_card_number[i] -= 9
-sum = sum(credit_card_number)
-print(sum)
-sum = str(sum)
-sum = list(sum)
-for i in range(len(sum)):
-    sum[i] = int(sum[i])
-print(sum[1])
-if sum[1] == int(check_digit):
+total = sum(credit_card_number)
+# print(total)
+# total = str(total)
+# total = list(total)
+# for i in range(len(total)):
+#     total[i] = int(total[i])
+# print(total[1])
+if total % 10 == int(check_digit): # just needs second digit of total
     print('Number is Valid')
 else:
     print('Sorry. That number is not valid.')
@@ -54,4 +54,4 @@ else:
 # credit_card_number.pop(-1)
 print(credit_card_number)
 print(check_digit)
-print(sum)
+print(total)
