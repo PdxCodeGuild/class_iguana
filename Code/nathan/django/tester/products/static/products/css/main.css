@@ -4,7 +4,7 @@
 
 
 body {
-    background-image:url("https://media.cntraveller.in/wp-content/uploads/2018/09/Tokyo-Shibuya-neon-lights-866x487.jpg");
+    background-image:url("http://opencityprojects.com/wp-content/uploads/2016/02/tumblr_o1tg6jKzZz1s49orpo1_1280-1024x731.jpg");
     background-size:cover;
 }
 
@@ -12,7 +12,7 @@ h1 {
     font-size: 250%;
     font-family: 'Annie Use Your Telescope', cursive;
     top: 20;
-    background-color:rgba(180,180,180,0.5);
+    background-color:rgba(240,255,255, 0.5);
     padding: 25px;
     text-color:black;
     display: flex;
@@ -25,7 +25,7 @@ h2 {
     font-size: 250%;
     font-family: 'Annie Use Your Telescope', cursive;
     top: 20;
-    background-color:rgba(180,180,180,0.5);
+    background-color:rgba(240,255,255, 0.5);
     padding: 25px;
     text-color:black;
     display: flex;
@@ -38,7 +38,7 @@ h3 {
     font-size: 250%;
     font-family: 'Annie Use Your Telescope', cursive;
     top: 20;
-    background-color:rgba(180,180,180,0.5);
+    background-color:rgba(240,255,255, 0.5);
     padding: 25px;
     text-color:black;
     display: flex;
@@ -51,7 +51,7 @@ p {
     font-size: 250%;
     font-family: 'Annie Use Your Telescope', cursive;
     top: 20;
-    background-color:rgba(180,180,180,0.5);
+    background-color:rgba(240,255,255, 0.5);
     padding: 25px;
     text-color:black;
     display: flex;
@@ -63,7 +63,7 @@ p {
 ul {
     font-family: 'Annie Use Your Telescope', cursive;
     top: 20;
-    background-color:rgba(180,180,180,0.5);
+    background-color:rgba(240,255,255, 0.5);
     padding: 25px;
     text-color:black;
     display: flex;
@@ -78,7 +78,7 @@ nav {
     position: -webkit-sticky;
     position: sticky;
     top: 20;
-    background-color:rgba(255,240,245,0.4);
+    background-color:rgba(240,255,255, 0.4);
     padding: 25px;
     text-color:black;
     display: flex;
@@ -91,7 +91,7 @@ nav a {
     font-size: 170%;
     font-family: 'Annie Use Your Telescope', cursive;
     color: black;
-    background-color:rgba(180,180,180,0.8);
+    background-color:rgba(240,255,255, 0.8);
     padding: 10px;
 }
 small {
@@ -100,7 +100,7 @@ small {
     position: -webkit-sticky;
     position: sticky;
     top: 20;
-    background-color:rgba(255,240,245,0.4);
+    background-color:rgba(240,255,255, 0.4);
     padding: 25px;
     text-color:black;
     display: flex;
@@ -115,7 +115,7 @@ span {
     position: -webkit-sticky;
     position: sticky;
     top: 20;
-    background-color:rgba(255,240,245,0.4);
+    background-color:rgba(240,255,255, 0.4);
     padding: 25px;
     text-color:black;
     display: flex;
