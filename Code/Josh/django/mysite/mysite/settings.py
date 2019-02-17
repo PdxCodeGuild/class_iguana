@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'catalog.apps.CatalogConfig',
     'Todo.apps.TodoConfig',
     'polls.apps.PollsConfig',
     'django.contrib.admin',
