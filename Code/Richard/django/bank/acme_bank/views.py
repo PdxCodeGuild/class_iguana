@@ -5,7 +5,14 @@ from django.contrib.auth.models import User
 
 
 def index(request):
-    return render(request, 'index.html', {})
+
+    # loop over the accounts of the logged-in user
+    # print(request.user.accountholder)
+    # account_holder = request.user.account_holder
+    # for account in account_holder.account_set.all():
+    #     print(account.balance)
+    
+    return render(request, 'acme_bank/index.html', {})
 
 def account_detail(request, account_id):
     account = Account.objects.get(id=account_id)

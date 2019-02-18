@@ -1,7 +1,7 @@
 from django.db import models
-import uuid # Required for unique book instances
+import django.contrib.auth.models
 
-
+from django.contrib.auth.models import User
 # Create your models here.
 
 class AccountType(models.Model):
@@ -19,6 +19,8 @@ class AccountHolder(models.Model):
     name = models.CharField(max_length=200)
     personal_name = models.CharField(max_length=200, null=True, blank=True)
     is_corporate = models.BooleanField()
+    user = models.OneToOneField(User, on_delete=models.PROTECT)
+    # one-to-one with django.auth.contrib.models.User
 
     class Meta:
         ordering = ['name', 'personal_name']
@@ -30,7 +32,6 @@ class AccountHolder(models.Model):
             return f'{self.name}, {self.personal_name}'
 
 class Account(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text='Account number')
     account_type = models.ForeignKey('AccountType', on_delete=models.CASCADE)
     account_holders = models.ManyToManyField('AccountHolder')
     balance = models.DecimalField(max_digits=20, decimal_places=2)
