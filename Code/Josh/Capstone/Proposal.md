@@ -10,15 +10,17 @@ The name I want to use comes from when I make bets with friends usually the pers
  -Bets user is actively involved in
  -History of all bets user has been involved in
 2. Bets
- -Parameters of bet
-  -single parameter bet to determine winner 
-  -multiple parameter bet to determine winner, as the parameters change the odds change to match 
-  -pool style bets *ex: more then one user in the bet*
-   -bracket pools *ex: NCAA march madness bracket* 
-   -other pools *ex: Super Bowl squares pool*
-  -unofficial bet that only the users would be able to determine the results of the bet *ex: Josh bets Al that Mathew will wear black tomorrow* in this style bet the user would give the odds parameters and amount of the bet to the server. after those are given the users will have to let the server know who was the winner of the bet and distribute credits to the winner based on this.   
-3. Data scores and odds brought in with  API  
+ - Parameters of bet
+   - single parameter bet to determine winner 
+   - multiple parameter bet to determine winner, as the parameters change the odds change to match 
+   - pool style bets *ex: more then one user in the bet*
+     - bracket pools *ex: NCAA march madness bracket* 
+     - other pools *ex: Super Bowl squares pool*
+   - unofficial bet that only the users would be able to determine the results of the bet *ex: Josh bets Al that Mathew will wear black tomorrow* in this style bet the user would give the odds parameters and amount of the bet to the server. after those are given the users will have to let the server know who was the winner of the bet and distribute credits to the winner based on this.   
+3. Data scores and odds brought in with API  
  
 ## Functionality
+jkhkjhkgfuvu
+
 ## Data Model
 ## Schedule
