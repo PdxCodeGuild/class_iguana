@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <style>
+        body {
+            padding: 20px;
+        }
+        #topic_title {
+            font-style: bold;
+        }
+        #topic_entry {
+            padding-bottom: 5px;
+        }
+        .navbar {
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        .nav-item {
+            color: white;
+        }
+        #topic {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="{% url 'forum:index' %}">MentCom forum</a>
+                </div>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'forum:login' %}">Login or register to post a comment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'forum:logout' %}">Logout</a>
+                    </li>
+                </ul>
+        </nav>
+        <div id='"topic"'>
+                {% if topics %}
+                    {% for topic in topics %}
+                        <div id="topic_entry">
+                            <div id ="topic_title">{{ topic.title }}</div>
+                            <div id="topic_url"><a href={{ topic.url }}>{{ topic.url }}</a> </div>
+                            <div id="topic_byline"> {{ topic.byline }} </div>
+                            <div id="topic_published_date"> {{ topic.published_date }} </div>
+                            <div id="topic_abstract"> {{ topic.abstract }} </div>
+                            {% if user.is_authenticated %}
+                            <form action="{% url 'forum:savepost' %}" method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="topic_id" value="{{topic.id}}"/>
+                                <input type="text" name="post_text" title="Post a comment here"/>
+                                <button type="submit">Submit comment</button>
+                            </form>
+                            {% endif %}
+                            {% if topic.posts %}
+                            <div id="posts">
+                                {% for post in topics.posts %}
+                                    <div id="post_text">{{ post.text }}</div>
+                                    <div id="post_author">{{ post.author }}</div>
+                                    <div id="post_date">{{ post.date }}</div>
+                            </div>
+
+                            <hr/>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+        </div>
+
+
+    </body>
+</html>
