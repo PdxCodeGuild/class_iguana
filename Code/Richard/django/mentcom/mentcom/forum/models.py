@@ -20,6 +20,8 @@ class Post(models.Model):
     text = models.TextField(max_length=10000)
     topic = models.ForeignKey(Topic, on_delete=models.PROTECT, related_name='posts')
 
+    def __str__(self):
+        return self.text
 
 
 class Comment(models.Model):

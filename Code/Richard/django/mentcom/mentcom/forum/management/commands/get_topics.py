@@ -7,7 +7,7 @@ import datetime
 
 class Command(BaseCommand):
     def handle(*args, **options):
-        url = "https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=" + nyt_api_key
+        url = "https://api.nytimes.com/svc/mostpopular/v2/viewed/7.json?api-key=" + nyt_api_key
         r = requests.get(url)
         data = json.loads(r.text) 
         topics = data['results']

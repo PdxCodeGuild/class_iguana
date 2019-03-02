@@ -23,7 +23,7 @@ def savepost(request):
     topic_id = request.POST['topic_id']
     post = Post(text=post_data, author=request.user, topic_id=topic_id)
     post.save()
-    return HttpResponse('ok')
+    return HttpResponseRedirect(reverse('forum:index'))
 
 def register_user(request):
     username = request.POST['username']
