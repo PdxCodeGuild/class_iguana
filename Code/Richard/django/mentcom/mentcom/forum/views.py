@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Topic, User, Post, Comment
 from django.shortcuts import render, reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+
 # Create your views here.
 
 def index(request):
@@ -23,6 +24,20 @@ def savepost(request):
     topic_id = request.POST['topic_id']
     post = Post(text=post_data, author=request.user, topic_id=topic_id)
     post.save()
+    return HttpResponseRedirect(reverse('forum:index'))
+
+def edit_post(request):
+    post_data = request.POST['edit_text']
+    post_id = request.POST['post_id']
+    post = get_object_or_404(Post, pk=post_id)
+    post.text = post_data
+    post.save()
+    return HttpResponseRedirect(reverse('forum:index'))
+
+def delete_post(request):
+    post_id = request.POST["post_id"]
+    post = get_object_or_404(Post, pk=post_id)
+    post.delete()
     return HttpResponseRedirect(reverse('forum:index'))
 
 def register_user(request):
