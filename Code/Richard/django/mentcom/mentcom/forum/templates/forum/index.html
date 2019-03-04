@@ -62,7 +62,6 @@
                         <div class="small"> {{ topic.abstract }} </div>
                         {% if user.is_authenticated %}
                         </div id="comment_div"> 
-                        <button id="comment_bt">Comment</button>
                         <form action="{% url 'forum:savepost' %}" method="post">
                             {% csrf_token %}
                             <input type="hidden" name="topic_id" value="{{topic.id}}"/>
@@ -78,15 +77,15 @@
                                 <div class="small">{{ post.text }}</div>
                                 <div class="small">{{ post.author }}</div>
                                 <div class="small">{{ post.date }}</div>
-                                <br>
                             {% endfor %}
-                        </div>
+                                <br>
                         {% endif %}
-
                         <hr/>
-                    </div>
                 {% endfor %}
+                        </div>
             {% endif %}
+
+                    </div>
         </div>
 
 
