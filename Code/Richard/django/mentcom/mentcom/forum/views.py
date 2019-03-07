@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Topic, User, Post, Comment
+from .models import Topic, User, Post
 from django.shortcuts import render, reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
@@ -22,7 +22,11 @@ def login_template(request):
 def savepost(request):
     post_data = request.POST['post_text']
     topic_id = request.POST['topic_id']
-    post = Post(text=post_data, author=request.user, topic_id=topic_id)
+    if 'post_id' in request.POST:
+        post_id = request.POST['post_id']
+    else:
+        post_id = None
+    post = Post(text=post_data, author=request.user, topic_id=topic_id, parent_id=post_id)
     post.save()
     return HttpResponseRedirect(reverse('forum:index'))
 
@@ -37,7 +41,8 @@ def edit_post(request):
 def delete_post(request):
     post_id = request.POST["post_id"]
     post = get_object_or_404(Post, pk=post_id)
-    post.delete()
+    post.text = "<i>This comment has been deleted by its author.</i>"
+    post.save()
     return HttpResponseRedirect(reverse('forum:index'))
 
 def register_user(request):
@@ -72,3 +77,20 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     return HttpResponseRedirect(reverse('forum:index'))
+
+
+def post_to_html(post, depth):
+    r = '\t'*depth + post.text + '\n'
+    for child in post.children.order_by('date'):
+        r += post_to_html(child, depth+1)
+    return r
+
+def test_recursion(request):
+    output = '<pre>'
+    topics = Topic.objects.order_by('published_date')
+    for topic in topics:
+        output += topic.title + '\n'
+        posts = topic.posts.filter(parent__isnull=True)
+        for post in posts:
+            output += post_to_html(post, 1)
+    return HttpResponse(output + '</pre>')

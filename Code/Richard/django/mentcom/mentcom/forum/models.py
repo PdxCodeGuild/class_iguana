@@ -13,22 +13,19 @@ class Topic(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def get_top_level_posts(self):
+        return self.posts.filter(parent__isnull=True)
 
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.PROTECT)
     date = models.DateField(auto_now_add=True)
     text = models.TextField(max_length=10000)
     topic = models.ForeignKey(Topic, on_delete=models.PROTECT, related_name='posts')
+    parent = models.ForeignKey('self', null=True, blank=True, default=None, on_delete=models.PROTECT, related_name='children')
 
     def __str__(self):
         return self.text
 
-
-class Comment(models.Model):
-    author = models.ForeignKey(User, on_delete=models.PROTECT)
-    text = models.TextField(max_length=10000)
-    date = models.DateField(auto_now_add=True)
-    post = models.ForeignKey(Post, on_delete=models.PROTECT)
-    # parent = models.ForeignKey(Comment)
 
 
