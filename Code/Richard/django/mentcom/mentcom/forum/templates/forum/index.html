@@ -25,11 +25,11 @@
                 padding-left: 30px;
                 padding-right: 30px;
             }
-            #posts {
+            /* #posts {
                 display: flex;
                 justify-self: right;
                 padding: 10px;
-                margin-left: 70px;
+                margin-left: 70px; */
             }
             #comment_div {
                 display: none;
@@ -45,15 +45,14 @@
             .posts_date {
                 padding-left: 50px;
             }
-            .create_comment_bt {
-                margin-top: 10px;
-            }
             .bold {
                 font-weight: bold;
             }
             .no_bullet {
                 list-style-type: none;
             }
+
+            
         </style>
     </head>
     <body>
@@ -83,6 +82,9 @@
                         <div class="small"> {{ topic.byline }} </div>
                         <div class="small"> {{ topic.published_date }} </div>
                         <div class="small bold"> {{ topic.abstract }} </div>
+                        <div>
+                            <button class="hide_comments_bt small">Hide Comments</button>
+                        </div>
                         {% if user.is_authenticated %}
                         <button class="create_comment_bt small">Click to comment (please read article before commenting)</button>
                         <div id="comment_div"> 
@@ -92,9 +94,14 @@
                             <textarea class="form-control rounded-0" type="text" name="post_text" title="Post a comment here"></textarea>
                             <button type="submit">Submit comment</button>
                         </form>
+
                         </div>
                         {% endif %}
+
                         {% if topic.posts.all %}
+                        <h6>Comments:</h6>
+                        <button class="hide_comments_bt small" style="margin-left:25px">Hide Comments</button>
+
                         <ul>
                             {%for post in topic.get_top_level_posts %} 
                                 {%include "forum/tree_template.html" %}
@@ -153,11 +160,11 @@
         )
 
         $(".hide_comments_bt").click(function() {
-            if ($(this).text()==="Show Comments") {
+            if $(this).text()==="Show Comments") {
                 $(this).text("Hide Comments")
                 .next().show()
             } else {
-            $(this).text("Show Comments")
+                $(this).text("Show Comments")
                 .next().hide()
             }
             })

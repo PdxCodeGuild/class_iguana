@@ -41,7 +41,7 @@ def edit_post(request):
 def delete_post(request):
     post_id = request.POST["post_id"]
     post = get_object_or_404(Post, pk=post_id)
-    post.text = "<i>This comment has been deleted by its author.</i>"
+    post.text = "This comment has been deleted by its author."
     post.save()
     return HttpResponseRedirect(reverse('forum:index'))
 
