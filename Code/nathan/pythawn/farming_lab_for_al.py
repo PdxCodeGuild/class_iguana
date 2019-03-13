@@ -50,15 +50,15 @@ class Farmer:
 
     def milk_cow(self):
         self.milk += self.milk_val
-        return f'You have {self.milk} gallon of milk\n🐄'
+        return f'You have {self.milk} gallon of milk 🐄\nenergy: {self.energy}, filth: {self.filth}, day light: {self.day_light}'
 
     def farm_chicken(self):
         self.eggs += self.eggs_val
-        return f'You have {self.eggs} eggs\n🐔'
+        return f'You have {self.eggs} eggs 🐔\nenergy: {self.energy}, filth: {self.filth}, day light: {self.day_light}'
 
     def make_bacon(self):
         self.bacon += self.bacon_val
-        return f'You have {self.bacon} pounds of bacon\n🐖'
+        return f'You have {self.bacon} pounds of bacon 🐖\nenergy: {self.energy}, filth: {self.filth}, day light: {self.day_light}'
 
     def make_money(self):
         if self.money == 0:
